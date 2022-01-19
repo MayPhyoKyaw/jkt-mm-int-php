@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 // STEP 1 
 // photo
 // unamme
@@ -157,7 +158,6 @@ $allowed_image_extension = array(
     "JPEG"
 );
 
-session_start();
 // if (!in_array($file_extension, $allowed_image_extension)) {
 //     $response = array(
 //         "type" => "error",
@@ -279,7 +279,7 @@ if ($org_width > "300" || $org_height > "300") {
         $row = mysqli_fetch_assoc($course_result);
         if ($email == "") {
             unset($_SESSION['response']);
-            header("location: ../frontend/enrollSuccess.php");
+            header("location: ../enrollSuccess.php");
             exit();
         } else {
             if ($row) {
@@ -293,7 +293,7 @@ if ($org_width > "300" || $org_height > "300") {
         if ($afterTryingToSend[0]) {
             unset($_SESSION['response']);
             addNewNoti("new pending enrollment", "please go to students and search for enrollment id", "PENDING_REQUEST", $lastInserted, null);
-            header("location: ../frontend/enrollSuccess.php");
+            header("location: ../enrollSuccess.php");
             exit();
         } else {
             var_dump($afterTryingToSend);
@@ -408,7 +408,7 @@ if ($org_width > "300" || $org_height > "300") {
         $row = mysqli_fetch_assoc($course_result);
         if ($email == "") {
             unset($_SESSION['response']);
-            header("location: ../frontend/enrollSuccess.php");
+            header("location: ../enrollSuccess.php");
             exit();
         } else {
             if ($row) {
@@ -422,7 +422,7 @@ if ($org_width > "300" || $org_height > "300") {
         if ($afterTryingToSend[0]) {
             unset($_SESSION['response']);
             addNewNoti("new pending enrollment", "please go to students and search for enrollment id", "PENDING_REQUEST", $lastInserted, null);
-            header("location: ../frontend/enrollSuccess.php");
+            header("location: ../enrollSuccess.php");
             exit();
         } else {
             echo "fail to send mail";
