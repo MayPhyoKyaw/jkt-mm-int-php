@@ -125,6 +125,8 @@ function resize_image($file, $ext, $mHW)
 $fileinfo = @getimagesize($_FILES["photo"]["tmp_name"]);
 $org_width = $fileinfo[0];
 $org_height = $fileinfo[1];
+echo $org_width;
+echo $org_height;
 
 $file_extension = pathinfo($_FILES["photo"]["name"], PATHINFO_EXTENSION);
 $file = $_FILES['photo']['name'];
@@ -139,11 +141,11 @@ $allowed_image_extension = array(
 );
 
 if ($org_width > "300" || $org_height > "300") {
-    if (file_exists("https://jktmyanmarint.com/backend/uploads/$nrcNumber.$file_extension")) unlink("https://jktmyanmarint.com/backend/uploads/$nrcNumber.$file_extension");
+    if (file_exists("../../jktmyanmarint.com/backend/uploads/$nrcNumber.$file_extension")) unlink("../../jktmyanmarint.com/backend/uploads/$nrcNumber.$file_extension");
     $target = "uploads/" . "$nrcNumber.$file_extension";
-    move_uploaded_file($_FILES['photo']['tmp_name'], "https://jktmyanmarint.com/backend/" . $target);
+    move_uploaded_file($_FILES['photo']['tmp_name'], "../../jktmyanmarint.com/backend/" . $target);
 
-    if (resize_image("https://jktmyanmarint.com/backend/".$target, $file_extension, 300)) {
+    if (resize_image("../../jktmyanmarint.com/backend/".$target, $file_extension, 300)) {
         echo "resized";
         // continue to insert to db cuz image upload succeed.
         $check_student_if_exist = "SELECT * FROM students WHERE nrc='$nrc'";
@@ -268,9 +270,9 @@ if ($org_width > "300" || $org_height > "300") {
         echo "resize fail";
     }
 } else {
-    if (file_exists("https://jktmyanmarint.com/backend/uploads/$nrcNumber.$file_extension")) unlink("https://jktmyanmarint.com/backend/uploads/$nrcNumber.$file_extension");
+    if (file_exists("../../jktmyanmarint.com/backend/uploads/$nrcNumber.$file_extension")) unlink("../../jktmyanmarint.com/backend/uploads/$nrcNumber.$file_extension");
     $target = "uploads/" . "$nrcNumber.$file_extension";
-    if (move_uploaded_file($_FILES["photo"]["tmp_name"], "https://jktmyanmarint.com/backend/" . $target)) {
+    if (move_uploaded_file($_FILES["photo"]["tmp_name"], "../../jktmyanmarint.com/backend/" . $target)) {
         // continue to insert to db cuz image upload succeed.
         $check_student_if_exist = "SELECT * FROM students WHERE nrc='$nrc'";
         $stu_result = mysqli_query($conn, $check_student_if_exist);

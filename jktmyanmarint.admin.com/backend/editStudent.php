@@ -122,9 +122,9 @@ if ($photo["size"] > 0) {
     $file = $_FILES['photo']['name'];
 
     if ($org_width > "300" || $org_height > "300") {
-        if (file_exists("https://jktmyanmarint.com/backend/uploads/$nrcNumber.$file_extension")) unlink("https://jktmyanmarint.com/backend/uploads/$nrcNumber.$file_extension");
+        if (file_exists("../../jktmyanmarint.com/backend/uploads/$nrcNumber.$file_extension")) unlink("../../jktmyanmarint.com/backend/uploads/$nrcNumber.$file_extension");
         $target = "uploads/" . "$nrcNumber.$file_extension";
-        move_uploaded_file($_FILES['photo']['tmp_name'], "https://jktmyanmarint.com/backend/" . $target);
+        move_uploaded_file($_FILES['photo']['tmp_name'], "../../jktmyanmarint.com/backend/" . $target);
 
         if (resize_image($target, $file_extension, 300)) {
             // continue to insert to db cuz image upload succeed.
@@ -149,9 +149,9 @@ if ($photo["size"] > 0) {
             // );
         }
     } else {
-        if (file_exists("https://jktmyanmarint.com/backend/uploads/$nrcNumber.$file_extension")) unlink("https://jktmyanmarint.com/backend/uploads/$nrcNumber.$file_extension");
+        if (file_exists("../../jktmyanmarint.com/backend/uploads/$nrcNumber.$file_extension")) unlink("../../jktmyanmarint.com/backend/uploads/$nrcNumber.$file_extension");
         $target = "uploads/" . "$nrcNumber.$file_extension";
-        if (move_uploaded_file($_FILES["photo"]["tmp_name"], "https://jktmyanmarint.com/backend/" . $target)) {
+        if (move_uploaded_file($_FILES["photo"]["tmp_name"], "../../jktmyanmarint.com/backend/" . $target)) {
             // continue to insert to db cuz image upload succeed.
             $update_to_students = "UPDATE students SET
             student_name='$uname', 
