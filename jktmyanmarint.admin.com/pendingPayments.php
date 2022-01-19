@@ -391,7 +391,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                             </div>
                             <div class="modal-body">
                                 <label>Screenshot</label>
-                                <img id="screenshot_img" class="d-block mx-auto" src="../../user/backend/paymentUploads/212111.jpg" alt="screenshot img" />
+                                <img id="screenshot_img" class="d-block mx-auto" src="../../jktmyanmarint.com/backend/paymentUploads/212111.jpg" alt="screenshot img" />
                                 <div class="row my-3">
                                     <div class="transaction-label col-6">Transaction ID : </div>
                                     <div class="transaction-data col-6" id="tid_pend_p"></div>

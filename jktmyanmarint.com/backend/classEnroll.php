@@ -296,6 +296,7 @@ if ($org_width > "300" || $org_height > "300") {
             header("location: ../frontend/enrollSuccess.php");
             exit();
         } else {
+            var_dump($afterTryingToSend);
             echo "fail to send mail";
         }
     } else {

@@ -247,8 +247,8 @@ if ($org_width > "300" || $org_height > "300") {
                     $afterTryingToSend = sendMail($email, $uname, $row, $lastInserted, TRUE);
                     var_dump($afterTryingToSend);
                 } else {
-                    var_dump($afterTryingToSend);
                     $afterTryingToSend = sendMail($email, $uname, $row, $lastInserted, FALSE);
+                    var_dump($afterTryingToSend);
                 }
             }
         }

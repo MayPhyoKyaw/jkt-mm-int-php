@@ -295,7 +295,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                         <tbody>
                                             <?php while ($row = mysqli_fetch_assoc($result)) : ?>
                                                 <tr onclick="student_detail(this)" data-toggle="modal" data-target="#detailModal" class="tb-row">
-                                                    <td><img class="stu-img-table" src="<?= '../../user/backend/' . $row['photo'] ?>" alt="<?= $row['photo'] ?>"></td>
+                                                    <td><img class="stu-img-table" src="<?= '../../jktmyanmarint.com/backend/' . $row['photo'] ?>" alt="<?= $row['photo'] ?>"></td>
                                                     <td style="max-width : 100px;"><?= $row['student_name'] ?></td>
                                                     <td><?= $row['dob'] ?></td>
                                                     <td style="max-width : 100px;"><?= $row['fname'] ?></td>

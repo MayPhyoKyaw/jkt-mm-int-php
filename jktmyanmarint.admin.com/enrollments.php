@@ -303,7 +303,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                                     $newNrc = encrypt_decrypt("encrypt", $nrcNo);
                                             ?>
                                                 <tr onclick="setCurrentDetail(this)" data-toggle="modal" data-target="#detailModal" class="tb-row">
-                                                    <td><img class="stu-img-table" src="<?= '../../user/backend/' . $row['photo'] ?>" alt="<?= $row['photo'] ?>"></td>
+                                                    <td><img class="stu-img-table" src="<?= '../../jktmyanmarint.com/backend/' . $row['photo'] ?>" alt="<?= $row['photo'] ?>"></td>
                                                     <td style="max-width : 100px;"><?php echo empty($row['level_or_sub']) ? $row['title'] :  $row['title'] . ' - ' . $row['level_or_sub'] ?></td>
                                                     <td style="max-width : 100px;" class="uname-link"><a href="students.php?id=<?php echo $newNrc; ?>"><?= $row['student_name'] ?></a></td>
                                                     <td><?= $row['payment_method'] ?></td>
