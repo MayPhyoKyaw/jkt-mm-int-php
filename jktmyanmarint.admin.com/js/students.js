@@ -23,7 +23,7 @@ function student_detail(row) {
   }
   console.log(rowArr)
 
-  detailImage.src = "../../jktmyanmarint.com/backend/" + rowArr[0];
+  detailImage.src = "https://jktmyanmarint.com/backend/" + rowArr[0];
   detailName.innerText = rowArr[1];
   detailDob.innerText = rowArr[2];
   detailFname.innerText = rowArr[3];
@@ -74,7 +74,7 @@ function student_edit(event, row, idx) {
 
   console.log(rowArr);
   studentId.value = idx;
-  imagePreview.src = "../../jktmyanmarint.com/backend/" + rowArr[0];
+  imagePreview.src = "https://jktmyanmarint.com/backend/" + rowArr[0];
   notChangeImg.value = rowArr[0];
   uname.value = rowArr[1];
   dob.value = rowArr[2];

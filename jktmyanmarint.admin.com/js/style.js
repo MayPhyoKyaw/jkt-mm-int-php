@@ -118,7 +118,7 @@ function setCurrentEditing(event, row, idx, classIdx) {
   }
   console.log(rowArr);
   enrollmentId.value = idx;
-  imagePreview.src = "../../jktmyanmarint.com/backend/" + rowArr[0];
+  imagePreview.src = "https://jktmyanmarint.com/backend/" + rowArr[0];
   notChangeImg.value = rowArr[0];
   classId.value = classIdx;
   uname.innerHTML = rowArr[2];
@@ -182,7 +182,7 @@ function setCurrentDetail(row) {
 
   // enrollment id 
   // classId 
-  detailImage.src = "../../jktmyanmarint.com/backend/" + rowArr[0];
+  detailImage.src = "https://jktmyanmarint.com/backend/" + rowArr[0];
   detailTitle.innerText = rowArr[1];
   detailName.innerText = rowArr[2];
   // detailDob.innerText = rowArr[3];

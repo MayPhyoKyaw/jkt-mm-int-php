@@ -28,7 +28,7 @@ function setCurrentDetailPayment(tid) {
     },
     function (data) {
     //   console.log(data);
-      screenshot_img.src = "../../jktmyanmarint.com/backend/paymentUploads/"+data[0]['screenshot'];
+      screenshot_img.src = "https://jktmyanmarint.com/backend/paymentUploads/"+data[0]['screenshot'];
       tid_pend.textContent = data[0]['payment_id'];
       sname_pend.textContent = data[0]['uname'];
       course_pend.textContent = data[0]['level_or_sub'] == "" && data[0]['title'] || data[0]['title'] + " - " + data[0]['level_or_sub'];
