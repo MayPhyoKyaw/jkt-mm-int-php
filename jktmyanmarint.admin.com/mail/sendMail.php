@@ -3,13 +3,37 @@
 require 'includes/PHPMailer.php';
 require 'includes/SMTP.php';
 require 'includes/Exception.php';
-include_once '../auth/hashFunc.php';
+function encrypt_decrypt($action, $string)
+{
+	/* =================================================
+	* ENCRYPTION-DECRYPTION
+	* =================================================
+	* ENCRYPTION: encrypt_decrypt('encrypt', $string);
+	* DECRYPTION: encrypt_decrypt('decrypt', $string) ;
+	*/
+	$output = false;
+	$encrypt_method = "AES-256-CBC";
+	$secret_key = 'JKT-2019-20IT85-MM-JP';
+	$secret_iv = 'JKT-2019-serV1ce-MM-JP';
+	// hash
+	$key = hash('sha256', $secret_key);
+	// iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
+	$iv = substr(hash('sha256', $secret_iv), 0, 16);
+	if ($action == 'encrypt') {
+		$output = base64_encode(openssl_encrypt($string, $encrypt_method, $key, 0, $iv));
+	} else {
+		if ($action == 'decrypt') {
+			$output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);
+		}
+	}
+	return $output;
+}
 //Define name spaces
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-function sendMail($email, $uname, $classInfo,$insertedId, $isInCash)
+function sendMail($email, $uname, $classInfo, $insertedId, $isInCash)
 {
 	$encryptedInsertedId = encrypt_decrypt("encrypt", $insertedId);
 	//Create instance of PHPMailer
@@ -43,9 +67,9 @@ function sendMail($email, $uname, $classInfo,$insertedId, $isInCash)
 	$mail->Body .= $uname;
 	$mail->Body .= "</h1></br>";
 	$mail->Body .= "Welcome! - You tried to enroll our " . $classInfo["level_or_sub"] . " level " . $classInfo["title"] . " course </br>";
-	
+
 	$mail->Body .= "<h3>Check the payment information!</h3>";
-	
+
 	if ($isInCash) {
 		$mail->Body .= "<p>The course will start on " . $classInfo["start_date"]  . "</p>";
 		$mail->Body .= "<p>You can pay on the first day of the course. If you pay fully at once, 5% discount on your course.If you want to pay installment, we accepted 3 times installment before the course completes.</p>";
@@ -74,7 +98,7 @@ function sendMail($email, $uname, $classInfo,$insertedId, $isInCash)
 	$mail->Body .= "<p style='color: grey;'>Phone No.: +959 269 564 339, +959 770 411 708</p>";
 	$mail->Body .= "<p style='color: grey;'>Email: jkt.mm.int@gmail.com</p>";
 	$mail->Body .= "<p style='color: grey;'>No.86, 3A, Shinsawpu Road, Near Myaynigone Citymart, Sanchaung Township, Yangon, Myanmar</p>";
-	
+
 	// $mail->Body = "</div>";
 	//Add recipient
 	$mail->addAddress($email);
