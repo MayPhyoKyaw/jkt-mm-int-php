@@ -1,7 +1,7 @@
 <?php
 
 // db config
-include("../../admin/confs/config.php");
+include("../confs/config.php");
 
 $enrollmentDeletingId = intval($_POST["enrollmentDeletingId"]);
 

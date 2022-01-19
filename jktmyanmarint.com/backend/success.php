@@ -2,7 +2,7 @@
 
 // echo ('successful');
 
-include("../../admin/confs/config.php");
+include("../../jktmyanmarint.admin.com/confs/config.php");
 
 $sql = "SELECT * FROM courses";
 

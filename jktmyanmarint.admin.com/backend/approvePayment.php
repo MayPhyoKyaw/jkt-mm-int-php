@@ -1,7 +1,7 @@
 <?php
 
 // db config
-include("../../admin/confs/config.php");
+include("../confs/config.php");
 
 
 $payment_id = $_POST["payment_id"];

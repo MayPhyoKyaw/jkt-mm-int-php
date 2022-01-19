@@ -3,7 +3,7 @@
 if (!isset($_GET["enroll_id"])) {
   header("location: ../frontend/index.html");
 }
-include_once '../../admin/auth/hashFunc.php';
+include_once '../../jktmyanmarint.admin.com/auth/hashFunc.php';
 ?>
 
 <!DOCTYPE html>
@@ -135,7 +135,7 @@ include_once '../../admin/auth/hashFunc.php';
         <div class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-6 text-center p-0 mt-3 mb-2">
           <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
             <?php
-            include_once('../../admin/confs/config.php');
+            include_once('../../jktmyanmarint.admin.com/confs/config.php');
             $decryptedEnrollId = encrypt_decrypt("decrypt", $_GET['enroll_id']);
             $nrc = "SELECT * FROM enrollments e, students s WHERE e.student_id = s.student_id AND enrollment_id = $decryptedEnrollId";
             $nrc_result = mysqli_query($conn, $nrc);

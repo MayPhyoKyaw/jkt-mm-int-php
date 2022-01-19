@@ -1,7 +1,7 @@
 <?php
 
 // db config
-include("../../admin/confs/config.php");
+include("../confs/config.php");
 
 $typeIdDel = intval($_POST["typeIdDel"]);
 

@@ -1,5 +1,5 @@
 <?php
-include_once("../../admin/confs/config.php");
+include_once("../../jktmyanmarint.admin.com/confs/config.php");
 
 if (isset($_POST['paymentSubmit'])) {
 

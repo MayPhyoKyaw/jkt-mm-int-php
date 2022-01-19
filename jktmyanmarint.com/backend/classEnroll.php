@@ -23,10 +23,10 @@
 // payment_method
 
 // db config
-include("../../admin/confs/config.php");
+include("../../jktmyanmarint.admin.com/confs/config.php");
 
 // for mail
-include("../../admin/mail/sendMail.php");
+include("../../jktmyanmarint.admin.com/mail/sendMail.php");
 
 // for noti
 include("../backend/newNoti.php");

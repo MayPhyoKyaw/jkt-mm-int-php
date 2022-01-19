@@ -1,7 +1,7 @@
 <?php
 
 // db config
-include("../../admin/confs/config.php");
+include("../confs/config.php");
 
 // for mail
 // include("../mail/sendMail.php");
@@ -23,20 +23,20 @@ $phone = $_POST['phone'];
 $education = $_POST['education'];
 $created_at = $_POST["createdAt"];
 
-echo (
-    $studentId.",".
-    $uname .",".
-    $dob .",".  
-    $fname .",".
-    $nrcCode .",".
-    $township .",".
-    $type .",".
-    $nrcNumber .",".
-    $email .",".
-    $phone .",".
-    $education .",".
-    $created_at
-);
+// echo (
+//     $studentId.",".
+//     $uname .",".
+//     $dob .",".  
+//     $fname .",".
+//     $nrcCode .",".
+//     $township .",".
+//     $type .",".
+//     $nrcNumber .",".
+//     $email .",".
+//     $phone .",".
+//     $education .",".
+//     $created_at
+// );
 
 function resize_image($file, $ext, $mHW)
 {

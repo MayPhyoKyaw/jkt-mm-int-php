@@ -1,6 +1,6 @@
 <?php
 
-include("../../admin/confs/config.php");
+include("../../jktmyanmarint.admin.com/confs/config.php");
 
 function addNewNoti($title, $description, $type, $enrollment_id, $payment_id)
 {
