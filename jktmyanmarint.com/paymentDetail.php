@@ -118,24 +118,25 @@ function encrypt_decrypt($action, $string) {
           <li class="nav-item">
             <a href="./contact.html" class="nav-link"> CONTACT </a>
           </li>
+          <?php $getID = $_GET['enroll_id'] ?>
           <li class="lang">
             <div class="btn-group" role="group" aria-label="First group">
-              <a href="./paymentDetail.php"><button type="button" class="btn btn1" style="background-color: rgba(91, 175, 231, 0.5)">
+              <a href="./paymentDetail.php?enroll_id=<?php echo $getID; ?>"><button type="button" class="btn btn1" style="background-color: rgba(91, 175, 231, 0.5)">
                   <img src="./assets/images/icon/ukFlag.png" height="20px" width="25px" /></button></a>
-              <a href="./mm/paymentDetail.php"><button type="button" class="btn btn2">
+              <a href="./mm/paymentDetail.php?enroll_id=<?php echo $getID; ?>"><button type="button" class="btn btn2">
                   <img src="./assets/images/icon/mmFlag.svg" height="20px" width="25px" /></button></a>
-              <a href="./jp/paymentDetail.php"><button type="button" class="btn btn3">
+              <a href="./jp/paymentDetail.php?enroll_id=<?php echo $getID; ?>"><button type="button" class="btn btn3">
                   <img src="./assets/images/icon/japanFlag.jpg" height="20px" width="25px" /></button></a>
             </div>
           </li>
         </ul>
       </div>
       <div class="btn-group lang-xl" role="group" aria-label="First group">
-        <a href="./paymentDetail.php"><button type="button" class="btn btn1" style="background-color: rgba(91, 175, 231, 0.5)">
+        <a href="./paymentDetail.php?enroll_id=<?php echo $getID; ?>"><button type="button" class="btn btn1" style="background-color: rgba(91, 175, 231, 0.5)">
             <img src="./assets/images/icon/ukFlag.png" height="20px" width="25px" /></button></a>
-        <a href="./mm/paymentDetail.php"><button type="button" class="btn btn2">
+        <a href="./mm/paymentDetail.php?enroll_id=<?php echo $getID; ?>"><button type="button" class="btn btn2">
             <img src="./assets/images/icon/mmFlag.svg" height="20px" width="25px" /></button></a>
-        <a href="./jp/paymentDetail.php"><button type="button" class="btn btn3">
+        <a href="./jp/paymentDetail.php?enroll_id=<?php echo $getID; ?>"><button type="button" class="btn btn3">
             <img src="./assets/images/icon/japanFlag.jpg" height="20px" width="25px" /></button></a>
       </div>
     </div>
@@ -158,8 +159,8 @@ function encrypt_decrypt($action, $string) {
         <div class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-6 text-center p-0 mt-3 mb-2">
           <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
             <?php
-            include_once('../../jktmyanmarint.admin.com/confs/config.php');
-            $decryptedEnrollId = encrypt_decrypt("decrypt", $_GET['enroll_id']);
+            include_once('../jktmyanmarint.admin.com/confs/config.php');
+            $decryptedEnrollId = encrypt_decrypt("decrypt", $getID);
             $nrc = "SELECT * FROM enrollments e, students s WHERE e.student_id = s.student_id AND enrollment_id = $decryptedEnrollId";
             $nrc_result = mysqli_query($conn, $nrc);
             $row = mysqli_fetch_assoc($nrc_result);

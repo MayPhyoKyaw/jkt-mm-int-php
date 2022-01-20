@@ -1,3 +1,33 @@
+<?php
+
+if (!isset($_GET["enroll_id"])) {
+  header("location: index.html");
+}
+function encrypt_decrypt($action, $string) {
+  /* =================================================
+  * ENCRYPTION-DECRYPTION
+  * =================================================
+  * ENCRYPTION: encrypt_decrypt('encrypt', $string);
+  * DECRYPTION: encrypt_decrypt('decrypt', $string) ;
+  */
+  $output = false;
+  $encrypt_method = "AES-256-CBC";
+  $secret_key = 'JKT-2019-20IT85-MM-JP';
+  $secret_iv = 'JKT-2019-serV1ce-MM-JP';
+  // hash
+  $key = hash('sha256', $secret_key);
+  // iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
+  $iv = substr(hash('sha256', $secret_iv), 0, 16);
+  if ($action == 'encrypt') {
+      $output = base64_encode(openssl_encrypt($string, $encrypt_method, $key, 0, $iv));
+  } else {
+      if ($action == 'decrypt') {
+          $output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);
+      }
+  }
+  return $output;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -162,9 +192,10 @@
             <li class="nav-item">
               <a href="./contact.html" class="nav-link active"> お問い合わせ </a>
             </li>
+            <?php $getID = $_GET['enroll_id'] ?>
             <li class="lang">
               <div class="btn-group" role="group" aria-label="First group">
-                <a href="../paymentDetail.php"><button
+                <a href="../paymentDetail.php?enroll_id=<?php echo $getID; ?>"><button
                   type="button"
                   class="btn btn1"
                 >
@@ -174,7 +205,7 @@
                     width="25px"
                   />
                 </button></a>
-                <a href=../mm/paymentDetail.php><button
+                <a href="../mm/paymentDetail.php?enroll_id=<?php echo $getID; ?>"><button
                   type="button"
                   class="btn btn2"
                 >
@@ -184,7 +215,7 @@
                     width="25px"
                   />
                 </button></a>
-                <a href=./paymentDetail.php><button
+                <a href="./paymentDetail.php?enroll_id=<?php echo $getID; ?>"><button
                   type="button"
                   class="btn btn3"
                   style="background-color: rgba(91, 175, 231, 0.5)"
@@ -200,7 +231,7 @@
           </ul>
         </div>
         <div class="btn-group lang-xl" role="group" aria-label="First group">
-          <a href="../paymentDetail.php"><button
+          <a href="../paymentDetail.php?enroll_id=<?php echo $getID; ?>"><button
             type="button"
             class="btn btn1"
           >
@@ -210,7 +241,7 @@
               width="25px"
             />
           </button></a>
-          <a href=../mm/paymentDetail.php><button
+          <a href="../mm/paymentDetail.php?enroll_id=<?php echo $getID; ?>"><button
             type="button"
             class="btn btn2"
           >
@@ -220,7 +251,7 @@
               width="25px"
             />
           </button></a>
-          <a href=./paymentDetail.php><button
+          <a href="./paymentDetail.php?enroll_id=<?php echo $getID; ?>"><button
             type="button"
             class="btn btn3"
             style="background-color: rgba(91, 175, 231, 0.5)"
@@ -251,12 +282,32 @@
         <div class="row justify-content-center">
           <div class="col-11 col-sm-10 col-md-10 col-lg-6 col-xl-6 text-center p-0 mt-3 mb-2">
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <?php
+                  include_once('../../jktmyanmarint.admin.com/confs/config.php');
+                  $decryptedEnrollId = encrypt_decrypt("decrypt", $getID);
+                  $nrc = "SELECT * FROM enrollments e, students s WHERE e.student_id = s.student_id AND enrollment_id = $decryptedEnrollId";
+                  $nrc_result = mysqli_query($conn, $nrc);
+                  $row = mysqli_fetch_assoc($nrc_result);
+                  $payment_method = $row["payment_method"];
+                  $get_bank_name = "SELECT * FROM banking_info WHERE bank_name = '$payment_method'";
+                  $get_bank_result = mysqli_query($conn, $get_bank_name);
+                  $bank_row = mysqli_fetch_assoc($get_bank_result);
+                  $bank_id = $bank_row["bank_id"];
+                ?>
                 <!-- <h2 id="heading">Sign Up Your User Account</h2> -->
                 <p class="enroll-description">お支払いを確認するには、このフォームに記入してください</p>
-                <form id="paymentForm">
+                <form id="paymentForm" action="../backend/enrollSubmit.php" method="POST" enctype="multipart/form-data">
+                    <span id="nrc" class="hidden"><?php echo $row['nrc']; ?></span>
                     <div class="row mx-2">
+                      <label for="payment_amount">支払い金額「チャット」を入力します</label>
+                      <input type="number" class="form-input" name="payment_amount" id="payment_amount" placeholder="eg. 250000"/>
+                    </div>
+                    <div class="row mt-5 mx-2">
                       <label class="fieldlabels">身分証の番号: <span class="required-tag">required &nbsp; *</span></label> 
                       <input type="text" class="form-input" name="nrcNumber" id="nrcNumber" placeholder="e.g. 123456" />
+                      <input type="hidden" name="enrollment_id" id="enrollment_id" value="<?php echo $row["enrollment_id"] ?>"/>
+                      <input type="hidden" name="course_id" id="course_id" value="<?php echo $row["course_id"] ?>"/>
+                      <input type="hidden" name="bank_id" id="bank_id" value="<?php echo $bank_id ?>"/>
                     </div>
                     <span class="nrcNo-required" id="nrcNoRequired"><em></em></span>
                     <div class="row mt-5 px-4">
