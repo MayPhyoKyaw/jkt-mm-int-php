@@ -380,6 +380,7 @@ $annual_income_row = mysqli_fetch_assoc($annual_income_result);
 
                 <div class="row mt-3 mb-5 pt-2">
                     <div class="mychart-left ml-lg-5" id="stuByMonthsArea">
+                        <h5 class="gph-label text-center mb-3 font-weight-bold">Enrolled students <span id="studentLabel"></span></h5>
                         <select onchange="showStuByMonths(event)" class="form-control col-12 col-md-3">
                             <option value="0">This Month</option>
                             <option value="1">Last 5 Months</option>
@@ -388,6 +389,7 @@ $annual_income_row = mysqli_fetch_assoc($annual_income_result);
                         <canvas id="stuByMonths">
                     </div>
                     <div class="mychart-right" id="stuByCoursesArea">
+                        <h5 class="gph-label text-center mb-3 font-weight-bold">Opened Classes <span id="courseLabel"></span></h5>
                         <select onchange="showStuByCourses(event)" class="form-control col-12 col-md-3">
                             <option value="0">This Month</option>
                             <option value="1">Last 5 Months</option>
@@ -396,8 +398,9 @@ $annual_income_row = mysqli_fetch_assoc($annual_income_result);
                         <canvas id="stuByCourses">
                     </div>
                 </div>
-                <div class="row mt-3 mb-5 pt-2">
+                <div class="row mb-5 mt-5 pt-5">
                     <div class="my-chart-full ml-lg-5" id="showPaymentsArea">
+                        <h5 class="gph-label text-center mb-3 font-weight-bold">Income Rate <span id="incomeLabel"></span></h5>
                         <select onchange="showPayments(event)" class="form-control col-12 col-md-3">
                             <option value="0">This Month</option>
                             <option value="1">Last 5 Months</option>

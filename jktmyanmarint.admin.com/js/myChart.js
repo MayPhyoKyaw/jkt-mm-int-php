@@ -1,4 +1,7 @@
 $(document).ready(function () {
+  studentLabel = document.getElementById("studentLabel");
+  courseLabel = document.getElementById("courseLabel");
+  incomeLabel = document.getElementById("incomeLabel");
   showStuByMonths();
   showStuByCourses();
   showPayments();
@@ -7,6 +10,7 @@ $(document).ready(function () {
 function showStuByMonths(e) {
   $("#stuByMonths").remove();
   //   console.log(e.target.value);
+
   $.post(
     "chartData.php",
     {
@@ -58,12 +62,23 @@ function showStuByMonths(e) {
           },
         },
       });
+      switch (e.target.value) {
+        case "0":
+          studentLabel.textContent = "during This Month";
+          break;
+        case "1":
+          studentLabel.textContent = "during Last 5 Months";
+          break;
+        case "2":
+          studentLabel.textContent = "during This Year";
+      }
     }
   );
 }
 function showStuByCourses(e) {
   $("#stuByCourses").remove();
-    // console.log(e.target.value);
+  // console.log(e.target.value);
+
   $.post(
     "chartData.php",
     {
@@ -117,13 +132,24 @@ function showStuByCourses(e) {
           },
         },
       });
+      switch (e.target.value) {
+        case "0":
+          courseLabel.textContent = "during This Month";
+          break;
+        case "1":
+          courseLabel.textContent = "during Last 5 Months";
+          break;
+        case "2":
+          courseLabel.textContent = "during This Year";
+      }
     }
   );
 }
 
 function showPayments(e) {
   $("#showPayments").remove();
-    // console.log(e.target.value);
+  // console.log(e.target.value);
+
   $.post(
     "chartData.php",
     {
@@ -142,13 +168,15 @@ function showPayments(e) {
 
       let chartData = {
         labels: months,
-        datasets: [{
-          label: 'Income Rate (MMKs)',
-          data: sum,
-          fill: false,
-          borderColor: 'rgb(62, 101, 211)',
-          tension: 0.1
-        }]
+        datasets: [
+          {
+            label: "Income Rate (MMKs)",
+            data: sum,
+            fill: false,
+            borderColor: "rgb(62, 101, 211)",
+            tension: 0.1,
+          },
+        ],
       };
       var newCanvas = $("<canvas/>", {
         id: "showPayments",
@@ -156,7 +184,7 @@ function showPayments(e) {
       $("#showPaymentsArea").append(newCanvas);
       var graphTarget = $("#showPayments");
       var doughnut = new Chart(graphTarget, {
-        type: 'line',
+        type: "line",
         data: chartData,
         options: {
           maintainAspectRatio: false,
@@ -172,6 +200,16 @@ function showPayments(e) {
           },
         },
       });
+      switch (e.target.value) {
+        case "0":
+          incomeLabel.textContent = "during This Month";
+          break;
+        case "1":
+          incomeLabel.textContent = "during Last 5 Months";
+          break;
+        case "2":
+          incomeLabel.textContent = "during This Year";
+      }
     }
   );
 }

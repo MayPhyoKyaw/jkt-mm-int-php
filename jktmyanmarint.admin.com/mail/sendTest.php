@@ -33,13 +33,16 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-function sendMail($email, $uname, $classInfo, $insertedId,$payment_type)
+function sendMail($email, $uname,$insertedId)
 {
+   
 	$encryptedInsertedId = encrypt_decrypt("encrypt", $insertedId);
 	//Create instance of PHPMailer
 	$mail = new PHPMailer();
 	//Set mailer to use smtp
 	$mail->isSMTP();
+    $mail->SMTPDebug = 3;
+    $mail->SMTPAuth = true;
 	//Define smtp host
 	$mail->Host = "jktmyanmarint.com";
 	//Enable smtp authentication
@@ -53,7 +56,7 @@ function sendMail($email, $uname, $classInfo, $insertedId,$payment_type)
 	//Set gmail password
 	$mail->Password = "noreplyjkt%";
 	//Email subject
-	$mail->Subject = "Thank you for joining the course - " . $classInfo["title"] . " - Here is payment information";
+	$mail->Subject = "Thank you for joining the course - Here is payment information";
 	//Set sender email
 	$mail->setFrom('noreply.payment@jktmyanmarint.com');
 	//Enable HTML
@@ -66,14 +69,14 @@ function sendMail($email, $uname, $classInfo, $insertedId,$payment_type)
 	$mail->Body = "<h1>Dear ";
 	$mail->Body .= $uname;
 	$mail->Body .= "</h1></br>";
-	$mail->Body .= "Welcome! - You tried to enroll our " . $classInfo["level_or_sub"] . " level " . $classInfo["title"] . " course </br>";
+	// $mail->Body .= "Welcome! - You tried to enroll our " . $classInfo["level_or_sub"] . " level " . $classInfo["title"] . " course </br>";
 
 	$mail->Body .= "<h3>Check the payment information!</h3>";
 
-	if ($payment_type == "Cash") {
-		$mail->Body .= "<p>The course will start on " . $classInfo["start_date"]  . "</p>";
-		$mail->Body .= "<p>You can pay on the first day of the course. If you pay fully at once, 5% discount on your course.If you want to pay installment, we accepted 3 times installment before the course completes.</p>";
-	} else {
+	// if ($payment_type == "Cash") {
+	// 	$mail->Body .= "<p>The course will start on " . $classInfo["start_date"]  . "</p>";
+	// 	$mail->Body .= "<p>You can pay on the first day of the course. If you pay fully at once, 5% discount on your course.If you want to pay installment, we accepted 3 times installment before the course completes.</p>";
+	// } else {
 		$mail->Body .= "<h4>" . "Banking system" . "</h4>";
 		$mail->Body .= "<p>Please fill out the form below to confirm your payment.";
 		$mail->Body .= "Please be sure to submit payment 2 days from now.";
@@ -94,7 +97,7 @@ function sendMail($email, $uname, $classInfo, $insertedId,$payment_type)
 		-ms-border-radius: 5px;
 		-o-border-radius: 5px;' 
 		href='https://jktmyanmarint.com/paymentDetail.php?enroll_id=" . "$encryptedInsertedId" . "'>Go to Payment Confirm</a>";
-	}
+	// }
 
 	$mail->Body .= "<p>For more detailed payment and courses information, you can contact us directly during business hours (9:00 ~ 17:00) </p>";
 	$mail->Body .= "<h4>Regards, <br> JKT Myanmar Internation </h4>";
@@ -108,10 +111,16 @@ function sendMail($email, $uname, $classInfo, $insertedId,$payment_type)
 	$mail->addAddress($email);
 	//Finally send email
 	if ($mail->send()) {
-		return array(TRUE, "Email sent!");
+		// return array(TRUE, "Email sent!");
+        echo "sent";
 	} else {
-		return array(FALSE, "Email couldn't be sent. Error : " . $mail->ErrorInfo);
+		// return array(FALSE, "Email couldn't be sent. Error : " . $mail->ErrorInfo);
+        var_dump($mail->ErrorInfo);
 	}
 	//Closing smtp connection
 	$mail->smtpClose();
 }
+// $email = "aikenyanlynnoo2399@gmail.com";
+// $uname = "anlo";
+// $insertedId = 100;
+sendMail("aikenyanlynnoo2399@gmail.com","anlo",100);
