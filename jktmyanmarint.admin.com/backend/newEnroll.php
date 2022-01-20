@@ -145,7 +145,7 @@ if ($org_width > "300" || $org_height > "300") {
     $target = "uploads/" . "$nrcNumber.$file_extension";
     move_uploaded_file($_FILES['photo']['tmp_name'], "../../jktmyanmarint.com/backend/" . $target);
 
-    if (resize_image("../../jktmyanmarint.com/backend/".$target, $file_extension, 300)) {
+    if (resize_image("../../jktmyanmarint.com/backend/" . $target, $file_extension, 300)) {
         echo "resized";
         // continue to insert to db cuz image upload succeed.
         $check_student_if_exist = "SELECT * FROM students WHERE nrc='$nrc'";
@@ -238,18 +238,21 @@ if ($org_width > "300" || $org_height > "300") {
         }
         $select_from_courses = "SELECT * FROM courses WHERE course_id = $courseId";
         $course_result = mysqli_query($conn, $select_from_courses);
-
         $row = mysqli_fetch_assoc($course_result);
+
+        $select_from_bankingInfo = "SELECT * FROM banking_info WHERE bank_name = '$payment_method'";
+        $bank_result = mysqli_query($conn, $select_from_bankingInfo);
+        $bank_row = mysqli_fetch_assoc($bank_result);
         if ($email == "") {
             header("location: ../enrollments.php");
             exit();
         } else {
             if ($row) {
                 if ($payment_method === "Cash") {
-                    $afterTryingToSend = sendMail($email, $uname, $row, $lastInserted, TRUE);
+                    $afterTryingToSend = sendMail($email, $uname, $row, $lastInserted, "Cash","");
                     var_dump($afterTryingToSend);
                 } else {
-                    $afterTryingToSend = sendMail($email, $uname, $row, $lastInserted, FALSE);
+                    $afterTryingToSend = sendMail($email, $uname, $row, $lastInserted, $bank_row['bank_name'],$bank_row['account_number']);
                     var_dump($afterTryingToSend);
                 }
             }
@@ -366,18 +369,21 @@ if ($org_width > "300" || $org_height > "300") {
 
         $select_from_courses = "SELECT * FROM courses WHERE course_id = $courseId";
         $course_result = mysqli_query($conn, $select_from_courses);
-
         $row = mysqli_fetch_assoc($course_result);
+        
+        $select_from_bankingInfo = "SELECT * FROM banking_info WHERE bank_name = '$payment_method'";
+        $bank_result = mysqli_query($conn, $select_from_bankingInfo);
+        $bank_row = mysqli_fetch_assoc($bank_result);
         if ($email == "") {
             header("location: ../enrollments.php");
             exit();
         } else {
             if ($row) {
                 if ($payment_method === "Cash") {
-                    $afterTryingToSend = sendMail($email, $uname, $row, $lastInserted, TRUE);
+                    $afterTryingToSend = sendMail($email, $uname, $row, $lastInserted, "Cash", "");
                     var_dump($afterTryingToSend);
                 } else {
-                    $afterTryingToSend = sendMail($email, $uname, $row, $lastInserted, FALSE);
+                    $afterTryingToSend = sendMail($email, $uname, $row, $lastInserted, $bank_row['bank_name'], $bank_row['account_number']);
                     var_dump($afterTryingToSend);
                 }
             }

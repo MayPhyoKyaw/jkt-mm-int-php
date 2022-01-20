@@ -33,7 +33,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-function sendMail($email, $uname, $classInfo, $insertedId, $isInCash)
+function sendMail($email, $uname, $classInfo, $insertedId,$payment_type ,$account)
 {
 	$encryptedInsertedId = encrypt_decrypt("encrypt", $insertedId);
 	//Create instance of PHPMailer
@@ -70,7 +70,7 @@ function sendMail($email, $uname, $classInfo, $insertedId, $isInCash)
 
 	$mail->Body .= "<h3>Check the payment information!</h3>";
 
-	if ($isInCash) {
+	if ($payment_type == "Cash") {
 		$mail->Body .= "<p>The course will start on " . $classInfo["start_date"]  . "</p>";
 		$mail->Body .= "<p>You can pay on the first day of the course. If you pay fully at once, 5% discount on your course.If you want to pay installment, we accepted 3 times installment before the course completes.</p>";
 	} else {
@@ -78,6 +78,10 @@ function sendMail($email, $uname, $classInfo, $insertedId, $isInCash)
 		$mail->Body .= "<p>Please fill out the form below to confirm your payment.";
 		$mail->Body .= "Please be sure to submit payment 2 days from now.";
 		$mail->Body .= "If we don't receive any payment, your course enrollment will be cancelled.</p></br>";
+		// $mail->Body .= "<p style='padding : 10px 20px; border : 5px double #000; display : flex; justify:content:between;'>
+		// 	<span>$payment_type</span>
+		// 	<span>$account</span>
+		// </p>";
 		$mail->Body .= "<a style='
 		text-decoration:none;
 		color:#fff;

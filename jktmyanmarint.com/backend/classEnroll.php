@@ -275,8 +275,11 @@ if ($org_width > "300" || $org_height > "300") {
 
         $select_from_courses = "SELECT * FROM courses WHERE course_id = $courseId";
         $course_result = mysqli_query($conn, $select_from_courses);
-
         $row = mysqli_fetch_assoc($course_result);
+
+        $select_from_bankingInfo = "SELECT * FROM banking_info WHERE bank_name = '$payment_method'";
+        $bank_result = mysqli_query($conn, $select_from_bankingInfo);
+        $bank_row = mysqli_fetch_assoc($bank_result);
         if ($email == "") {
             unset($_SESSION['response']);
             header("location: ../enrollSuccess.php");
@@ -284,9 +287,9 @@ if ($org_width > "300" || $org_height > "300") {
         } else {
             if ($row) {
                 if ($payment_method === "Cash") {
-                    $afterTryingToSend = sendMail($email, $uname, $row, $lastInserted, TRUE);
+                    $afterTryingToSend = sendMail($email, $uname, $row, $lastInserted, "Cash", "");
                 } else {
-                    $afterTryingToSend = sendMail($email, $uname, $row, $lastInserted, FALSE);
+                    $afterTryingToSend = sendMail($email, $uname, $row, $lastInserted, $bank_row['bank_name'], $bank_row['account_number']);
                 }
             }
         }
@@ -404,8 +407,11 @@ if ($org_width > "300" || $org_height > "300") {
 
         $select_from_courses = "SELECT * FROM courses WHERE course_id = $courseId";
         $course_result = mysqli_query($conn, $select_from_courses);
-
         $row = mysqli_fetch_assoc($course_result);
+
+        $select_from_bankingInfo = "SELECT * FROM banking_info WHERE bank_name = '$payment_method'";
+        $bank_result = mysqli_query($conn, $select_from_bankingInfo);
+        $bank_row = mysqli_fetch_assoc($bank_result);
         if ($email == "") {
             unset($_SESSION['response']);
             header("location: ../enrollSuccess.php");
@@ -413,9 +419,9 @@ if ($org_width > "300" || $org_height > "300") {
         } else {
             if ($row) {
                 if ($payment_method === "Cash") {
-                    $afterTryingToSend = sendMail($email, $uname, $row, $lastInserted, TRUE);
+                    $afterTryingToSend = sendMail($email, $uname, $row, $lastInserted, "Cash", "");
                 } else {
-                    $afterTryingToSend = sendMail($email, $uname, $row, $lastInserted, FALSE);
+                    $afterTryingToSend = sendMail($email, $uname, $row, $lastInserted, $bank_row['bank_name'], $bank_row['account_number']);
                 }
             }
         }
