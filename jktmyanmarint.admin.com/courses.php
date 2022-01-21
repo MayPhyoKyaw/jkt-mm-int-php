@@ -540,7 +540,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
 
             <!-- deleting modal -->
             <div class="modal fade" id="deletingModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">Deleting</h5>

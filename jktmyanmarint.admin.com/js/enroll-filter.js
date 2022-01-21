@@ -1,6 +1,9 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function () {
   $("#dataTable").DataTable({
+    "order": [
+      [7, 'desc']
+    ],
     initComplete: function () {
       this.api()
         .columns(".select-course-filter")

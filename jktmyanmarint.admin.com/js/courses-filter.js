@@ -1,6 +1,9 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function () {
   $("#dataTable").DataTable({
+    "order": [
+      [15, 'desc']
+    ],
     initComplete: function () {
       this.api()
         .columns(".select-category-filter")

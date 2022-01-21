@@ -297,10 +297,10 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                         </thead>
                                         <tbody>
                                             <?php
-                                                include('auth/hashFunc.php'); 
-                                                while ($row = mysqli_fetch_assoc($result)) : 
-                                                    $nrcNo = substr($row['nrc'], strlen($row['nrc'])-6, strlen($row['nrc']));
-                                                    $newNrc = encrypt_decrypt("encrypt", $nrcNo);
+                                            include('auth/hashFunc.php');
+                                            while ($row = mysqli_fetch_assoc($result)) :
+                                                $nrcNo = substr($row['nrc'], strlen($row['nrc']) - 6, strlen($row['nrc']));
+                                                $newNrc = encrypt_decrypt("encrypt", $nrcNo);
                                             ?>
                                                 <tr onclick="setCurrentDetail(this)" data-toggle="modal" data-target="#detailModal" class="tb-row">
                                                     <td><img class="stu-img-table" src="<?= 'https://jktmyanmarint.com/backend/' . $row['photo'] ?>" alt="<?= $row['photo'] ?>"></td>
@@ -475,7 +475,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                             <span class="help-block" id="userImgErr"></span> -->
                         </div>
                         <div class="form-group mb-4">
-                            <label name="uname" id="uname" class="form-control" placeholder="eg. Aung Aung" ></label>
+                            <label name="uname" id="uname" class="form-control" placeholder="eg. Aung Aung"></label>
                         </div>
                         <div class="form-group mb-4">
                             <label for="categoryId">Choose Course</label>
@@ -507,8 +507,11 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                     <?php
                                     //foreach ([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14] as $state) {
                                     ?>
-                                        <option value='<?php // $state ?>'><?php // $state ?></option>
-                                    <?php //} ?>
+                                        <option value='<?php // $state 
+                                                        ?>'><?php // $state 
+                                                            ?></option>
+                                    <?php //} 
+                                    ?>
                                 </select>
                             </div>
                             <div class="input-30">
@@ -599,8 +602,8 @@ $noti_result = mysqli_query($conn, $get_notifications);
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>You are going to delete <span id="stuName" class="font-weight-bold"></span>'s enrollment. 
-                    This can't be undone. <span style="color: red; font-weight: bold; font-style: italic;">Are you sure to delete?</span></p>
+                    <p>You are going to delete <span id="stuName" class="font-weight-bold"></span>'s enrollment.
+                        This can't be undone. <span style="color: red; font-weight: bold; font-style: italic;">Are you sure to delete?</span></p>
                     <form action="backend/deleteEnrollment.php" id="deleteForm" method="POST">
                         <input type="hidden" name="enrollmentDeletingId" id="enrollmentDeletingId" />
                         <hr />

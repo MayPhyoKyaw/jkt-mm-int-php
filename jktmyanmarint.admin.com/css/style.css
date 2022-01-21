@@ -396,6 +396,20 @@ canvas {
   color: #5685e2;
 }
 
+.my-required-field{
+  font-style: italic;
+  color: red;
+  font-size: 13px;
+  margin-left: 10px;
+  /* border: 1px solid red; */
+  padding: 1px 5px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+
 @media only screen and (max-width: 991px) {
   .mychart-left,
   .mychart-right {

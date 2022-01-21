@@ -399,6 +399,15 @@ $noti_result = mysqli_query($conn, $get_notifications);
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
     <script src="js/style.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#dataTable").DataTable({
+                "order": [
+                    [3, 'desc']
+                ]
+            });
+        })
+    </script>
 </body>
 
 </html>

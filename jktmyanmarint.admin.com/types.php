@@ -319,7 +319,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
 
             <!-- delete modal -->
             <div class="modal fade" id="deletingModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">Deleting</h5>
@@ -398,6 +398,15 @@ $noti_result = mysqli_query($conn, $get_notifications);
     <!-- Page level custom scripts -->
     <script src="js/demo/datatables-demo.js"></script>
     <script src="js/style.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#dataTable").DataTable({
+                "order": [
+                    [3, 'desc']
+                ]
+            });
+        })
+    </script>
 </body>
 
 </html>

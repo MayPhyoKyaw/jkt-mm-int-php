@@ -19,7 +19,7 @@ function numberWithCommas(x) {
 }
 
 function setCurrentDetailPayment(tid) {
-  //   console.log("hello");
+    console.log("hello");
 
   $.post(
     "getPayment.php",
@@ -27,7 +27,7 @@ function setCurrentDetailPayment(tid) {
       payment_id: tid,
     },
     function (data) {
-    //   console.log(data);
+      console.log(data);
       screenshot_img.src = "https://jktmyanmarint.com/backend/paymentUploads/"+data[0]['screenshot'];
       tid_pend.textContent = data[0]['payment_id'];
       sname_pend.textContent = data[0]['uname'];

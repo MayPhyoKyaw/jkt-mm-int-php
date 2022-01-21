@@ -244,10 +244,10 @@ $noti_result = mysqli_query($conn, $get_notifications);
                             <div class="form-group mb-4 row align-items-center justify-content-between px-3">
                                 <img src="https://jktmyanmarint.com/assets/images/default-profile-icon.jpg" id="image-preview" name="image-preview" alt="User Image Preview" class="preview-img" />
                                 <input type="file" name="photo" id="userImg" class="form-control preview-input" required />
-                                <span class="help-block" id="userImgErr"></span>
+                                <span class="my-required-field">Required*</span>
                             </div>
                             <div class="form-group mb-4">
-                                <label for="categoryId">Choose Course</label>
+                                <label for="categoryId">Choose Course<span class="my-required-field">Required*</span></label>
                                 <select id="classId" name="classId" class="form-control form-control-user" required>
                                     <option value="" selected disabled>Course</option>
                                     <?php
@@ -259,22 +259,22 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                 </select>
                             </div>
                             <div class="form-group mb-4">
-                                <label for="uname">Enter Full Name</label>
+                                <label for="uname">Enter Full Name<span class="my-required-field">Required*</span></label>
                                 <input type="text" name="uname" id="uname" class="form-control" placeholder="eg. Aung Aung" required />
                             </div>
                             <div class="mb-4 mx-auto row justify-content-between">
                                 <div class="input-right">
-                                    <label for="dob">Choose Birthday</label>
+                                    <label for="dob">Choose Birthday<span class="my-required-field">Required*</span></label>
                                     <input type="date" name="dob" id="dob" class="form-control" required />
                                 </div>
                                 <div class=" input-left mb-3 mb-md-0">
-                                    <label for="fname">Enter Father Name</label>
+                                    <label for="fname">Enter Father Name<span class="my-required-field">Required*</span></label>
                                     <input type="text" name="fname" id="fname" class="form-control" placeholder="eg. U Kyaw" required />
                                 </div>
                             </div>
                             <div class="mb-4 mx-auto row justify-content-between">
                                 <div class="input-25">
-                                    <label for="nrcCode">State</label>
+                                    <label for="nrcCode">State<span class="my-required-field">Required*</span></label>
                                     <select id="nrcCode" name="nrcCode" class="form-control form-control-user" required>
                                         <option value="" selected disabled>State</option>
                                         <?php
@@ -285,13 +285,13 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                     </select>
                                 </div>
                                 <div class="input-30">
-                                    <label for="township">Township</label>
+                                    <label for="township">Township<span class="my-required-field">Required*</span></label>
                                     <select id="township" name="township" class="form-control form-control-user" required>
                                         <option value="" selected disabled>State</option>
                                     </select>
                                 </div>
                                 <div class="input-25">
-                                    <label for="type">Type</label>
+                                    <label for="type">Type<span class="my-required-field">Required*</span></label>
                                     <select id="type" name="type" class="form-control form-control-user" required>
                                         <option value="" selected disabled>Type</option>
                                         <option value="" selected disabled>Type</option>
@@ -304,33 +304,33 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                     </select>
                                 </div>
                                 <div class="input-20">
-                                    <label for="nrcNumber">Nrc Number</label>
+                                    <label for="nrcNumber">Nrc No.<span class="my-required-field">Required*</span></label>
                                     <input type="number" class="form-control" name="nrcNumber" id="nrcNumber" placeholder="123456" required />
                                 </div>
                             </div>
 
                             <div class="form-group mb-4">
                                 <label for="email">Enter Email</label>
-                                <input type="email" name="email" id="email" class="form-control" placeholder="eg. student@gmail.com" required />
+                                <input type="email" name="email" id="email" class="form-control" placeholder="eg. student@gmail.com"/>
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="phone">Enter Phone</label>
+                                <label for="phone">Enter Phone<span class="my-required-field">Required*</span></label>
                                 <input type="text" name="phone" id="phone" class="form-control" placeholder="09..." required />
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="education">Enter Education</label>
+                                <label for="education">Enter Education<span class="my-required-field">Required*</span></label>
                                 <input type="text" name="education" id="education" class="form-control" placeholder="University or High School" required />
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="address">Enter Address</label>
+                                <label for="address">Enter Address<span class="my-required-field">Required*</span></label>
                                 <textarea name="address" id="address" cols="30" rows="5" class="form-control" placeholder="eg. No - , Yangon" required></textarea>
                             </div>
 
                             <div class="form-group mb-4">
-                                <label for="paymentMethod">Choose Payment Method</label>
+                                <label for="paymentMethod">Choose Payment Method<span class="my-required-field">Required*</span></label>
                                 <select id="paymentMethod" name="paymentMethod" class="form-control" required>
                                     <option value="" selected disabled>Payment Method</option>
                                     <option value="CB Bank">CB Bank</option>
@@ -341,7 +341,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                 </select>
                             </div>
                             <div class="form-group mb-4">
-                                <label for="paidPercent">Paid Percentage</label>
+                                <label for="paidPercent">Paid Percentage<span class="my-required-field">Required*</span></label>
                                 <input type="number" name="paidPercent" id="paidPercent" class="form-control" value="0" required />
                             </div>
 

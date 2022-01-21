@@ -242,7 +242,8 @@ $noti_result = mysqli_query($conn, $get_notifications);
                     <div class="row">
                         <form class="col-12 col-sm-9 col-md-8 mx-auto mt-5" action="backend/newType.php" method="POST">
                             <div class="form-group">
-                                <input type="text" name="title" id="title" class="form-control form-control-user" aria-describedby="emailHelp" placeholder="Enter Title eg. Special">
+                                <label for="title">Type title<span class="my-required-field">Required*</span></label>
+                                <input type="text" name="title" id="title" class="form-control form-control-user" aria-describedby="emailHelp" placeholder="Enter Title eg. Special" required>
                             </div>
                             <hr>
                             <button type="submit" class="btn btn-facebook btn-user btn-block">

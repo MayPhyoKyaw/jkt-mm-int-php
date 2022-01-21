@@ -241,11 +241,11 @@ $noti_result = mysqli_query($conn, $get_notifications);
                     <div class="row">
                         <form id="courseForm" class="col-12 col-md-11 col-lg-8 mx-auto" action="backend/newCourse.php" method="POST">
                             <div class="form-group mb-4">
-                                <label for="title">Enter Title</label>
+                                <label for="title">Enter Title<span class="my-required-field">Required*</span></label>
                                 <input type="text" class="form-control form-control-user" id="title" name="title" aria-describedby="tileField" placeholder="Course Title" required />
                             </div>
                             <div class="form-group mb-4">
-                                <label for="categoryId">Choose Category</label>
+                                <label for="categoryId">Choose Category<span class="my-required-field">Required*</span></label>
                                 <select name="categoryId" id="categoryId" name="categoryId" class="form-control form-control-user" required>
                                     <option value="" selected disabled>Category</option>
                                     <?php
@@ -257,7 +257,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                 </select>
                             </div>
                             <div class="form-group mb-4">
-                                <label for="typeId">Choose Type</label>
+                                <label for="typeId">Choose Type<span class="my-required-field">Required*</span></label>
                                 <select name="typeId" id="typeId" class="form-control" required>
                                     <option value="" selected disabled>Type</option>
                                     <?php
@@ -269,37 +269,37 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                 </select>
                             </div>
                             <div class="form-gorup mb-4">
-                                <label for="level_or_sub">Enter level/subjects</label>
+                                <label for="level_or_sub">Enter level/subjects<span class="my-required-field">Required*</span></label>
                                 <input type="text" name="level_or_sub" id="level_or_sub" class="form-control" placeholder="eg. N5 or physic/chemistry/Biology..." required />
                             </div>
                             <div class="mb-4 mx-auto row justify-content-between">
                                 <div class=" input-left mb-3 mb-md-0">
-                                    <label for="fee">Enter Fees</label>
+                                    <label for="fee">Enter Fees<span class="my-required-field">Required*</span></label>
                                     <input type="number" class="form-control" id="fee" name="fee" aria-describedby="feeField" placeholder="eg. 250,000" required />
                                 </div>
                                 <div class="input-right">
                                     <label for="discountPercent">Enter Discount (%)</label>
-                                    <input type="number" class="form-control" id="discountPercent" name="discountPercent" aria-describedby="discountField" placeholder="eg. 5" required />
+                                    <input type="number" class="form-control" id="discountPercent" name="discountPercent" aria-describedby="discountField" placeholder="eg. 5"/>
                                 </div>
                             </div>
                             <div class="mb-4 mx-auto row justify-content-between">
                                 <div class=" input-left mb-3 mb-md-0">
                                     <label for="startDate">Choose Start Date</label>
-                                    <input type="date" class="form-control" id="startDate" name="startDate" aria-describedby="dateField" required />
+                                    <input type="date" class="form-control" id="startDate" name="startDate" aria-describedby="dateField"/>
                                 </div>
                                 <div class="input-right">
-                                    <label for="duration">Duration (Months)</label>
+                                    <label for="duration">Duration (Months)<span class="my-required-field">Required*</span></label>
                                     <input type="number" class="form-control" id="duration" name="duration" aria-describedby="monthsField" placeholder="Duration In Months" required />
                                 </div>
                             </div>
                             <div class="mb-4 mx-auto row justify-content-between">
                                 <div class=" input-left mb-3 mb-md-0">
-                                    <label for="startTime">Class Starts At:</label>
-                                    <input type="time" class="form-control" id="startTime" name="startTime" aria-describedby="startTimeField" required />
+                                    <label for="startTime">Class Starts At:<span class="my-required-field">Required*</span></label>
+                                    <input type="time" class="form-control" id="startTime" name="startTime" aria-describedby="startTimeField"/>
                                 </div>
                                 <div class="input-right">
-                                    <label for="endTime">Class Ends At:</label>
-                                    <input type="time" class="form-control" id="endTime" name="endTime" aria-describedby="endTimeField" required />
+                                    <label for="endTime">Class Ends At:<span class="my-required-field">Required*</span></label>
+                                    <input type="time" class="form-control" id="endTime" name="endTime" aria-describedby="endTimeField"/>
                                 </div>
                             </div>
                             <div class="form-group mb-4">
@@ -316,7 +316,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
 
                             <div class="form-group mb-4">
                                 <label for="instructor">Enter Instructor Name</label>
-                                <input type="text" class="form-control" name="instructor" id="instructor" placeholder="Mr./Mrs. ..." required />
+                                <input type="text" class="form-control" name="instructor" id="instructor" placeholder="Mr./Mrs. ..."/>
                             </div>
                             <div class="form-group mb-4">
                                 <label for="services">Enter Services</label>
