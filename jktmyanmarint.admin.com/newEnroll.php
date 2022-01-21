@@ -254,7 +254,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                     $result = mysqli_query($conn, "SELECT * FROM courses");
                                     while ($row = mysqli_fetch_assoc($result)) {
                                     ?>
-                                        <option value='<?php echo $row["course_id"] ?>'><?php echo $row["title"] ?></option>
+                                        <option value='<?php echo $row["course_id"] ?>'><?php echo $row["title"]. " - ".  $row["level_or_sub"] ?></option>
                                     <?php } ?>
                                 </select>
                             </div>

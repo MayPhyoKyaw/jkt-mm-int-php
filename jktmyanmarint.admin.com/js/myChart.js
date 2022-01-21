@@ -69,7 +69,7 @@ function showStuByMonths(e) {
         case "1":
           studentLabel.textContent = "during Last 5 Months";
           break;
-        case "2":
+        default:
           studentLabel.textContent = "during This Year";
       }
     }
@@ -139,7 +139,7 @@ function showStuByCourses(e) {
         case "1":
           courseLabel.textContent = "during Last 5 Months";
           break;
-        case "2":
+        default:
           courseLabel.textContent = "during This Year";
       }
     }
@@ -207,7 +207,7 @@ function showPayments(e) {
         case "1":
           incomeLabel.textContent = "during Last 5 Months";
           break;
-        case "2":
+        default:
           incomeLabel.textContent = "during This Year";
       }
     }
