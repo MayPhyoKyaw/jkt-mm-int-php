@@ -213,10 +213,12 @@
                                                     <span id="note" class="row-data"><?php echo $row["note"]; ?></span>
                                                 </td>
                                                 <td data-label="名称" scope="row">
+                                                    <?php echo $row["category_title"] . " "; ?>
                                                     <span id="course_title" class="row-data"><?php echo $row["course_title"]; ?></span>
                                                     <span><?php echo empty($row["level_or_sub"]) ? '' : '- '.$row["level_or_sub"]; ?></span>
+                                                    <?php echo " (" . $row["type_title"] . ")"; ?>
                                                     <?php 
-                                                        echo $row['start_date'] < date("Y-m-d") ? "<br><br><span class='in-progress-badges'>In Progess</span>" : "";
+                                                    // echo $row['start_date'] < date("Y-m-d") ? "<br><br><span class='in-progress-badges'>In Progess</span>" : "";
                                                     ?>
                                                 </td>
                                                 <td data-label="日程">
@@ -245,11 +247,13 @@
                                                     <span id="price"><?php echo number_format($row["fee"]) ?></span>
                                                 </td>
                                                 <td data-label="開始日 と 期間">
-                                                    <span id="start_date" class="row-data">
-                                                        <?php echo $row["start_date"] ?>
-                                                    </span><br><br>
+                                                    <?php if(!empty($row["start_date"])) { ?>
+                                                        <span id="start_date" class="row-data"><?php echo $row["start_date"] ?></span><br><br>
+                                                    <?php } else { ?>
+                                                        <span id="start_date" class="row-data"></span>
+                                                    <?php } ?>
                                                     <span id="duration" class="row-data">
-                                                        <?php echo $row["duration"] ?>
+                                                        <?php echo $row["duration"] . " Months"; ?>
                                                     </span>
                                                 </td>
                                                 <td data-label="詳細">
@@ -294,10 +298,12 @@
                                                     <span id="note" class="row-data"><?php echo $row["note"]; ?></span>
                                                 </td>
                                                 <td data-label="名称" scope="row">
+                                                    <?php echo $row["category_title"] . " "; ?>
                                                     <span id="course_title" class="row-data"><?php echo $row["course_title"]; ?></span>
                                                     <span><?php echo empty($row["level_or_sub"]) ? '' : '- '.$row["level_or_sub"]; ?></span>
+                                                    <?php echo " (" . $row["type_title"] . ")"; ?>
                                                     <?php 
-                                                        echo $row['start_date'] < date("Y-m-d") ? "<br><br><span class='in-progress-badges'>In Progess</span>" : "";
+                                                    // echo $row['start_date'] < date("Y-m-d") ? "<br><br><span class='in-progress-badges'>In Progess</span>" : "";
                                                     ?>
                                                 </td>
                                                 <td data-label="日程">
@@ -326,11 +332,13 @@
                                                     <span id="price"><?php echo number_format($row["fee"]) ?></span>
                                                 </td>
                                                 <td data-label="開始日 と 期間">
-                                                    <span id="start_date" class="row-data">
-                                                        <?php echo $row["start_date"] ?>
-                                                    </span><br><br>
+                                                    <?php if(!empty($row["start_date"])) { ?>
+                                                        <span id="start_date" class="row-data"><?php echo $row["start_date"] ?></span><br><br>
+                                                    <?php } else { ?>
+                                                        <span id="start_date" class="row-data"></span>
+                                                    <?php } ?>
                                                     <span id="duration" class="row-data">
-                                                        <?php echo $row["duration"] ?>
+                                                        <?php echo $row["duration"] . " Months"; ?>
                                                     </span>
                                                 </td>
                                                 <td data-label="詳細">
@@ -374,10 +382,12 @@
                                                 <span id="note" class="row-data"><?php echo $row["note"]; ?></span>
                                             </td>
                                             <td data-label="名称" scope="row">
+                                                <?php echo $row["category_title"] . " "; ?>
                                                 <span id="course_title" class="row-data"><?php echo $row["course_title"]; ?></span>
                                                 <span><?php echo empty($row["level_or_sub"]) ? '' : '- '.$row["level_or_sub"]; ?></span>
+                                                <?php echo " (" . $row["type_title"] . ")"; ?>
                                                 <?php 
-                                                    echo $row['start_date'] < date("Y-m-d") ? "<br><br><span class='in-progress-badges'>In Progess</span>" : "";
+                                                // echo $row['start_date'] < date("Y-m-d") ? "<br><br><span class='in-progress-badges'>In Progess</span>" : "";
                                                 ?>
                                             </td>
                                             <td data-label="日程">
@@ -406,11 +416,13 @@
                                                 <span id="price"><?php echo number_format($row["fee"]) ?></span>
                                             </td>
                                             <td data-label="開始日 と 期間">
-                                                <span id="start_date" class="row-data">
-                                                    <?php echo $row["start_date"] ?>
-                                                </span><br><br>
+                                                <?php if(!empty($row["start_date"])) { ?>
+                                                    <span id="start_date" class="row-data"><?php echo $row["start_date"] ?></span><br><br>
+                                                <?php } else { ?>
+                                                    <span id="start_date" class="row-data"></span>
+                                                <?php } ?>
                                                 <span id="duration" class="row-data">
-                                                    <?php echo $row["duration"] ?>
+                                                    <?php echo $row["duration"] . " Months"; ?>
                                                 </span>
                                             </td>
                                             <td data-label="詳細">
@@ -455,8 +467,8 @@
                         <tr>
                             <td class="schedule-modal-label">名称 :</td>
                             <td>
-                                <span id="modal_course_title"></span><br>
                                 <span id="modal_category_title"></span>
+                                <span id="modal_course_title"></span>
                                 <span id="modal_level"></span>
                             </td>
                         </tr>

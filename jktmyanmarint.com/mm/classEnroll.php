@@ -278,7 +278,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
                   $section_time = json_decode($row["sections"], true);
                 ?>
                   <input type="checkbox" id="chck2" class="accordion">
-                  <label class="tab-label" for="chck2"><?php echo $row['course_title']; ?></label>
+                  <label class="tab-label" for="chck2"><?php echo $row['category_title'] . " " . $row['course_title']; ?></label>
                   <div class="tab-content">
                     <p class="class-detail">
                       <?php echo $row['level_or_sub'] . " (" . $row['type_title'] . ")"; ?>
@@ -785,7 +785,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
             <div class="tabs">
               <div class="tab">
                   <input type="checkbox" id="chck1" class="accordion">
-                  <label class="tab-label ml-4" for="chck1"><?php echo $row['course_title']; ?></label>
+                  <label class="tab-label ml-4" for="chck1"><?php echo $row['category_title'] . " " . $row['course_title']; ?></label>
                   <div class="tab-content">
                     <p class="class-detail">
                       <?php echo $row['level_or_sub'] . " (" . $row['type_title'] . ")" ;?>

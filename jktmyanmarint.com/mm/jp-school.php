@@ -342,7 +342,7 @@
                       <td style="display: none">
                         <span id="category_title" class="row-data"><?php echo $row["category_title"] ?></span>
                         <span id="type_title" class="row-data"><?php echo $row["type_title"] ?></span>
-                        <span id="level_or_sub" class="row-data"><?php echo $row["course_level"] ?></span>
+                        <span id="level_or_sub" class="row-data"><?php echo $row["level_or_sub"] ?></span>
                         <span id="instructor" class="row-data"><?php echo $row["instructor"] ?></span>
                         <span id="services" class="row-data"><?php echo $row["services"] ?></span>
                         <span id="discount_percent" class="row-data"><?php echo $row["discount_percent"] ?></span>
@@ -350,10 +350,12 @@
                         <span id="note" class="row-data"><?php echo $row["note"]; ?></span>
                       </td>
                       <td data-label="အတန်း" scope="row">
+                        <?php echo $row["category_title"] . " "; ?>
                         <span id="course_title" class="row-data"><?php echo $row["course_title"]; ?></span>
                         <span><?php echo empty($row["level_or_sub"]) ? '' : '- '.$row["level_or_sub"]; ?></span>
+                        <?php echo " (" . $row["type_title"] . ")"; ?>
                         <?php 
-                          echo $row['start_date'] < date("Y-m-d") ? "<br><br><span class='in-progress-badges'>In Progess</span>" : "";
+                          // echo $row['start_date'] < date("Y-m-d") ? "<br><br><span class='in-progress-badges'>In Progess</span>" : "";
                         ?>
                       </td>
                       <td data-label="တက်‌ရောက်ရမည့်အချိန် နှင့် ရက်">
@@ -382,8 +384,12 @@
                         <span id="price"><?php echo number_format($row["fee"]) ?></span>
                       </td>
                       <td data-label="သင်တန်းစတင်မည့်ရက် နှင့် သင်တန်းကာလ">
-                        <span id="start_date" class="row-data"><?php echo $row["start_date"] ?></span><br><br>
-                        <span id="duration" class="row-data"><?php echo $row["duration"] ?></span>
+                        <?php if(!empty($row["start_date"])) { ?>
+                            <span id="start_date" class="row-data"><?php echo $row["start_date"] ?></span><br><br>
+                        <?php } else { ?>
+                            <span id="start_date" class="row-data"></span>
+                        <?php } ?>
+                        <span id="duration" class="row-data"><?php echo $row["duration"] . " Months"; ?></span>
                       </td>
                       <td data-label="အသေးစိတ် သိရှိရန်">
                         <button class="detail" data-toggle="modal" data-target="#detailModal">
@@ -438,8 +444,8 @@
               <tr>
                 <td class="schedule-modal-label">အတန်း</td>
                 <td>
-                  <span id="modal_course_title"></span><br>
                   <span id="modal_category_title"></span>
+                  <span id="modal_course_title"></span>
                   <span id="modal_level"></span>
                 </td>
               </tr>

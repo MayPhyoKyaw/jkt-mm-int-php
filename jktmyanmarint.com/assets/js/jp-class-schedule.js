@@ -24,9 +24,14 @@ $(document).ready(function() {
         $("#modal_level").text(course_level);
         $("#modal_type_title").text(type_title);
         $("#modal_time").addClass('modal-time-badges section-hour').text(section_hour);
-        $("#modal_instructor").addClass('modal-time-badges instructor').text(instructor);
+        if(instructor !== '') {
+            $("#modal_instructor").addClass('modal-time-badges instructor').text(instructor);
+        } else {
+            $("#modal_instructor").text("-");
+        }
         // $("#modal_fees").text(origin_price);
         $("#modal_duration").text(duration);
+        start_date = start_date === '' ? '-' : start_date;
         $("#modal_start_date").text(start_date);
         $("#modal_services").text(services);
         description = description === '' ? '-' : description;
