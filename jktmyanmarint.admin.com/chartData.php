@@ -73,7 +73,8 @@ switch ($currentShowing) {
 						$sqlQuery = "SELECT cty.title AS category, 
 						COUNT(*) as count FROM courses c, 
 						categories cty, enrollments e 
-						WHERE c.category_id = cty.category_id 
+						WHERE c.category_id = cty.category_id
+						AND e.is_pending = 0 
 						AND e.course_id = c.course_id
 						AND e.created_at < Now() 
 						AND e.created_at > DATE_ADD(Now(), INTERVAL- 5 MONTH)
@@ -94,6 +95,7 @@ switch ($currentShowing) {
 						COUNT(*) as count FROM courses c, 
 						categories cty, enrollments e 
 						WHERE c.category_id = cty.category_id 
+						AND e.is_pending = 0
 						AND e.course_id = c.course_id
 						AND e.created_at < Now() 
 						AND YEAR(e.created_at) = YEAR(CURDATE())
@@ -111,6 +113,7 @@ switch ($currentShowing) {
 						COUNT(*) as count FROM courses c, 
 						categories cty, enrollments e 
 						WHERE c.category_id = cty.category_id 
+						AND e.is_pending = 0
 						AND e.course_id = c.course_id
 						AND e.created_at < Now() 
 						AND MONTH(e.created_at) = MONTH(CURDATE())

@@ -389,7 +389,7 @@ $annual_income_row = mysqli_fetch_assoc($annual_income_result);
                         <canvas id="stuByMonths">
                     </div>
                     <div class="mychart-right" id="stuByCoursesArea">
-                        <h5 class="gph-label text-center mb-3 font-weight-bold">Opened Classes <span id="courseLabel"></span></h5>
+                        <h5 class="gph-label text-center mb-3 font-weight-bold">Students Per Course <span id="courseLabel"></span></h5>
                         <select onchange="showStuByCourses(event)" class="form-control col-12 col-md-3">
                             <option value="0">This Month</option>
                             <option value="1">Last 5 Months</option>
