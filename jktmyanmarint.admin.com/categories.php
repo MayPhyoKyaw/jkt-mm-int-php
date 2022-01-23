@@ -292,7 +292,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
 
             <!-- editing Modal -->
             <div class="modal fade" id="editingModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">Editing</h5>
@@ -305,7 +305,8 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                 <input type="hidden" name="catIdEdit" id="catIdEdit">
                                 <input type="hidden" name="catCreatedAt" id="catCreatedAt">
                                 <input type="hidden" name="catUpdatedAt" id="catUpdatedAt">
-                                <input type="text" name="catTitle" id="catTitle" class="form-control" />
+                                <label for="catTitle">Category Title<span class="my-required-field">Required*</span></label>
+                                <input type="text" name="catTitle" id="catTitle" class="form-control" required/>
                                 <hr />
                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                 <input class="btn btn-primary" type="submit" value="Update">
@@ -319,7 +320,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
 
             <!-- delete modal -->
             <div class="modal fade" id="deletingModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title">Deleting</h5>

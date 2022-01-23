@@ -10,7 +10,6 @@ var detailPhone = document.getElementById("detailPhone");
 var detailEducation = document.getElementById("detailEducation");
 var detailAddress = document.getElementById("detailAddress");
 
-
 function student_detail(row) {
   var tds = row.children;
   var rowArr = [];
@@ -21,7 +20,7 @@ function student_detail(row) {
       rowArr.push(tds[i].textContent);
     }
   }
-  console.log(rowArr)
+  console.log(rowArr);
 
   detailImage.src = "https://jktmyanmarint.com/backend/" + rowArr[0];
   detailName.innerText = rowArr[1];
@@ -59,7 +58,7 @@ var studentDeletingId = document.getElementById("studentDeletingId");
 function student_edit(event, row, idx) {
   $("#editingModal").modal("show");
   event.stopPropagation();
-  console.log(event)
+  console.log(event);
   // id_field.value = id;
   var tr = row.closest("tr");
   var tds = tr.children;
@@ -117,15 +116,17 @@ function getTownship(state) {
   xhr.send();
 }
 
-nrcCode && nrcCode.addEventListener("change", function (e) {
-  getTownship(e.target.value);
-});
-userImg && userImg.addEventListener("change", function (e) {
-  const [file] = userImg.files;
-  if (file) {
-    imagePreview.src = URL.createObjectURL(file);
-  }
-});
+nrcCode &&
+  nrcCode.addEventListener("change", function (e) {
+    getTownship(e.target.value);
+  });
+userImg &&
+  userImg.addEventListener("change", function (e) {
+    const [file] = userImg.files;
+    if (file) {
+      imagePreview.src = URL.createObjectURL(file);
+    }
+  });
 
 function student_delete(event, row, idx) {
   $("#deletingModal").modal("show");
@@ -146,25 +147,21 @@ function student_delete(event, row, idx) {
 
 $(document).ready(function () {
   const params = new URLSearchParams(window.location.search);
-  let getParam = params.get('id');
+  let getParam = params.get("id");
   $("#dataTable").DataTable({
-    "order": [
-      [10, 'desc']
-    ]
+    order: [[10, "desc"]],
   });
-  let decrypted = '';
+  let decrypted = "";
 
   $.post(
-    "decrypt.php", {
-      encryptedId: getParam 
+    "decrypt.php",
+    {
+      encryptedId: getParam,
     },
     function (data) {
       $("#dataTable").DataTable({
-        "order": [
-          [10, 'desc']
-        ]
-      }).column(4)
-      .search(data.toString()).draw();
+        order: [[10, "desc"]],
+      }).column(4).search(data.toString()).draw();
     }
-   )
-})
+  );
+});

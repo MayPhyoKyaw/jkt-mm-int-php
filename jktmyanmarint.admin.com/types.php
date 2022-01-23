@@ -305,6 +305,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                 <input type="hidden" name="typeIdEdit" id="typeIdEdit">
                                 <input type="hidden" name="typeCreatedAt" id="typeCreatedAt">
                                 <input type="hidden" name="typeUpdatedAt" id="typeUpdatedAt">
+                                <label for="catTitle">Type Title<span class="my-required-field">Required*</span></label>
                                 <input type="text" name="typeTitle" id="typeTitle" class="form-control" />
                                 <hr />
                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>

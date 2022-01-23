@@ -14,22 +14,47 @@ $courseCategoryIdEdit = intval($_POST["courseCategoryIdEdit"]);
 $courseTypeIdEdit = intval($_POST["courseTypeIdEdit"]);
 $level_or_sub = $_POST["level_or_sub"];
 $fee = intval($_POST["fee"]);
-$discountPercent = intval($_POST["discountPercent"]);
+
+if ($_POST["discountPercent"] && intval($_POST["discountPercent"]) > 0) {
+    $discountPercent = intval($_POST["discountPercent"]);
+} else {
+    $discountPercent = 0;
+}
 
 $time = strtotime($_POST["startDate"]);
 $startDate = date('Y-m-d H:i:s', $time);
+
+if ($startDate == "1970-01-01 01:00:00") {
+    $startDate = null;
+}
 
 $duration = intval($_POST["duration"]);
 $startTime = $_POST["startTime"];
 $endTime = $_POST["endTime"];
 
-$days = $_POST["days"];
+if (isset($_POST["days"])) {
+    $days = $_POST["days"];
+} else {
+    $days = [];
+}
 $arrObj = array("days" => $days, "sectionHour" => "$startTime~$endTime");
 $sections = json_encode($arrObj);
 
-$instructor = $_POST["instructor"];
-$services = $_POST["services"];
-$note = $_POST["note"];
+if (isset($_POST["instructor"])) {
+    $instructor = $_POST["instructor"];
+} else {
+    $instructor = "";
+}
+if (isset($_POST["services"])) {
+    $services = $_POST["services"];
+} else {
+    $services = "";
+}
+if (isset($_POST["note"])) {
+    $note = $_POST["note"];
+} else {
+    $note = "";
+}
 
 // echo "id is" . $courseIdEdit . " ," . "<br>" .
 //     "created at" . $courseCreatedAt . "," . "<br>" .

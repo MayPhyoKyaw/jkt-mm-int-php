@@ -3,7 +3,7 @@ session_start();
 include_once 'auth/authenticate.php';
 // include('checkUser.php');
 include("confs/config.php");
-$query = "SELECT * FROM students";
+$query = "SELECT * FROM students ORDER BY updated_at DESC";
 $result = mysqli_query($conn, $query);
 // $currentEditingID = "";
 // $currentDeletingID = "";
@@ -304,8 +304,8 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                                     <td style="max-width : 100px;"><?= $row['education'] ?></td>
                                                     <td style="max-width : 150px;"><p style="max-height: 120px;overflow-y:scroll;" class="hide-scroll"><?= $row['address'] ?></p></td>
                                                     <td><?= $row['phone'] ?></td>
-                                                    <td><?= $row['created_at'] ?></td>
-                                                    <td><?= $row['updated_at'] ?></td>
+                                                    <td><?= date('Y-m-d', strtotime($row['created_at'])) ?></td>
+                                                    <td><?= date('Y-m-d', strtotime($row['updated_at'])) ?></td>
                                                     <td><button class="tb-btn tb-btn-edit" onclick="student_edit(event,this,<?php echo $row['student_id'] ?>)" data-toggle="modal" data-target="#editingModal"><i class="fa fa-pencil"></i></button></td>
                                                     <td><button class="tb-btn tb-btn-delete" onclick="student_delete(event,this,<?php echo $row['student_id'] ?>)" data-toggle="modal" data-target="#deletingModal"><i class="fa fa-trash"></button></i></td>
                                                 </tr>
@@ -459,22 +459,22 @@ $noti_result = mysqli_query($conn, $get_notifications);
                             <span class="help-block" id="userImgErr"></span>
                         </div>
                         <div class="form-group mb-4">
-                                <label for="dob">Enter Student Name</label>
+                                <label for="dob">Enter Student Name<span class="my-required-field">Required*</span></label>
                                 <input type="text" name="uname" id="uname" class="form-control" required />
                         </div>
                         <div class="mb-4 mx-auto row justify-content-between">
                             <div class="input-right">
-                                <label for="dob">Choose Birthday</label>
+                                <label for="dob">Choose Birthday<span class="my-required-field">Required*</span></label>
                                 <input type="date" name="dob" id="dob" class="form-control" required />
                             </div>
                             <div class=" input-left mb-3 mb-md-0">
-                                <label for="fname">Enter Father Name</label>
+                                <label for="fname">Enter Father Name<span class="my-required-field">Required*</span></label>
                                 <input type="text" name="fname" id="fname" class="form-control" placeholder="eg. U Kyaw" required />
                             </div>
                         </div>
                         <div class="mb-4 mx-auto row justify-content-between">
                             <div class="input-25">
-                                <label for="nrcCode">State</label>
+                                <label for="nrcCode">State<span class="my-required-field">Required*</span></label>
                                 <select id="nrcCode" name="nrcCode" class="form-control form-control-user" required>
                                     <option value="" selected disabled>State</option>
                                     <?php
@@ -485,13 +485,13 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                 </select>
                             </div>
                             <div class="input-30">
-                                <label for="township">Township</label>
+                                <label for="township">Township<span class="my-required-field">Required*</span></label>
                                 <select id="township" name="township" class="form-control form-control-user" required>
                                     <option value="" selected disabled>State</option>
                                 </select>
                             </div>
                             <div class="input-25">
-                                <label for="type">Type</label>
+                                <label for="type">Type<span class="my-required-field">Required*</span></label>
                                 <select id="type" name="type" class="form-control form-control-user" required>
                                     <option value="" selected disabled>Type</option>
                                     <option value="(C)">(C) - (နိုင်)</option>
@@ -503,7 +503,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                 </select>
                             </div>
                             <div class="input-20">
-                                <label for="nrcNumber">Nrc Number</label>
+                                <label for="nrcNumber">Nrc No.<span class="my-required-field">Required*</span></label>
                                 <input type="number" class="form-control" name="nrcNumber" id="nrcNumber" placeholder="123456" required />
                             </div>
                         </div>
@@ -514,17 +514,17 @@ $noti_result = mysqli_query($conn, $get_notifications);
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="phone">Enter Phone</label>
+                            <label for="phone">Enter Phone<span class="my-required-field">Required*</span></label>
                             <input type="text" name="phone" id="phone" class="form-control" placeholder="09..." required />
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="education">Enter Education</label>
+                            <label for="education">Enter Education<span class="my-required-field">Required*</span></label>
                             <input type="text" name="education" id="education" class="form-control" placeholder="University or High School" required />
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="address">Enter Address</label>
+                            <label for="address">Enter Address<span class="my-required-field">Required*</span></label>
                             <textarea name="address" id="address" cols="30" rows="5" class="form-control" placeholder="eg. No - , Yangon" required></textarea>
                         </div>
 

@@ -47,15 +47,15 @@ function sendMail($email, $uname, $classInfo, $insertedId, $payment_type, $accou
     //Server settings
     // $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
     $mail->isSMTP();                                            //Send using SMTP
-    $mail->Host       = 'jktmyanmarint.com';                     //Set the SMTP server to send through
+    $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'noreply.payment@jktmyanmarint.com';                     //SMTP username
-    $mail->Password   = 'noreplyjkt%';                               //SMTP password
+    $mail->Username   = 'payment.jktmmint@gmail.com';                     //SMTP username
+    $mail->Password   = 'payment-jktmmint1!';                               //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
     $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('noreply.payment@jktmyanmarint.com', 'No reply');
+    $mail->setFrom('payment.jktmmint@gmail.com', 'Payment Support (JKT)');
     $mail->addAddress($email);     //Add a recipient
     // $mail->addAddress('ellen@example.com');               //Name is optional
     // $mail->addReplyTo('info@example.com', 'Information');

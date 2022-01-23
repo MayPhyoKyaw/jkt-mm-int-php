@@ -33,20 +33,22 @@ if (isset($_POST['isPending']) && $_POST["isPending"] == "on") {
 } else {
     $isPending = 0;
 }
-echo ($courseId . "," .
-    $uname . "," .
-    $dob . "," .
-    $fname . "," .
-    $nrcCode . "," .
-    $township . "," .
-    $type . "," .
-    $nrcNumber . "," .
-    $email . "," .
-    $phone . "," .
-    $education . "," .
-    $payment_method . "," .
-    $paidPercent . "," .
-    $isPending
+echo (
+    
+    // $courseId . "," .
+    // $uname . "," .
+    // $dob . "," .
+    // $fname . "," .
+    // $nrcCode . "," .
+    // $township . "," .
+    // $type . "," .
+    // $nrcNumber . "," .
+    // $email . "," .
+    // $phone . "," .
+    // $education . "," .
+    // $payment_method . "," .
+    // $paidPercent . "," .
+    "pending is". $isPending . "pending end"
 );
 
 function resize_image($file, $ext, $mHW)
@@ -208,7 +210,7 @@ if ($org_width > "300" || $org_height > "300") {
                 0 , 
                 now(), 
                 now(),
-                1)";
+                $isPending)";
             mysqli_query($conn, $insert_into_enrollments);
             $lastInserted = $conn->insert_id;
         } else {
@@ -232,7 +234,7 @@ if ($org_width > "300" || $org_height > "300") {
                 0 , 
                 now(), 
                 now(),
-                1)";
+                $isPending)";
             mysqli_query($conn, $insert_into_enrollments);
             $lastInserted = $conn->insert_id;
         }
@@ -337,7 +339,7 @@ if ($org_width > "300" || $org_height > "300") {
                 0 , 
                 now(), 
                 now(),
-                1)";
+                $isPending)";
             mysqli_query($conn, $insert_into_enrollments);
             $lastInserted = $conn->insert_id;
         } else {
@@ -361,7 +363,7 @@ if ($org_width > "300" || $org_height > "300") {
                 0 , 
                 now(), 
                 now(),
-                1)";
+                $isPending)";
             echo $insert_into_enrollments;
             mysqli_query($conn, $insert_into_enrollments);
             $lastInserted = $conn->insert_id;

@@ -104,12 +104,12 @@ function setCurrentEditing(event, row, idx, classIdx) {
   var tr = row.closest("tr");
   var tds = tr.children;
   var rowArr = [];
-  let approved = '';
+  let approved = "";
   for (var i = 0; i < tds.length; i++) {
     if (i == 0) {
       rowArr.push(tds[i].children[0].alt);
     } else {
-      if(i == 5) {
+      if (i == 5) {
         rowArr.push(tds[i].innerHTML);
       } else {
         rowArr.push(tds[i].textContent);
@@ -137,13 +137,13 @@ function setCurrentEditing(event, row, idx, classIdx) {
   // phone.value = rowArr[9];
   paymentMethod.value = rowArr[3];
   paidPercent.value = rowArr[4].substring(0, rowArr[4].length - 1);
-  console.log(rowArr[5])
+  console.log(rowArr[5]);
   if (rowArr[5] == "✅") {
     approved = true;
   } else if (rowArr[5] == "❌") {
     approved = false;
   }
-  console.log(approved)
+  console.log(approved);
   isPending.checked = (approved == "1" && true) || false;
   createdAt.value = rowArr[6];
 }
@@ -153,7 +153,7 @@ function setCurrentDeleting(event, row, idx) {
   event.stopPropagation();
   var tr = row.closest("tr");
   var tds = tr.children;
-  console.log(tds)
+  console.log(tds);
   var rowArr = [];
   for (var i = 0; i < tds.length; i++) {
     if (i == 0) {
@@ -162,7 +162,7 @@ function setCurrentDeleting(event, row, idx) {
       rowArr.push(tds[i].textContent);
     }
   }
-  console.log(rowArr[2])
+  console.log(rowArr[2]);
 
   stuName.innerText = rowArr[2];
   enrollmentDeletingId.value = idx;
@@ -180,8 +180,8 @@ function setCurrentDetail(row) {
     }
   }
 
-  // enrollment id 
-  // classId 
+  // enrollment id
+  // classId
   detailImage.src = "https://jktmyanmarint.com/backend/" + rowArr[0];
   detailTitle.innerText = rowArr[1];
   detailName.innerText = rowArr[2];
@@ -236,6 +236,20 @@ function setCurrentTypeDel(idx) {
 }
 
 function setCurrentCourseEdit(event, row, catId, typeId) {
+  // var M = document.getElementById("M");
+  // var Tu = document.getElementById("Tu");
+  // var W = document.getElementById("W");
+  // var Th = document.getElementById("Th");
+  // var F = document.getElementById("F");
+  // var Sa = document.getElementById("Sa");
+  // var Su = document.getElementById("Su");
+  M.checked = false;
+  Tu.checked = false;
+  W.checked = false;
+  Th.checked = false;
+  F.checked = false;
+  Sa.checked = false;
+  Su.checked = false;
   $("#editingModal").modal("show");
   event.stopPropagation();
   var tr = row.closest("tr");
