@@ -166,10 +166,7 @@
             <li class="lang">
               <div class="btn-group" role="group" aria-label="First group">
                 <a href="../contact.html"
-                  ><button
-                    type="button"
-                    class="btn btn1"
-                  >
+                  ><button type="button" class="btn btn1">
                     <img
                       src="../assets/images/icon/ukFlag.png"
                       height="20px"
@@ -189,10 +186,7 @@
                     /></button
                 ></a>
                 <a href="../jp/contact.html"
-                  ><button
-                    type="button"
-                    class="btn btn3"
-                  >
+                  ><button type="button" class="btn btn3">
                     <img
                       src="../assets/images/icon/japanFlag.jpg"
                       height="20px"
@@ -205,10 +199,7 @@
         </div>
         <div class="btn-group lang-xl" role="group" aria-label="First group">
           <a href="../contact.html"
-            ><button
-              type="button"
-              class="btn btn1"
-            >
+            ><button type="button" class="btn btn1">
               <img
                 src="../assets/images/icon/ukFlag.png"
                 height="20px"
@@ -228,10 +219,7 @@
               /></button
           ></a>
           <a href="../jp/contact.html"
-            ><button
-              type="button"
-              class="btn btn3"
-            >
+            ><button type="button" class="btn btn3">
               <img
                 src="../assets/images/icon/japanFlag.jpg"
                 height="20px"
@@ -255,51 +243,93 @@
 
     <nav aria-label="breadcrumb" class="breadcrumb-nav">
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="./index.html">ပင်မစာမျက်နှာ</a></li>
+        <li class="breadcrumb-item">
+          <a href="./index.html">ပင်မစာမျက်နှာ</a>
+        </li>
         <li class="breadcrumb-item active" aria-current="page">ဆက်သွယ်ရန်</li>
       </ol>
     </nav>
 
     <!-- contact-content start -->
 
-    <section class="px-0 px-sm-5 pt-5">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3819.5071468647247!2d96.1352054141795!3d16.80117862387011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1eb6f8b7271f5%3A0xdf55b169963e757b!2sJKT%20Myanmar%20International%20Co.%2C%20Ltd.!5e0!3m2!1sen!2smm!4v1629632725354!5m2!1sen!2smm"
-        width="600"
-        height="450"
-        style="border: 0"
-        allowfullscreen=""
-        loading="lazy"
-        class="contct-map col-12 py-5 px-3 px-sm-5"
-      ></iframe>
-      <div class="row py-3 px-3 px-sm-5">
-        <header class="contact-header col-12">Get In Touch</header>
-        <div class="contact-form col-lg-8">
-          <form id="contact-form-mm">
-            <input
-              type="text"
-              name="subject"
-              id="subject"
-              placeholder="ခေါင်းစဉ် ရိုက်ထည့်ပါ"
-            />
-            <span class="warning-message"></span>
-            <textarea
-              name="message"
-              id="message"
-              placeholder="ပို့ချင်သောစာ ရိုက်ထည့်ပါ"
-            ></textarea>
-            <span class="warning-message"></span>
-          </form>
-          <button
-            id="btn-submit"
-            type="button"
-            name="button"
-            onclick="submitForm(this)"
-          >
-            ပေးပို့ရန်
-          </button>
+    <section class="px-0 container mx-auto w-100">
+      <div class="row py-1">
+        <div
+          class="col-12 col-lg-3 text-center order-1 order-lg-1 pb-4 pb-lg-2 px-2 px-lg-1"
+        >
+          <iframe
+            id="jp_sh"
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FJKT-Japanese-Language-School-100339937999010%2F&tabs=timeline&width=260&height=790&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=300620088760320"
+            width="260"
+            height="790"
+            class="fb-iframe"
+            scrolling="no"
+            frameborder="0"
+            allowfullscreen="true"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+          ></iframe>
         </div>
+        <div
+          class="contact-form col-12 col-lg-6 order-3 order-lg-2 pb-4 pb-lg-2 px-5 px-lg-1 map"
+        >
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3819.5071468647247!2d96.1352054141795!3d16.80117862387011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1eb6f8b7271f5%3A0xdf55b169963e757b!2sJKT%20Myanmar%20International%20Co.%2C%20Ltd.!5e0!3m2!1sen!2smm!4v1629632725354!5m2!1sen!2smm"
+            width="100%"
+            height="450"
+            style="border: 0"
+            allowfullscreen="true"
+            loading="lazy"
+            class="pb-4 col-12"
+          ></iframe>
+          <div class="load-map text-center">
+            <div class="lds-ripple">
+              <div></div>
+              <div></div>
+            </div>
+          </div>
+          <header class="contact-header col-12 pl-5 pt-5 pt-lg-1">Get In Touch</header>
+            <form id="contact-form-mm col-12">
+              <input
+                type="text"
+                name="subject"
+                id="subject"
+                placeholder="ခေါင်းစဉ် ရိုက်ထည့်ပါ"
+              />
+              <span class="warning-message"></span>
+              <textarea
+                name="message"
+                id="message"
+                placeholder="ပို့ချင်သောစာ ရိုက်ထည့်ပါ"
+              ></textarea>
+              <span class="warning-message"></span>
+            </form>
+            <button
+              id="btn-submit"
+              type="button"
+              name="button"
+              onclick="submitForm(this)"
+            >
+              ပေးပို့ရန်
+            </button>
+        </div>
+        <div
+          class="col-12 col-lg-3 text-center order-2 order-lg-3 pb-4 pb-lg-2 px-2 px-lg-1"
+        >
+          <iframe
+            id="digital"
+            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FJKT-Digital-Institute-101947668883371%2F&tabs=timeline&width=260&height=790&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=300620088760320"
+            width="260"
+            height="790"
+            class="fb-iframe"
+            scrolling="no"
+            frameborder="0"
+            allowfullscreen="true"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+          ></iframe>
+        </div>
+      </div>
 
+      <!-- <div class="row py-3 px-3 px-sm-5">
         <div class="col-lg-4 pt-3">
           <div class="address-row">
             <img src="../assets/images/icon/home.png" alt="address-icon" />
@@ -319,7 +349,8 @@
                 <a href="tel:+959770411708">၀၉ ၇၇၀ ၄၁၁ ၇၀၈</a></span
               >
               <span class="text">
-                တနင်္လာမှ သောကြာထိ မနက် ၉နာရီမှ ညနေ ၅နာရီထိ ရုံးချိန်အတွင်း ဆက်သွယ်မေးမြန်းနိုင်ပါသည်။
+                တနင်္လာမှ သောကြာထိ မနက် ၉နာရီမှ ညနေ ၅နာရီထိ ရုံးချိန်အတွင်း
+                ဆက်သွယ်မေးမြန်းနိုင်ပါသည်။
               </span>
             </p>
           </div>
@@ -335,7 +366,7 @@
             </p>
           </div>
         </div>
-      </div>
+      </div> -->
     </section>
 
     <!-- contact-content end -->
@@ -410,9 +441,7 @@
             <header>သင်တန်းများ</header>
             <ul class="footer-list" id="second">
               <li>
-                <span
-                  ><a href="./jp-school.php">ဂျပန်ဘာသာစကား သင်တန်း</a></span
-                >
+                <span><a href="./jp-school.php">ဂျပန်ဘာသာစကား သင်တန်း</a></span>
               </li>
               <li>
                 <span

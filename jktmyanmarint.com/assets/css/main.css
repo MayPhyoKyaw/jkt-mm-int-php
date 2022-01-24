@@ -201,7 +201,7 @@ html {
   font-weight: 300;
 }
 
-.breadcrumb .breadcrumb-item a{
+.breadcrumb .breadcrumb-item a {
   /* color: #fff; */
   color: #5bafe7;
   font-family: "Roboto", sans-serif;
@@ -1188,27 +1188,27 @@ figure img {
 
 .schedule-table thead tr {
   border-top: 1.5px solid rgb(240, 240, 240);
-  border-bottom:  1.5px solid rgb(240, 240, 240);
-  padding: .35em;
+  border-bottom: 1.5px solid rgb(240, 240, 240);
+  padding: 0.35em;
 }
 
 .schedule-table tbody tr {
   border-bottom: 1px solid rgb(240, 240, 240);
-  padding: .35em;
+  padding: 0.35em;
 }
 
 .schedule-table th {
   font-weight: 800;
   font-size: 16px;
-  letter-spacing: .1em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  padding: .9em .625em;
+  padding: 0.9em 0.625em;
   text-align: center;
 }
 
 .schedule-table td {
   font-size: 16px;
-  padding: .8em .625em;
+  padding: 0.8em 0.625em;
   text-align: center;
 }
 
@@ -1748,7 +1748,7 @@ figure img {
   border-radius: 5px;
   background-color: #5bafe7;
   border: 2px solid #4099d4;
-  color: whitesmoke
+  color: whitesmoke;
 }
 
 .filter-button:focus {
@@ -1815,7 +1815,7 @@ figure img {
 .sale-price {
   text-decoration: line-through;
   text-decoration-color: rgb(236, 0, 0);
-  color:rgb(100, 98, 98);
+  color: rgb(100, 98, 98);
 }
 
 /* JP school schedule table */
@@ -1846,7 +1846,7 @@ figure img {
 
 .schedule-modal-label {
   text-transform: uppercase;
-  letter-spacing: .1em;
+  letter-spacing: 0.1em;
   font-weight: 700;
 }
 
@@ -1979,7 +1979,7 @@ figure img {
   padding: 0 30px 15px;
   border-bottom: 1px dotted rgb(128, 125, 125);
 }
-.tab-content .class-detail:last-of-type{
+.tab-content .class-detail:last-of-type {
   border-bottom: none;
   padding-bottom: 0;
 }
@@ -1995,17 +1995,104 @@ figure img {
   font-size: 27px;
   line-height: 32px;
   color: #131313;
+  margin-top: 90%;
 }
 
-.contact-form {
+/* #contact-form {
   padding-right: 150px;
+  height: 100%;
+  width: 50% !important;
+} */
+
+.map iframe {
+  left: 5%;
+  top: 10px;
+  height: 50%;
+  width: 90%;
+  position: absolute;
+  z-index: 3;
+  border: 1px solid lightgrey;
+  margin-bottom: 5%;
+}
+
+.load-map {
+  position: absolute;
+  top: 15%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 0%;
+  width: 100%;
+}
+
+.lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 90px;
+  height: 90px;
+  margin: 0 auto;
+}
+.lds-ripple div {
+  position: absolute;
+  border: 4px solid #5bafe7;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+.lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    top: 50px;
+    left: 50px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+  }
+}
+
+.fb-iframe {
+  border: 1px solid lightgrey;
+  height: 807px;
+  overflow: hidden;
+  padding-top: 7px;
+  margin: 0 auto
+}
+/* width */
+iframe::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+iframe::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+iframe::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+iframe::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }
 
 .contact-form input,
 .contact-form textarea,
 .contact-form select {
   display: block;
-  width: 100%;
+  width: 90%;
+  margin-left: 6%;
   margin-top: 20px;
   height: 50px;
   border: none;
@@ -2026,6 +2113,7 @@ figure img {
   box-shadow: none;
 }
 #btn-submit {
+  margin-left: 6%;
   padding: 0;
   margin-top: 20px;
   display: inline;
@@ -2616,7 +2704,7 @@ figure img {
   .schedule-table {
     border: 0;
   }
-  
+
   .schedule-table thead {
     border: none;
     clip: rect(0 0 0 0);
@@ -2627,16 +2715,16 @@ figure img {
     position: absolute;
     width: 1px;
   }
-  
+
   .schedule-table tr {
     border-top: 1px solid rgb(240, 240, 240);
     border-right: 1.5px solid rgb(240, 240, 240);
     border-left: 1.5px solid rgb(240, 240, 240);
     border-bottom: 3px solid rgb(240, 240, 240) !important;
     display: block;
-    margin-bottom: .625em;
+    margin-bottom: 0.625em;
   }
-  
+
   .schedule-table td {
     border-bottom: 1px solid rgb(240, 240, 240);
     display: block;
@@ -2644,7 +2732,7 @@ figure img {
     text-align: right;
     padding: 10px 7px;
   }
-  
+
   .schedule-table td::before {
     content: attr(data-label);
     float: left;
@@ -2653,7 +2741,7 @@ figure img {
     text-transform: uppercase;
     width: 120px;
   }
-  
+
   .schedule-table td:last-child {
     border-bottom: 0;
   }
@@ -2844,6 +2932,17 @@ figure img {
   }
 }
 
+@media only screen and (max-width: 460px) {
+  .contact-header {
+    margin-top: 100%;
+  }
+
+  .load-map {
+    left: 0%;
+    top: 10%;
+  }
+}
+
 @media only screen and (max-width: 1160px) {
   .fixed #navbarCollapse .nav-item {
     padding-bottom: 0px;
@@ -2993,7 +3092,7 @@ figure img {
   }
   .schedule-table td {
     font-size: 13px;
-    padding: .8em .625em;
+    padding: 0.8em 0.625em;
   }
   /* .schedule-days-badges{
     margin-bottom: 100px;
