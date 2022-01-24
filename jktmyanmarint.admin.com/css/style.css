@@ -409,6 +409,26 @@ canvas {
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
 }
+.enrol-name{
+  font-size: large;
+  font-weight: bold;
+}
+.payment-badge{
+  color: #ffffff;
+  width : max-content;
+  margin : 0 auto;
+  padding-left : 10px;
+  padding-right : 10px;
+  height: 30px;
+  border-radius: 7px;
+  -webkit-border-radius: 7px;
+  -moz-border-radius: 7px;
+  -ms-border-radius: 7px;
+  -o-border-radius: 7px;
+}
+.payment-badge label{
+  line-height: 30px;
+}
 
 @media only screen and (max-width: 991px) {
   .mychart-left,

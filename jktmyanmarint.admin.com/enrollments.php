@@ -4,7 +4,7 @@ include_once 'auth/authenticate.php';
 // include('checkUser.php');
 include("confs/config.php");
 $result = mysqli_query($conn, "SELECT enrollment_id, e.course_id AS course_id, title, level_or_sub, photo, student_name, nrc, payment_method, paid_percent, is_pending, e.created_at AS created_at,
-e.updated_at AS updated_at FROM enrollments e, students s, courses c WHERE e.student_id = s.student_id AND e.course_id = c.course_id ORDER BY updated_at DESC");
+e.updated_at AS updated_at,c.fee as fee FROM enrollments e, students s, courses c WHERE e.student_id = s.student_id AND e.course_id = c.course_id ORDER BY updated_at DESC");
 // $currentEditingID = "";
 // $currentDeletingID = "";
 
@@ -311,7 +311,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                                     <td class="pending-badges"><?php echo $row['is_pending'] == 0 ? "&#9989;" : "&#10060;" ?></td>
                                                     <td><?= date('Y-m-d', strtotime($row['created_at'])) ?></td>
                                                     <td><?= date('Y-m-d', strtotime($row['updated_at'])) ?></td>
-                                                    <td><button class="tb-btn tb-btn-edit" onclick="setCurrentEditing(event,this,<?php echo $row['enrollment_id'] ?>,<?php echo $row['course_id'] ?>)" data-toggle="modal" data-target="#editingModal"><i class="fa fa-pencil"></i></button></td>
+                                                    <td><button class="tb-btn tb-btn-edit" onclick="setCurrentEditing(event,this,<?php echo $row['enrollment_id'] ?>,<?php echo $row['course_id'] ?>,<?php echo $row['fee'] ?>)" data-toggle="modal" data-target="#editingModal"><i class="fa fa-pencil"></i></button></td>
                                                     <td><button class="tb-btn tb-btn-delete" onclick="setCurrentDeleting(event,this,<?php echo $row['enrollment_id'] ?>)" data-toggle="modal" data-target="#deletingModal"><i class="fa fa-trash"></button></i></td>
                                                 </tr>
                                             <?php endwhile; ?>
@@ -468,15 +468,26 @@ $noti_result = mysqli_query($conn, $get_notifications);
                         <input type="hidden" name="enrollmentId" id="enrollmentId" />
                         <input type="hidden" name="notChangeImg" id="notChangeImg" />
                         <input type="hidden" name="createdAt" id="createdAt" />
-                        <div class="form-group mb-4 row align-items-center justify-content-between px-3">
-                            <img src="" id="imagePreview" name="image-preview" alt="User Image Preview" class="preview-img-edit" />
+                        <div class=" form-group mb-4 row align-items-center px-3">
+                            <img src="" id="imagePreview" name="image-preview" alt="User Image Preview" class="col-4 preview-img-edit" />
                             <!-- <input type="file" name="photo" id="userImg" class="preview-input-edit" />
                             <label for="userImg" class="upload-label">Re upload image</label>
                             <span class="help-block" id="userImgErr"></span> -->
+                            <div class="text-center offset-2 col-6">
+                                <div class="form-group mb-4">
+                                    <label name="uname" id="uname" class="enrol-name"></label>
+                                </div>
+                                <div class="form-group mb-4 bg-success payment-badge">
+                                    <label for="paidPercent">Paid Percent</label>
+                                    <label id="showPaidPercent"></label>
+                                </div>
+                                <div class="form-group mb-4 bg-success payment-badge">
+                                    <label for="showPaidAmount">Paid Amount</label>
+                                    <label id="showPaidAmount"></label>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group mb-4">
-                            <label name="uname" id="uname" class="form-control" placeholder="eg. Aung Aung"></label>
-                        </div>
+
                         <div class="form-group mb-4">
                             <label for="categoryId">Choose Course<span class="my-required-field">Required*</span></label>
                             <select id="classId" name="classId" class="form-control form-control-user" required>
@@ -488,7 +499,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                 AND c.type_id = t.type_id");
                                 while ($row = mysqli_fetch_assoc($result)) {
                                 ?>
-                                    <option value='<?php echo $row["course_id"] ?>'><?php echo $row["category_title"]."-".$row["course_title"]."-".$row["course_level"]."-".$row["type_title"] ?></option>
+                                    <option value='<?php echo $row["course_id"] ?>'><?php echo $row["category_title"] . "-" . $row["course_title"] . "-" . $row["course_level"] . "-" . $row["type_title"] ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -572,9 +583,11 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                 <option value="Cash">Cash</option>
                             </select>
                         </div>
-                        <div class="form-group mb-4">
-                            <label for="paidPercent">Paid Percentage<span class="my-required-field">Required*</span></label>
-                            <input type="number" name="paidPercent" id="paidPercent" class="form-control" value="0" required />
+                        <input type="hidden" name="paidPercent" id="paidPercent" class="form-control" />
+
+                        <div class="form-group mb-4" id="newPaymentField">
+                            <label for="paidPercent">New Payment Amount (MMKs)<span class="my-required-field">Required*</span></label>
+                            <input class="form-control" type="number" id="newPaymentField" name="newPaymentField" placeholder="eg. 100,000" required />
                         </div>
 
                         <div class="form-group mb-4">

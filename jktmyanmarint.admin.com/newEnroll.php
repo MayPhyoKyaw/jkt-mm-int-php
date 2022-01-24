@@ -344,8 +344,8 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                 </select>
                             </div>
                             <div class="form-group mb-4">
-                                <label for="paidPercent">Paid Percentage<span class="my-required-field">Required*</span></label>
-                                <input type="number" name="paidPercent" id="paidPercent" class="form-control" value="0" required />
+                                <label for="paymentAmount">Payment Amount (MMKs)<span class="my-required-field">Required*</span></label>
+                                <input type="number" name="paymentAmount" id="paymentAmount" class="form-control" placeholder="eg. 100,000" required />
                             </div>
 
                             <div class="form-group mb-4">

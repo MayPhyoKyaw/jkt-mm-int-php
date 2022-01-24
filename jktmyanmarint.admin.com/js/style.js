@@ -17,6 +17,8 @@ var uname = document.getElementById("uname");
 // var address = document.getElementById("address");
 var paymentMethod = document.getElementById("paymentMethod");
 var paidPercent = document.getElementById("paidPercent");
+var showPaidPercent = document.getElementById("showPaidPercent");
+var showPaidAmount = document.getElementById("showPaidAmount");
 var isPending = document.getElementById("isPending");
 var createdAt = document.getElementById("createdAt");
 
@@ -32,6 +34,8 @@ var detailName = document.getElementById("detailName");
 // var detailAddress = document.getElementById("detailAddress");
 var detailPaymentMethod = document.getElementById("detailPaymentMethod");
 var detailPaidPercent = document.getElementById("detailPaidPercent");
+var newPaymentField = document.getElementById("newPaymentField");
+
 var pendingBadge = document.getElementById("pendingBadge");
 
 // deleting
@@ -97,7 +101,7 @@ var detailCourseNote = document.getElementById("detailCourseNote");
 
 let nrcArr = null;
 
-function setCurrentEditing(event, row, idx, classIdx) {
+function setCurrentEditing(event, row, idx, classIdx,classFee) {
   $("#editingModal").modal("show");
   event.stopPropagation();
   // id_field.value = id;
@@ -137,6 +141,14 @@ function setCurrentEditing(event, row, idx, classIdx) {
   // phone.value = rowArr[9];
   paymentMethod.value = rowArr[3];
   paidPercent.value = rowArr[4].substring(0, rowArr[4].length - 1);
+  showPaidPercent.textContent = rowArr[4].substring(0, rowArr[4].length - 1)+"%";
+  showPaidAmount.textContent = (parseInt(classFee) * parseInt(rowArr[4].substring(0, rowArr[4].length - 1)))/100 + " MMKs";
+  if (parseInt(rowArr[4].substring(0, rowArr[4].length - 1)) < 100) {
+    newPaymentField.style.display = "block";
+  } else {
+    newPaymentField.style.display = "none";
+  }
+
   console.log(rowArr[5]);
   if (rowArr[5] == "✅") {
     approved = true;

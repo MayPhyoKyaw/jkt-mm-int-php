@@ -27,7 +27,14 @@ $courseId = intval($_POST['classId']);
 
 // STEP 3
 $payment_method = $_POST['paymentMethod'];
-$paidPercent = intval($_POST['paidPercent']);
+$paymentAmount = intval($_POST['paymentAmount']);
+
+$getPaymentAmount = "SELECT fee from courses WHERE course_id = $courseId";
+$result = mysqli_query($conn, $getPaymentAmount);
+$result_row = mysqli_fetch_assoc($result);
+
+$paidPercent = intval(($paymentAmount/$result_row['fee'])*100);
+
 if (isset($_POST['isPending']) && $_POST["isPending"] == "on") {
     $isPending = 1;
 } else {
@@ -207,7 +214,7 @@ if ($org_width > "300" || $org_height > "300") {
                     $courseId,
                 $lastInsertedsid,
                 '$payment_method',
-                0 , 
+                $paidPercent , 
                 now(), 
                 now(),
                 $isPending)";
@@ -231,7 +238,7 @@ if ($org_width > "300" || $org_height > "300") {
                 $courseId,
                 $updated_id,
                 '$payment_method',
-                0 , 
+                $paidPercent , 
                 now(), 
                 now(),
                 $isPending)";
@@ -336,7 +343,7 @@ if ($org_width > "300" || $org_height > "300") {
                 $courseId,
                 $lastInsertedsid,
                 '$payment_method',
-                0 , 
+                $paidPercent , 
                 now(), 
                 now(),
                 $isPending)";
@@ -360,7 +367,7 @@ if ($org_width > "300" || $org_height > "300") {
                 $courseId,
                 $updated_id,
                 '$payment_method',
-                0 , 
+                $paidPercent , 
                 now(), 
                 now(),
                 $isPending)";
