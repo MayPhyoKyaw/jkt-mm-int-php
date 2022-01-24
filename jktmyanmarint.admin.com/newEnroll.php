@@ -251,10 +251,13 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                 <select id="classId" name="classId" class="form-control form-control-user" required>
                                     <option value="" selected disabled>Course</option>
                                     <?php
-                                    $result = mysqli_query($conn, "SELECT * FROM courses");
+                                    $result = mysqli_query($conn, "SELECT course_id, c.title AS course_title, cty.category_id AS category_id, cty.title AS category_title, 
+                                    t.type_id AS type_id,t.title AS type_title, c.level_or_sub AS course_level 
+                                    FROM courses c, categories cty, types t WHERE c.category_id = cty.category_id 
+                                    AND c.type_id = t.type_id");
                                     while ($row = mysqli_fetch_assoc($result)) {
                                     ?>
-                                        <option value='<?php echo $row["course_id"] ?>'><?php echo $row["title"]. " - ".  $row["level_or_sub"] ?></option>
+                                        <option value='<?php echo $row["course_id"] ?>'><?php echo $row["category_title"]."-".$row["course_title"]."-".$row["course_level"]."-".$row["type_title"] ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
