@@ -166,8 +166,30 @@
                 >
               </div>
             </li>
-            <li class="nav-item">
-              <a href="./contact.html" class="nav-link active"> CONTACT </a>
+            <li class="nav-item dropdown">
+              <a
+                href="./contact.html"
+                class="nav-link active"
+                id="contactNavbarDropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                CONTACT <i class="fas fa-angle-down"></i>
+              </a>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="contactNavbarDropdown"
+              >
+                <a
+                  href=""
+                  class="dropdown-item"
+                  data-toggle="modal"
+                  data-target="#jpSchoolFBStaticBackdrop"
+                  >JKT Japanese Language School</a
+                >
+                <a class="dropdown-item">JKT Digital Institute</a>
+              </div>
             </li>
             <li class="lang">
               <div class="btn-group" role="group" aria-label="First group">
@@ -823,6 +845,44 @@
       Copyright © 2021 | JKT Myanmar International Co., Ltd.
     </div>
     <!-- footer area start -->
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="jpSchoolFBStaticBackdrop"
+      data-backdrop="static"
+      data-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="jpSchoolFBStaticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">...</div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Understood</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- script -->
     <script src="./assets/js/jquery-3.6.0.js"></script>

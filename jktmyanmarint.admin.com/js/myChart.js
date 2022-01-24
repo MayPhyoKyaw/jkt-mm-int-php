@@ -122,13 +122,9 @@ function showStuByCourses(e) {
           maintainAspectRatio: false,
           responsive: true,
           scales: {
-            yAxes: [
-              {
-                ticks: {
-                  beginAtZero: true,
-                },
-              },
-            ],
+            yAxes: {
+              drawBorder: false,
+            },
           },
         },
       });
