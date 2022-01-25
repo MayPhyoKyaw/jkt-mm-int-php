@@ -155,9 +155,9 @@ function encrypt_decrypt($action, $string) {
                 <a class="dropdown-item" href="./business.html"
                   >ビジネスコンサルタント</a
                 >
-                <a class="dropdown-item" href="./announcement.html"
+                <!-- <a class="dropdown-item" href="./announcement.html"
                   >ITサービス</a
-                >
+                > -->
                 <a class="dropdown-item" href="./announcement.html"
                   >旅行サービス</a
                 >
@@ -181,8 +181,8 @@ function encrypt_decrypt($action, $string) {
                 <a class="dropdown-item" href="./jp-school.php"
                   >日本語学校</a
                 >
-                <a class="dropdown-item" href="./announcement.html"
-                  >職業訓練</a
+                <a class="dropdown-item" href="./digital-institute.php"
+                  >デジタル学院</a
                 >
                 <a class="dropdown-item" href="./announcement.html"
                   >人材トレーニング</a
@@ -380,9 +380,9 @@ function encrypt_decrypt($action, $string) {
                   ></span
                 >
               </li>
-              <li>
+              <!-- <li>
                 <span><a href="./announcement.html">ITサービス</a></span>
-              </li>
+              </li> -->
               <li>
                 <span><a href="./announcement.html">旅行サービス</a></span>
               </li>
@@ -398,7 +398,7 @@ function encrypt_decrypt($action, $string) {
               </li>
               <li>
                 <span
-                  ><a href="./announcement.html">職業訓練</a></span
+                  ><a href="./digital-institute.php">デジタル学院</a></span
                 >
               </li>
               <li>

@@ -2061,11 +2061,11 @@ figure img {
 }
 
 .fb-iframe {
-  border: 1px solid lightgrey;
+  /* display: block; */
+  /* border: 1px solid lightgrey; */
   height: 807px;
   overflow: hidden;
   padding-top: 7px;
-  margin: 0 auto
 }
 /* width */
 iframe::-webkit-scrollbar {
@@ -2915,6 +2915,10 @@ iframe::-webkit-scrollbar-thumb:hover {
   .schedule-mm {
     font-size: 14px;
   }
+
+  #jp_sh {
+    width: 80% !important;
+  }
 }
 
 @media only screen and (max-width: 775px) {
@@ -2940,6 +2944,12 @@ iframe::-webkit-scrollbar-thumb:hover {
   .load-map {
     left: 0%;
     top: 10%;
+  }
+}
+
+@media only screen and (min-width: 770px) and (max-width: 992px) {
+  .contact-header {
+    margin-top: 60%;
   }
 }
 

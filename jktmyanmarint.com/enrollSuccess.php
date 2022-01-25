@@ -70,7 +70,6 @@
             <div class="dropdown-menu" aria-labelledby="serviceNavbarDropdown">
               <a class="dropdown-item" href="./overseas.html">OVERSEAS EMPLOYMENT</a>
               <a class="dropdown-item" href="./business.html">BUSINESS CONSULTANT</a>
-              <a class="dropdown-item" href="./announcement.html">IT SERVICES</a>
               <a class="dropdown-item" href="./announcement.html">TRAVEL AND TOURS</a>
             </div>
           </li>
@@ -80,7 +79,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="trainingNavbarDropdown">
               <a class="dropdown-item" href="./jp-school.php">JAPANESE LANGUAGE SCHOOL</a>
-              <a class="dropdown-item" href="./announcement.html">VOCATIONAL TRAINING</a>
+              <a class="dropdown-item" href="./digital-institute.php">DIGITAL INSTITUTE</a>
               <a class="dropdown-item" href="./announcement.html">HR TRAINING</a>
             </div>
           </li>
@@ -209,9 +208,9 @@
             <li>
               <span><a href="./business.html">Business Consultant Service</a></span>
             </li>
-            <li>
+            <!-- <li>
               <span><a href="./announcement.html">IT Services</a></span>
-            </li>
+            </li> -->
             <li>
               <span><a href="./announcement.html">Travel and Tours</a></span>
             </li>
@@ -224,7 +223,7 @@
               <span><a href="./jp-school.php">Japanese Language School</a></span>
             </li>
             <li>
-              <span><a href="./announcement.html">Vocational Training</a></span>
+              <span><a href="./digital-institute.php">Digital Institute</a></span>
             </li>
             <li>
               <span><a href="./announcement.html">HR Training</a></span>

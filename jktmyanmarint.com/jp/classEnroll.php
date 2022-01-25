@@ -76,7 +76,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
             <div class="dropdown-menu" aria-labelledby="serviceNavbarDropdown">
               <a class="dropdown-item" href="./overseas.html">海外での雇用</a>
               <a class="dropdown-item" href="./business.html">ビジネスコンサルタント</a>
-              <a class="dropdown-item" href="./announcement.html">ITサービス</a>
+              <!-- <a class="dropdown-item" href="./announcement.html">ITサービス</a> -->
               <a class="dropdown-item" href="./announcement.html">旅行サービス</a>
             </div>
           </li>
@@ -86,7 +86,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
             </a>
             <div class="dropdown-menu" aria-labelledby="trainingNavbarDropdown">
               <a class="dropdown-item" href="./jp-school.php">日本語学校</a>
-              <a class="dropdown-item" href="./announcement.html">職業訓練</a>
+              <a class="dropdown-item" href="./digital-institute.php">デジタル学院</a>
               <a class="dropdown-item" href="./announcement.html">人材トレーニング</a>
             </div>
           </li>
@@ -785,9 +785,9 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
             <li>
               <span><a href="./business.html">ビジネスコンサルタント</a></span>
             </li>
-            <li>
+            <!-- <li>
               <span><a href="./announcement.html">ITサービス</a></span>
-            </li>
+            </li> -->
             <li>
               <span><a href="./announcement.html">旅行サービス</a></span>
             </li>
@@ -800,7 +800,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
               <span><a href="./jp-school.php">日本語学校</a></span>
             </li>
             <li>
-              <span><a href="./announcement.html">職業訓練</a></span>
+              <span><a href="./digital-institute.php">デジタル学院</a></span>
             </li>
             <li>
               <span><a href="./announcement.html">人材トレーニング</a></span>

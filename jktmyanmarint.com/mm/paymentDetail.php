@@ -157,9 +157,9 @@ function encrypt_decrypt($action, $string) {
                 <a class="dropdown-item" href="./business.html"
                   >စစီးပွားရေးဆိုင်ရာ အကြံပေးခြင်း ၀န်ဆောင်မှု</a
                 >
-                <a class="dropdown-item" href="./announcement.html"
+                <!-- <a class="dropdown-item" href="./announcement.html"
                   >အိုင်တီနည်းပညာ ဆိုင်ရာ ၀န်ဆောင်မှု</a
-                >
+                > -->
                 <a class="dropdown-item" href="./announcement.html"
                   >ခရီးသွား ၀န်ဆောင်မှု</a
                 >
@@ -183,8 +183,8 @@ function encrypt_decrypt($action, $string) {
                 <a class="dropdown-item" href="./jp-school.php"
                   >ဂျပန်ဘာသာစကား သင်တန်း</a
                 >
-                <a class="dropdown-item" href="./announcement.html"
-                  >အသက်‌မွေး၀မ်းကျောင်း သင်တန်း</a
+                <a class="dropdown-item" href="./digital-institute.php"
+                  >အိုင်တီနည်းပညာ သင်တန်းကျောင်း</a
                 >
                 <a class="dropdown-item" href="./announcement.html"
                   >လူ့စွမ်းအားအရင်းအမြစ် စီမံခန့်ခွဲမှု သင်တန်း</a
@@ -394,13 +394,13 @@ function encrypt_decrypt($action, $string) {
                   ></span
                 >
               </li>
-              <li>
+              <!-- <li>
                 <span
                   ><a href="./announcement.html"
                     >အိုင်တီနည်းပညာဆိုင်ရာ ၀န်ဆောင်မှု</a
                   ></span
                 >
-              </li>
+              </li> -->
               <li>
                 <span
                   ><a href="./announcement.html">ခရီးသွား ၀န်ဆောင်မှု </a></span
@@ -418,8 +418,8 @@ function encrypt_decrypt($action, $string) {
               </li>
               <li>
                 <span
-                  ><a href="./announcement.html"
-                    >အသက်‌မွေး၀မ်းကျောင်း သင်တန်း</a
+                  ><a href="./digital-institute.php"
+                    >အိုင်တီနည်းပညာ သင်တန်းကျောင်း</a
                   ></span
                 >
               </li>

@@ -34,82 +34,194 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-lg gray-dark float-panel" data-top="0" data-scroll="300">
-        <div class="container-fluid mynav">
-            <a href="index.html" class="navbar-brand">
-                <img src="../assets/images/logo.jpg" alt="" height="50px" width="50px" />
-                <span style="font-weight: bolder; font-size: larger; color: #029eff">JKT</span>
-                Myanmar International
-            </a>
-            <a href="index.html" class="small-brand">
-                <img src="../assets/images/logo.jpg" alt="" height="50px" width="50px" />
-                <span style="font-weight: bolder; font-size: larger; color: #029eff">JKT</span>
-                Myanmar International
-            </a>
-            <a href="index.html" class="icon-brand">
-                <img src="../assets/images/logo.jpg" alt="" height="50px" width="50px" />
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
-                <span class="navbar-toggler-icon toggler-icon-color"></span>
-            </button>
-            <div id="navbarCollapse" class="collapse navbar-collapse">
-                <ul class="navbar-nav ms-auto text-sm-start">
-                    <li class="nav-item">
-                        <a href="index.html" class="nav-link active"> HOME </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../about.html" class="nav-link active"> ABOUT </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../activities.html" class="nav-link active">
-                            ACTIVITIES
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="../services.html" class="nav-link active" id="serviceNavbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            SERVICES <i class="fas fa-angle-down"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="serviceNavbarDropdown">
-                            <a class="dropdown-item" href="../overseas.html">OVERSEAS EMPLOYMENT</a>
-                            <a class="dropdown-item" href="../business.html">BUSINESS CONSULTANT</a>
-                            <a class="dropdown-item" href="../announcement.html">IT SERVICES</a>
-                            <a class="dropdown-item" href="../announcement.html">TRAVEL AND TOULS</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="../trainings.html" class="nav-link" id="trainingNavbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                            TRAININGS <i class="fas fa-angle-down"></i>
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="trainingNavbarDropdown">
-                            <a class="dropdown-item" href="../jp-school.php">JAPANESE LANGUAGE SCHOOL</a>
-                            <a class="dropdown-item" href="../announcement.html">VOCATIONAL TRAINING</a>
-                            <a class="dropdown-item" href="../announcement.html">HR TRAINING</a>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                        <a href="../contact.html" class="nav-link active"> CONTACT </a>
-                    </li>
-                    <li class="lang">
-                        <div class="btn-group" role="group" aria-label="First group">
-                            <a href="../school-detail.php"><button type="button" class="btn btn1">
-                                    <img src="../assets/images/icon/ukFlag.png" height="20px" width="25px" /></button></a>
-                            <a href="../mm/school-detail.php"><button type="button" class="btn btn2">
-                                    <img src="../assets/images/icon/mmFlag.svg" height="20px" width="25px" /></button></a>
-                            <a href="./school-detail.php"><button type="button" class="btn btn3" style="background-color: rgba(91, 175, 231, 0.5)">
-                                    <img src="../assets/images/icon/japanFlag.jpg" height="20px" width="25px" /></button></a>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div class="btn-group lang-xl" role="group" aria-label="First group">
-                <a href="../school-detail.php"><button type="button" class="btn btn1">
-                        <img src="../assets/images/icon/ukFlag.png" height="20px" width="25px" /></button></a>
-                <a href="../mm/school-detail.php"><button type="button" class="btn btn2">
-                        <img src="../assets/images/icon/mmFlag.svg" height="20px" width="25px" /></button></a>
-                <a href="../school-detail.php"><button type="button" class="btn btn3" style="background-color: rgba(91, 175, 231, 0.5)">
-                        <img src="../assets/images/icon/japanFlag.jpg" height="20px" width="25px" /></button></a>
-            </div>
+<nav
+      class="navbar navbar-light navbar-expand-lg gray-dark float-panel"
+      data-top="0"
+      data-scroll="300"
+    >
+      <div class="container-fluid mynav">
+        <a href=./index.html class="navbar-brand">
+          <img
+            src="../assets/images/logo.jpg"
+            alt=""
+            height="50px"
+            width="50px"
+          />
+          <span style="font-weight: bolder; font-size: larger; color: #029eff"
+            >JKT</span
+          >
+          Myanmar International
+        </a>
+        <a href=./index.html class="small-brand">
+          <img
+            src="../assets/images/logo.jpg"
+            alt=""
+            height="50px"
+            width="50px"
+          />
+          <span style="font-weight: bolder; font-size: larger; color: #029eff"
+            >JKT</span
+          >
+          Myanmar International
+        </a>
+        <a href=./index.html class="icon-brand">
+          <img
+            src="../assets/images/logo.jpg"
+            alt=""
+            height="50px"
+            width="50px"
+          />
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarCollapse"
+        >
+          <span class="navbar-toggler-icon toggler-icon-color"></span>
+        </button>
+        <div id="navbarCollapse" class="collapse navbar-collapse">
+          <ul class="navbar-nav ms-auto text-sm-start">
+            <li class="nav-item">
+              <a href=./index.html class="nav-link active"> ホーム </a>
+            </li>
+            <li class="nav-item">
+              <a href="./about.html" class="nav-link active"> 会社情報 </a>
+            </li>
+            <li class="nav-item">
+              <a href="./activities.html" class="nav-link active">
+                活動
+              </a>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                href="./services.html"
+                class="nav-link active"
+                id="serviceNavbarDropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                サービス <i class="fas fa-angle-down"></i>
+              </a>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="serviceNavbarDropdown"
+              >
+                <a class="dropdown-item" href="./overseas.html"
+                  >海外での雇用</a
+                >
+                <a class="dropdown-item" href="./business.html"
+                  >ビジネスコンサルタント</a
+                >
+                <!-- <a class="dropdown-item" href="./announcement.html"
+                  >ITサービス</a
+                > -->
+                <a class="dropdown-item" href="./announcement.html"
+                  >旅行サービス</a
+                >
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                href="./trainings.html"
+                class="nav-link"
+                id="trainingNavbarDropdown"
+                role="button"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
+                トレーニング <i class="fas fa-angle-down"></i>
+              </a>
+              <div
+                class="dropdown-menu"
+                aria-labelledby="trainingNavbarDropdown"
+              >
+                <a class="dropdown-item" href="./jp-school.php"
+                  >日本語学校</a
+                >
+                <a class="dropdown-item" href="./digital-institute.php"
+                  >デジタル学院</a
+                >
+                <a class="dropdown-item" href="./announcement.html"
+                  >人材トレーニング</a
+                >
+              </div>
+            </li>
+            <li class="nav-item">
+              <a href="./contact.html" class="nav-link active"> お問い合わせ </a>
+            </li>
+            <li class="lang">
+              <div class="btn-group" role="group" aria-label="First group">
+                <a href="../school-detail.php"><button
+                  type="button"
+                  class="btn btn1"
+                >
+                  <img
+                    src="../assets/images/icon/ukFlag.png"
+                    height="20px"
+                    width="25px"
+                  />
+                </button></a>
+                <a href=../mm/school-detail.php><button
+                  type="button"
+                  class="btn btn2"
+                >
+                  <img
+                    src="../assets/images/icon/mmFlag.svg"
+                    height="20px"
+                    width="25px"
+                  />
+                </button></a>
+                <a href=./school-detail.php><button
+                  type="button"
+                  class="btn btn3"
+                  style="background-color: rgba(91, 175, 231, 0.5)"
+                >
+                  <img
+                    src="../assets/images/icon/japanFlag.jpg"
+                    height="20px"
+                    width="25px"
+                  />
+                </button></a>
+              </div>
+            </li>
+          </ul>
         </div>
+        <div class="btn-group lang-xl" role="group" aria-label="First group">
+          <a href="../school-detail.php"><button
+            type="button"
+            class="btn btn1"
+          >
+            <img
+              src="../assets/images/icon/ukFlag.png"
+              height="20px"
+              width="25px"
+            />
+          </button></a>
+          <a href=../mm/school-detail.php><button
+            type="button"
+            class="btn btn2"
+          >
+            <img
+              src="../assets/images/icon/mmFlag.svg"
+              height="20px"
+              width="25px"
+            />
+          </button></a>
+          <a href=./school-detail.php><button
+            type="button"
+            class="btn btn3"
+            style="background-color: rgba(91, 175, 231, 0.5)"
+          >
+            <img
+              src="../assets/images/icon/japanFlag.jpg"
+              height="20px"
+              width="25px"
+            />
+          </button></a>
+        </div>
+      </div>
     </nav>
 
     <!-- JP School header start -->
@@ -545,77 +657,92 @@
 
     <!-- footer start -->
     <footer class="footer">
-        <div class="left">
-            <a href="index.html"><span>JKT</span> Myanmar International </a>
-            <div>
-                <a href="https://www.facebook.com/JKT-Myanmar-International-CoLtd-2508681849366709">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <i class="fab fa-twitter"></i>
-                <i class="fab fa-instagram"></i>
-            </div>
+      <div class="left">
+        <a href=./index.html><span>JKT</span> Myanmar International </a>
+        <div>
+          <a href="https://www.facebook.com/JKT-Myanmar-International-CoLtd-2508681849366709">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-instagram"></i>
         </div>
-        <div class="right">
-            <div class="footer-flex">
-                <div>
-                    <header>Join us for your business</header>
-                    <p>We're here to give you a hand whenever you need</p>
-                </div>
-                <a href="../contact.html"><button id="btn-contact" class="primary-btn">CONTACT US</button></a>
-            </div>
-            <div class="footer-flex-nav">
-                <div class="nav">
-                    <header>Services</header>
-                    <ul class="footer-list" id="first">
-                        <li>
-                            <span><a href="../overseas.html">Oversea Employment Services (only Japan)</a></span>
-                        </li>
-                        <li>
-                            <span><a href="../business.html">Business Consultant Service</a></span>
-                        </li>
-                        <li>
-                            <span><a href="../announcement.html">IT Services</a></span>
-                        </li>
-                        <li>
-                            <span><a href="./announcement.html">Travel and Tours</a></span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="nav">
-                    <header>Training</header>
-                    <ul class="footer-list" id="second">
-                        <li>
-                            <span><a href="../jp-school.php">Japanese Language School</a></span>
-                        </li>
-                        <li>
-                            <span><a href="../announcement.html">Vocational Training</a></span>
-                        </li>
-                        <li>
-                            <span><a href="../announcement.html">HR Training</a></span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="nav">
-                    <header>Contact</header>
-                    <ul class="footer-list" id="last">
-                        <li>
-                            <i class="fa fa-phone"></i><a href="tel:+959269564339">+959 269 564 339</a>
-                        </li>
-                        <li>
-                            <i class="fa fa-phone"></i><a href="tel:+959770411708">+959 770 411 708</a>
-                        </li>
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>No.86, 3A, Shinsawpu Road,
-                            Near Myaynigone Citymart, Sanchaung Township, Yangon, Myanmar
-                        </li>
-                        <li>
-                            <i class="fa fa-envelope"></i>
-                            <a href="mailto:jkt.mm.int@gmail.com">jkt.mm.int@gmail.com</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+      </div>
+      <div class="right">
+        <div class="footer-flex">
+          <div>
+            <header>ご連絡ください。</header>
+            <p>私たちはあなたと一緒に働く準備ができています。</p>
+          </div>
+          <a href="./contact.html"
+            ><button id="btn-contact" class="primary-btn">お問い合わせ</button></a
+          >
         </div>
+        <div class="footer-flex-nav">
+          <div class="nav">
+            <header>サービス</header>
+            <ul class="footer-list" id="first">
+              <li>
+                <span
+                  ><a href="./overseas.html"
+                    >海外雇用サービス（日本のみ）</a
+                  ></span
+                >
+              </li>
+              <li>
+                <span
+                  ><a href="./business.html"
+                    >ビジネスコンサルタント</a
+                  ></span
+                >
+              </li>
+              <!-- <li>
+                <span><a href="./announcement.html">ITサービス</a></span>
+              </li> -->
+              <li>
+                <span><a href="./announcement.html">旅行サービス</a></span>
+              </li>
+            </ul>
+          </div>
+          <div class="nav">
+            <header>トレーニング</header>
+            <ul class="footer-list" id="second">
+              <li>
+                <span
+                  ><a href="./jp-school.php">日本語学校</a></span
+                >
+              </li>
+              <li>
+                <span
+                  ><a href="./digital-institute.php">デジタル学院</a></span
+                >
+              </li>
+              <li>
+                <span><a href="./announcement.html">人材トレーニング</a></span>
+              </li>
+            </ul>
+          </div>
+          <div class="nav">
+            <header>お問い合わせ</header>
+            <ul class="footer-list" id="last">
+              <li>
+                <i class="fa fa-phone"></i
+                ><a href="tel:+959269564339">+959 269 564 339</a>
+              </li>
+              <li>
+                <i class="fa fa-phone"></i
+                ><a href="tel:+959770411708">+959 770 411 708</a>
+              </li>
+              <li>
+                <i class="fas fa-map-marker-alt"></i>No.86, 3A, Shinsawpu Road, Near Myaynigone Citymart, Sanchaung Township, Yangon, Myanmar.
+              </li>
+              <li>
+                <i class="fa fa-envelope"></i>
+                <a href="mailto:jkt.mm.int@gmail.com">jkt.mm.int@gmail.com</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
     </footer>
     <div class="footer-copyright">
         Copyright © 2021 | JKT Myanmar International Co., Ltd.
