@@ -27,13 +27,17 @@ $courseId = intval($_POST['classId']);
 
 // STEP 3
 $payment_method = $_POST['paymentMethod'];
-$paymentAmount = intval($_POST['paymentAmount']);
+if (isset($_POST['paymentAmount'])) {
+    $paymentAmount = intval($_POST['paymentAmount']);
+} else {
+    $paymentAmount = 0;
+}
 
 $getPaymentAmount = "SELECT fee from courses WHERE course_id = $courseId";
 $result = mysqli_query($conn, $getPaymentAmount);
 $result_row = mysqli_fetch_assoc($result);
 
-$paidPercent = intval(($paymentAmount/$result_row['fee'])*100);
+$paidPercent = intval(($paymentAmount / $result_row['fee']) * 100);
 
 if (isset($_POST['isPending']) && $_POST["isPending"] == "on") {
     $isPending = 1;
@@ -41,7 +45,7 @@ if (isset($_POST['isPending']) && $_POST["isPending"] == "on") {
     $isPending = 0;
 }
 echo (
-    
+
     // $courseId . "," .
     // $uname . "," .
     // $dob . "," .
@@ -55,7 +59,7 @@ echo (
     // $education . "," .
     // $payment_method . "," .
     // $paidPercent . "," .
-    "pending is". $isPending . "pending end"
+    "pending is" . $isPending . "pending end"
 );
 
 function resize_image($file, $ext, $mHW)
@@ -258,10 +262,10 @@ if ($org_width > "300" || $org_height > "300") {
         } else {
             if ($row) {
                 if ($payment_method === "Cash") {
-                    $afterTryingToSend = sendMail($email, $uname, $row, $lastInserted, "Cash","");
+                    $afterTryingToSend = sendMail($email, $uname, $row, $lastInserted, "Cash", "");
                     var_dump($afterTryingToSend);
                 } else {
-                    $afterTryingToSend = sendMail($email, $uname, $row, $lastInserted, $bank_row['bank_name'],$bank_row['account_number']);
+                    $afterTryingToSend = sendMail($email, $uname, $row, $lastInserted, $bank_row['bank_name'], $bank_row['account_number']);
                     var_dump($afterTryingToSend);
                 }
             }
@@ -379,7 +383,7 @@ if ($org_width > "300" || $org_height > "300") {
         $select_from_courses = "SELECT * FROM courses WHERE course_id = $courseId";
         $course_result = mysqli_query($conn, $select_from_courses);
         $row = mysqli_fetch_assoc($course_result);
-        
+
         $select_from_bankingInfo = "SELECT * FROM banking_info WHERE bank_name = '$payment_method'";
         $bank_result = mysqli_query($conn, $select_from_bankingInfo);
         $bank_row = mysqli_fetch_assoc($bank_result);

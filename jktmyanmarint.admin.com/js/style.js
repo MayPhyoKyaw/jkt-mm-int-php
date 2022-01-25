@@ -19,6 +19,7 @@ var paymentMethod = document.getElementById("paymentMethod");
 var paidPercent = document.getElementById("paidPercent");
 var showPaidPercent = document.getElementById("showPaidPercent");
 var showPaidAmount = document.getElementById("showPaidAmount");
+var totalCourseFee = document.getElementById("totalCourseFee");
 var isPending = document.getElementById("isPending");
 var createdAt = document.getElementById("createdAt");
 
@@ -143,6 +144,8 @@ function setCurrentEditing(event, row, idx, classIdx,classFee) {
   paidPercent.value = rowArr[4].substring(0, rowArr[4].length - 1);
   showPaidPercent.textContent = rowArr[4].substring(0, rowArr[4].length - 1)+"%";
   showPaidAmount.textContent = (parseInt(classFee) * parseInt(rowArr[4].substring(0, rowArr[4].length - 1)))/100 + " MMKs";
+  totalCourseFee.textContent = parseInt(classFee) + " MMKs";
+
   if (parseInt(rowArr[4].substring(0, rowArr[4].length - 1)) < 100) {
     newPaymentField.style.display = "block";
   } else {
