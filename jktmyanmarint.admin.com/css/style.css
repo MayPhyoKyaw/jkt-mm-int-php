@@ -410,11 +410,13 @@ canvas {
   -o-border-radius: 4px;
 }
 .enrol-name{
-  font-size: large;
+  font-size: 24px;
   font-weight: bold;
+  color : orange;
 }
 .payment-badge{
   color: #ffffff;
+  background-color: #5685e2;
   width : max-content;
   margin : 0 auto;
   padding-left : 10px;

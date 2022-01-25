@@ -477,13 +477,17 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                 <div class="form-group mb-4">
                                     <label name="uname" id="uname" class="enrol-name"></label>
                                 </div>
-                                <div class="form-group mb-4 bg-success payment-badge">
-                                    <label for="paidPercent">Paid Percent</label>
+                                <div class="form-group mb-2 payment-badge">
+                                    <label for="paidPercent">Paid Percent - </label>
                                     <label id="showPaidPercent"></label>
                                 </div>
-                                <div class="form-group mb-4 bg-success payment-badge">
-                                    <label for="showPaidAmount">Paid Amount</label>
+                                <div class="form-group mb-2 payment-badge">
+                                    <label for="showPaidAmount">Paid Amount - </label>
                                     <label id="showPaidAmount"></label>
+                                </div>
+                                <div class="form-group payment-badge">
+                                    <label for="totalCourseFee">Total Course Fee - </label>
+                                    <label id="totalCourseFee"></label>
                                 </div>
                             </div>
                         </div>
@@ -586,8 +590,8 @@ $noti_result = mysqli_query($conn, $get_notifications);
                         <input type="hidden" name="paidPercent" id="paidPercent" class="form-control" />
 
                         <div class="form-group mb-4" id="newPaymentField">
-                            <label for="paidPercent">New Payment Amount (MMKs)<span class="my-required-field">Required*</span></label>
-                            <input class="form-control" type="number" id="newPaymentField" name="newPaymentField" placeholder="eg. 100,000" required />
+                            <label for="paidPercent">New Payment Amount (MMKs)</label>
+                            <input class="form-control" type="number" id="newPaymentField" name="newPaymentField" placeholder="eg. 100,000" />
                         </div>
 
                         <div class="form-group mb-4">
