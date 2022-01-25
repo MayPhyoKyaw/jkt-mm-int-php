@@ -379,18 +379,18 @@ $annual_income_row = mysqli_fetch_assoc($annual_income_result);
                 <!-- /.container-fluid -->
 
                 <div class="row mt-3 mb-5 pt-2">
-                    <div class="mychart-left ml-lg-5" id="stuByMonthsArea">
+                    <div class="mychart-left mb-lg-0 ml-lg-5 mb-5" id="stuByMonthsArea">
                         <h5 class="gph-label text-center mb-3 font-weight-bold">Enrolled students <span id="studentLabel"></span></h5>
-                        <select onchange="showStuByMonths(event)" class="form-control col-12 col-md-3">
+                        <select onchange="showStuByMonths(event)" class="form-control col-9 col-lg-6 mx-auto">
                             <option value="0">This Month</option>
                             <option value="1">Last 5 Months</option>
                             <option value="2">This Year</option>
                         </select>
                         <canvas id="stuByMonths">
                     </div>
-                    <div class="mychart-right" id="stuByCoursesArea">
+                    <div class="mychart-right mt-lg-0 mt-5 pt-lg-0 pt-5 mb-lg-0 mb-3" id="stuByCoursesArea" style="height : 260px; width: 260px; margin : 0 auto;">
                         <h5 class="gph-label text-center mb-3 font-weight-bold">Students Per Course <span id="courseLabel"></span></h5>
-                        <select onchange="showStuByCourses(event)" class="form-control col-12 col-md-3">
+                        <select onchange="showStuByCourses(event)" class="form-control col-12">
                             <option value="0">This Month</option>
                             <option value="1">Last 5 Months</option>
                             <option value="2">This Year</option>
@@ -401,7 +401,7 @@ $annual_income_row = mysqli_fetch_assoc($annual_income_result);
                 <div class="row mb-5 mt-5 pt-5">
                     <div class="my-chart-full ml-lg-5" id="showPaymentsArea">
                         <h5 class="gph-label text-center mb-3 font-weight-bold">Income Rate <span id="incomeLabel"></span></h5>
-                        <select onchange="showPayments(event)" class="form-control col-12 col-md-3">
+                        <select onchange="showPayments(event)" class="form-control col-9 mx-auto col-lg-3">
                             <option value="0">This Month</option>
                             <option value="1">Last 5 Months</option>
                             <option value="2">This Year</option>
@@ -464,6 +464,7 @@ $annual_income_row = mysqli_fetch_assoc($annual_income_result);
     <script src="js/sb-admin-2.min.js"></script>
     <!-- <script src="js/jquery.min.js"></script> -->
     <script src="js/Chart.min.js"></script>
+    <script src="js/chart-plugin.js"></script>
     <script src="js/myChart.js"></script>
 </body>
 
