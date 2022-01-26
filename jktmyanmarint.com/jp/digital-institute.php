@@ -262,7 +262,7 @@
             <div class="detail-info-blog-item-img">
               <img
                 class="card-img rounded-0"
-                src="../assets/images/trainings/jps1.jpg"
+                src="../assets/images/trainings/dgi1.jpg"
                 alt=""
               />
             </div>
@@ -270,7 +270,7 @@
               <h2>デジタル学院</h2>
               <div class="quote-wrapper">
                 <div class="quotes">
-                  日本語教室。日本で勉強したい方や日本の企業で働きたい方の為に最適な学習環境を提供しています。
+                  デジタル学院。日本で日本の企業で働きたい方の為に最適な学習環境を提供しています。
                   基本レベルから上級レベルまで、様々なレベルで学習できるクラスをご用意しています。
                   JKTミャンマーインターナショナルには、ミャンマー人と日本人のとても優秀な教師がいます。
                   日本語だけではなく日本人の教師を通じて直接日本の文化も学ぶ事ができます。
@@ -362,7 +362,7 @@
                         </span>
                       </td>
                       <td data-label="学費「チャット」">
-                        <span id="price"><?php echo $row["fee"] ?></span>
+                        <span id="price"><?php echo number_format($row["fee"]) ?></span>
                       </td>
                       <td data-label="開始日 と 期間">
                         <?php if(!empty($row["start_date"])) { ?>
