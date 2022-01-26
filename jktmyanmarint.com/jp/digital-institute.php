@@ -406,6 +406,134 @@
     </section>
     <!-- School Schedule Blog end -->
 
+    <!-- Detail images area start -->
+    <section>
+      <div class="container pt-5 pb-3">
+        <div class="row slider-blog my-5">
+          <div class="col-lg-12">
+            <div
+              id="detailImgBlog"
+              class="carousel slide container-blog"
+              data-ride="carousel"
+            >
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#detailImgBlog"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li data-target="#detailImgBlog" data-slide-to="1"></li>
+                <li data-target="#detailImgBlog" data-slide-to="2"></li>
+              </ol>
+              <!-- Carousel items -->
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="row" id="sliderImgBlog">
+                    <div class="col-md-6">
+                      <div class="item-box-blog">
+                        <div class="detail-item-box-blog-image">
+                          <!--Image-->
+                          <figure>
+                            <img
+                              alt="jps2"
+                              src="../assets/images/trainings/jps2.jpg"
+                            />
+                          </figure>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="item-box-blog">
+                        <div class="detail-item-box-blog-image">
+                          <!--Image-->
+                          <figure>
+                            <img
+                              alt="jps3"
+                              src="../assets/images/trainings/jps3.jpg"
+                            />
+                          </figure>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--.row-->
+                </div>
+                <!--.item-->
+                <div class="carousel-item">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="item-box-blog">
+                        <div class="detail-item-box-blog-image">
+                          <!--Image-->
+                          <figure>
+                            <img
+                              alt="jps4"
+                              src="../assets/images/trainings/jps4.jpg"
+                            />
+                          </figure>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="item-box-blog">
+                        <div class="detail-item-box-blog-image">
+                          <!--Image-->
+                          <figure>
+                            <img
+                              alt="jps5"
+                              src="../assets/images/trainings/jps5.jpg"
+                            />
+                          </figure>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--.row-->
+                </div>
+                <!--.item-->
+                <div class="carousel-item">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="item-box-blog">
+                        <div class="detail-item-box-blog-image">
+                          <!--Image-->
+                          <figure>
+                            <img
+                              alt="jps6"
+                              src="../assets/images/trainings/jps6.jpg"
+                            />
+                          </figure>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="item-box-blog">
+                        <div class="detail-item-box-blog-image">
+                          <!--Image-->
+                          <figure>
+                            <img
+                              alt="jps7"
+                              src="../assets/images/trainings/jps7.jpg"
+                            />
+                          </figure>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!--.row-->
+                </div>
+                <!--.item-->
+              </div>
+              <!--.carousel-inner-->
+            </div>
+            <!--.Carousel-->
+          </div>
+        </div>
+        <hr class="hr3" />
+      </div>
+    </section>
+    <!-- Detail images area end -->
+
     <!-- The Detail Modal -->
     <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalLongTitle" aria-hidden="true">
       <div class="modal-dialog detail-modal" role="document">
@@ -758,6 +886,7 @@
     <script src="../assets/js/float-panel.js"></script>
     <script src="../assets/js/comment.js"></script>
     <script src="../assets/js/style.js"></script>
+    <script src="../assets/js/detail-gallery.js"></script>
     <script src="../assets/js/jp-class-schedule.js"></script>
   </body>
 </html>
