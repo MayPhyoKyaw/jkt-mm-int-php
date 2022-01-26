@@ -32,6 +32,7 @@ function showStuByMonths(e) {
         datasets: [
           {
             label: "Students By Month",
+
             backgroundColor: "#49e2ff",
             borderColor: "#46d5f1",
             hoverBackgroundColor: "#CCCCCC",
@@ -49,6 +50,11 @@ function showStuByMonths(e) {
         type: "bar",
         data: chartData,
         options: {
+          plugins: {
+            labels: {
+              render: () => {},
+            },
+          },
           maintainAspectRatio: false,
           responsive: true,
           scales: {
@@ -99,7 +105,6 @@ function showStuByCourses(e) {
         labels: categories,
         datasets: [
           {
-            label: "Students By Courses",
             data: count,
             backgroundColor: [
               "rgb(255, 99, 132)",
@@ -119,6 +124,13 @@ function showStuByCourses(e) {
         type: "doughnut",
         data: chartData,
         options: {
+          plugins: {
+            labels: {
+              fontColor: "#fff",
+              fontSize: 14,
+            },
+          },
+          cutoutPercentage: 1,
           maintainAspectRatio: false,
           responsive: true,
           scales: {
