@@ -2066,6 +2066,9 @@ figure img {
   height: 807px;
   overflow: hidden;
   padding-top: 7px;
+  margin-left: auto;
+  margin-right: auto;
+  width: inherit;
 }
 /* width */
 iframe::-webkit-scrollbar {
@@ -2752,6 +2755,9 @@ iframe::-webkit-scrollbar-thumb:hover {
 
   .detail-modal-content {
     width: 75vw;
+  }
+  .fb-iframe {
+    width: 500;
   }
 }
 @media only screen and (max-width: 992px) and (min-width: 767px) {
