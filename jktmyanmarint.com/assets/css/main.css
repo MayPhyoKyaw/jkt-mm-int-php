@@ -325,6 +325,9 @@ html {
   line-height: 24px;
   font-weight: 400;
 }
+.footer .left div a{
+  text-decoration: none !important;
+}
 .footer .left a span {
   color: #029eff;
   font-size: 20px;
@@ -1995,7 +1998,7 @@ figure img {
   font-size: 27px;
   line-height: 32px;
   color: #131313;
-  margin-top: 77%;
+  /* margin-top: 77%; */
 }
 
 /* #contact-form {
@@ -2068,7 +2071,16 @@ figure img {
   height: 807px;
   overflow: hidden;
   padding-top: 7px;
-  width : inherit;
+  width : 100%;
+}
+.ifr{
+  display: block;
+  margin-left : auto;
+  margin-right : auto;
+  overflow: hidden;
+  padding-top: 7px;
+  width : 500px;
+
 }
 /* width */
 iframe::-webkit-scrollbar {
@@ -2095,7 +2107,7 @@ iframe::-webkit-scrollbar-thumb:hover {
 .contact-form select {
   display: block;
   width: 90%;
-  margin-left: 6%;
+  /* margin-left: 6%; */
   margin-top: 20px;
   height: 50px;
   border: none;
@@ -2116,7 +2128,7 @@ iframe::-webkit-scrollbar-thumb:hover {
   box-shadow: none;
 }
 #btn-submit {
-  margin-left: 6%;
+  /* margin-left: 6%; */
   padding: 0;
   margin-top: 20px;
   display: inline;
@@ -2760,9 +2772,9 @@ iframe::-webkit-scrollbar-thumb:hover {
   .detail-modal-content {
     width: 75vw;
   }
-  .fb-iframe{
+  /* .fb-iframe{
     width :500px;
-  }
+  } */
 }
 @media only screen and (max-width: 992px) and (min-width: 767px) {
   .about-img-blog {
@@ -2947,9 +2959,9 @@ iframe::-webkit-scrollbar-thumb:hover {
 }
 
 @media only screen and (max-width: 460px) {
-  .contact-header {
+  /* .contact-header {
     margin-top: 100%;
-  }
+  } */
 
   .load-map {
     left: 0%;
@@ -2958,9 +2970,9 @@ iframe::-webkit-scrollbar-thumb:hover {
 }
 
 @media only screen and (min-width: 770px) and (max-width: 992px) {
-  .contact-header {
+  /* .contact-header {
     margin-top: 60%;
-  }
+  } */
 }
 
 @media only screen and (max-width: 1160px) {
@@ -2982,9 +2994,9 @@ iframe::-webkit-scrollbar-thumb:hover {
 }
 
 @media only screen and (max-width: 1200px) {
-  .contact-header {
+  /* .contact-header {
     margin-top: 88%;
-  }  
+  }   */
 }
 
 @media only screen and (min-width: 992px) {

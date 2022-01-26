@@ -126,7 +126,7 @@ function submitForm(btn) {
 // reset form
 
 function resetForm() {
-  document.getElementById("contact-form").reset();
+  document.getElementById("contact-form") && document.getElementById("contact-form").reset();
 }
 
 // go to mail

@@ -1,30 +1,36 @@
 // handleblur
 var form = document.getElementById("comment-form");
 var mmform = document.getElementById("comment-form-mm");
-var jpform = document.getElementById("comment-form-jp");
-form && form.comment.addEventListener("blur", function (event) {
-  event.preventDefault();
-  validateField(this, 'eng');
-});
-mmform && mmform.comment.addEventListener("blur", function (event) {
-  event.preventDefault();
-  validateField(this, 'mm');
-});
-jpform && jpform.comment.addEventListener("blur", function (event) {
-  event.preventDefault();
-  validateField(this, 'jp');
-});
+var jpform = document.getElementById("comment-form-jp")
+form &&
+  form.comment.addEventListener("blur", function (event) {
+    event.preventDefault();
+    validateField(this, "eng");
+  });
+mmform &&
+  mmform.comment.addEventListener("blur", function (event) {
+    event.preventDefault();
+    validateField(this, "mm");
+  });
+jpform &&
+  jpform.comment.addEventListener("blur", function (event) {
+    event.preventDefault();
+    validateField(this, "jp");
+  });
 
 function validateField(field, lang) {
   var isOk = false;
-  if(lang === "mm") {
+  if (lang === "mm") {
     if (field.value === "") {
-      onInvalid(field, "ကျေးဇူးပြု၍ မှတ်ချက်ပေးပို့ရန် စာသားအချို့ ရိုက်ထည့်ပေးပါ။");
+      onInvalid(
+        field,
+        "ကျေးဇူးပြု၍ မှတ်ချက်ပေးပို့ရန် စာသားအချို့ ရိုက်ထည့်ပေးပါ။"
+      );
     } else {
       onValid(field);
       isOk = true;
     }
-  }else if(lang === "jp") {
+  } else if (lang === "jp") {
     if (field.value === "") {
       onInvalid(field, "送信するテキストを入力してください");
     } else {
@@ -56,17 +62,16 @@ function onValid(field) {
 function validateCommentForJPSchool(form) {
   validateField(form.comment) &&
     gotoMail({
-      subject: "Feedback for JKT Japanese School Services",
+      subject: "Feedback for Training Courses",
       comment: form.comment.value,
     });
 }
 
 // submitForm
 function submitCommentForJPSchool(btn) {
-    btn.preventDefault();
-  form = btn.previousElementSibling;
+  // btn.preventDefault();
   var values = {
-    comment: form.comment.value,
+    comment: form && form.comment.value,
   };
   validateCommentForJPSchool(form);
 }

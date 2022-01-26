@@ -640,32 +640,37 @@
     <!-- Detail images area end -->
 
     <!-- Detail Comment area start -->
-    <section>
-      <div class="container comment-blog px-4 pb-5">
+    <section class="container">
+    <div class="row px-0 px-md-5 pt-4 pb-5">
+      <div class="col-12 col-lg-7 text-center pb-2 pb-lg-0">
+        <iframe 
+          id="jp_sh" 
+          src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FJKT-Japanese-Language-School-100339937999010%2F&tabs=timeline&width=500&height=790&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=300620088760320" 
+          width="87%"
+          class="ifr"
+          height="550"
+          scrolling="no" 
+          frameborder="0" 
+          allowfullscreen="true" 
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+        </iframe>
+      </div>
+      <div class="comment-blog px-0 px-md-4 pb-5 col-12 col-lg-5 pt-5 pt-lg-0">
         <h3>Leave a Reply</h3>
         <div class="row py-3">
           <div class="col-lg-12 comment-form">
             <form id="comment-form">
-              <textarea
-                name="comment"
-                id="comment"
-                placeholder="Write Comment"
-              ></textarea>
+              <textarea name="comment" id="comment" placeholder="Write Comment"></textarea>
               <span class="warning-message"></span>
             </form>
-            <button
-              id="btn-comment"
-              type="button"
-              name="button"
-              onclick="submitCommentForJPSchool(this)"
-              class="about-boxed-btn"
-            >
+            <button id="btn-comment" type="button" name="button" onclick="submitCommentForJPSchool(event)" class="about-boxed-btn">
               SEND MESSAGE
             </button>
           </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
     <!-- Detail Comment area end -->
 
     <!-- to top button -->
@@ -680,7 +685,7 @@
         <a href="index.html"><span>JKT</span> Myanmar International </a>
         <div>
           <a
-            href="https://www.facebook.com/JKT-Myanmar-International-CoLtd-2508681849366709"
+            href="https://www.facebook.com/JKT-Japanese-Language-School-100339937999010/"
           >
             <i class="fab fa-facebook-f"></i>
           </a>
