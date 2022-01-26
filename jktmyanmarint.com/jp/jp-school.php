@@ -314,7 +314,7 @@
                                   t.title AS type_title, level_or_sub, fee, instructor,
                                   services, discount_percent, start_date, duration, sections, note
                                   FROM courses c, categories cty, types t WHERE c.category_id = cty.category_id 
-                                  AND c.type_id = t.type_id ORDER BY c.created_at LIMIT 4";
+                                  AND c.type_id = t.type_id AND (cty.title = 'JLPT' OR cty.title = 'EJU')  ORDER BY c.created_at LIMIT 4";
                     $schedule_result = mysqli_query($conn, $schedule);
                     while($row = mysqli_fetch_array($schedule_result)) {
                       $_SESSION['courseId'] = $row['course_id'];
