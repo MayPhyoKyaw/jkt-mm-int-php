@@ -425,71 +425,6 @@
     </section>
     <!-- School Schedule Blog end -->
 
-    <!-- Detail Images Blog start -->
-    <section>
-      <div class="container pb-3">
-        <h3 class="detail-activity-blog-title pb-3">Activity Gallery</h3>
-        <div class="row detail-activity-blog pb-3" id="detailActivityBlog">
-          <div class="col-md-4">
-            <div class="detail-activity-blog-img">
-              <img
-                src="./assets/images/services/bs2.jpg"
-                alt="Activity Gallery For Business Consultant Services"
-                onclick="PopUpImg(this)"
-              />
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="detail-activity-blog-img">
-              <img
-                src="./assets/images/services/bs3.jpg"
-                alt="Activity Gallery For Business Consultant Services"
-                onclick="PopUpImg(this)"
-              />
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="detail-activity-blog-img">
-              <img
-                src="./assets/images/services/bs4.jpg"
-                alt="Activity Gallery For Business Consultant Services"
-                onclick="PopUpImg(this)"
-              />
-            </div>
-          </div>
-        </div>
-        <hr class="hr" />
-      </div>
-    </section>
-    <section id="overlay" class="gallery-overlay" onclick="hideImg(event)">
-      <img
-        src="./assets/images/icon/close.png"
-        class="gallery-btn-close"
-        alt="close"
-        onclick="hideImg(event)"
-      />
-      <img
-        id="left-arrow"
-        src="assets/images/icon/left-arrow.png"
-        alt="left-arrow"
-        onclick="previousImg(this)"
-      />
-      <img
-        id="img"
-        src=""
-        class="overlay-img"
-        alt="overlay-img"
-        onclick="hideImg(event)"
-      />
-      <img
-        id="right-arrow"
-        src="assets/images/icon/right-arrow.png"
-        alt="right-arrow"
-        onclick="nextImg(this)"
-      />
-    </section>
-    <!-- Detail Images Blog end -->
-
     <!-- The Detail Modal -->
     <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="detailModalLongTitle" aria-hidden="true">
       <div class="modal-dialog detail-modal" role="document">
@@ -580,133 +515,70 @@
       </div>
     </div>
 
-    <!-- Detail images area start -->
+    <!-- Detail Images Blog start -->
     <section>
-      <div class="container pt-5 pb-3">
-        <div class="row slider-blog my-5">
-          <div class="col-lg-12">
-            <div
-              id="detailImgBlog"
-              class="carousel slide container-blog"
-              data-ride="carousel"
-            >
-              <ol class="carousel-indicators">
-                <li
-                  data-target="#detailImgBlog"
-                  data-slide-to="0"
-                  class="active"
-                ></li>
-                <li data-target="#detailImgBlog" data-slide-to="1"></li>
-                <li data-target="#detailImgBlog" data-slide-to="2"></li>
-              </ol>
-              <!-- Carousel items -->
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="row" id="sliderImgBlog">
-                    <div class="col-md-6">
-                      <div class="item-box-blog">
-                        <div class="detail-item-box-blog-image">
-                          <!--Image-->
-                          <figure>
-                            <img
-                              alt="jps2"
-                              src="../assets/images/trainings/jps2.jpg"
-                            />
-                          </figure>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="item-box-blog">
-                        <div class="detail-item-box-blog-image">
-                          <!--Image-->
-                          <figure>
-                            <img
-                              alt="jps3"
-                              src="../assets/images/trainings/jps3.jpg"
-                            />
-                          </figure>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!--.row-->
-                </div>
-                <!--.item-->
-                <div class="carousel-item">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="item-box-blog">
-                        <div class="detail-item-box-blog-image">
-                          <!--Image-->
-                          <figure>
-                            <img
-                              alt="jps4"
-                              src="../assets/images/trainings/jps4.jpg"
-                            />
-                          </figure>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="item-box-blog">
-                        <div class="detail-item-box-blog-image">
-                          <!--Image-->
-                          <figure>
-                            <img
-                              alt="jps5"
-                              src="../assets/images/trainings/jps5.jpg"
-                            />
-                          </figure>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!--.row-->
-                </div>
-                <!--.item-->
-                <div class="carousel-item">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="item-box-blog">
-                        <div class="detail-item-box-blog-image">
-                          <!--Image-->
-                          <figure>
-                            <img
-                              alt="jps6"
-                              src="../assets/images/trainings/jps6.jpg"
-                            />
-                          </figure>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="item-box-blog">
-                        <div class="detail-item-box-blog-image">
-                          <!--Image-->
-                          <figure>
-                            <img
-                              alt="jps7"
-                              src="../assets/images/trainings/jps7.jpg"
-                            />
-                          </figure>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <!--.row-->
-                </div>
-                <!--.item-->
-              </div>
-              <!--.carousel-inner-->
+      <div class="container pb-3">
+        <h3 class="detail-activity-blog-title pb-3">ဤဌာနအတွက်ကုမ္ပဏီ၏လှုပ်ရှားမှုပုံရိပ်များ</h3>
+        <div class="row detail-activity-blog pb-3" id="detailActivityBlog">
+          <div class="col-md-4">
+            <div class="detail-activity-blog-img">
+              <img
+                src="../assets/images/trainings/dgi2.jpg"
+                alt="Activity Gallery For Business Consultant Services"
+                onclick="PopUpImg(this)"
+              />
             </div>
-            <!--.Carousel-->
+          </div>
+          <div class="col-md-4">
+            <div class="detail-activity-blog-img">
+              <img
+                src="../assets/images/trainings/dgi3.jpg"
+                alt="Activity Gallery For Business Consultant Services"
+                onclick="PopUpImg(this)"
+              />
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="detail-activity-blog-img">
+              <img
+                src="../assets/images/trainings/dgi4.jpg"
+                alt="Activity Gallery For Business Consultant Services"
+                onclick="PopUpImg(this)"
+              />
+            </div>
           </div>
         </div>
-        <hr class="hr3" />
+        <hr class="hr" />
       </div>
     </section>
-    <!-- Detail images area end -->
+    <section id="overlay" class="gallery-overlay" onclick="hideImg(event)">
+      <img
+        src="../assets/images/icon/close.png"
+        class="gallery-btn-close"
+        alt="close"
+        onclick="hideImg(event)"
+      />
+      <img
+        id="left-arrow"
+        src="../assets/images/icon/left-arrow.png"
+        alt="left-arrow"
+        onclick="previousImg(this)"
+      />
+      <img
+        id="img"
+        src=""
+        class="overlay-img"
+        alt="overlay-img"
+        onclick="hideImg(event)"
+      />
+      <img
+        id="right-arrow"
+        src="../assets/images/icon/right-arrow.png"
+        alt="right-arrow"
+        onclick="nextImg(this)"
+      />
+    </section>
+    <!-- Detail Images Blog end -->
 
     <!-- Detail Comment area start -->
     <section>
