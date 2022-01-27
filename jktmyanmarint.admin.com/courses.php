@@ -305,7 +305,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                                     <td><?= $row['course_level'] ?></td>
                                                     <td><?= $row['type_title'] ?></td>
                                                     <td><?= $row['fee'] ?></td>
-                                                    <td><?= $row['instructor'] ?></td>
+                                                    <td><?php echo $row['instructor'] === "" ? "-" : $row['instructor'] ?></td>
                                                     <td><?php
                                                         for ($i = 0; $i < count($section_time['days']); $i++) {
                                                             echo "<span class='days-badges'>" . $section_time['days'][$i] . "</span>";
@@ -313,10 +313,10 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                                         ?>
                                                     </td>
                                                     <td><?= $section_time['sectionHour'] ?></td>
-                                                    <td><?= $row['start_date'] ?></td>
-                                                    <td><?= $row['duration'] ?></td>
-                                                    <td><?= $row['services'] ?></td>
-                                                    <td><?= $row['discount_percent'] ?></td>
+                                                    <td><?php echo $row['start_date'] == null ? "-" : $row['start_date'] ?>
+                                                    <td><?= $row['duration'] . " months" ?></td>
+                                                    <td><?php echo $row['services'] === "" ? "-" : $row['services'] ?></td>
+                                                    <td><?= $row['discount_percent'] . " %" ?></td>
                                                     <td><?php echo $row['note'] === "" ? "-" : $row['note'] ?></td>
                                                     <td><?= $row['created_at'] ?></td>
                                                     <td><?= $row['updated_at'] ?></td>
@@ -359,16 +359,16 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                     </thead>
                                     <tbody>
                                         <tr>
+                                            <td>Title</td>
+                                            <td id="detailCourseTitle"></td>
+                                        </tr>
+                                        <tr>
                                             <td>Category</td>
                                             <td id="detailCourseCategory"></td>
                                         </tr>
                                         <tr>
                                             <td>Type</td>
                                             <td id="detailCourseType"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Title</td>
-                                            <td id="detailCourseTitle"></td>
                                         </tr>
                                         <tr>
                                             <td>Level/Subjects</td>

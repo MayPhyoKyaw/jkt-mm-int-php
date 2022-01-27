@@ -102,7 +102,7 @@ var detailCourseNote = document.getElementById("detailCourseNote");
 
 let nrcArr = null;
 
-function setCurrentEditing(event, row, idx, classIdx,classFee) {
+function setCurrentEditing(event, row, idx, classIdx, classFee) {
   $("#editingModal").modal("show");
   event.stopPropagation();
   // id_field.value = id;
@@ -142,8 +142,13 @@ function setCurrentEditing(event, row, idx, classIdx,classFee) {
   // phone.value = rowArr[9];
   paymentMethod.value = rowArr[3];
   paidPercent.value = rowArr[4].substring(0, rowArr[4].length - 1);
-  showPaidPercent.textContent = rowArr[4].substring(0, rowArr[4].length - 1)+"%";
-  showPaidAmount.textContent = (parseInt(classFee) * parseInt(rowArr[4].substring(0, rowArr[4].length - 1)))/100 + " MMKs";
+  showPaidPercent.textContent =
+    rowArr[4].substring(0, rowArr[4].length - 1) + "%";
+  showPaidAmount.textContent =
+    (parseInt(classFee) *
+      parseInt(rowArr[4].substring(0, rowArr[4].length - 1))) /
+      100 +
+    " MMKs";
   totalCourseFee.textContent = parseInt(classFee) + " MMKs";
 
   if (parseInt(rowArr[4].substring(0, rowArr[4].length - 1)) < 100) {
@@ -281,17 +286,25 @@ function setCurrentCourseEdit(event, row, catId, typeId) {
       rowArr.push(tds[i].textContent);
     }
   }
-
+  // console.log(rowArr);
   courseIdEdit.value = rowArr[0];
   courseCreatedAt.value = rowArr[14];
-  courseTitleEdit.value = rowArr[1];
+  courseTitleEdit.value = rowArr[2];
   courseCategoryIdEdit.value = catId;
   courseTypeIdEdit.value = typeId;
-  level_or_sub.value = rowArr[4];
+  level_or_sub.value = rowArr[3];
   fee.value = rowArr[5];
-  discountPercent.value = rowArr[12];
-  startDate.value = rowArr[9];
-  duration.value = rowArr[10];
+  discountPercent.value = parseInt(rowArr[12]);
+  var date = new Date(rowArr[9]);
+
+  var day = date.getDate();
+  var month = date.getMonth() + 1;
+  var year = date.getFullYear();
+  month = (month < 10 ? "0" : "") + month;
+  day = (day < 10 ? "0" : "") + day;
+  startDate.value = year + "-" + month + "-" + day;
+
+  duration.value = parseInt(rowArr[10]);  
   startTime.value = rowArr[8].split("~")[0];
   endTime.value = rowArr[8].split("~")[1];
   if (days.includes("M")) {
@@ -315,9 +328,9 @@ function setCurrentCourseEdit(event, row, catId, typeId) {
   if (days.includes("Su")) {
     Su.checked = true;
   }
-  instructor.value = rowArr[6];
-  services.textContent = rowArr[11];
-  note.textContent = rowArr[13];
+  instructor.value = rowArr[6] == "-" ? "" : rowArr[6];
+  services.textContent = rowArr[11] == "-" ? "" : rowArr[11];
+  note.textContent = rowArr[13] == "-" ? "" : rowArr[13];
 }
 
 // course detail show
@@ -339,9 +352,9 @@ function setCurrentCourseDetail(row) {
 
   console.log(rowArr);
 
-  detailCourseCategory.innerText = rowArr[2];
+  detailCourseTitle.innerText = rowArr[2];
+  detailCourseCategory.innerText = rowArr[1];
   detailCourseType.innerText = rowArr[3];
-  detailCourseTitle.innerText = rowArr[1];
   detailCourseLvlorsub.innerText = rowArr[4];
   detailCourseFee.innerText = rowArr[5];
   detailCourseInstructor.innerText = rowArr[6];

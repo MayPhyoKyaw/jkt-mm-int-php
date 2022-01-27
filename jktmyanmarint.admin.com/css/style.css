@@ -175,6 +175,9 @@ input[type="checkbox"] {
   background-color: #043bb3c0;
   color: white;
 }
+.table{
+  text-align: center;
+}
 
 .table-lg {
   margin: 15px auto;

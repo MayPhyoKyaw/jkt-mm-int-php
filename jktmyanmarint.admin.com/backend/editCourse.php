@@ -24,9 +24,6 @@ if ($_POST["discountPercent"] && intval($_POST["discountPercent"]) > 0) {
 $time = strtotime($_POST["startDate"]);
 $startDate = date('Y-m-d H:i:s', $time);
 
-if ($startDate == "1970-01-01 01:00:00") {
-    $startDate = null;
-}
 
 $duration = intval($_POST["duration"]);
 $startTime = $_POST["startTime"];
@@ -102,7 +99,25 @@ if (isset($_POST["note"])) {
 // echo "<br>";
 // var_dump($note);
 
-$update_to_courses = "UPDATE courses SET
+if ($startDate == "1970-01-01 01:00:00") {
+    $update_to_courses = "UPDATE courses SET
+category_id=$courseCategoryIdEdit,
+type_id=$courseTypeIdEdit,
+title='$courseTitleEdit',
+level_or_sub='$level_or_sub',
+fee=$fee,
+instructor='$instructor',
+services='$services',
+discount_percent=$discountPercent,
+start_date=NULL,
+duration='$duration',
+sections='$sections',
+note='$note',
+created_at='$courseCreatedAt',
+updated_at=now()
+WHERE course_id=$courseIdEdit";
+} else {
+    $update_to_courses = "UPDATE courses SET
 category_id=$courseCategoryIdEdit,
 type_id=$courseTypeIdEdit,
 title='$courseTitleEdit',
@@ -118,6 +133,7 @@ note='$note',
 created_at='$courseCreatedAt',
 updated_at=now()
 WHERE course_id=$courseIdEdit";
+}
 
 mysqli_query($conn, $update_to_courses);
 header("location: ../courses.php");
