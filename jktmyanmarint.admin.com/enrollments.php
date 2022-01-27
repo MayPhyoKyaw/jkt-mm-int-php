@@ -46,7 +46,6 @@ $noti_result = mysqli_query($conn, $get_notifications);
 </head>
 
 <body id="page-top">
-
     <!-- Page Wrapper -->
     <div id="wrapper">
 
