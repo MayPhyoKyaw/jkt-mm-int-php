@@ -1,3 +1,7 @@
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip();
+});
+
 // enrollments editing
 var enrollmentId = document.getElementById("enrollmentId");
 var imagePreview = document.getElementById("imagePreview");
@@ -99,6 +103,16 @@ var detailCourseDuration = document.getElementById("detailCourseDuration");
 var detailCourseDays = document.getElementById("detailCourseDays");
 var detailCourseFromTo = document.getElementById("detailCourseFromTo");
 var detailCourseNote = document.getElementById("detailCourseNote");
+
+var daysObj = {
+  M: "Monday",
+  Tu: "Tuesday",
+  W: "Wednesday",
+  Th: "Thursday",
+  F: "Friday",
+  Sa: "Saturday",
+  Su: "Sun",
+};
 
 let nrcArr = null;
 
@@ -267,13 +281,13 @@ function setCurrentCourseEdit(event, row, catId, typeId) {
   // var F = document.getElementById("F");
   // var Sa = document.getElementById("Sa");
   // var Su = document.getElementById("Su");
-  M.checked = false;
-  Tu.checked = false;
-  W.checked = false;
-  Th.checked = false;
-  F.checked = false;
-  Sa.checked = false;
-  Su.checked = false;
+  // M.checked = false;
+  // Tu.checked = false;
+  // W.checked = false;
+  // Th.checked = false;
+  // F.checked = false;
+  // Sa.checked = false;
+  // Su.checked = false;
   $("#editingModal").modal("show");
   event.stopPropagation();
   var tr = row.closest("tr");
@@ -290,14 +304,49 @@ function setCurrentCourseEdit(event, row, catId, typeId) {
       rowArr.push(tds[i].textContent);
     }
   }
-  // console.log(rowArr);
+  console.log(rowArr);
+
+
+  // var sectionsAr = days.split(",,");
+  // for (var i = 0; i < sectionsAr.length; i++) {
+
+  //   var mainLabel = $(
+  //     `<label class='mb-2 d-block mt-3' class='sectionNo'>Section ${curSectionNo}</label>`
+  //   );
+
+  //   if (isEven(i)) {
+  //     var sectionDays = sectionsAr[i].split(",");
+
+  //     var daysContainer = $(`<div></div>`);
+
+  //     for (var j = 0; j < sectionDays.length; j++) {
+  //       var day = $(
+  //         `<span class='days-badges' style='cursor:pointer;' data-toggle='tooltip' data-placement='top' title='${
+  //           daysObj[sectionDays[j]]
+  //         }'>${sectionDays[j]}</span>`
+  //       );
+  //       daysContainer.append(day);
+  //       $("#detailCourseDays").append(daysContainer,$(`<div style='margin-top: 5px;'></div>`));
+  //     }
+  //   } else {
+  //     var sectionHourss = $(
+  //       `<span class='section-hr-badge mt-3'>${sectionsAr[i]}</span>`
+  //     );
+  //     $("#detailCourseDays").append(sectionHourss,$(`<div style='margin-top: 20px;'></div>`));
+  //   }
+
+  //   // var sectionHrs = sectionsAr[];
+  // }
+
   courseIdEdit.value = rowArr[0];
   courseCreatedAt.value = rowArr[14];
   courseTitleEdit.value = rowArr[2];
   courseCategoryIdEdit.value = catId;
   courseTypeIdEdit.value = typeId;
   level_or_sub.value = rowArr[3];
-  fee.value = parseInt(rowArr[5].substring(0, rowArr[5].length-4).replace(/,/g, ''));
+  fee.value = parseInt(
+    rowArr[5].substring(0, rowArr[5].length - 4).replace(/,/g, "")
+  );
   discountPercent.value = parseInt(rowArr[12]);
   var date = new Date(rowArr[9]);
 
@@ -308,7 +357,7 @@ function setCurrentCourseEdit(event, row, catId, typeId) {
   day = (day < 10 ? "0" : "") + day;
   startDate.value = year + "-" + month + "-" + day;
 
-  duration.value = parseInt(rowArr[10]);  
+  duration.value = parseInt(rowArr[10]);
   startTime.value = rowArr[8].split("~")[0];
   endTime.value = rowArr[8].split("~")[1];
   if (days.includes("M")) {
@@ -339,6 +388,7 @@ function setCurrentCourseEdit(event, row, catId, typeId) {
 
 // course detail show
 function setCurrentCourseDetail(row) {
+  $("#detailCourseDays").html("");
   var tr = row.closest("tr");
   var tds = tr.children;
   var rowArr = [];
@@ -355,20 +405,51 @@ function setCurrentCourseDetail(row) {
   }
 
   // console.log(rowArr);
+  function isEven(n) {
+    return n % 2 == 0;
+  }
 
+  function isOdd(n) {
+    return Math.abs(n % 2) == 1;
+  }
+  var sectionsAr = days.split(",,");
+  for (var i = 0; i < sectionsAr.length; i++) {
+    if (isEven(i)) {
+      var sectionDays = sectionsAr[i].split(",");
+
+      var daysContainer = $(`<div></div>`);
+
+      for (var j = 0; j < sectionDays.length; j++) {
+        var day = $(
+          `<span class='days-badges' style='cursor:pointer;' data-toggle='tooltip' data-placement='top' title='${
+            daysObj[sectionDays[j]]
+          }'>${sectionDays[j]}</span>`
+        );
+        daysContainer.append(day);
+        $("#detailCourseDays").append(daysContainer,$(`<div style='margin-top: 5px;'></div>`));
+      }
+    } else {
+      var sectionHourss = $(
+        `<span class='section-hr-badge mt-3'>${sectionsAr[i]}</span>`
+      );
+      $("#detailCourseDays").append(sectionHourss,$(`<div style='margin-top: 20px;'></div>`));
+    }
+
+    // var sectionHrs = sectionsAr[];
+  }
   detailCourseTitle.innerText = rowArr[2];
   detailCourseCategory.innerText = rowArr[1];
   detailCourseType.innerText = rowArr[4];
   detailCourseLvlorsub.innerText = rowArr[3];
   detailCourseFee.innerText = rowArr[5];
   detailCourseInstructor.innerText = rowArr[6];
-  detailCourseServices.innerText = rowArr[11];
-  detailCourseDiscount.innerText = rowArr[12];
-  detailCourseStartDate.innerText = rowArr[9];
-  detailCourseDuration.innerText = rowArr[10];
-  detailCourseDays.innerText = days;
-  detailCourseFromTo.innerText = rowArr[8];
-  detailCourseNote.innerText = rowArr[13];
+  detailCourseServices.innerText = rowArr[10];
+  detailCourseDiscount.innerText = rowArr[11];
+  detailCourseStartDate.innerText = rowArr[8];
+  detailCourseDuration.innerText = rowArr[9];
+  // detailCourseDays.innerText = days;
+  // detailCourseFromTo.innerText = rowArr[8];
+  detailCourseNote.innerText = rowArr[12];
 }
 
 function setCurrentCourseDel(event, idx) {

@@ -280,8 +280,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                                 <th class="select-type-filter">Type</th>
                                                 <th>Fee</th>
                                                 <th class="select-instructor-filter">Instructor</th>
-                                                <th>Days</th>
-                                                <th>Time</th>
+                                                <th>Days & Time</th>
                                                 <th>Start Date</th>
                                                 <th>Duration</th>
                                                 <th>Services</th>
@@ -296,7 +295,8 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                         <tbody>
                                             <?php
                                             while ($row = mysqli_fetch_assoc($result)) :
-                                                $section_time = json_decode($row["sections"], true);
+                                                $sections = json_decode($row["sections"], true);
+                                                // var_dump($sections);
                                             ?>
                                                 <tr onclick="setCurrentCourseDetail(this)" data-toggle="modal" data-target="#detailModal" class="tb-row">
                                                     <td><?= $row['course_id'] ?></td>
@@ -304,16 +304,24 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                                     <td><?= $row['course_title'] ?></td>
                                                     <td><?= $row['course_level'] ?></td>
                                                     <td data-toggle="tooltip" data-placement="top" title="<?= $row['type_title'] ?>"><?php echo $row['type_title'] == "Online" ? "🟢" : "🔵" ?></td>
-                                                    <td><?= number_format($row['fee']) ." MMK"?></td>
+                                                    <td><?= number_format($row['fee']) . " MMK" ?></td>
                                                     <td><?php echo $row['instructor'] === "" ? "-" : $row['instructor'] ?></td>
                                                     <td><?php
-                                                        for ($i = 0; $i < count($section_time['days']); $i++) {
-                                                            $days = array("M" => "Monday", "Tu" => "Tuesday", "W" => "Wednesday", "Th" => "Thursday", "F" => "Friday", "Sa" => "Saturday", "Su" => "Sunday");
-                                                            echo "<span class='days-badges' data-toggle='tooltip' data-placement='top' title='" . $days[$section_time['days'][$i]] . "'>" . $section_time['days'][$i] . "</span>";
+                                                        for ($j = 0; $j < count($sections); $j++) {
+                                                            for ($i = 0; $i < count($sections[$j]["days"]); $i++) {
+                                                                $days = array("M" => "Monday", "Tu" => "Tuesday", "W" => "Wednesday", "Th" => "Thursday", "F" => "Friday", "Sa" => "Saturday", "Su" => "Sunday");
+                                                                echo "<span class='days-badges' data-toggle='tooltip' data-placement='top' title='" . $days[$sections[$j]['days'][$i]] . "'>" . $sections[$j]['days'][$i] . "</span>";
+                                                            }
+                                                            echo "<div class='mt-2'></div>";
+                                                            echo "<span class='section-hr-badge mt-3'>" . $sections[$j]['sectionHour'] . "</span>";
+                                                            if ($j == count($sections) - 1) {
+                                                                echo "";
+                                                            } else {
+                                                                echo "<hr/>";
+                                                            }
                                                         }
                                                         ?>
                                                     </td>
-                                                    <td><?= $section_time['sectionHour'] ?></td>
                                                     <td><?php echo $row['start_date'] == null ? "-" : $row['start_date'] ?>
                                                     <td><?= $row['duration'] . " months" ?></td>
                                                     <td><?php echo $row['services'] === "" ? "-" : $row['services'] ?></td>
@@ -402,13 +410,10 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                             <td id="detailCourseDuration"></td>
                                         </tr>
                                         <tr>
-                                            <td>Days</td>
+                                            <td>Days & Time</td>
                                             <td id="detailCourseDays"></td>
                                         </tr>
-                                        <tr>
-                                            <td>From~To</td>
-                                            <td id="detailCourseFromTo"></td>
-                                        </tr>
+
                                         <tr>
                                             <td>Note</td>
                                             <td id="detailCourseNote"></td>
@@ -494,26 +499,11 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                         <input type="number" class="form-control" id="duration" name="duration" aria-describedby="monthsField" placeholder="Duration In Months" required />
                                     </div>
                                 </div>
-                                <div class="mb-4 mx-auto row justify-content-between">
-                                    <div class=" input-left mb-3 mb-md-0">
-                                        <label for="startTime">Class Starts At:<span class="my-required-field">Required*</span></label>
-                                        <input type="time" class="form-control" id="startTime" name="startTime" aria-describedby="startTimeField" required />
-                                    </div>
-                                    <div class="input-right">
-                                        <label for="endTime">Class Ends At:<span class="my-required-field">Required*</span> </label>
-                                        <input type="time" class="form-control" id="endTime" name="endTime" aria-describedby="endTimeField" required />
-                                    </div>
-                                </div>
-                                <div class="form-group mb-4">
-                                    <label class="mb-2">Choose Days &nbsp; <span class="help-block" id="dayCheckErr"></span></label>
-                                    <div class="row justify-content-between px-3">
-                                        <?php foreach ([["st" => "M", "lg" => "MON"], ["st" => "Tu", "lg" => "TUE"], ["st" => "W", "lg" => "WED"], ["st" => "Th", "lg" => "THU"], ["st" => "F", "lg" => "FRI"], ["st" => "Sa", "lg" => "SAT"], ["st" => "Su", "lg" => "SUN"]] as $day) { ?>
-                                            <div class="custom-control custom-checkbox small days-checkbox form-day-check">
-                                                <input type="checkbox" id="<?= $day["st"] ?>" value="<?= $day["st"] ?>" name="days[]" class="day-chck">
-                                                <label class="mb-0 mt-1" for="<?= $day["st"] ?>"><?= $day["lg"] ?></label>
-                                            </div>
-                                        <?php } ?>
-                                    </div>
+
+                                <div class="form-group mb-4 section-gp" id="timeSection">
+                                    <button class="btn mt-2 btn-user btn-success" id="addSection">Add Section</button>
+                                    <hr />
+                                    <!-- here add sections -->
                                 </div>
 
                                 <div class="form-group mb-4">
@@ -619,12 +609,12 @@ $noti_result = mysqli_query($conn, $get_notifications);
 
     <!-- Page level custom scripts -->
     <script src="js/courses-filter.js"></script>
-    <script src="js/style.js"></script>
     <script>
         $(function() {
             $('[data-toggle="tooltip"]').tooltip()
         })
     </script>
+    <script src="js/style.js"></script>
 </body>
 
 </html>

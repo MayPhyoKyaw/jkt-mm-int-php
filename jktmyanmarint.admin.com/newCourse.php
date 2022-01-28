@@ -279,44 +279,47 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                 </div>
                                 <div class="input-right">
                                     <label for="discountPercent">Enter Discount (%)</label>
-                                    <input type="number" class="form-control" id="discountPercent" name="discountPercent" aria-describedby="discountField" placeholder="eg. 5"/>
+                                    <input type="number" class="form-control" id="discountPercent" name="discountPercent" aria-describedby="discountField" placeholder="eg. 5" />
                                 </div>
                             </div>
                             <div class="mb-4 mx-auto row justify-content-between">
                                 <div class=" input-left mb-3 mb-md-0">
                                     <label for="startDate">Choose Start Date</label>
-                                    <input type="date" class="form-control" id="startDate" name="startDate" aria-describedby="dateField"/>
+                                    <input type="date" class="form-control" id="startDate" name="startDate" aria-describedby="dateField" />
                                 </div>
                                 <div class="input-right">
                                     <label for="duration">Duration (Months)<span class="my-required-field">Required*</span></label>
                                     <input type="number" class="form-control" id="duration" name="duration" aria-describedby="monthsField" placeholder="Duration In Months" required />
                                 </div>
                             </div>
-                            <div class="mb-4 mx-auto row justify-content-between">
-                                <div class=" input-left mb-3 mb-md-0">
-                                    <label for="startTime">Class Starts At:<span class="my-required-field">Required*</span></label>
-                                    <input type="time" class="form-control" id="startTime" name="startTime" aria-describedby="startTimeField"/>
-                                </div>
-                                <div class="input-right">
-                                    <label for="endTime">Class Ends At:<span class="my-required-field">Required*</span></label>
-                                    <input type="time" class="form-control" id="endTime" name="endTime" aria-describedby="endTimeField"/>
-                                </div>
-                            </div>
-                            <div class="form-group mb-4">
-                                <label class="mb-2">Choose Days &nbsp; <span class="help-block" id="dayCheckErr"></span></label>
-                                <div class="row justify-content-between px-3">
+
+                            <div class="form-group mb-4 section-gp" id="timeSection">
+                                <button class="btn mt-2 btn-user btn-success" id="addSection">Add Section</button>
+                                <hr />
+                                <label class="mb-2 d-block mt-3 sectionno">Section 1</label>
+                                <div class="row justify-content-between px-3 mt-2">
                                     <?php foreach ([["st" => "M", "lg" => "MON"], ["st" => "Tu", "lg" => "TUE"], ["st" => "W", "lg" => "WED"], ["st" => "Th", "lg" => "THU"], ["st" => "F", "lg" => "FRI"], ["st" => "Sa", "lg" => "SAT"], ["st" => "Su", "lg" => "SUN"]] as $day) { ?>
                                         <div class="custom-control custom-checkbox small days-checkbox form-day-check">
-                                            <input type="checkbox" id="<?= $day["st"] ?>" value="<?= $day["st"] ?>" name="days[]" class="day-chck">
-                                            <label class="mb-0 mt-1" for="<?= $day["st"] ?>"><?= $day["lg"] ?></label>
+                                            <input type="checkbox" id="day1<?= $day["st"] ?>" value="<?= $day["st"] ?>" name="days1[]" class="day-chck">
+                                            <label class="mb-0 mt-1" for="day1<?= $day["st"] ?>"><?= $day["lg"] ?></label>
                                         </div>
                                     <?php } ?>
+                                </div>
+                                <div class="mt-4 mb-3 mx-auto row justify-content-between">
+                                    <div class=" input-left mb-3 mb-md-0">
+                                        <label for="startTime">Class Starts At:<span class="my-required-field">Required*</span></label>
+                                        <input type="time" class="form-control" id="startTime1" name="startTime1" aria-describedby="startTimeField" />
+                                    </div>
+                                    <div class="input-right">
+                                        <label for="endTime">Class Ends At:<span class="my-required-field">Required*</span></label>
+                                        <input type="time" class="form-control" id="endTime1" name="endTime1" aria-describedby="endTimeField" />
+                                    </div>
                                 </div>
                             </div>
 
                             <div class="form-group mb-4">
                                 <label for="instructor">Enter Instructor Name</label>
-                                <input type="text" class="form-control" name="instructor" id="instructor" placeholder="Mr./Mrs. ..."/>
+                                <input type="text" class="form-control" name="instructor" id="instructor" placeholder="Mr./Mrs. ..." />
                             </div>
                             <div class="form-group mb-4">
                                 <label for="services">Enter Services</label>
@@ -387,6 +390,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
 
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
+    <script src="js/sectionControl.js"></script>
 </body>
 
 </html>

@@ -22,23 +22,37 @@ if ($_POST["discountPercent"] && intval($_POST["discountPercent"]) > 0) {
 $time = strtotime($_POST["startDate"]);
 $startDate = date('Y-m-d H:i:s', $time);
 
-if ($startDate == "1970-01-01 01:00:00") {
-    $startDate = null;
+$curSection = 1;
+$sectionsArr = [];
+while (TRUE) {
+    if (isset($_POST["days$curSection"]) || (isset($_POST["startTime$curSection"]) || isset($_POST["endTime$curSection"]))) {
+
+        if (isset($_POST["days$curSection"])) {
+            $days = $_POST["days$curSection"];
+        } else {
+            $days = [];
+        }
+        $startTime = $_POST["startTime$curSection"];
+        $endTime = $_POST["endTime$curSection"];
+        $arrObj = array("days" => $days, "sectionHour" => "$startTime~$endTime");
+        array_push($sectionsArr,$arrObj);
+        $curSection++;
+    } else {
+        break;
+    }
 }
 
-if (isset($_POST["days"])) {
-    $days = $_POST["days"];
-} else {
-    $days = [];
-}
+// if ($startDate == "1970-01-01 01:00:00") {
+//     $startDate = null;
+// }
 
-$startTime = $_POST["startTime"];
-$endTime = $_POST["endTime"];
+
+
 $duration = intval($_POST["duration"]);
 
 // section json obj change
-$arrObj = array("days" => $days, "sectionHour" => "$startTime~$endTime");
-$sections = json_encode($arrObj);
+
+$sections = json_encode($sectionsArr);
 
 if (isset($_POST["instructor"])) {
     $instructor = $_POST["instructor"];
@@ -56,8 +70,10 @@ if (isset($_POST["note"])) {
     $note = "";
 }
 
-// $sql = "INSERT INTO courses (category_id,type_id,title,level_or_sub,fee,instructor,services,discount_percent,start_date,duration,sections,note, created_at,
-//  updated_at) VALUES ($categoryId,$typeId,'$title','$level_or_sub',$fee,'$instructor','$services',$discountPercent,'$startDate',$duration,'$sections', '$note' ,now(), now())";
-// // echo $sql;
-// mysqli_query($conn, $sql);
-// header("location: ../courses.php");
+var_dump($sections);
+
+$sql = "INSERT INTO courses (category_id,type_id,title,level_or_sub,fee,instructor,services,discount_percent,start_date,duration,sections,note, created_at,
+ updated_at) VALUES ($categoryId,$typeId,'$title','$level_or_sub',$fee,'$instructor','$services',$discountPercent,'$startDate',$duration,'$sections', '$note' ,now(), now())";
+// echo $sql;
+mysqli_query($conn, $sql);
+header("location: ../courses.php");
