@@ -218,26 +218,38 @@
                       ?>
                     </td>
                     <td data-label="တက်‌ရောက်ရမည့်အချိန် နှင့် ရက်">
-                      <?php $section_time = json_decode($row["sections"], true); ?>
-                      <?php for ($i = 0; $i < count($section_time["days"]); $i++) { ?>
-                        <span id="days" class="days schedule-days-badges <?php
-                                                                          switch ($section_time["days"][$i]) {
-                                                                            case "Sa":
-                                                                            case "Su":
-                                                                              echo "weekend";
-                                                                              break;
-                                                                            default:
-                                                                              echo "weekday";
-                                                                              break;
-                                                                          }
-                                                                          ?>"><?php echo $section_time["days"][$i];
-                              echo "</span>";
-                            } ?><br><br>
-                        <span class="section-hour schedule-time-badges row-data" id="section_hour">
-                          <?php
-                          echo $section_time["sectionHour"];
+                        <?php
+                          // var_dump($row["sections"]);
+                          // var_dump($row["sections"][0]); 
+                          $sections = json_decode($row["sections"], true);
+                          for($i = 0; $i < count($sections); $i++) {
+                            // var_dump($sections[$i]["days"]);
+                            echo "<div class='sections'>";
+                            for($j = 0; $j < count($sections[$i]["days"]); $j++) {
+                        ?>
+                              <span id="days" class="days schedule-days-badges <?php
+                                switch($sections[$i]["days"][$j]) {
+                                  case "Sa":
+                                  case "Su":
+                                    echo "weekend";
+                                    break;
+                                  default:
+                                    echo "weekday";
+                                    break;                           
+                                }  
+                          ?>"><?php 
+                                  echo $sections[$i]["days"][$j];
+                                echo "</span>"; 
+                              } 
+                            ?>
+                              <span class="section-hour schedule-time-badges" id="section_hour">
+                                <?php 
+                                  echo $sections[$i]["sectionHour"];
+                                ?>
+                              </span><br><br>
+                          <?php }
+                            echo "</div>";
                           ?>
-                        </span>
                     </td>
                     <td data-label="သင်တန်းကြေး (ကျပ်)">
                       <span id="price"><?php echo number_format($row["fee"]) ?></span>
@@ -315,15 +327,11 @@
               </td>
             </tr>
             <tr>
-              <td class="schedule-modal-label">တက်‌ရောက်ရမည့်ရက်</td>
-              <td id="modal_days">
-              </td>
-            </tr>
-            <tr>
-              <td class="schedule-modal-label">တက်‌ရောက်ရမည့်အချိန်</td>
-              <td>
-                <span id="modal_time"></span>
-              </td>
+                <td class="schedule-modal-label">တက်‌ရောက်ရမည့်အချိန် နှင့် ရက် :</td>
+                <td id="modal_days_time" class="modal_days_time">
+                  <!-- <span id="modal_days"></span>
+                  <span id="modal_time"></span> -->
+                </td>
             </tr>
             <tr>
               <td class="schedule-modal-label">သင်တန်းကြေး (ကျပ်) </td>
@@ -413,17 +421,23 @@
         <iframe id="digital" src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FJKT-Digital-Institute-101947668883371%2F&tabs=timeline&width=500&height=790&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=300620088760320" width="87%" class="ifr" height="550" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
         </iframe>
       </div>
-      <div class="comment-blog px-0 px-md-4 pb-5 col-12 col-lg-5 pt-5 pt-lg-0">
-        <h3>မှတ်ချက် ပေးရန်</h3>
-        <div class="row py-3">
-          <div class="col-lg-12 comment-form">
-            <form id="comment-form-mm">
-              <textarea name="comment" id="comment" placeholder="မှတ်ချက်ရေးရန်ရိုက်ထည့်ပါ"></textarea>
-              <span class="warning-message"></span>
-            </form>
-            <button id="btn-comment" type="button" name="button" onclick="submitCommentForJPSchool(this)" class="about-boxed-btn">
-              မှတ်ချက်ပေးပို့ရန်
-            </button>
+      <div class="col-12 col-lg-5" style="height : 568px;display : flex;flex-direction:column;justify-content : space-between;">
+        <a class="ml-md-4 view-detail w-100 text-center" style="margin-top: 7px;" href="https://youtube.com/channel/UCEIZEkvGrAB-LxXAbcPv0Xg" target="_blank">
+          Youtube
+          <i class="fab fa-youtube"></i>
+        </a>
+        <div class="comment-blog px-0 ml-4 w-100">
+          <h3>မှတ်ချက် ပေးရန်</h3>
+          <div class="row py-3">
+            <div class="col-lg-12 comment-form">
+              <form id="comment-form-mm">
+                <textarea style="height: 300px; width : 100%" name="comment" id="comment" placeholder="မှတ်ချက်ရေးရန်ရိုက်ထည့်ပါ"></textarea>
+                <span class="warning-message"></span>
+              </form>
+              <button id="btn-comment" type="button" name="button" onclick="submitCommentForJPSchool(event)" class="about-boxed-btn">
+                မှတ်ချက်ပေးပို့ရန်
+              </button>
+            </div>
           </div>
         </div>
       </div>

@@ -193,6 +193,13 @@ html {
   background-color: #5bafe7 !important;
 } */
 
+.go-appointment {
+
+  text-align: right;
+  /* margin-left: ; */
+  /* border-bottom: 1px solid #5bafe7; */
+}
+
 .breadcrumb {
   background-color: white;
   border-bottom: 1px solid #5bafe7;
@@ -200,6 +207,10 @@ html {
   font-size: 18px;
   font-weight: 300;
 }
+
+/* .breadcrumb .breadcrumb-item {
+  float: left;
+} */
 
 .breadcrumb .breadcrumb-item a {
   /* color: #fff; */
@@ -1662,13 +1673,13 @@ figure img {
 .schedule-time-badges {
   padding: 0 8px;
   display: inline-block;
-  font-size: 14px;
+  font-size: 15px;
   border-radius: 5px;
   color: whitesmoke;
   margin: 5px;
   text-align: center;
-  height: 20px;
-  line-height: 17px;
+  height: 23px;
+  line-height: 20px;
 }
 
 .schedule-days-badges {
@@ -1733,6 +1744,10 @@ figure img {
   color: whitesmoke;
   margin: 5px;
   font-size: 15px;
+}
+
+.modal_days_time {
+  padding-top: 40px !important;
 }
 
 /* JP school schedule table */
@@ -2758,7 +2773,7 @@ iframe::-webkit-scrollbar-thumb:hover {
     font-weight: bold;
     text-align: left;
     text-transform: uppercase;
-    width: 120px;
+    width: 50%;
   }
 
   .schedule-table td:last-child {
@@ -3064,6 +3079,10 @@ iframe::-webkit-scrollbar-thumb:hover {
   .fixed {
     padding: 0 20px;
   }
+  .schedule-table td::before {
+    width: 60%;
+    font-size: 13px;
+  }
 }
 
 @media only screen and (max-width: 376px) {
@@ -3091,6 +3110,10 @@ iframe::-webkit-scrollbar-thumb:hover {
   }
   .other-info-blog h3 {
     padding: 35px 0;
+  }
+  .schedule-table td::before {
+    width: 60%;
+    font-size: 13px;
   }
 }
 
@@ -3170,6 +3193,7 @@ iframe::-webkit-scrollbar-thumb:hover {
   }
   .schedule-table td::before {
     width: 120px;
+    font-size: 12px;
   }
   .enroll {
     padding: 5px 12px;
