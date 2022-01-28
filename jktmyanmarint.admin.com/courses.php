@@ -303,7 +303,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                                     <td><?= $row['category_title'] ?></td>
                                                     <td><?= $row['course_title'] ?></td>
                                                     <td><?= $row['course_level'] ?></td>
-                                                    <td data-toggle="tooltip" data-placement="top" title="<?= $row['type_title'] ?>"><?php echo $row['type_title'] == "Online" ? "🟢" : "🔵" ?></td>
+                                                    <td data-toggle="tooltip" data-placement="top" title="<?= $row['type_title'] ?>"><?php echo $row['type_title'] == "Online" ? "🟢" : ($row['type_title'] == "In Class" ? "🔵" : "🔶") ?></td>
                                                     <td><?= number_format($row['fee']) . " MMK" ?></td>
                                                     <td><?php echo $row['instructor'] === "" ? "-" : $row['instructor'] ?></td>
                                                     <td><?php
