@@ -92,7 +92,7 @@ $(document).ready(function () {
             .unique()
             .sort()
             .each(function (d, j) {
-              console.log(d, j);
+              // console.log(d, j);
               select.append(`
                 <option value='${d}'>${d}</option>
               `);

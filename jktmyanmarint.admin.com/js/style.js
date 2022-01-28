@@ -102,6 +102,10 @@ var detailCourseNote = document.getElementById("detailCourseNote");
 
 let nrcArr = null;
 
+function numberWithCommas(x) {
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
 function setCurrentEditing(event, row, idx, classIdx, classFee) {
   $("#editingModal").modal("show");
   event.stopPropagation();
@@ -157,7 +161,7 @@ function setCurrentEditing(event, row, idx, classIdx, classFee) {
     newPaymentField.style.display = "none";
   }
 
-  console.log(rowArr[5]);
+  // console.log(rowArr[5]);
   if (rowArr[5] == "✅") {
     approved = true;
   } else if (rowArr[5] == "❌") {
@@ -293,7 +297,7 @@ function setCurrentCourseEdit(event, row, catId, typeId) {
   courseCategoryIdEdit.value = catId;
   courseTypeIdEdit.value = typeId;
   level_or_sub.value = rowArr[3];
-  fee.value = rowArr[5];
+  fee.value = parseInt(rowArr[5].substring(0, rowArr[5].length-4).replace(/,/g, ''));
   discountPercent.value = parseInt(rowArr[12]);
   var date = new Date(rowArr[9]);
 
@@ -350,12 +354,12 @@ function setCurrentCourseDetail(row) {
     }
   }
 
-  console.log(rowArr);
+  // console.log(rowArr);
 
   detailCourseTitle.innerText = rowArr[2];
   detailCourseCategory.innerText = rowArr[1];
-  detailCourseType.innerText = rowArr[3];
-  detailCourseLvlorsub.innerText = rowArr[4];
+  detailCourseType.innerText = rowArr[4];
+  detailCourseLvlorsub.innerText = rowArr[3];
   detailCourseFee.innerText = rowArr[5];
   detailCourseInstructor.innerText = rowArr[6];
   detailCourseServices.innerText = rowArr[11];

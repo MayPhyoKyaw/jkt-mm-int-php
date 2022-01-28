@@ -29,8 +29,8 @@ $noti_result = mysqli_query($conn, $get_notifications);
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
-    <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <!-- Custom styles for this page -->
     <link href="css/style.css" rel="stylesheet">
 </head>
 
@@ -277,7 +277,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                                 <th class="select-category-filter">Category Title</th>
                                                 <th>Course Title</th>
                                                 <th class="select-level-filter">Level</th>
-                                                <th class="select-type-filter">Type Title</th>
+                                                <th class="select-type-filter">Type</th>
                                                 <th>Fee</th>
                                                 <th class="select-instructor-filter">Instructor</th>
                                                 <th>Days</th>
@@ -303,12 +303,13 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                                     <td><?= $row['category_title'] ?></td>
                                                     <td><?= $row['course_title'] ?></td>
                                                     <td><?= $row['course_level'] ?></td>
-                                                    <td><?= $row['type_title'] ?></td>
-                                                    <td><?= $row['fee'] ?></td>
+                                                    <td data-toggle="tooltip" data-placement="top" title="<?= $row['type_title'] ?>"><?php echo $row['type_title'] == "Online" ? "🟢" : "🔵" ?></td>
+                                                    <td><?= number_format($row['fee']) ." MMK"?></td>
                                                     <td><?php echo $row['instructor'] === "" ? "-" : $row['instructor'] ?></td>
                                                     <td><?php
                                                         for ($i = 0; $i < count($section_time['days']); $i++) {
-                                                            echo "<span class='days-badges'>" . $section_time['days'][$i] . "</span>";
+                                                            $days = array("M" => "Monday", "Tu" => "Tuesday", "W" => "Wednesday", "Th" => "Thursday", "F" => "Friday", "Sa" => "Saturday", "Su" => "Sunday");
+                                                            echo "<span class='days-badges' data-toggle='tooltip' data-placement='top' title='" . $days[$section_time['days'][$i]] . "'>" . $section_time['days'][$i] . "</span>";
                                                         }
                                                         ?>
                                                     </td>
@@ -619,6 +620,11 @@ $noti_result = mysqli_query($conn, $get_notifications);
     <!-- Page level custom scripts -->
     <script src="js/courses-filter.js"></script>
     <script src="js/style.js"></script>
+    <script>
+        $(function() {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
 </body>
 
 </html>
