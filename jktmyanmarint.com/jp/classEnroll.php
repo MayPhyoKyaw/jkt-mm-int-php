@@ -119,22 +119,22 @@ function encrypt_decrypt($action, $string)
           </li>
           <li class="lang">
             <div class="btn-group" role="group" aria-label="First group">
-              <a href="../classEnroll.php"><button type="button" class="btn btn1">
+              <a href="../classEnroll.php?courseId=<?php echo $_GET['courseId'] ?>"><button type="button" class="btn btn1">
                   <img src="../assets/images/icon/ukFlag.png" height="20px" width="25px" /></button></a>
-              <a href="../mm/classEnroll.php"><button type="button" class="btn btn2">
+              <a href="../mm/classEnroll.php?courseId=<?php echo $_GET['courseId'] ?>"><button type="button" class="btn btn2">
                   <img src="../assets/images/icon/mmFlag.svg" height="20px" width="25px" /></button></a>
-              <a href="./classEnroll.php"><button type="button" class="btn btn3" style="background-color: rgba(91, 175, 231, 0.5)">
+              <a href="./classEnroll.php?courseId=<?php echo $_GET['courseId'] ?>"><button type="button" class="btn btn3" style="background-color: rgba(91, 175, 231, 0.5)">
                   <img src="../assets/images/icon/japanFlag.jpg" height="20px" width="25px" /></button></a>
             </div>
           </li>
         </ul>
       </div>
       <div class="btn-group lang-xl" role="group" aria-label="First group">
-        <a href="../classEnroll.php"><button type="button" class="btn btn1">
+        <a href="../classEnroll.php?courseId=<?php echo $_GET['courseId'] ?>"><button type="button" class="btn btn1">
             <img src="../assets/images/icon/ukFlag.png" height="20px" width="25px" /></button></a>
-        <a href="../mm/classEnroll.php"><button type="button" class="btn btn2">
+        <a href="../mm/classEnroll.php?courseId=<?php echo $_GET['courseId'] ?>"><button type="button" class="btn btn2">
             <img src="../assets/images/icon/mmFlag.svg" height="20px" width="25px" /></button></a>
-        <a href="./classEnroll.php"><button type="button" class="btn btn3" style="background-color: rgba(91, 175, 231, 0.5)">
+        <a href="./classEnroll.php?courseId=<?php echo $_GET['courseId'] ?>"><button type="button" class="btn btn3" style="background-color: rgba(91, 175, 231, 0.5)">
             <img src="../assets/images/icon/japanFlag.jpg" height="20px" width="25px" /></button></a>
       </div>
     </div>
@@ -190,9 +190,13 @@ function encrypt_decrypt($action, $string)
                 </p>
                 <p class="class-detail">
                   <?php
-                  $sale_price = $origin_fee - ($origin_fee * $row['discount_percent'] / 100);
-                  echo "<span class='sale-price'>" . number_format($origin_fee) . "</span>&nbsp;";
-                  echo number_format($sale_price) . " MMK";
+                    if($row['discount_percent'] != 0) {
+                      $sale_price = $origin_fee - ($origin_fee * $row['discount_percent'] / 100);
+                      echo "<span class='sale-price'>" . number_format($origin_fee) . "</span>&nbsp;";
+                      echo number_format($sale_price) . " MMK";
+                    } else {
+                      echo $origin_fee . " MMK";
+                    }
                   ?>
                 </p>
                 <p class="class-detail">
@@ -709,9 +713,13 @@ function encrypt_decrypt($action, $string)
                 </p>
                 <p class="class-detail">
                   <?php
-                  $sale_price = $origin_fee - ($origin_fee * $row['discount_percent'] / 100);
-                  echo "<span class='sale-price'>" . number_format($origin_fee) . "</span>&nbsp;";
-                  echo number_format($sale_price) . " MMK";
+                  if($row['discount_percent'] != 0) {
+                    $sale_price = $origin_fee - ($origin_fee * $row['discount_percent'] / 100);
+                    echo "<span class='sale-price'>" . number_format($origin_fee) . "</span>&nbsp;";
+                    echo number_format($sale_price) . " MMK";
+                  } else {
+                    echo $origin_fee . " MMK";
+                  }
                   ?>
                 </p>
                 <p class="class-detail">
@@ -733,7 +741,7 @@ function encrypt_decrypt($action, $string)
                     echo "<div class='sections-enroll'>";
                     for ($j = 0; $j < count($sections[$i]["days"]); $j++) {
                   ?>
-                      <span id="days" class="days schedule-days-badges <?php
+                      <span id="days" class="days schedule-days-badges accordion-badges <?php
                                                                         switch ($sections[$i]["days"][$j]) {
                                                                           case "Sa":
                                                                           case "Su":

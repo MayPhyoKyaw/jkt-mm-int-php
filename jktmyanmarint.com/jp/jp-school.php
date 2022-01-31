@@ -294,6 +294,7 @@
                     </td>
                     <td data-label="登録">
                       <?php $encryptedCourseId = encrypt_decrypt("encrypt", $row['course_id']) ?>
+                      <span class="hidden row-data"><?php echo $encryptedCourseId; ?></span>
                       <a href="./classEnroll.php?courseId=<?php echo $encryptedCourseId; ?>"><button class="enroll">
                           <img src="../assets/images/icon/contract.png" alt="" width="20" height="20" />
                         </button></a>
@@ -401,7 +402,7 @@
         <!-- Modal footer -->
         <div class="modal-footer">
           <button type="button" class="btn-cancel" data-dismiss="modal">キャンセル</button>
-          <a href="./classEnroll.php"><button type="button" class="btn-submit" id="enroll_class">登録</button></a>
+          <a id="modalEnroll"><button type="button" class="btn-submit" id="enroll_class">登録</button></a>
         </div>
 
       </div>

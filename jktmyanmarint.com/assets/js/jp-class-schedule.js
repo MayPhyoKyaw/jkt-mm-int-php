@@ -56,6 +56,15 @@ $(document).ready(function() {
         console.log(modal_sections);
         $("#modal_days_time").addClass("modal_days_time").append(modal_sections);
 
+        let encryptedCourseId = data[11].innerHTML;
+        let getUrl = window.location.href;
+        var arr = getUrl.split('/');
+        arr.pop();
+        let url = arr.join('/');
+        $("#modalEnroll").click(function() {
+            window.location = `${url}/classEnroll.php?courseId=${encryptedCourseId}`;
+        })
+
             // console.log(days, days.length)
             // for(let i=0; i<days.length; i++) {
             //     let day = days[i].innerHTML; 

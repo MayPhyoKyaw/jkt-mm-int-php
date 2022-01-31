@@ -1,6 +1,31 @@
 <?php
 session_start();
 $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
+function encrypt_decrypt($action, $string)
+{
+  /* =================================================
+  * ENCRYPTION-DECRYPTION
+  * =================================================
+  * ENCRYPTION: encrypt_decrypt('encrypt', $string);
+  * DECRYPTION: encrypt_decrypt('decrypt', $string) ;
+  */
+  $output = false;
+  $encrypt_method = "AES-256-CBC";
+  $secret_key = 'JKT-2019-20IT85-MM-JP';
+  $secret_iv = 'JKT-2019-serV1ce-MM-JP';
+  // hash
+  $key = hash('sha256', $secret_key);
+  // iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
+  $iv = substr(hash('sha256', $secret_iv), 0, 16);
+  if ($action == 'encrypt') {
+    $output = base64_encode(openssl_encrypt($string, $encrypt_method, $key, 0, $iv));
+  } else {
+    if ($action == 'decrypt') {
+      $output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);
+    }
+  }
+  return $output;
+}
 ?>
 
 <!DOCTYPE html>
@@ -93,26 +118,37 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
           </li>
           <li class="lang">
             <div class="btn-group" role="group" aria-label="First group">
-              <a href="./classEnroll.php"><button type="button" class="btn btn1" style="background-color: rgba(91, 175, 231, 0.5)">
+              <a href="./classEnroll.php?courseId=<?php echo $_GET['courseId'] ?>"><button type="button" class="btn btn1" style="background-color: rgba(91, 175, 231, 0.5)">
                   <img src="./assets/images/icon/ukFlag.png" height="20px" width="25px" /></button></a>
-              <a href="./mm/classEnroll.php"><button type="button" class="btn btn2">
+              <a href="./mm/classEnroll.php?courseId=<?php echo $_GET['courseId'] ?>"><button type="button" class="btn btn2">
                   <img src="./assets/images/icon/mmFlag.svg" height="20px" width="25px" /></button></a>
-              <a href="./jp/classEnroll.php"><button type="button" class="btn btn3">
+              <a href="./jp/classEnroll.php?courseId=<?php echo $_GET['courseId'] ?>"><button type="button" class="btn btn3">
                   <img src="./assets/images/icon/japanFlag.jpg" height="20px" width="25px" /></button></a>
             </div>
           </li>
         </ul>
       </div>
       <div class="btn-group lang-xl" role="group" aria-label="First group">
-        <a href="./classEnroll.php"><button type="button" class="btn btn1" style="background-color: rgba(91, 175, 231, 0.5)">
+        <a href="./classEnroll.php?courseId=<?php echo $_GET['courseId'] ?>"><button type="button" class="btn btn1" style="background-color: rgba(91, 175, 231, 0.5)">
             <img src="./assets/images/icon/ukFlag.png" height="20px" width="25px" /></button></a>
-        <a href="./mm/classEnroll.php"><button type="button" class="btn btn2">
+        <a href="./mm/classEnroll.php?courseId=<?php echo $_GET['courseId'] ?>"><button type="button" class="btn btn2">
             <img src="./assets/images/icon/mmFlag.svg" height="20px" width="25px" /></button></a>
-        <a href="./jp/classEnroll.php"><button type="button" class="btn btn3">
+        <a href="./jp/classEnroll.php?courseId=<?php echo $_GET['courseId'] ?>"><button type="button" class="btn btn3">
             <img src="./assets/images/icon/japanFlag.jpg" height="20px" width="25px" /></button></a>
       </div>
     </div>
   </nav>
+
+  <?php
+  $decryptedCourseId = encrypt_decrypt("decrypt", $_GET['courseId']);
+  $courseId = isset($decryptedCourseId) ? $decryptedCourseId : null;
+  include_once("../jktmyanmarint.admin.com/confs/config.php");
+  $get_course = "SELECT course_id, c.title AS course_title, cty.title AS category_title, 
+                            t.title AS type_title, level_or_sub, fee, instructor, 
+                            services, discount_percent, start_date, duration, sections, note
+                            FROM courses c, categories cty, types t WHERE course_id = $courseId AND
+                            c.category_id = cty.category_id AND c.type_id = t.type_id";
+  ?>
 
   <!-- JP School header start -->
   <section>
@@ -137,78 +173,84 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
   <section>
     <div class="container">
       <div class="row justify-content-center">
-        <div class="col-12 col-sm-11 d-block d-lg-none text-center mt-4">
-          <?php 
-            $courseId = isset($_SESSION['courseId']) ? $_SESSION['courseId'] : null;
-            include("../jktmyanmarint.admin.com/confs/config.php"); 
-            $get_course = "SELECT course_id, c.title AS course_title, cty.title AS category_title, 
-                          t.title AS type_title, level_or_sub, fee, instructor, 
-                          services, discount_percent, start_date, duration, sections, note
-                          FROM courses c, categories cty, types t WHERE course_id = $courseId AND
-                          c.category_id = cty.category_id AND c.type_id = t.type_id";
-          ?>
-            <div class="tabs">
-              <div class="tab">
-                <?php 
-                  $result = mysqli_query($conn, $get_course);
-                  $row = mysqli_fetch_assoc($result);
-                  $origin_fee = $row['fee'];
-                  $section_time = json_decode($row["sections"], true);
-                ?>
-                  <input type="checkbox" id="chck2" class="accordion">
-                  <label class="tab-label" for="chck2"><?php echo $row['category_title'] . " " . $row['course_title']; ?></label>
-                  <div class="tab-content">
-                    <p class="class-detail">
-                      <?php echo $row['level_or_sub'] . " (" . $row['type_title'] . ")"; ?>
-                    </p>
-                    <p class="class-detail">
-                      <?php echo $origin_fee; ?>
-                    </p>
-                    <p class="class-detail">
-                      <?php echo $row['instructor']; ?>
-                    </p>
-                    <p class="class-detail">
-                      <?php echo $row['duration']; ?>
-                    </p>
-                    <p class="class-detail">
-                      <?php echo $row['start_date']; ?>
-                    </p>
-                    <p class="class-detail">
-                      <?php 
-                        $sale_price = $origin_fee - ($origin_fee * $row['discount_percent']/100);
-                        echo $sale_price; 
-                      ?>
-                    </p>
-                    <p class="class-detail">
-                      <?php for($i = 0; $i < count($section_time["days"]); $i++) { ?>
+      <div class="col-12 col-sm-11 text-center mt-4 d-block d-lg-flex">
+          <div class="tabs d-block d-lg-none">
+            <div class="tab">
+              <?php 
+                 $result = mysqli_query($conn, $get_course);
+                 $row = mysqli_fetch_assoc($result);
+                 $origin_fee = $row['fee'];
+              ?>
+              <input type="checkbox" id="chck2" class="accordion">
+              <label class="tab-label" for="chck2"><?php echo $row['category_title'] . " " . $row['course_title']; ?></label>
+              <div class="tab-content">
+                <p class="class-detail">
+                  <?php echo $row['level_or_sub'] . " (" . $row['type_title'] . ")"; ?>
+                </p>
+                <p class="class-detail">
+                  <?php
+                  if($row['discount_percent'] != 0) {
+                    $sale_price = $origin_fee - ($origin_fee * $row['discount_percent'] / 100);
+                    echo "<span class='sale-price'>" . number_format($origin_fee) . "</span>&nbsp;";
+                    echo number_format($sale_price) . " MMK";
+                  } else {
+                    echo $origin_fee . " MMK";
+                  }
+                  ?>
+                </p>
+                <p class="class-detail">
+                  <?php echo $row['instructor'] === "" ? '-' : $row['instructor']; ?>
+                </p>
+                <p class="class-detail">
+                  <?php echo $row['duration'] . " Months"; ?>
+                </p>
+                <p class="class-detail">
+                  <?php echo empty($row['start_date']) ? '-' : $row['start_date']; ?>
+                </p>
+                <p class="class-detail">
+                  <?php
+                  // var_dump($row["sections"]);
+                  // var_dump($row["sections"][0]); 
+                  $sections = json_decode($row["sections"], true);
+                  for ($i = 0; $i < count($sections); $i++) {
+                    // var_dump($sections[$i]["days"]);
+                    echo "<div class='sections-enroll'>";
+                    for ($j = 0; $j < count($sections[$i]["days"]); $j++) {
+                  ?>
                       <span id="days" class="days schedule-days-badges <?php
-                        switch($section_time["days"][$i]) {
-                                case "Sa":
-                                case "Su":
-                                  echo "weekend";
-                                  break;
-                                default:
-                                  echo "weekday";
-                                  break;                           
-                              }  
-                      ?>">
-                        <?php echo $section_time["days"][$i];
-                            echo "</span>";
-                      } ?>
-                    </p>
-                    <p class="class-detail">
-                      <span class="section-hour schedule-time-badges"><?php echo $section_time['sectionHour']; ?></span>
-                    </p>
-                    <p class="class-detail">
-                      <?php echo $row['services']; ?>
-                    </p>
-                    <p class="class-detail">
-                      <?php $note = $row['note'] === '' ? '-' : $row['note']; 
-                        echo $note; ?>
-                    </p>
-                  </div>
+                                                                        switch ($sections[$i]["days"][$j]) {
+                                                                          case "Sa":
+                                                                          case "Su":
+                                                                            echo "weekend";
+                                                                            break;
+                                                                          default:
+                                                                            echo "weekday";
+                                                                            break;
+                                                                        }
+                                                                        ?>"><?php
+                        echo $sections[$i]["days"][$j];
+                        echo "</span>";
+                      }
+                        ?>
+                      <span class="section-hour schedule-time-badges" id="section_hour">
+                        <?php
+                        echo $sections[$i]["sectionHour"];
+                        ?>
+                      </span><br>
+                    <?php }
+                  echo "</div>";
+                    ?>
+                </p>
+                <p class="class-detail">
+                  <?php echo $row['services']; ?>
+                </p>
+                <p class="class-detail">
+                  <?php $note = $row['note'] === '' ? '-' : $row['note'];
+                  echo $note; ?>
+                </p>
               </div>
             </div>
+          </div>
         </div>
         <div class="col-11 col-lg-7 text-center p-0 mt-3 mb-2">
           <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
@@ -674,62 +716,78 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
           </div>
         </div>
         <div class="col-12 col-lg-4 offset-lg-1 d-none d-lg-block text-center mb-5 mt-5 pt-3">
-            <div class="tabs">
-              <div class="tab">
-                  <input type="checkbox" id="chck1" class="accordion">
-                  <label class="tab-label ml-4" for="chck1"><?php echo $row['category_title'] . " " . $row['course_title']; ?></label>
-                  <div class="tab-content">
-                    <p class="class-detail">
-                      <?php echo $row['level_or_sub'] . " (" . $row['type_title'] . ")" ;?>
-                    </p>
-                    <p class="class-detail">
-                      <?php 
-                        $sale_price = $origin_fee - ($origin_fee * $row['discount_percent']/100);
-                        echo "<span class='sale-price'>" . number_format($origin_fee) . "</span>&nbsp;";
-                        echo number_format($sale_price) . " MMK";
-                      ?>
-                    </p>
-                    <p class="class-detail">
-                      <span class="schedule-time-badges instructor">
-                        <?php echo $row['instructor']; ?>
-                      </span>
-                    </p>
-                    <p class="class-detail">
-                      <?php echo $row['duration']; ?>
-                    </p>
-                    <p class="class-detail">
-                      <?php echo $row['start_date']; ?>
-                    </p>
-                    <p class="class-detail">
-                      <?php for($i = 0; $i < count($section_time["days"]); $i++) { ?>
-                      <span id="days" class="days schedule-days-badges <?php
-                        switch($section_time["days"][$i]) {
-                                case "Sa":
-                                case "Su":
-                                  echo "weekend";
-                                  break;
-                                default:
-                                  echo "weekday";
-                                  break;                           
-                              }  
-                      ?>">
-                        <?php echo $section_time["days"][$i];
-                            echo "</span>";
-                      } ?>
-                    </p>
-                    <p class="class-detail">
-                      <span class="section-hour schedule-time-badges"><?php echo $section_time['sectionHour']; ?></span>
-                    </p>
-                    <p class="class-detail">
-                      <?php echo $row['services']; ?>
-                    </p>
-                    <p class="class-detail">
-                      <?php $note = $row['note'] === '' ? '-' : $row['note']; 
-                        echo $note; ?>
-                    </p>
-                  </div>
+          <div class="tabs">
+            <div class="tab">
+              <input type="checkbox" id="chck1" class="accordion" checked>
+              <label class="tab-label ml-4" for="chck1"><?php echo $row['category_title'] . " " . $row['course_title']; ?></label>
+              <div class="tab-content">
+                <p class="class-detail">
+                  <?php echo $row['level_or_sub'] . " (" . $row['type_title'] . ")"; ?>
+                </p>
+                <p class="class-detail">
+                  <?php
+                  if($row['discount_percent'] != 0) {
+                    $sale_price = $origin_fee - ($origin_fee * $row['discount_percent'] / 100);
+                    echo "<span class='sale-price'>" . number_format($origin_fee) . "</span>&nbsp;";
+                    echo number_format($sale_price) . " MMK";
+                  } else {
+                    echo $origin_fee . " MMK";
+                  }
+                  ?>
+                </p>
+                <p class="class-detail">
+                  <?php echo $row['instructor'] === "" ? '-' : $row['instructor']; ?>
+                </p>
+                <p class="class-detail">
+                  <?php echo $row['duration'] . " Months"; ?>
+                </p>
+                <p class="class-detail">
+                  <?php echo empty($row['start_date']) ? '-' : $row['start_date']; ?>
+                </p>
+                <p class="class-detail">
+                  <?php
+                  // var_dump($row["sections"]);
+                  // var_dump($row["sections"][0]); 
+                  $sections = json_decode($row["sections"], true);
+                  for ($i = 0; $i < count($sections); $i++) {
+                    // var_dump($sections[$i]["days"]);
+                    echo "<div class='sections-enroll'>";
+                    for ($j = 0; $j < count($sections[$i]["days"]); $j++) {
+                  ?>
+                      <span id="days" class="days schedule-days-badges accordion-badges <?php
+                                                                        switch ($sections[$i]["days"][$j]) {
+                                                                          case "Sa":
+                                                                          case "Su":
+                                                                            echo "weekend";
+                                                                            break;
+                                                                          default:
+                                                                            echo "weekday";
+                                                                            break;
+                                                                        }
+                                                                        ?>"><?php
+                        echo $sections[$i]["days"][$j];
+                        echo "</span>";
+                      }
+                        ?>
+                      <span class="section-hour schedule-time-badges" id="section_hour">
+                        <?php
+                        echo $sections[$i]["sectionHour"];
+                        ?>
+                      </span><br>
+                    <?php }
+                  echo "</div>";
+                    ?>
+                </p>
+                <p class="class-detail">
+                  <?php echo $row['services']; ?>
+                </p>
+                <p class="class-detail">
+                  <?php $note = $row['note'] === '' ? '-' : $row['note'];
+                  echo $note; ?>
+                </p>
               </div>
             </div>
+          </div>
         </div>
       </div>
     </div>

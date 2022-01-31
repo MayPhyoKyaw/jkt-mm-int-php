@@ -193,29 +193,45 @@ html {
   background-color: #5bafe7 !important;
 } */
 
+/* .breadcrumb .breadcrumb-item {
+  float: left;
+} */
+
 .go-appointment {
-  position: absolute;
-  right: 100px;
-  text-decoration: underline;
+  /* position: absolute; */
+  /* right: 100px; */
+  /* top: 89%; */
+  float: right;
+  /* text-decoration: underline; */
+  /* text-decoration-color: #5bafe7; */
   color: #5bafe7;
+  border: 1px solid #5bafe7;
+  padding: 8px 20px;
+  margin-top: -10px;
   /* cursor: pointer; */
 }
 
 .go-appointment:hover {
-  color: #001c69;
+  background-color: #5bafe7;
+  color: #294aa5;
+  text-decoration: none;
 }
 
 .breadcrumb {
+  display: block;
+  width: 100%;
   background-color: white;
   border-bottom: 1px solid #5bafe7;
-  padding: 25px 10%;
+  padding: 35px 10%;
   font-size: 18px;
   font-weight: 300;
+  height: max-content;
+  height: 100px;
 }
 
-/* .breadcrumb .breadcrumb-item {
+.breadcrumb .breadcrumb-item {
   float: left;
-} */
+}
 
 .breadcrumb .breadcrumb-item a {
   /* color: #fff; */
@@ -1698,6 +1714,10 @@ figure img {
   border-radius: 50%;
   color: whitesmoke;
   margin: 3px;
+}
+
+.accordion-badges:first-child {
+  margin-left: 25px !important;
 }
 
 .in-progress-badges {
@@ -3270,6 +3290,23 @@ iframe::-webkit-scrollbar-thumb:hover {
   }
 }
 
+@media only screen and (max-width: 839px) {
+  .breadcrumb {
+    padding: 35px 5%;
+  }
+}
+
+@media only screen and (max-width: 746px) {
+  .breadcrumb {
+    height: 120px;
+    padding: 35px 6%;
+  }
+  .go-appointment {
+    float: none;
+    margin-bottom: 15px;
+  }
+}
+
 @media only screen and (max-width: 460px) {
   /* .contact-header {
     margin-top: 100%;
@@ -3278,6 +3315,9 @@ iframe::-webkit-scrollbar-thumb:hover {
   .load-map {
     left: 0%;
     top: 10%;
+  }
+  .breadcrumb {
+    height: 150px;
   }
 }
 
