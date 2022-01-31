@@ -1,7 +1,32 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+    function encrypt_decrypt($action, $string) {
+        /* =================================================
+        * ENCRYPTION-DECRYPTION
+        * =================================================
+        * ENCRYPTION: encrypt_decrypt('encrypt', $string);
+        * DECRYPTION: encrypt_decrypt('decrypt', $string) ;
+        */
+        $output = false;
+        $encrypt_method = "AES-256-CBC";
+        $secret_key = 'JKT-2019-20IT85-MM-JP';
+        $secret_iv = 'JKT-2019-serV1ce-MM-JP';
+        // hash
+        $key = hash('sha256', $secret_key);
+        // iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
+        $iv = substr(hash('sha256', $secret_iv), 0, 16);
+        if ($action == 'encrypt') {
+            $output = base64_encode(openssl_encrypt($string, $encrypt_method, $key, 0, $iv));
+        } else {
+            if ($action == 'decrypt') {
+                $output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);
+            }
+        }
+        return $output;
+    }
+?>
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -185,9 +210,9 @@
               </thead>
               <tbody>
                 <?php
-                if (isset($_SESSION['courseId'])) {
-                  unset($_SESSION['courseId']);
-                }
+                // if (isset($_SESSION['courseId'])) {
+                //   unset($_SESSION['courseId']);
+                // }
                 include_once("../../jktmyanmarint.admin.com/confs/config.php");
                 $schedule = "SELECT course_id, c.title AS course_title, cty.title AS category_title,
                                   t.title AS type_title, level_or_sub, fee, instructor,
@@ -196,7 +221,6 @@
                                   AND c.type_id = t.type_id AND (cty.title = 'JLPT' OR cty.title = 'EJU')  ORDER BY c.created_at LIMIT 4";
                 $schedule_result = mysqli_query($conn, $schedule);
                 while ($row = mysqli_fetch_array($schedule_result)) {
-                  $_SESSION['courseId'] = $row['course_id'];
                 ?>
                   <tr id="<?php echo $row["course_id"]; ?>">
                     <td style="display: none">
@@ -269,7 +293,8 @@
                       </button>
                     </td>
                     <td data-label="登録">
-                      <a href="./classEnroll.php"><button class="enroll">
+                      <?php $encryptedCourseId = encrypt_decrypt("encrypt", $row['course_id']) ?>
+                      <a href="./classEnroll.php?courseId=<?php echo $encryptedCourseId; ?>"><button class="enroll">
                           <img src="../assets/images/icon/contract.png" alt="" width="20" height="20" />
                         </button></a>
                     </td>

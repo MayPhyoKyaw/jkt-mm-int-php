@@ -1,5 +1,5 @@
-<?php 
-    session_start(); 
+<?php
+session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -150,23 +150,24 @@
                         <select name="categories" class="class-filter">
                             <option value="" selected>Filter By Categories</option>
                             <?php
-                                if(isset($_POST['filterSubmit'])){
-                                    $selected_cat = $_POST['categories'];
-                                    $select_cat = "SELECT * FROM categories";
-                                    $cat_result = mysqli_query($conn, $select_cat);
-                                    while ($row1 = mysqli_fetch_array($cat_result)) {
+                            if (isset($_POST['filterSubmit'])) {
+                                $selected_cat = $_POST['categories'];
+                                $select_cat = "SELECT * FROM categories";
+                                $cat_result = mysqli_query($conn, $select_cat);
+                                while ($row1 = mysqli_fetch_array($cat_result)) {
                             ?>
-                                <option name="categories" value="<?php echo $row1['category_id'] ?>" <?php if($row1['category_id'] == $selected_cat) echo "selected" ?>><?php echo $row1['title'] ?></option>
-                            <?php }
+                                    <option name="categories" value="<?php echo $row1['category_id'] ?>" <?php if ($row1['category_id'] == $selected_cat) echo "selected" ?>><?php echo $row1['title'] ?></option>
+                                <?php }
                             } else {
                                 $select_cat = "SELECT * FROM categories";
                                 $cat_result = mysqli_query($conn, $select_cat);
                                 while ($row2 = mysqli_fetch_array($cat_result)) {
-                        ?>
-                            <option name="categories" value="<?php echo $row2['category_id'] ?>"><?php echo $row2['title'] ?></option>
-                            <?php }}?>
+                                ?>
+                                    <option name="categories" value="<?php echo $row2['category_id'] ?>"><?php echo $row2['title'] ?></option>
+                            <?php }
+                            } ?>
                         </select>
-                        <input type="submit" name="filterSubmit" value="Filter" class="filter-button"/>
+                        <input type="submit" name="filterSubmit" value="Filter" class="filter-button" />
                     </form>
                 </div>
             </div>
@@ -215,39 +216,51 @@
                                                 <td data-label="Class" scope="row">
                                                     <?php echo $row["category_title"] . " "; ?>
                                                     <span id="course_title" class="row-data"><?php echo $row["course_title"]; ?></span>
-                                                    <span><?php echo empty($row["level_or_sub"]) ? '' : '- '.$row["level_or_sub"]; ?></span>
+                                                    <span><?php echo empty($row["level_or_sub"]) ? '' : '- ' . $row["level_or_sub"]; ?></span>
                                                     <?php echo " (" . $row["type_title"] . ")"; ?>
-                                                    <?php 
-                                                        // echo $row['start_date'] < date("Y-m-d") ? "<br><br><span class='in-progress-badges'>In Progess</span>" : "";
+                                                    <?php
+                                                    // echo $row['start_date'] < date("Y-m-d") ? "<br><br><span class='in-progress-badges'>In Progess</span>" : "";
                                                     ?>
                                                 </td>
                                                 <td data-label="Days & Time">
-                                                    <?php $section_time = json_decode($row["sections"], true); ?>
-                                                    <?php for ($i = 0; $i < count($section_time["days"]); $i++) { ?>
-                                                        <span id="days" class="days schedule-days-badges <?php
-                                                                                                            switch ($section_time["days"][$i]) {
-                                                                                                                case "Sa":
-                                                                                                                case "Su":
-                                                                                                                    echo "weekend";
-                                                                                                                    break;
-                                                                                                                default:
-                                                                                                                    echo "weekday";
-                                                                                                                    break;
-                                                                                                            }
-                                                                                                            ?>"><?php echo $section_time["days"][$i];
-                                                                                                                echo "</span>";
-                                                                                                            } ?><br><br>
-                                                        <span class="section-hour schedule-time-badges row-data" id="section_hour">
-                                                            <?php
-                                                            echo $section_time["sectionHour"];
-                                                            ?>
-                                                        </span>
+                                                    <?php
+                                                    // var_dump($row["sections"]);
+                                                    // var_dump($row["sections"][0]); 
+                                                    $sections = json_decode($row["sections"], true);
+                                                    for ($i = 0; $i < count($sections); $i++) {
+                                                        // var_dump($sections[$i]["days"]);
+                                                        echo "<div class='sections'>";
+                                                        for ($j = 0; $j < count($sections[$i]["days"]); $j++) {
+                                                    ?>
+                                                            <span id="days" class="days schedule-days-badges <?php
+                                                                                                                switch ($sections[$i]["days"][$j]) {
+                                                                                                                    case "Sa":
+                                                                                                                    case "Su":
+                                                                                                                        echo "weekend";
+                                                                                                                        break;
+                                                                                                                    default:
+                                                                                                                        echo "weekday";
+                                                                                                                        break;
+                                                                                                                }
+                                                                                                                ?>"><?php
+                                                                                                                    echo $sections[$i]["days"][$j];
+                                                                                                                    echo "</span>";
+                                                                                                                }
+                                                                                                                    ?>
+                                                            <span class="section-hour schedule-time-badges" id="section_hour">
+                                                                <?php
+                                                                echo $sections[$i]["sectionHour"];
+                                                                ?>
+                                                            </span><br>
+                                                        <?php }
+                                                    echo "</div>";
+                                                        ?>
                                                 </td>
                                                 <td data-label="Fees (Kyats)">
                                                     <span id="price"><?php echo number_format($row["fee"]) ?></span>
                                                 </td>
                                                 <td data-label="Start Date & Duration">
-                                                    <?php if(!empty($row["start_date"])) { ?>
+                                                    <?php if (!empty($row["start_date"])) { ?>
                                                         <span id="start_date" class="row-data"><?php echo $row["start_date"] ?></span><br><br>
                                                     <?php } else { ?>
                                                         <span id="start_date" class="row-data"></span>
@@ -271,7 +284,7 @@
                                     </tbody>
                                 <?php
                                 } else {
-                                    if(isset($_SESSION['selected_category'])) {
+                                    if (isset($_SESSION['selected_category'])) {
                                         unset($_SESSION['selected_category']);
                                     }
                                     $schedule = "SELECT course_id, c.title AS course_title, cty.title AS category_title,
@@ -300,39 +313,51 @@
                                                 <td data-label="Class" scope="row">
                                                     <?php echo $row["category_title"] . " "; ?>
                                                     <span id="course_title" class="row-data"><?php echo $row["course_title"]; ?></span>
-                                                    <span><?php echo empty($row["level_or_sub"]) ? '' : '- '.$row["level_or_sub"]; ?></span>
+                                                    <span><?php echo empty($row["level_or_sub"]) ? '' : '- ' . $row["level_or_sub"]; ?></span>
                                                     <?php echo " (" . $row["type_title"] . ")"; ?>
-                                                    <?php 
-                                                        // echo $row['start_date'] < date("Y-m-d") ? "<br><br><span class='in-progress-badges'>In Progess</span>" : "";
+                                                    <?php
+                                                    // echo $row['start_date'] < date("Y-m-d") ? "<br><br><span class='in-progress-badges'>In Progess</span>" : "";
                                                     ?>
                                                 </td>
                                                 <td data-label="Days & Time">
-                                                    <?php $section_time = json_decode($row["sections"], true); ?>
-                                                    <?php for ($i = 0; $i < count($section_time["days"]); $i++) { ?>
-                                                        <span id="days" class="days schedule-days-badges <?php
-                                                                                                            switch ($section_time["days"][$i]) {
-                                                                                                                case "Sa":
-                                                                                                                case "Su":
-                                                                                                                    echo "weekend";
-                                                                                                                    break;
-                                                                                                                default:
-                                                                                                                    echo "weekday";
-                                                                                                                    break;
-                                                                                                            }
-                                                                                                            ?>"><?php echo $section_time["days"][$i];
-                                                                                                                echo "</span>";
-                                                                                                            } ?><br><br>
-                                                        <span class="section-hour schedule-time-badges row-data" id="section_hour">
-                                                            <?php
-                                                            echo $section_time["sectionHour"];
-                                                            ?>
-                                                        </span>
+                                                    <?php
+                                                    // var_dump($row["sections"]);
+                                                    // var_dump($row["sections"][0]); 
+                                                    $sections = json_decode($row["sections"], true);
+                                                    for ($i = 0; $i < count($sections); $i++) {
+                                                        // var_dump($sections[$i]["days"]);
+                                                        echo "<div class='sections'>";
+                                                        for ($j = 0; $j < count($sections[$i]["days"]); $j++) {
+                                                    ?>
+                                                            <span id="days" class="days schedule-days-badges <?php
+                                                                                                                switch ($sections[$i]["days"][$j]) {
+                                                                                                                    case "Sa":
+                                                                                                                    case "Su":
+                                                                                                                        echo "weekend";
+                                                                                                                        break;
+                                                                                                                    default:
+                                                                                                                        echo "weekday";
+                                                                                                                        break;
+                                                                                                                }
+                                                                                                                ?>"><?php
+                                                                                                                    echo $sections[$i]["days"][$j];
+                                                                                                                    echo "</span>";
+                                                                                                                }
+                                                                                                                    ?>
+                                                            <span class="section-hour schedule-time-badges" id="section_hour">
+                                                                <?php
+                                                                echo $sections[$i]["sectionHour"];
+                                                                ?>
+                                                            </span><br>
+                                                        <?php }
+                                                    echo "</div>";
+                                                        ?>
                                                 </td>
                                                 <td data-label="Fees (Kyats)">
                                                     <span id="price"><?php echo number_format($row["fee"]) ?></span>
                                                 </td>
                                                 <td data-label="Start Date & Duration">
-                                                    <?php if(!empty($row["start_date"])) { ?>
+                                                    <?php if (!empty($row["start_date"])) { ?>
                                                         <span id="start_date" class="row-data"><?php echo $row["start_date"] ?></span><br><br>
                                                     <?php } else { ?>
                                                         <span id="start_date" class="row-data"></span>
@@ -384,39 +409,51 @@
                                             <td data-label="Class" scope="row">
                                                 <?php echo $row["category_title"] . " "; ?>
                                                 <span id="course_title" class="row-data"><?php echo $row["course_title"]; ?></span>
-                                                <span><?php echo empty($row["level_or_sub"]) ? '' : '- '.$row["level_or_sub"]; ?></span>
+                                                <span><?php echo empty($row["level_or_sub"]) ? '' : '- ' . $row["level_or_sub"]; ?></span>
                                                 <?php echo " (" . $row["type_title"] . ")"; ?>
-                                                <?php 
-                                                    // echo $row['start_date'] < date("Y-m-d") ? "<br><br><span class='in-progress-badges'>In Progess</span>" : "";
+                                                <?php
+                                                // echo $row['start_date'] < date("Y-m-d") ? "<br><br><span class='in-progress-badges'>In Progess</span>" : "";
                                                 ?>
                                             </td>
                                             <td data-label="Days & Time">
-                                                <?php $section_time = json_decode($row["sections"], true); ?>
-                                                <?php for ($i = 0; $i < count($section_time["days"]); $i++) { ?>
-                                                    <span id="days" class="days schedule-days-badges <?php
-                                                                                                        switch ($section_time["days"][$i]) {
-                                                                                                            case "Sa":
-                                                                                                            case "Su":
-                                                                                                                echo "weekend";
-                                                                                                                break;
-                                                                                                            default:
-                                                                                                                echo "weekday";
-                                                                                                                break;
-                                                                                                        }
-                                                                                                        ?>"><?php echo $section_time["days"][$i];
-                                                                                                            echo "</span>";
-                                                                                                        } ?><br><br>
-                                                    <span class="section-hour schedule-time-badges row-data" id="section_hour">
-                                                        <?php
-                                                        echo $section_time["sectionHour"];
-                                                        ?>
-                                                    </span>
+                                                <?php
+                                                // var_dump($row["sections"]);
+                                                // var_dump($row["sections"][0]); 
+                                                $sections = json_decode($row["sections"], true);
+                                                for ($i = 0; $i < count($sections); $i++) {
+                                                    // var_dump($sections[$i]["days"]);
+                                                    echo "<div class='sections'>";
+                                                    for ($j = 0; $j < count($sections[$i]["days"]); $j++) {
+                                                ?>
+                                                        <span id="days" class="days schedule-days-badges <?php
+                                                                                                            switch ($sections[$i]["days"][$j]) {
+                                                                                                                case "Sa":
+                                                                                                                case "Su":
+                                                                                                                    echo "weekend";
+                                                                                                                    break;
+                                                                                                                default:
+                                                                                                                    echo "weekday";
+                                                                                                                    break;
+                                                                                                            }
+                                                                                                            ?>"><?php
+                                                                                echo $sections[$i]["days"][$j];
+                                                                                echo "</span>";
+                                                                            }
+                                                                                ?>
+                                                        <span class="section-hour schedule-time-badges" id="section_hour">
+                                                            <?php
+                                                            echo $sections[$i]["sectionHour"];
+                                                            ?>
+                                                        </span><br>
+                                                    <?php }
+                                                echo "</div>";
+                                                    ?>
                                             </td>
                                             <td data-label="Fees (Kyats)">
                                                 <span id="price"><?php echo number_format($row["fee"]) ?></span>
                                             </td>
                                             <td data-label="Start Date & Duration">
-                                                <?php if(!empty($row["start_date"])) { ?>
+                                                <?php if (!empty($row["start_date"])) { ?>
                                                     <span id="start_date" class="row-data"><?php echo $row["start_date"] ?></span><br><br>
                                                 <?php } else { ?>
                                                     <span id="start_date" class="row-data"></span>
@@ -479,15 +516,8 @@
                             </td>
                         </tr>
                         <tr>
-                            <td class="schedule-modal-label">Days :</td>
-                            <td id="modal_days">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="schedule-modal-label">Time :</td>
-                            <td>
-                                <span id="modal_time"></span>
-                            </td>
+                            <td class="schedule-modal-label">Days & Time :</td>
+                            <td id="modal_days_time" class="modal_days_time"></td>
                         </tr>
                         <tr>
                             <td class="schedule-modal-label">Fees (Kyats) :</td>

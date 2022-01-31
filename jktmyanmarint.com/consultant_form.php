@@ -149,7 +149,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
             <input type="text" id="phone" placeholder="Enter Your Phone Number" class="appointment-input" required /><br />
 
             <fieldset class="appointment-fieldset">
-              <legend>Choose a type for your appointment?</legend>
+              <legend class="appointment-legend">Choose a type for your appointment?</legend>
 
               <input type="radio" id="appointment_type" name="appointment_type" value="Morning" />
               <label for="appointment_type" id="radio-label" class="appointment-label">Online</label><br />
@@ -170,8 +170,8 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
               <input type="hidden" name="appointment_date" id="appointment_date" value="" />
             </div>
 
-            <fieldset class="appointment-fieldset border p-2">
-              <legend>Choose an estimated time for your appointment?</legend>
+            <fieldset class="appointment-fieldset">
+              <legend class="appointment-legend">Choose an estimated time for your appointment?</legend>
 
               <input type="radio" id="appointment_time" name="appointment_time" value="Morning" />
               <label for="appointment_time" id="radio-label" class="appointment-label">Morning</label><br />
@@ -180,16 +180,18 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
               <label for="appointment_time" id="radio-label" class="appointment-label">Afternoon</label><br />
             </fieldset>
 
-            <label for="dropdown" id="dropdown-label" class="appointment-label">Appointment Duration</label><br />
+            <label for="dropdown" id="dropdown-label" class="appointment-label">
+              Appointment Duration & Fees
+              <span class="consultant-note"> &nbsp;**Based on your consultant description</span>
+            </label><br />
             <select id="dropdown" class="appointment-select">
               <option value="" disabled selected>
-                Select Estimated Appointment Duration
+                Select Estimated Appointment Duration & Fees
               </option>
-              <option value="Below 30 Minutes">Below 30 Minutes</option>
-              <option value="Below 60 Minutes">Below 60 Minutes</option>
-              <option value="1 Hours ~ 2 Hours">1 Hours ~ 2 Hours</option>
-              <option value="2 Hours ~ 3 Hours">2 Hours ~ 3 Hours</option>
-              <option value="3 Hours ~ 4 Hours">3 Hours ~ 4 Hours</option>
+              <option value="Below 60 Minutes">About 60 Minutes - $100 Est.</option>
+              <option value="1 Hours ~ 2 Hours">1 Hours ~ 2 Hours - $200 Est.</option>
+              <option value="2 Hours ~ 3 Hours">2 Hours ~ 3 Hours- $300 Est.</option>
+              <option value="3 Hours ~ 4 Hours">3 Hours ~ 4 Hours- $400 Est.</option>
             </select><br />
 
             <label for="description" id="description-label" class="appointment-label">About Your Consultant ? </label><br />
