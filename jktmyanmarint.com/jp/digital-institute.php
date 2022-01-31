@@ -176,7 +176,7 @@
               <thead>
                 <tr>
                   <th scope="col">名称</th>
-                  <th scope="col" style="width: 15em">日程</th>
+                  <th scope="col" style="width: 16em">日程</th>
                   <th scope="col">学費 <br>「チャット」</th>
                   <th scope="col">開始日 と <br> 期間</th>
                   <th scope="col" style="width: 6em">詳細</th>
@@ -209,7 +209,7 @@
                       <span id="price" class="row-data"><?php echo $row["fee"]; ?></span>
                       <span id="note" class="row-data"><?php echo $row["note"]; ?></span>
                     </td>
-                    <td data-label="名称" scope="row">
+                    <td data-label="名称" scope="row" style="text-align: left;">
                       <?php echo $row["category_title"] . " "; ?>
                       <span id="course_title" class="row-data"><?php echo $row["course_title"]; ?></span>
                       <span><?php echo empty($row["level_or_sub"]) ? '' : '- ' . $row["level_or_sub"]; ?></span>
@@ -218,7 +218,7 @@
                       // echo $row['start_date'] < date("Y-m-d") ? "<br><br><span class='in-progress-badges'>In Progess</span>" : "";
                       ?>
                     </td>
-                    <td data-label="日程">
+                    <td data-label="日程" style="text-align: left; padding-left: 30px;">
                         <?php
                           // var_dump($row["sections"]);
                           // var_dump($row["sections"][0]); 
@@ -247,7 +247,7 @@
                                 <?php 
                                   echo $sections[$i]["sectionHour"];
                                 ?>
-                              </span><br><br>
+                              </span><br>
                           <?php }
                             echo "</div>";
                           ?>

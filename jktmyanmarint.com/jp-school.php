@@ -176,7 +176,7 @@
               <thead>
                 <tr>
                   <th scope="col">Class</th>
-                  <th scope="col" style="width: 15em">Days & Time</th>
+                  <th scope="col" style="width: 16em">Days & Time</th>
                   <th scope="col">Fees (Kyats)</th>
                   <th scope="col">Start Date & <br> Duration</th>
                   <!-- <th scope="col"></th> -->
@@ -210,7 +210,7 @@
                       <span id="price" class="row-data"><?php echo $row["fee"]; ?></span>
                       <span id="note" class="row-data"><?php echo $row["note"]; ?></span>
                     </td>
-                    <td data-label="Class" scope="row">
+                    <td data-label="Class" scope="row" style="text-align: left;">
                       <?php echo $row["category_title"] . " "; ?>
                       <span id="course_title" class="row-data"><?php echo $row["course_title"]; ?></span>
                       <span><?php echo empty($row["level_or_sub"]) ? '' : '- ' . $row["level_or_sub"]; ?></span>
@@ -219,7 +219,7 @@
                       // echo $row['start_date'] < date("Y-m-d") ? "<br><br><span class='in-progress-badges'>In Progess</span>" : "";
                       ?>
                     </td>
-                    <td data-label="Days & Time">
+                    <td data-label="Days & Time" style="text-align: left; padding-left: 30px;">
                       <?php
                       // var_dump($row["sections"]);
                       // var_dump($row["sections"][0]); 
@@ -248,7 +248,7 @@
                             <?php
                             echo $sections[$i]["sectionHour"];
                             ?>
-                          </span><br><br>
+                          </span><br>
                         <?php }
                       echo "</div>";
                         ?>
