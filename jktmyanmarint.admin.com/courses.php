@@ -306,27 +306,32 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                                     <td data-toggle="tooltip" data-placement="top" title="<?= $row['type_title'] ?>"><?php echo $row['type_title'] == "Online" ? "🟢" : ($row['type_title'] == "In Class" ? "🔵" : "🔶") ?></td>
                                                     <td><?= number_format($row['fee']) . " MMK" ?></td>
                                                     <td><?php echo $row['instructor'] === "" ? "-" : $row['instructor'] ?></td>
-                                                    <td><?php
-                                                        for ($j = 0; $j < count($sections); $j++) {
-                                                            for ($i = 0; $i < count($sections[$j]["days"]); $i++) {
-                                                                $days = array("M" => "Monday", "Tu" => "Tuesday", "W" => "Wednesday", "Th" => "Thursday", "F" => "Friday", "Sa" => "Saturday", "Su" => "Sunday");
-                                                                echo "<span class='days-badges' data-toggle='tooltip' data-placement='top' title='" . $days[$sections[$j]['days'][$i]] . "'>" . $sections[$j]['days'][$i] . "</span>";
+                                                    <td>
+                                                        <div class="tb-scroll <?php echo count($sections) < 3 ? 'hide-scroll' : '' ?>">
+                                                            <?php
+                                                            for ($j = 0; $j < count($sections); $j++) {
+                                                                for ($i = 0; $i < count($sections[$j]["days"]); $i++) {
+                                                                    $days = array("M" => "Monday", "Tu" => "Tuesday", "W" => "Wednesday", "Th" => "Thursday", "F" => "Friday", "Sa" => "Saturday", "Su" => "Sunday");
+                                                                    echo "<span class='days-badges' data-toggle='tooltip' data-placement='top' title='" . $days[$sections[$j]['days'][$i]] . "'>" . $sections[$j]['days'][$i] . "</span>";
+                                                                }
+                                                                echo "<div class='mt-2'></div>";
+                                                                echo "<span class='section-hr-badge mt-3'>" . $sections[$j]['sectionHour'] . "</span>";
+                                                                if ($j == count($sections) - 1) {
+                                                                    echo "";
+                                                                } else {
+                                                                    echo "<hr/>";
+                                                                }
                                                             }
-                                                            echo "<div class='mt-2'></div>";
-                                                            echo "<span class='section-hr-badge mt-3'>" . $sections[$j]['sectionHour'] . "</span>";
-                                                            if ($j == count($sections) - 1) {
-                                                                echo "";
-                                                            } else {
-                                                                echo "<hr/>";
-                                                            }
-                                                        }
-                                                        ?>
+                                                            ?>
+                                                        </div>
                                                     </td>
                                                     <td><?php echo $row['start_date'] == null ? "-" : $row['start_date'] ?>
                                                     <td><?= $row['duration'] . " months" ?></td>
                                                     <td><?php echo $row['services'] === "" ? "-" : $row['services'] ?></td>
                                                     <td><?= $row['discount_percent'] . " %" ?></td>
-                                                    <td><?php echo $row['note'] === "" ? "-" : $row['note'] ?></td>
+                                                    <td>
+                                                        <p class="tb-scroll note-scroll <?php echo strlen($row['note']) < 50 ? 'hide-scroll' : '' ?>"><?php echo $row['note'] === "" ? "-" : $row['note'] ?></p>
+                                                    </td>
                                                     <td><?= $row['created_at'] ?></td>
                                                     <td><?= $row['updated_at'] ?></td>
                                                     <td><button class="tb-btn tb-btn-edit" onclick="setCurrentCourseEdit(event,this,<?php echo $row['category_id'] ?>,<?php echo $row['type_id'] ?>)" data-toggle="modal" data-target="#editingModal"><i class="fa fa-pencil"></i></button></td>
@@ -505,7 +510,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                     <hr />
                                     <!-- here add sections -->
                                     <div id="addSectionHere">
-                                        
+
                                     </div>
                                 </div>
 
