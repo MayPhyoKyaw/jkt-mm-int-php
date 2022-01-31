@@ -42,9 +42,9 @@ while (TRUE) {
     }
 }
 
-// if ($startDate == "1970-01-01 01:00:00") {
-//     $startDate = null;
-// }
+if ($startDate == "1970-01-01 01:00:00") {
+    $startDate = NULL;
+}
 
 
 

@@ -180,7 +180,7 @@ function setCurrentEditing(event, row, idx, classIdx, classFee) {
       }
     }
   }
-  console.log(rowArr);
+  // console.log(rowArr);
   enrollmentId.value = idx;
   imagePreview.src = "https://jktmyanmarint.com/backend/" + rowArr[0];
   notChangeImg.value = rowArr[0];
@@ -222,7 +222,7 @@ function setCurrentEditing(event, row, idx, classIdx, classFee) {
   } else if (rowArr[5] == "❌") {
     approved = false;
   }
-  console.log(approved);
+  // console.log(approved);
   isPending.checked = (approved == "1" && true) || false;
   createdAt.value = rowArr[6];
 }
@@ -232,7 +232,7 @@ function setCurrentDeleting(event, row, idx) {
   event.stopPropagation();
   var tr = row.closest("tr");
   var tds = tr.children;
-  console.log(tds);
+  // console.log(tds);
   var rowArr = [];
   for (var i = 0; i < tds.length; i++) {
     if (i == 0) {
@@ -241,7 +241,7 @@ function setCurrentDeleting(event, row, idx) {
       rowArr.push(tds[i].textContent);
     }
   }
-  console.log(rowArr[2]);
+  // console.log(rowArr[2]);
 
   stuName.innerText = rowArr[2];
   enrollmentDeletingId.value = idx;
@@ -338,19 +338,19 @@ function setCurrentCourseEdit(event, row, catId, typeId) {
   var days = "";
   for (var i = 0; i < tds.length; i++) {
     if (i == 7) {
-      for (var j = 0; j < tds[i].children.length; j++) {
-        days += tds[i].children[j].textContent + ",";
+      for (var j = 0; j < tds[i].querySelector("div").children.length; j++) {
+        days += tds[i].querySelector("div").children[j].textContent + ",";
       }
       rowArr.push(days.substring(0, days.length - 1));
     } else {
       rowArr.push(tds[i].textContent);
     }
   }
-
+  // console.log(rowArr);
   var sectionsAr = days.split(",,");
   curSectionNo = sectionsAr.length / 2;
 
-  console.log(sectionsAr);
+  // console.log(sectionsAr);
 
   var groupArr = [];
   for (var k = 0; k < sectionsAr.length; k += 2) {
@@ -361,9 +361,9 @@ function setCurrentCourseEdit(event, row, catId, typeId) {
     groupArr.push(obj);
   }
 
-  console.log(groupArr);
+  // console.log(groupArr);
   for (var i = 0; i < groupArr.length; i++) {
-    var j = i+1;
+    var j = i + 1;
 
     var sectionDays = groupArr[i].days.split(",");
     var mainLabel = $(
@@ -468,8 +468,8 @@ function setCurrentCourseEdit(event, row, catId, typeId) {
   //   Su.checked = true;
   // }
   instructor.value = rowArr[6] == "-" ? "" : rowArr[6];
-  services.textContent = rowArr[11] == "-" ? "" : rowArr[10];
-  note.textContent = rowArr[13] == "-" ? "" : rowArr[12];
+  services.textContent = rowArr[10] == "-" ? "" : rowArr[10];
+  note.textContent = rowArr[12] == "-" ? "" : rowArr[12].replace(/\r?\n|\r/g, " ").trim();
 }
 
 // course edit new section
@@ -528,10 +528,14 @@ function setCurrentCourseDetail(row) {
   var days = "";
   for (var i = 0; i < tds.length; i++) {
     if (i == 7) {
-      for (var j = 0; j < tds[i].children.length; j++) {
-        days += tds[i].children[j].textContent + ",";
+      // console.log(tds[i].querySelector("div").children);
+      for (var j = 0; j < tds[i].querySelector("div").children.length; j++) {
+        days += tds[i].querySelector("div").children[j].textContent + ",";
+        // console.log(tds[i].children[j].textContent);
       }
-      rowArr.push(days.substring(0, days.length - 1));
+      // console.log(days);
+
+      rowArr.push(days.substring(2, days.length - 1).trim());
     } else {
       rowArr.push(tds[i].textContent);
     }
@@ -582,12 +586,12 @@ function setCurrentCourseDetail(row) {
   detailCourseDuration.innerText = rowArr[9];
   // detailCourseDays.innerText = days;
   // detailCourseFromTo.innerText = rowArr[8];
-  detailCourseNote.innerText = rowArr[12];
+  detailCourseNote.innerText = rowArr[12].replace(/\r?\n|\r/g, " ").trim();
 }
 
 function setCurrentCourseDel(event, idx) {
   $("#deletingModal").modal("show");
   event.stopPropagation();
   currentCourseIdDel.value = idx;
-  console.log(idx);
+  // console.log(idx);
 }
