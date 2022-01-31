@@ -504,6 +504,9 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                     <button class="btn mt-2 btn-user btn-success" id="addSection">Add Section</button>
                                     <hr />
                                     <!-- here add sections -->
+                                    <div id="addSectionHere">
+                                        
+                                    </div>
                                 </div>
 
                                 <div class="form-group mb-4">

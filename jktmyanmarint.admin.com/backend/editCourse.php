@@ -26,16 +26,35 @@ $startDate = date('Y-m-d H:i:s', $time);
 
 
 $duration = intval($_POST["duration"]);
-$startTime = $_POST["startTime"];
-$endTime = $_POST["endTime"];
+// $startTime = $_POST["startTime"];
+// $endTime = $_POST["endTime"];
 
 if (isset($_POST["days"])) {
     $days = $_POST["days"];
 } else {
     $days = [];
 }
-$arrObj = array("days" => $days, "sectionHour" => "$startTime~$endTime");
-$sections = json_encode($arrObj);
+$curSection = 1;
+$sectionsArr = [];
+while (TRUE) {
+    if (isset($_POST["days$curSection"]) || (isset($_POST["startTime$curSection"]) || isset($_POST["endTime$curSection"]))) {
+
+        if (isset($_POST["days$curSection"])) {
+            $days = $_POST["days$curSection"];
+        } else {
+            $days = [];
+        }
+        $startTime = $_POST["startTime$curSection"];
+        $endTime = $_POST["endTime$curSection"];
+        $arrObj = array("days" => $days, "sectionHour" => "$startTime~$endTime");
+        array_push($sectionsArr,$arrObj);
+        $curSection++;
+    } else {
+        break;
+    }
+}
+$sections = json_encode($sectionsArr);
+// var_dump($sections);
 
 if (isset($_POST["instructor"])) {
     $instructor = $_POST["instructor"];

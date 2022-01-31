@@ -1,6 +1,44 @@
 $(function () {
   $('[data-toggle="tooltip"]').tooltip();
 });
+function isEven(n) {
+  return n % 2 == 0;
+}
+
+function isOdd(n) {
+  return Math.abs(n % 2) == 1;
+}
+
+var daysArr = [
+  {
+    st: "M",
+    lg: "Mon",
+  },
+  {
+    st: "Tu",
+    lg: "Tue",
+  },
+  {
+    st: "W",
+    lg: "Wed",
+  },
+  {
+    st: "Th",
+    lg: "Thu",
+  },
+  {
+    st: "F",
+    lg: "FRI",
+  },
+  {
+    st: "Sa",
+    lg: "Sat",
+  },
+  {
+    st: "Su",
+    lg: "Sun",
+  },
+];
 
 // enrollments editing
 var enrollmentId = document.getElementById("enrollmentId");
@@ -113,6 +151,9 @@ var daysObj = {
   Sa: "Saturday",
   Su: "Sun",
 };
+
+var btnAddSect = document.getElementById("addSection");
+var curSectionNo = 0;
 
 let nrcArr = null;
 
@@ -288,6 +329,7 @@ function setCurrentCourseEdit(event, row, catId, typeId) {
   // F.checked = false;
   // Sa.checked = false;
   // Su.checked = false;
+  $("#addSectionHere").html("");
   $("#editingModal").modal("show");
   event.stopPropagation();
   var tr = row.closest("tr");
@@ -304,39 +346,83 @@ function setCurrentCourseEdit(event, row, catId, typeId) {
       rowArr.push(tds[i].textContent);
     }
   }
-  console.log(rowArr);
 
+  var sectionsAr = days.split(",,");
+  curSectionNo = sectionsAr.length / 2;
 
-  // var sectionsAr = days.split(",,");
-  // for (var i = 0; i < sectionsAr.length; i++) {
+  console.log(sectionsAr);
 
-  //   var mainLabel = $(
-  //     `<label class='mb-2 d-block mt-3' class='sectionNo'>Section ${curSectionNo}</label>`
-  //   );
+  var groupArr = [];
+  for (var k = 0; k < sectionsAr.length; k += 2) {
+    var obj = {
+      days: sectionsAr[k],
+      time: sectionsAr[k + 1],
+    };
+    groupArr.push(obj);
+  }
 
-  //   if (isEven(i)) {
-  //     var sectionDays = sectionsAr[i].split(",");
+  console.log(groupArr);
+  for (var i = 0; i < groupArr.length; i++) {
+    var j = i+1;
 
-  //     var daysContainer = $(`<div></div>`);
+    var sectionDays = groupArr[i].days.split(",");
+    var mainLabel = $(
+      `<label class='mb-2 d-block mt-3' class='sectionNo'>Section ${j}</label>`
+    );
+    var chkbos = $(`<div class="row justify-content-between px-3 mt-2"></div>`);
+    for (const day of daysArr) {
+      if (sectionDays.includes(day.st)) {
+        var chkbox = $(
+          `<input type="checkbox" id="day${j}${day.st}" value="${day.st}" name="days${j}[]" class="day-chck" checked>`
+        );
+      } else {
+        var chkbox = $(
+          `<input type="checkbox" id="day${j}${day.st}" value="${day.st}" name="days${j}[]" class="day-chck">`
+        );
+      }
+      var label = $(
+        `<label class="mb-0 mt-1" for="day${j}${day.st}">${day.lg}</label>`
+      );
+      var chkbcontainer = $(
+        `<div class="custom-control custom-checkbox small days-checkbox form-day-check"></div>`
+      );
+      chkbcontainer.append(chkbox, label);
+      chkbos.append(chkbcontainer);
+    }
 
-  //     for (var j = 0; j < sectionDays.length; j++) {
-  //       var day = $(
-  //         `<span class='days-badges' style='cursor:pointer;' data-toggle='tooltip' data-placement='top' title='${
-  //           daysObj[sectionDays[j]]
-  //         }'>${sectionDays[j]}</span>`
-  //       );
-  //       daysContainer.append(day);
-  //       $("#detailCourseDays").append(daysContainer,$(`<div style='margin-top: 5px;'></div>`));
-  //     }
-  //   } else {
-  //     var sectionHourss = $(
-  //       `<span class='section-hr-badge mt-3'>${sectionsAr[i]}</span>`
-  //     );
-  //     $("#detailCourseDays").append(sectionHourss,$(`<div style='margin-top: 20px;'></div>`));
-  //   }
+    $("#addSectionHere").append(mainLabel, chkbos);
+    var sectionhrss = groupArr[i].time.split("~");
+    var timeLeft = $(`<div class=" input-left mb-3 mb-md-0"></div>`);
+    var stLabel = $(
+      `<label for="startTime${j}">Class Starts At:<span class="my-required-field">Required*</span></label>`
+    );
+    var stTime = $(
+      `<input type="time" value="${sectionhrss[0].replace(
+        /,/g,
+        ""
+      )}" class="form-control" id="startTime${j}" name="startTime${j}" aria-describedby="startTimeField" />`
+    );
+    timeLeft.append(stLabel, stTime);
+    var timeRight = $(`<div class=" input-right"></div>`);
+    var endLabel = $(
+      `<label for="endTime${j}">Class ends At:<span class="my-required-field">Required*</span></label>`
+    );
+    var endTime = $(
+      `<input type="time" value="${sectionhrss[1].replace(
+        /,/g,
+        ""
+      )}" class="form-control" id="endTime${j}" name="endTime${j}" aria-describedby="endTimeField" />`
+    );
+    timeRight.append(endLabel, endTime);
 
-  //   // var sectionHrs = sectionsAr[];
-  // }
+    var timeContainer = $(
+      `<div class="mt-4 mb-3 mx-auto row justify-content-between"></div>`
+    );
+    timeContainer.append(timeLeft, timeRight);
+    $("#addSectionHere").append(timeContainer);
+
+    // var sectionHrs = sectionsAr[];
+  }
 
   courseIdEdit.value = rowArr[0];
   courseCreatedAt.value = rowArr[14];
@@ -347,8 +433,8 @@ function setCurrentCourseEdit(event, row, catId, typeId) {
   fee.value = parseInt(
     rowArr[5].substring(0, rowArr[5].length - 4).replace(/,/g, "")
   );
-  discountPercent.value = parseInt(rowArr[12]);
-  var date = new Date(rowArr[9]);
+  discountPercent.value = parseInt(rowArr[11]);
+  var date = new Date(rowArr[8]);
 
   var day = date.getDate();
   var month = date.getMonth() + 1;
@@ -357,34 +443,81 @@ function setCurrentCourseEdit(event, row, catId, typeId) {
   day = (day < 10 ? "0" : "") + day;
   startDate.value = year + "-" + month + "-" + day;
 
-  duration.value = parseInt(rowArr[10]);
-  startTime.value = rowArr[8].split("~")[0];
-  endTime.value = rowArr[8].split("~")[1];
-  if (days.includes("M")) {
-    M.checked = true;
-  }
-  if (days.includes("Tu")) {
-    Tu.checked = true;
-  }
-  if (days.includes("W")) {
-    W.checked = true;
-  }
-  if (days.includes("Th")) {
-    Th.checked = true;
-  }
-  if (days.includes("F")) {
-    F.checked = true;
-  }
-  if (days.includes("Sa")) {
-    Sa.checked = true;
-  }
-  if (days.includes("Su")) {
-    Su.checked = true;
-  }
+  duration.value = parseInt(rowArr[9]);
+  // startTime.value = rowArr[8].split("~")[0];
+  // endTime.value = rowArr[8].split("~")[1];
+  // if (days.includes("M")) {
+  //   M.checked = true;
+  // }
+  // if (days.includes("Tu")) {
+  //   Tu.checked = true;
+  // }
+  // if (days.includes("W")) {
+  //   W.checked = true;
+  // }
+  // if (days.includes("Th")) {
+  //   Th.checked = true;
+  // }
+  // if (days.includes("F")) {
+  //   F.checked = true;
+  // }
+  // if (days.includes("Sa")) {
+  //   Sa.checked = true;
+  // }
+  // if (days.includes("Su")) {
+  //   Su.checked = true;
+  // }
   instructor.value = rowArr[6] == "-" ? "" : rowArr[6];
-  services.textContent = rowArr[11] == "-" ? "" : rowArr[11];
-  note.textContent = rowArr[13] == "-" ? "" : rowArr[13];
+  services.textContent = rowArr[11] == "-" ? "" : rowArr[10];
+  note.textContent = rowArr[13] == "-" ? "" : rowArr[12];
 }
+
+// course edit new section
+btnAddSect.addEventListener("click", function (event) {
+  event.preventDefault();
+  curSectionNo++;
+  var mainLabel = $(
+    `<label class='mb-2 d-block mt-3' class='sectionNo'>Section ${curSectionNo}</label>`
+  );
+
+  var chkbos = $(`<div class="row justify-content-between px-3 mt-2"></div>`);
+  for (const day of daysArr) {
+    var chkbox = $(
+      `<input type="checkbox" id="day${curSectionNo}${day.st}" value="${day.st}" name="days${curSectionNo}[]" class="day-chck">`
+    );
+    var label = $(
+      `<label class="mb-0 mt-1" for="day${curSectionNo}${day.st}">${day.lg}</label>`
+    );
+    var chkbcontainer = $(
+      `<div class="custom-control custom-checkbox small days-checkbox form-day-check"></div>`
+    );
+    chkbcontainer.append(chkbox, label);
+    chkbos.append(chkbcontainer);
+  }
+  var timeLeft = $(`<div class=" input-left mb-3 mb-md-0"></div>`);
+  var stLabel = $(
+    `<label for="startTime${curSectionNo}">Class Starts At:<span class="my-required-field">Required*</span></label>`
+  );
+  var stTime = $(
+    `<input type="time" class="form-control" id="startTime${curSectionNo}" name="startTime${curSectionNo}" aria-describedby="startTimeField" />`
+  );
+  timeLeft.append(stLabel, stTime);
+  var timeRight = $(`<div class=" input-right"></div>`);
+  var endLabel = $(
+    `<label for="endTime${curSectionNo}">Class ends At:<span class="my-required-field">Required*</span></label>`
+  );
+  var endTime = $(
+    `<input type="time" class="form-control" id="endTime${curSectionNo}" name="endTime${curSectionNo}" aria-describedby="endTimeField" />`
+  );
+  timeRight.append(endLabel, endTime);
+
+  var timeContainer = $(
+    `<div class="mt-4 mb-3 mx-auto row justify-content-between"></div>`
+  );
+  timeContainer.append(timeLeft, timeRight);
+
+  $("#timeSection").append($(`<hr />`), mainLabel, chkbos, timeContainer);
+});
 
 // course detail show
 function setCurrentCourseDetail(row) {
@@ -405,13 +538,7 @@ function setCurrentCourseDetail(row) {
   }
 
   // console.log(rowArr);
-  function isEven(n) {
-    return n % 2 == 0;
-  }
 
-  function isOdd(n) {
-    return Math.abs(n % 2) == 1;
-  }
   var sectionsAr = days.split(",,");
   for (var i = 0; i < sectionsAr.length; i++) {
     if (isEven(i)) {
@@ -426,13 +553,19 @@ function setCurrentCourseDetail(row) {
           }'>${sectionDays[j]}</span>`
         );
         daysContainer.append(day);
-        $("#detailCourseDays").append(daysContainer,$(`<div style='margin-top: 5px;'></div>`));
+        $("#detailCourseDays").append(
+          daysContainer,
+          $(`<div style='margin-top: 5px;'></div>`)
+        );
       }
     } else {
       var sectionHourss = $(
         `<span class='section-hr-badge mt-3'>${sectionsAr[i]}</span>`
       );
-      $("#detailCourseDays").append(sectionHourss,$(`<div style='margin-top: 20px;'></div>`));
+      $("#detailCourseDays").append(
+        sectionHourss,
+        $(`<div style='margin-top: 20px;'></div>`)
+      );
     }
 
     // var sectionHrs = sectionsAr[];
