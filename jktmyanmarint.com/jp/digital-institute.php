@@ -423,7 +423,7 @@
         </iframe>
       </div>
       <div class="col-12 col-lg-5" style="height : 568px;display : flex;flex-direction:column;justify-content : space-between;">
-        <a class="ml-md-4 view-detail w-100 text-center" style="margin-top: 7px;" href="https://youtube.com/channel/UCEIZEkvGrAB-LxXAbcPv0Xg" target="_blank">
+        <a class="ml-md-4 view-detail w-100 text-center" style="margin-top: 7px;" href="https://www.youtube.com/channel/UCElZEkvGrAB-LxXAbcPv0Xg" target="_blank">
           Youtube
           <i class="fab fa-youtube"></i>
         </a>
