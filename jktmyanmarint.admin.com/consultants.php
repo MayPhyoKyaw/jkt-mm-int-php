@@ -81,7 +81,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-graduation-cap"></i>
                     <span>Courses</span>
@@ -135,7 +135,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
 
             <hr class="sidebar-divider d-none d-md-block">
 
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="./consultants.php">
                     <i class="fas fa-fw fa-user-tie"></i>
                     <span>Consultants</span></a>
@@ -165,7 +165,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                     </button>
 
                     <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search nav-title">
-                        <h3>Types</h3>
+                        <h3>Consultants</h3>
                     </div>
 
 
@@ -280,7 +280,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                         </thead>
                                         <tbody>
                                             <?php while ($row = mysqli_fetch_assoc($result)) : ?>
-                                                <tr>
+                                                <tr onclick="setCurrentConsultDetail(this)" data-toggle="modal" data-target="#detailModal" class="tb-row">
                                                     <td><?= $row['consultant_id'] ?></td>
                                                     <td><?= $row['name'] ?></td>
                                                     <td><?= $row['email'] ?></td>
@@ -292,8 +292,8 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                                     <td><?= $row['about'] ?></td>
                                                     <td><?= $row['created_at'] ?></td>
                                                     <td><?= $row['updated_at'] ?></td>
-                                                    <td><button class="tb-btn tb-btn-edit" onclick="setCurrentConsultantEdit(this)" data-toggle="modal" data-target="#editingModal"><i class="fa fa-pencil"></i></button></td>
-                                                    <td><button class="tb-btn tb-btn-delete" onclick="setCurrentConsultantDel(<?php echo $row['consultant_id'] ?>)" data-toggle="modal" data-target="#deletingModal"><i class="fa fa-trash"></button></i></td>
+                                                    <td><button class="tb-btn tb-btn-edit" onclick="setCurrentConsultantEdit(event,this)" data-toggle="modal" data-target="#editingModal"><i class="fa fa-pencil"></i></button></td>
+                                                    <td><button class="tb-btn tb-btn-delete" onclick="setCurrentConsultantDel(event,<?php echo $row['consultant_id'] ?>)" data-toggle="modal" data-target="#deletingModal"><i class="fa fa-trash"></button></i></td>
                                                 </tr>
                                             <?php endwhile; ?>
                                         </tbody>
@@ -320,7 +320,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form class="col-12" id="editingModal" action="backend/editType.php" method="POST" enctype="multipart/form-data">
+                            <form class="col-12" id="editingModal" action="backend/editConsultant.php" method="POST" enctype="multipart/form-data">
                                 <input type="hidden" name="appointment_IdEdit" id="appointment_IdEdit">
                                 <input type="hidden" name="appointment_CreatedAt" id="appointment_CreatedAt">
                                 <input type="hidden" name="appointment_UpdatedAt" id="appointment_UpdatedAt">
@@ -346,13 +346,8 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                     <label for="appointment_type" id="radio-label" class="appointment-label">Other</label><br />
                                 </fieldset>
 
-                                <div class="date-picker">
-                                    <div class="input">
-                                        <div class="result">Select Date: <span></span></div>
-                                        <button onclick="event.preventDefault()"><i class="fa fa-calendar"></i></button>
-                                    </div>
-                                    <div class="calendar"></div>
-                                    <input type="hidden" name="appointment_date" id="appointment_date" value="" />
+                                <div class="mb-4">
+                                    <input type="date" style="padding : 30px 20px;" class="form-control" name="appointment_date" id="appointment_date" />
                                 </div>
 
                                 <fieldset class="appointment-fieldset">
@@ -404,8 +399,8 @@ $noti_result = mysqli_query($conn, $get_notifications);
                         </div>
                         <div class="modal-body">
                             <p>Are you sure to delete?</p>
-                            <form class="col-12" action="backend/deleteType.php" method="POST">
-                                <input type="hidden" name="typeIdDel" id="typeIdDel">
+                            <form class="col-12" action="backend/deleteConsultant.php" method="POST">
+                                <input type="hidden" name="consulDelId" id="consulDelId">
                                 <hr />
                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                 <input class="btn btn-primary" type="submit" value="Delete">
@@ -413,6 +408,76 @@ $noti_result = mysqli_query($conn, $get_notifications);
                         </div>
                         <div class="modal-footer">
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detial modal -->
+
+            <div class="modal fade" id="detailModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header pl-5">
+                            <h5 class="modal-title ml-3">Consultants Details</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="col-11 mx-auto mt-3">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Property</th>
+                                            <th scope="col">Value</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Name</td>
+                                            <td id="consultName"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Email</td>
+                                            <td id="consultEmail"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Phone</td>
+                                            <td id="consultPhone"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Type</td>
+                                            <td id="consultType"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Date</td>
+                                            <td id="consultDate"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Time</td>
+                                            <td id="consultTime"></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Duration</td>
+                                            <td id="consultDuration">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>About</td>
+                                            <td id="consultAbout">
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- <div class="modal-footer row justify-content-between px-5 mx-2">
+                            <div>
+                                <button class="tb-btn d-inline tb-btn-edit"><i class="fa fa-pencil mr-1"></i>Edit</button>
+                                <button class="tb-btn d-inline tb-btn-delete"><i class="fa fa-trash mr-1"></i>Delete</button>
+                            </div>
+                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                        </div> -->
                     </div>
                 </div>
             </div>

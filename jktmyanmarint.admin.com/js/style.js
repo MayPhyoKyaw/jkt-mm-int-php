@@ -473,7 +473,7 @@ function setCurrentCourseEdit(event, row, catId, typeId) {
 }
 
 // course edit new section
-btnAddSect.addEventListener("click", function (event) {
+btnAddSect && btnAddSect.addEventListener("click", function (event) {
   event.preventDefault();
   curSectionNo++;
   var mainLabel = $(
