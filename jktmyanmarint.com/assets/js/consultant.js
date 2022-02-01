@@ -110,4 +110,10 @@ $(function () {
       }
     },
   })
+  $("#appointment_date").on("focusin", function() {
+    $(this).prop('readonly', true);  
+  });
+  $("#appointment_date").on("focusout", function() {
+    $(this).prop('readonly', false);  
+  })
 });
