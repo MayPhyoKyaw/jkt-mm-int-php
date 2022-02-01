@@ -1,3 +1,24 @@
+$(".calendar").datepicker({
+  dateFormat: "dd/mm/yy",
+  minDate: 0,
+  // maxDate: '6m'
+});
+
+$(document).on("click", ".date-picker .input", function (e) {
+  var me = $(this),
+    parent = me.parents(".date-picker");
+  parent.toggleClass("open");
+});
+
+$(".calendar").on("change", function () {
+  var me = $(this),
+    selected = me.val(),
+    parent = me.parents(".date-picker");
+  console.log(selected);
+  parent.find(".result").val(`Selected Date: ${selected}`);
+  // document.getElementById("appointment_date").value = selected;
+});
+
 var apIdEdit = document.getElementById("appointment_IdEdit");
 var apCreatedAt = document.getElementById("appointment_CreatedAt");
 var apUpdatedAt = document.getElementById("appointment_UpdatedAt");
@@ -49,6 +70,7 @@ function setCurrentConsultantEdit(event, row) {
   day = (day < 10 ? "0" : "") + day;
   // $("#appointment_date").val(modifyDate);
   apDate.value = year + "-" + month + "-" + day;
+  $(".calendar").datepicker("setDate", day + "/" + month + "/" + year);
 
   // console.log(day + "/" + month + "/" + year);
 

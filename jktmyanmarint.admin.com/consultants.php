@@ -346,8 +346,17 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                     <label for="appointment_type" id="radio-label" class="appointment-label">Other</label><br />
                                 </fieldset>
 
-                                <div class="mb-4">
+                                <!-- <div class="mb-4">
                                     <input type="date" style="padding : 30px 20px;" class="form-control" name="appointment_date" id="appointment_date" />
+                                </div> -->
+
+                                <div class="date-picker">
+                                    <div class="input">
+                                        <input type="text" class="result" name="appointment_date" placeholder="Select Date:" id="appointment_date" value="" readonly />
+                                        <!-- <div class="result">Select Date: <span></span></div>  -->
+                                        <button onclick="event.preventDefault()"><i class="fa fa-calendar"></i></button>
+                                    </div>
+                                    <div class="calendar"></div>
                                 </div>
 
                                 <fieldset class="appointment-fieldset">
