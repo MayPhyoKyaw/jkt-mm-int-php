@@ -178,8 +178,8 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
               </label>
               <div class="date-picker">
                 <div class="input">
-                  <!-- <input type="text" class="result" name="appointment_date" placeholder="Select Date:" id="appointment_date" value="" /> -->
-                  <div class="result"> <span></span></div> 
+                  <input type="text" class="result" name="appointment_date" placeholder="Select Date:" id="appointment_date" value="" readonly />
+                  <!-- <div class="result">Select Date: <span></span></div>  -->
                   <button onclick="event.preventDefault()"><i class="fa fa-calendar"></i></button>
                 </div>
                 <div class="calendar"></div>
@@ -201,7 +201,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
             <div class="pb-4 mb-2">
               <label for="dropdown" id="dropdown-label" class="appointment-label">
                 Appointment Duration & Fees <span class="consultant-required-tag">required &nbsp; *</span>
-                <span class="consultant-note"> &nbsp;**Based on your consultant description</span>
+                <span class="consultant-note"> &nbsp;**Fees are based on your consultant description</span>
               </label>
               <select id="dropdown" name="appointment_duration" class="appointment-select">
                 <option value="" disabled selected>

@@ -2128,6 +2128,7 @@ figure img {
 }
 
 .appointment-textarea {
+  letter-spacing: 1.5px !important;
   color: #000;
   width: 100%;
   height: 100px;
@@ -2164,7 +2165,7 @@ figure img {
 
 .consultant-note {
   font-size: 15px;
-  color: red;
+  color: orange;
 }
 
 .consultant-required-tag {
@@ -2191,12 +2192,12 @@ figure img {
   border-radius: 5px;
   overflow: hidden;
   transition: all 0.3s 0s ease-in-out;
-  box-shadow: inset 0px 0px 5px 1px rgba(170, 170, 170, 0.4);
+  /* box-shadow: inset 0px 0px 5px 1px rgba(170, 170, 170, 0.4); */
 }
 .date-picker .input {
   width: 100%;
   height: 50px;
-  padding-left: 15px;
+  /* padding-left: 15px; */
   font-size: 0;
   cursor: pointer;
 }
@@ -2209,10 +2210,19 @@ figure img {
   width: calc(100% - 50px);
   height: 50px;
   line-height: 50px;
-  font-size: 16px;
-  padding: 0 10px;
+  padding: 25px 25px !important;
+  font-size: 15px;
+  font-weight: 700;
+  border: none;
+  border-radius: 5px 0 0 5px;
+  box-shadow: inset 0px 0px 3px 1px rgba(170, 170, 170, 0.4);
   color: grey;
   box-sizing: border-box;
+}
+.date-picker .input .result:focus {
+  outline: none;
+  box-shadow: 0px 0px 3px 2px rgba(173, 201, 238, 0.466),
+    inset 0px 0px 3px 1px rgba(0, 0, 0, 0.4);
 }
 .date-picker .input button {
   width: 50px;

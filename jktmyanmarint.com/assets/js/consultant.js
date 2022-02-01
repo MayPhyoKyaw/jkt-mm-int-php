@@ -15,8 +15,8 @@ $(function () {
     var me = $(this),
       selected = me.val(),
       parent = me.parents(".date-picker");
-    parent.find(".result").children("span").html(selected);
-    document.getElementById("appointment_date").value = selected;
+    parent.find(".result").val(`Selected Date: ${selected}`);
+    // document.getElementById("appointment_date").value = selected;
   });
 
   $.validator.addMethod(
