@@ -137,65 +137,87 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
     <div class="container">
       <div class="row">
         <div class="col-12 col-md-10 col-lg-9 mb-5 mt-4 mx-auto w-100">
-          <p id="description">Thanks for Joining With Us!!</p>
+          <p id="description">
+            Please fill in all the fields of the form. <br>
+            Thanks for Joining With Us!!
+          </p>
           <form id="survey-form" action="./backend/newConsult.php" method="POST">
-            <label for="name" id="name-label" class="appointment-label">Name </label><br />
-            <input type="text" id="name" name="name" placeholder="Enter Your Name" required class="appointment-input" /><br />
-
-            <label for="email" id="email-label" class="appointment-label">Email </label><br />
-            <input type="email" id="email" name="email" placeholder="Enter Your Email" class="appointment-input" required /><br />
-
-            <label for="phone" id="phone-label" class="appointment-label">Phone Number</label><br />
-            <input type="text" id="phone" name="phone" placeholder="Enter Your Phone Number" class="appointment-input" required /><br />
-
-            <fieldset class="appointment-fieldset">
-              <legend class="appointment-legend">Choose a type for your appointment?</legend>
-
-              <input type="radio" id="appointment_type" name="appointment_type" value="Online" />
-              <label for="appointment_type" id="radio-label" class="appointment-label">Online</label><br />
-
-              <input type="radio" id="appointment_type" name="appointment_type" value="Office" />
-              <label for="appointment_type" id="radio-label" class="appointment-label">Office</label><br />
-
-              <input type="radio" id="appointment_type" name="appointment_type" value="Other" />
-              <label for="appointment_type" id="radio-label" class="appointment-label">Other</label><br />
-            </fieldset>
-
-            <div class="date-picker">
-              <div class="input">
-                <div class="result">Select Date: <span></span></div>
-                <button onclick="event.preventDefault()"><i class="fa fa-calendar"></i></button>
-              </div>
-              <div class="calendar"></div>
-              <input type="hidden" name="appointment_date" id="appointment_date" value="" />
+            <div class="pb-4 mb-2">
+              <label for="name" id="name-label" class="appointment-label">Name <span class="consultant-required-tag">required &nbsp; *</span></label><br />
+              <input type="text" id="name" name="name" placeholder="Enter Your Name" required class="appointment-input" />
             </div>
 
-            <fieldset class="appointment-fieldset">
-              <legend class="appointment-legend">Choose an estimated time for your appointment?</legend>
+            <div class="pb-4 mb-2">
+              <label for="email" id="email-label" class="appointment-label">Email <span class="consultant-required-tag">required &nbsp; *</span></label><br />
+              <input type="email" id="email" name="email" placeholder="Enter Your Email" class="appointment-input" required />
+            </div>
 
-              <input type="radio" id="appointment_time" name="appointment_time" value="Morning" />
-              <label for="appointment_time" id="radio-label" class="appointment-label">Morning</label><br />
+            <div class="pb-4 mb-2">
+              <label for="phone" id="phone-label" class="appointment-label">Phone Number <span class="consultant-required-tag">required &nbsp; *</span></label><br />
+              <input type="text" id="phone" name="phone" placeholder="Enter Your Phone Number" class="appointment-input" required />
+            </div>
 
-              <input type="radio" id="appointment_time" name="appointment_time" value="Afternoon" />
-              <label for="appointment_time" id="radio-label" class="appointment-label">Afternoon</label><br />
-            </fieldset>
+            <div class="pb-4 mb-2 appointment-type">
+              <fieldset class="appointment-fieldset">
+                <legend class="appointment-legend">Choose a type for your appointment? <span class="consultant-required-tag">required &nbsp; *</span></legend>
 
-            <label for="dropdown" id="dropdown-label" class="appointment-label">
-              Appointment Duration & Fees
-              <span class="consultant-note"> &nbsp;**Based on your consultant description</span>
-            </label><br />
-            <select id="dropdown" name="appointment_duration" class="appointment-select">
-              <option value="" disabled selected>
-                Select Estimated Appointment Duration & Fees
-              </option>
-              <option value="Below 60 Minutes">About 60 Minutes - $100 Est.</option>
-              <option value="1 Hours ~ 2 Hours">1 Hours ~ 2 Hours - $200 Est.</option>
-              <option value="2 Hours ~ 3 Hours">2 Hours ~ 3 Hours- $300 Est.</option>
-              <option value="3 Hours ~ 4 Hours">3 Hours ~ 4 Hours- $400 Est.</option>
-            </select><br />
+                <input type="radio" id="online" name="appointment_type" value="Online" />
+                <label for="online" id="radio-label" class="appointment-label">Online</label><br />
 
-            <label for="description" id="description-label" class="appointment-label">About Your Consultant ? </label><br />
-            <textarea placeholder="Enter About Your Consultant" id="description" name="about_consultant" class="appointment-textarea" rows="4" cols="50" ></textarea>
+                <input type="radio" id="office" name="appointment_type" value="Office" />
+                <label for="office" id="radio-label" class="appointment-label">Office</label><br />
+
+                <input type="radio" id="other" name="appointment_type" value="Other" />
+                <label for="other" id="radio-label" class="appointment-label">Other</label><br />
+              </fieldset>
+            </div>
+
+            <div class="pb-4 mb-2 appointment-date">
+              <label class="appointment-label">
+                  Appointment Time <span class="consultant-required-tag">required &nbsp; *</span>
+              </label>
+              <div class="date-picker">
+                <div class="input">
+                  <!-- <input type="text" class="result" name="appointment_date" placeholder="Select Date:" id="appointment_date" value="" /> -->
+                  <div class="result"> <span></span></div> 
+                  <button onclick="event.preventDefault()"><i class="fa fa-calendar"></i></button>
+                </div>
+                <div class="calendar"></div>
+              </div>
+            </div>
+
+            <div class="pb-4 mb-2 appointment-time">
+              <fieldset class="appointment-fieldset">
+                <legend class="appointment-legend">Choose an estimated time for your appointment? <span class="consultant-required-tag">required &nbsp; *</span></legend>
+
+                <input type="radio" id="morning" name="appointment_time" value="Morning" />
+                <label for="morning" id="radio-label" class="appointment-label">Morning</label><br />
+
+                <input type="radio" id="noon" name="appointment_time" value="Afternoon" />
+                <label for="noon" id="radio-label" class="appointment-label">Afternoon</label><br />
+              </fieldset>
+            </div>
+
+            <div class="pb-4 mb-2">
+              <label for="dropdown" id="dropdown-label" class="appointment-label">
+                Appointment Duration & Fees <span class="consultant-required-tag">required &nbsp; *</span>
+                <span class="consultant-note"> &nbsp;**Based on your consultant description</span>
+              </label>
+              <select id="dropdown" name="appointment_duration" class="appointment-select">
+                <option value="" disabled selected>
+                  Select Estimated Appointment Duration & Fees
+                </option>
+                <option value="Below 60 Minutes">About 60 Minutes - $100 Est.</option>
+                <option value="1 Hours ~ 2 Hours">1 Hours ~ 2 Hours - $200 Est.</option>
+                <option value="2 Hours ~ 3 Hours">2 Hours ~ 3 Hours- $300 Est.</option>
+                <option value="3 Hours ~ 4 Hours">3 Hours ~ 4 Hours- $400 Est.</option>
+              </select>
+            </div>
+
+            <div class="pb-4 mb-2">
+              <label for="description" id="description-label" class="appointment-label">About Your Consultant ? <span class="consultant-required-tag">required &nbsp; *</span></label><br />
+              <textarea placeholder="Enter About Your Consultant" id="description" name="about_consultant" class="appointment-textarea" rows="4" cols="50" ></textarea>
+            </div>
 
             <div class="text-right">
               <button type="submit" id="submit" class="appointment-button">Send Appointment</button>
@@ -310,8 +332,9 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
 
   <!-- script -->
   <script src="./assets/js/jquery-3.6.0.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+  <script src="./assets/js/jquery-ui-1.11.2.min.js"></script>
+  <script src="./assets/js/validation.js"></script>
+  <script src="./assets/js/additional-methods"></script>
   <script src="./assets/js/validation.js"></script>
   <script src="./assets/js/additional-methods"></script>
   <script src="./assets/js/popper.min.js"></script>

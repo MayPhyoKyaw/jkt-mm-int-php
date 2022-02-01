@@ -207,7 +207,7 @@ function encrypt_decrypt($action, $string)
                 <p class="class-detail">
                   <?php echo empty($row['start_date']) ? '-' : $row['start_date']; ?>
                 </p>
-                <p class="class-detail">
+                <p>
                   <?php
                   // var_dump($row["sections"]);
                   // var_dump($row["sections"][0]); 
@@ -744,7 +744,7 @@ function encrypt_decrypt($action, $string)
                 <p class="class-detail">
                   <?php echo empty($row['start_date']) ? '-' : $row['start_date']; ?>
                 </p>
-                <p class="class-detail">
+                <p>
                   <?php
                   // var_dump($row["sections"]);
                   // var_dump($row["sections"][0]); 
