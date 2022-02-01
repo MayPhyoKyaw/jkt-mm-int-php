@@ -142,12 +142,19 @@ $noti_result = mysqli_query($conn, $get_notifications);
                     <span>Payments</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="./pendingPayments.php">
+                <a class="nav-link" href="./consultants.php">
                     <i class="fas fa-fw fa-dollar-sign"></i>
                     <span>Pending Payments</span></a>
             </li>
 
-            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <li class="nav-item">
+                <a class="nav-link" href="./pendingPayments.php">
+                    <i class="fas fa-fw fa-user-tie"></i>
+                    <span>Consultants</span></a>
+            </li>
+
             <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->

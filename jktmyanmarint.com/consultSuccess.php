@@ -1,8 +1,3 @@
-<?php
-session_start();
-$response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -75,7 +70,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
             <div class="dropdown-menu" aria-labelledby="serviceNavbarDropdown">
               <a class="dropdown-item" href="./overseas.html">OVERSEAS EMPLOYMENT</a>
               <a class="dropdown-item" href="./business.html">BUSINESS CONSULTANT</a>
-              <a class="dropdown-item" href="./announcement.html">TRAVEL AND TOULS</a>
+              <a class="dropdown-item" href="./announcement.html">TRAVEL AND TOURS</a>
             </div>
           </li>
           <li class="nav-item dropdown">
@@ -84,7 +79,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
             </a>
             <div class="dropdown-menu" aria-labelledby="trainingNavbarDropdown">
               <a class="dropdown-item" href="./jp-school.php">JAPANESE LANGUAGE SCHOOL</a>
-              <a class="dropdown-item" href="./digital-institute.php">Digital Institute</a>
+              <a class="dropdown-item" href="./digital-institute.php">DIGITAL INSTITUTE</a>
               <a class="dropdown-item" href="./announcement.html">HR TRAINING</a>
             </div>
           </li>
@@ -93,22 +88,22 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
           </li>
           <li class="lang">
             <div class="btn-group" role="group" aria-label="First group">
-              <a href="./classEnroll.php"><button type="button" class="btn btn1" style="background-color: rgba(91, 175, 231, 0.5)">
+              <a href="./jp-school.php"><button type="button" class="btn btn1" style="background-color: rgba(91, 175, 231, 0.5)">
                   <img src="./assets/images/icon/ukFlag.png" height="20px" width="25px" /></button></a>
-              <a href="./mm/classEnroll.php"><button type="button" class="btn btn2">
+              <a href="./mm/jp-school.php"><button type="button" class="btn btn2">
                   <img src="./assets/images/icon/mmFlag.svg" height="20px" width="25px" /></button></a>
-              <a href="./jp/classEnroll.php"><button type="button" class="btn btn3">
+              <a href="./jp/jp-school.php"><button type="button" class="btn btn3">
                   <img src="./assets/images/icon/japanFlag.jpg" height="20px" width="25px" /></button></a>
             </div>
           </li>
         </ul>
       </div>
       <div class="btn-group lang-xl" role="group" aria-label="First group">
-        <a href="./classEnroll.php"><button type="button" class="btn btn1" style="background-color: rgba(91, 175, 231, 0.5)">
+        <a href="./jp-school.php"><button type="button" class="btn btn1" style="background-color: rgba(91, 175, 231, 0.5)">
             <img src="./assets/images/icon/ukFlag.png" height="20px" width="25px" /></button></a>
-        <a href="./mm/classEnroll.php"><button type="button" class="btn btn2">
+        <a href="./mm/jp-school.php"><button type="button" class="btn btn2">
             <img src="./assets/images/icon/mmFlag.svg" height="20px" width="25px" /></button></a>
-        <a href="./jp/classEnroll.php"><button type="button" class="btn btn3">
+        <a href="./jp/jp-school.php"><button type="button" class="btn btn3">
             <img src="./assets/images/icon/japanFlag.jpg" height="20px" width="25px" /></button></a>
       </div>
     </div>
@@ -117,7 +112,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
   <!-- JP School header start -->
   <section>
     <div class="header">
-      <h3>Business Consultant - Appointment Form</h3>
+      <h3>Business Consultant</h3>
       <div class="bg-cover"></div>
       <img src="./assets/images/cover/cover.jpg" alt="jpschool-cover" />
     </div>
@@ -125,113 +120,44 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
   <!-- JP School header end -->
 
   <nav aria-label="breadcrumb" class="breadcrumb-nav">
-    <ol class="breadcrumb">
-      <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
-      <li class="breadcrumb-item"><a href="./trainings.html">Services</a></li>
-      <li class="breadcrumb-item"><a href="./jp-school.php">Business Consultant</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Appointment Form</li>
-    </ol>
-  </nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
+        <li class="breadcrumb-item"><a href="./services.html">Services</a></li>
+        <li class="breadcrumb-item"><a href="./business.html">Business Consultant</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Register Successfully </li>
+      </ol>
+    </nav>
 
+  <!-- Enrollment Form start -->
   <section>
-    <div class="container">
-      <div class="row">
-        <div class="col-12 col-md-10 col-lg-9 mb-5 mt-4 mx-auto w-100">
-          <p id="description">Thanks for Joining With Us!!</p>
-          <form id="survey-form" action="./backend/newConsult.php" method="POST">
-            <label for="name" id="name-label" class="appointment-label">Name </label><br />
-            <input type="text" id="name" name="name" placeholder="Enter Your Name" required class="appointment-input" /><br />
-
-            <label for="email" id="email-label" class="appointment-label">Email </label><br />
-            <input type="email" id="email" name="email" placeholder="Enter Your Email" class="appointment-input" required /><br />
-
-            <label for="phone" id="phone-label" class="appointment-label">Phone Number</label><br />
-            <input type="text" id="phone" name="phone" placeholder="Enter Your Phone Number" class="appointment-input" required /><br />
-
-            <fieldset class="appointment-fieldset">
-              <legend class="appointment-legend">Choose a type for your appointment?</legend>
-
-              <input type="radio" id="appointment_type" name="appointment_type" value="Online" />
-              <label for="appointment_type" id="radio-label" class="appointment-label">Online</label><br />
-
-              <input type="radio" id="appointment_type" name="appointment_type" value="Office" />
-              <label for="appointment_type" id="radio-label" class="appointment-label">Office</label><br />
-
-              <input type="radio" id="appointment_type" name="appointment_type" value="Other" />
-              <label for="appointment_type" id="radio-label" class="appointment-label">Other</label><br />
-            </fieldset>
-
-            <div class="date-picker">
-              <div class="input">
-                <div class="result">Select Date: <span></span></div>
-                <button onclick="event.preventDefault()"><i class="fa fa-calendar"></i></button>
-              </div>
-              <div class="calendar"></div>
-              <input type="hidden" name="appointment_date" id="appointment_date" value="" />
-            </div>
-
-            <fieldset class="appointment-fieldset">
-              <legend class="appointment-legend">Choose an estimated time for your appointment?</legend>
-
-              <input type="radio" id="appointment_time" name="appointment_time" value="Morning" />
-              <label for="appointment_time" id="radio-label" class="appointment-label">Morning</label><br />
-
-              <input type="radio" id="appointment_time" name="appointment_time" value="Afternoon" />
-              <label for="appointment_time" id="radio-label" class="appointment-label">Afternoon</label><br />
-            </fieldset>
-
-            <label for="dropdown" id="dropdown-label" class="appointment-label">
-              Appointment Duration & Fees
-              <span class="consultant-note"> &nbsp;**Based on your consultant description</span>
-            </label><br />
-            <select id="dropdown" name="appointment_duration" class="appointment-select">
-              <option value="" disabled selected>
-                Select Estimated Appointment Duration & Fees
-              </option>
-              <option value="Below 60 Minutes">About 60 Minutes - $100 Est.</option>
-              <option value="1 Hours ~ 2 Hours">1 Hours ~ 2 Hours - $200 Est.</option>
-              <option value="2 Hours ~ 3 Hours">2 Hours ~ 3 Hours- $300 Est.</option>
-              <option value="3 Hours ~ 4 Hours">3 Hours ~ 4 Hours- $400 Est.</option>
-            </select><br />
-
-            <label for="description" id="description-label" class="appointment-label">About Your Consultant ? </label><br />
-            <textarea placeholder="Enter About Your Consultant" id="description" name="about_consultant" class="appointment-textarea" rows="4" cols="50" ></textarea>
-
-            <div class="text-right">
-              <button type="submit" id="submit" class="appointment-button">Send Appointment</button>
-            </div>
-          </form>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-11 col-sm-10 col-md-10 col-lg-8 col-xl-6 text-center p-0 mt-3 mb-2">
+          <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+              <fieldset id="success">
+                <div class="form-card">
+                  <h2 class="blue-text text-center"><strong>Successfully Submitted!</strong></h2> <br>
+                  <div class="row justify-content-center">
+                    <div class="col-3">
+                      <img src="./assets/images/blue-tick.png" class="fit-image">
+                    </div>
+                  </div> <br><br>
+                  <div class="row justify-content-center">
+                    <div class="col-7 text-center">
+                      <h5 class="blue-text text-center">We will contact you during business hours (9:00~17:00).</h5>
+                    </div>
+                  </div>
+                  <div class="row justify-content-center mt-5 pt-1 mb-4">
+                    <a href="./business.html" class="back-to-courses">Home Page</a>
+                  </div>
+                </div>
+              </fieldset>
+          </div>
+        </div>
       </div>
     </div>
   </section>
-
-  <!-- The Confirmation Modal -->
-  <div class="modal fade" id="confirmationModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLongTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content modal-box">
-
-        <!-- Modal Header -->
-        <div class="modal-header">
-          <h4 class="modal-title">Registration confirmation</h4>
-          <button class="btn-close" data-dismiss="modal">
-            <i class='fas fa-times' style='font-size:24px; color: grey'></i>
-          </button>
-        </div>
-
-        <!-- Modal body -->
-        <div class="modal-body confirm-modal-body">
-          Are you sure, you want to <span style="color: #001c69">submit your enrollment for this course</span>?
-        </div>
-
-        <!-- Modal footer -->
-        <div class="modal-footer">
-          <button type="button" class="btn-cancel" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn-submit" id="submitConfirm" data-dismiss="modal">Submit</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
+  <!-- Enrollment Form end -->
 
   <!-- footer start -->
   <footer class="footer">
@@ -310,13 +236,12 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
 
   <!-- script -->
   <script src="./assets/js/jquery-3.6.0.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
   <script src="./assets/js/validation.js"></script>
   <script src="./assets/js/additional-methods"></script>
   <script src="./assets/js/popper.min.js"></script>
   <script src="./assets/js/bootstrap.min.js"></script>
   <script src="./assets/js/float-panel.js"></script>
-  <script src="./assets/js/consultant.js"></script>
+  <script src="./assets/js/multistepForm.js"></script>
+  <script src="./assets/js/userImgPreview.js"></script>
 </body>
 <html>

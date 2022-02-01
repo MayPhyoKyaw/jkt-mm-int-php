@@ -145,8 +145,15 @@ $annual_income_row = mysqli_fetch_assoc($annual_income_result);
                     <i class="fas fa-fw fa-dollar-sign"></i>
                     <span>Pending Payments</span></a>
             </li>
-
             <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <li class="nav-item">
+                <a class="nav-link" href="./consultants.php">
+                    <i class="fas fa-fw fa-user-tie"></i>
+                    <span>Consultants</span></a>
+            </li>
+
             <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->

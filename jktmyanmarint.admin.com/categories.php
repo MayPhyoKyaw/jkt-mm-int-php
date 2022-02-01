@@ -130,8 +130,14 @@ $noti_result = mysqli_query($conn, $get_notifications);
                     <i class="fas fa-fw fa-dollar-sign"></i>
                     <span>Pending Payments</span></a>
             </li>
+            <hr class="sidebar-divider d-none d-md-block">
 
-            <!-- Divider -->
+            <li class="nav-item">
+                <a class="nav-link" href="./consultants.php">
+                    <i class="fas fa-fw fa-user-tie"></i>
+                    <span>Consultants</span></a>
+            </li>
+
             <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
@@ -306,7 +312,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                 <input type="hidden" name="catCreatedAt" id="catCreatedAt">
                                 <input type="hidden" name="catUpdatedAt" id="catUpdatedAt">
                                 <label for="catTitle">Category Title<span class="my-required-field">Required*</span></label>
-                                <input type="text" name="catTitle" id="catTitle" class="form-control" required/>
+                                <input type="text" name="catTitle" id="catTitle" class="form-control" required />
                                 <hr />
                                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                 <input class="btn btn-primary" type="submit" value="Update">
