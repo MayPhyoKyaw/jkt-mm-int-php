@@ -9,7 +9,9 @@ $phone = $_POST['phone'];
 $type = $_POST['appointment_type'];
 
 // $date = $_POST['appointment_date'];
-$strToTime = strtotime($_POST["appointment_date"]);
+$exp = explode("/",substr($_POST["appointment_date"],15));
+$imp = implode("-",$exp);
+$strToTime = strtotime($imp);
 $date = date('Y-m-d H:i:s', $strToTime);
 
 if($date == "1970-01-01 01:00:00"){
@@ -22,6 +24,6 @@ $about = $_POST['about_consultant'];
 
 $sql = "INSERT INTO consultants (name, email,
  phone, type, date, time, duration, about,created_at,updated_at) VALUES ('$name','$email','$phone','$type','$date','$time','$duration','$about' ,now(), now())";
-echo $sql;
+// echo $sql;
 mysqli_query($conn, $sql);
 header("location: ../consultSuccess.php");

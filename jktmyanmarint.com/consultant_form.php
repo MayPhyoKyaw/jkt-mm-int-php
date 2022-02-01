@@ -178,7 +178,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
               </label>
               <div class="date-picker">
                 <div class="input">
-                  <input type="text" class="result" name="appointment_date" placeholder="Select Date:" id="appointment_date" value="" readonly />
+                  <input type="text" class="result" name="appointment_date" placeholder="Select Date:" id="appointment_date" value="" readonly required/>
                   <!-- <div class="result">Select Date: <span></span></div>  -->
                   <button onclick="event.preventDefault()"><i class="fa fa-calendar"></i></button>
                 </div>

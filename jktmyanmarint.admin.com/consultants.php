@@ -2,7 +2,7 @@
 session_start();
 include_once 'auth/authenticate.php';
 include("confs/config.php");
-$result = mysqli_query($conn, "SELECT * FROM consultants");
+$result = mysqli_query($conn, "SELECT * FROM consultants ORDER BY updated_at DESC");
 $get_notifications = "SELECT * FROM notifications WHERE seen=0 AND created_at >= DATE_SUB(NOW(),INTERVAL 6 HOUR)";
 $noti_result = mysqli_query($conn, $get_notifications);
 ?>
@@ -533,20 +533,20 @@ $noti_result = mysqli_query($conn, $get_notifications);
 
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
+    
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
+    
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
     <!-- Page level plugins -->
     <script src="vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
+    
     <!-- Page level custom scripts -->
     <script src="js/style.js"></script>
+    <script src="js/jui.js"></script>
     <script src="js/consultant.js"></script>
     <script>
         $(document).ready(function() {

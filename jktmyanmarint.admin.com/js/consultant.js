@@ -14,7 +14,6 @@ $(".calendar").on("change", function () {
   var me = $(this),
     selected = me.val(),
     parent = me.parents(".date-picker");
-  console.log(selected);
   parent.find(".result").val(`Selected Date: ${selected}`);
   // document.getElementById("appointment_date").value = selected;
 });

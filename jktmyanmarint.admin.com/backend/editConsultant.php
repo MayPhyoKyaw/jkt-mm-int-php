@@ -11,11 +11,14 @@ $phone = $_POST['phone'];
 $type = $_POST['appointment_type'];
 
 // $date = $_POST['appointment_date'];
-$strToTime = strtotime(substr($_POST["appointment_date"],15));
-$date = date('Y-m-d', $strToTime);
-if ($date == "1970-01-01") {
-    $date = NULL;
-}
+$exp = explode("/",substr($_POST["appointment_date"],15));
+$imp = implode("-",$exp);
+$strToTime = strtotime($imp);
+$date = date('Y-m-d H:i:s', $strToTime);
+// echo $_POST['appointment_date'];
+// echo "<br>";
+// echo $imp;
+// echo "<br>";
 // echo $date;
 
 $time = $_POST['appointment_time'];
