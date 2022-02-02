@@ -64,7 +64,7 @@
             </a>
           </li>
           <li class="nav-item dropdown">
-            <a href="./services.html" class="nav-link active" id="serviceNavbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <a href="./services.html" class="nav-link" id="serviceNavbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
               SERVICES <i class="fas fa-angle-down"></i>
             </a>
             <div class="dropdown-menu" aria-labelledby="serviceNavbarDropdown">
@@ -74,7 +74,7 @@
             </div>
           </li>
           <li class="nav-item dropdown">
-            <a href="./trainings.html" class="nav-link" id="trainingNavbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <a href="./trainings.html" class="nav-link active" id="trainingNavbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
               TRAININGS <i class="fas fa-angle-down"></i>
             </a>
             <div class="dropdown-menu" aria-labelledby="trainingNavbarDropdown">
@@ -88,22 +88,22 @@
           </li>
           <li class="lang">
             <div class="btn-group" role="group" aria-label="First group">
-              <a href="./jp-school.php"><button type="button" class="btn btn1" style="background-color: rgba(91, 175, 231, 0.5)">
+              <a href="./consultSuccess.php"><button type="button" class="btn btn1" style="background-color: rgba(91, 175, 231, 0.5)">
                   <img src="./assets/images/icon/ukFlag.png" height="20px" width="25px" /></button></a>
-              <a href="./mm/jp-school.php"><button type="button" class="btn btn2">
+              <a href="./mm/consultSuccess.php"><button type="button" class="btn btn2">
                   <img src="./assets/images/icon/mmFlag.svg" height="20px" width="25px" /></button></a>
-              <a href="./jp/jp-school.php"><button type="button" class="btn btn3">
+              <a href="./jp/consultSuccess.php"><button type="button" class="btn btn3">
                   <img src="./assets/images/icon/japanFlag.jpg" height="20px" width="25px" /></button></a>
             </div>
           </li>
         </ul>
       </div>
       <div class="btn-group lang-xl" role="group" aria-label="First group">
-        <a href="./jp-school.php"><button type="button" class="btn btn1" style="background-color: rgba(91, 175, 231, 0.5)">
+        <a href="./consultSuccess.php"><button type="button" class="btn btn1" style="background-color: rgba(91, 175, 231, 0.5)">
             <img src="./assets/images/icon/ukFlag.png" height="20px" width="25px" /></button></a>
-        <a href="./mm/jp-school.php"><button type="button" class="btn btn2">
+        <a href="./mm/consultSuccess.php"><button type="button" class="btn btn2">
             <img src="./assets/images/icon/mmFlag.svg" height="20px" width="25px" /></button></a>
-        <a href="./jp/jp-school.php"><button type="button" class="btn btn3">
+        <a href="./jp/consultSuccess.php"><button type="button" class="btn btn3">
             <img src="./assets/images/icon/japanFlag.jpg" height="20px" width="25px" /></button></a>
       </div>
     </div>
@@ -124,7 +124,7 @@
         <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
         <li class="breadcrumb-item"><a href="./services.html">Services</a></li>
         <li class="breadcrumb-item"><a href="./business.html">Business Consultant</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Register Successfully </li>
+        <li class="breadcrumb-item active" aria-current="page">Registered Successful </li>
       </ol>
     </nav>
 

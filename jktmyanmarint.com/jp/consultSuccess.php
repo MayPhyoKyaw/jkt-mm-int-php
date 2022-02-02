@@ -1,48 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="../assets/images/logo.jpg" />
-    <title>JKT Myanmar International - BUSINESS CONSULTANT</title>
-    <meta
-      name="description"
-      content="JKT Myanmar International provides the business advisory service for those who wish to start corporate business with Japan."
-    />
-    <meta
-      name="keywords"
-      content="jkt myanmar, jkt, JKT mm, JKT mm international, Business Counseling, IT, training, language school, JKT Myanmar International Co., Ltd., JKT Myanmar International"
-    />
-    <meta name="author" content="JKT IT Team" />
-    <meta name="title" content="JKT Myanmar International Co., Ltd." />
-    <meta name="copyright" content="JKT Myanmar International" />
-    <meta name="robots" content="business consultant, follow" />
-    <meta
-      name="googlebot"
-      content="jkt myanmar, jkt, JKT mm, JKT mm international, Business Counseling, IT, training, language school, Overseas Employment"
-    />
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="language" content="English" />
-    <meta name="revisit-after" content="1 days" />
 
-    <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="../assets/images/logo.jpg" />
+  <title>JKT Myanmar International - JAPANESE SCHOOL</title>
+  <meta name="description" content="We offer entry-level to business-level Japanese and we also offer conversation courses for those who wish to go to Japan for study or work purposes, or to work in a local Japanese company." />
+  <meta name="keywords" content="jkt myanmar, jkt, JKT mm, JKT mm international, Business Counseling, IT, training, language school, Overseas Employment, JKT Myanmar International Co., Ltd., JKT Myanmar International" />
+  <meta name="author" content="JKT IT Team" />
+  <meta name="title" content="JKT Myanmar International Co., Ltd." />
+  <meta name="copyright" content="JKT Myanmar International" />
+  <meta name="robots" content="japanese school, follow" />
+  <meta name="googlebot" content="jkt myanmar, jkt, JKT mm, JKT mm international, Business Counseling, IT, training, language school, Overseas Employment" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="language" content="English" />
+  <meta name="revisit-after" content="1 days" />
 
-    <!-- css -->
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="../assets/css/main.css" />
-  </head>
-  <body>
+  <!-- fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" />
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css'>
+
+  <!-- css -->
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../assets/css/owl.carousel.css" />
+  <link rel="stylesheet" href="../assets/css/main.css" />
+</head>
+
+<body>
     <nav
       class="navbar navbar-light navbar-expand-lg gray-dark float-panel"
       data-top="0"
@@ -162,7 +151,7 @@
             </li>
             <li class="lang">
               <div class="btn-group" role="group" aria-label="First group">
-                <a href="../business.html"><button
+                <a href="../consultSuccess.php"><button
                   type="button"
                   class="btn btn1"
                 >
@@ -172,7 +161,7 @@
                     width="25px"
                   />
                 </button></a>
-                <a href=../mm/business.html><button
+                <a href=../mm/consultSuccess.php><button
                   type="button"
                   class="btn btn2"
                 >
@@ -182,7 +171,7 @@
                     width="25px"
                   />
                 </button></a>
-                <a href=./business.html><button
+                <a href=./consultSuccess.php><button
                   type="button"
                   class="btn btn3"
                   style="background-color: rgba(91, 175, 231, 0.5)"
@@ -198,7 +187,7 @@
           </ul>
         </div>
         <div class="btn-group lang-xl" role="group" aria-label="First group">
-          <a href="../business.html"><button
+          <a href="../consultSuccess.php"><button
             type="button"
             class="btn btn1"
           >
@@ -208,7 +197,7 @@
               width="25px"
             />
           </button></a>
-          <a href=../mm/business.html><button
+          <a href=../mm/consultSuccess.php><button
             type="button"
             class="btn btn2"
           >
@@ -218,7 +207,7 @@
               width="25px"
             />
           </button></a>
-          <a href=./business.html><button
+          <a href=./consultSuccess.php><button
             type="button"
             class="btn btn3"
             style="background-color: rgba(91, 175, 231, 0.5)"
@@ -233,163 +222,58 @@
       </div>
     </nav>
 
-    <!-- Business Consultant header start -->
-    
-    <section>
-      <div class="header">
-        <h3>ビジネスコンサルタントサービス</h3>
-        <div class="bg-cover"></div>
-          <img src="../assets/images/cover/cover.jpg" alt="services-cover">
-      </div>
-    </section>
-    <!-- Business Consultant header end -->
+  <!-- JP School header start -->
+  <section>
+    <div class="header">
+      <h3>ビジネスコンサルタントサービス</h3>
+      <div class="bg-cover"></div>
+      <img src="../assets/images/cover/cover.jpg" alt="jpschool-cover" />
+    </div>
+  </section>
+  <!-- JP School header end -->
 
-    <nav aria-label="breadcrumb" class="breadcrumb-nav">
+  <nav aria-label="breadcrumb" class="breadcrumb-nav">
       <ol class="breadcrumb">
-        <a href="consultant_form.php">
-          <li class="go-appointment">
-            予約する <i class="far fa-hand-point-right"></i>
-          </li>
-        </a>
         <li class="breadcrumb-item"><a href="./index.html">ホーム</a></li>
         <li class="breadcrumb-item"><a href="./services.html">サービス</a></li>
-        <li class="breadcrumb-item active" aria-current="page">ビジネスコンサルタントサービス</li>
+        <li class="breadcrumb-item"><a href="./business.html">ビジネスコンサルタントサービス</a></li>
+        <li class="breadcrumb-item active" aria-current="page">首尾よく登録</li>
       </ol>
     </nav>
 
-    <!-- Business services Detail Information Blog start -->
-    <section>
-      <div class="container pt-5">
-        <div class="row">
-          <div class="col-lg-10 detail-info-blog">
-            <div class="detail-info-blog-item-img">
-              <img
-                class="card-img rounded-0"
-                src="../assets/images/services/bs1.jpeg"
-                alt=""
-              />
-            </div>
-            <div class="blog-details">
-              <h2>ビジネスコンサルタント</h2>
-              <div class="quote-wrapper">
-                <div class="quotes">
-                  日本とミャンマーの間で企業ビジネスをしたい方のためにビジネスコンサルタントサービスを提供しています。
-                  日本とミャンマーの友情、そして企業ビジネスを深める為に、
-                  私たちは日本とミャンマー双方のビジネスコンサルタントサービスを提供しています。
-                  経験豊富なビジネスコンサルタントがお客様の用件に合わせて最適なコンサルティングを提供しています。
+  <!-- Enrollment Form start -->
+  <section>
+    <div class="container-fluid">
+      <div class="row justify-content-center">
+        <div class="col-11 col-sm-10 col-md-10 col-lg-8 col-xl-6 text-center p-0 mt-3 mb-2">
+          <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+              <fieldset id="success">
+                <div class="form-card">
+                  <h2 class="blue-text text-center"><strong>正常に登録されました!</strong></h2> <br>
+                  <div class="row justify-content-center">
+                    <div class="col-3">
+                      <img src="../assets/images/blue-tick.png" class="fit-image">
+                    </div>
+                  </div> <br><br>
+                  <div class="row justify-content-center">
+                    <div class="col-7 text-center">
+                      <h5 class="blue-text text-center">営業時間内（9時 〜 17時）にご連絡いたします。</h5>
+                    </div>
+                  </div>
+                  <div class="row justify-content-center mt-5 pt-1 mb-4">
+                    <a href="./business.html" class="back-to-courses">ホーム</a>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr class="hr" />
-      </div>
-    </section>
-    <!-- Business services Detail Information Blog end -->
-
-    <!-- Detail Images Blog start -->
-    <section>
-      <div class="container pb-3">
-        <h3 class="detail-activity-blog-title pb-3">アクティビティギャラリー</h3>
-        <div class="row detail-activity-blog pb-3" id="detailActivityBlog">
-          <div class="col-md-4">
-            <div class="detail-activity-blog-img">
-              <img
-                src="../assets/images/services/bs2.jpg"
-                alt="Activity Gallery For Business Consultant Services"
-                onclick="PopUpImg(this)"
-              />
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="detail-activity-blog-img">
-              <img
-                src="../assets/images/services/bs3.jpg"
-                alt="Activity Gallery For Business Consultant Services"
-                onclick="PopUpImg(this)"
-              />
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="detail-activity-blog-img">
-              <img
-                src="../assets/images/services/bs4.jpg"
-                alt="Activity Gallery For Business Consultant Services"
-                onclick="PopUpImg(this)"
-              />
-            </div>
-          </div>
-        </div>
-        <hr class="hr" />
-      </div>
-    </section>
-    <section id="overlay" class="gallery-overlay" onclick="hideImg(event)">
-      <img
-        src="../assets/images/icon/close.png"
-        class="gallery-btn-close"
-        alt="close"
-        onclick="hideImg(event)"
-      />
-      <img
-        id="left-arrow"
-        src="../assets/images/icon/left-arrow.png"
-        alt="left-arrow"
-        onclick="previousImg(this)"
-      />
-      <img
-        id="img"
-        src=""
-        class="overlay-img"
-        alt="overlay-img"
-        onclick="hideImg(event)"
-      />
-      <img
-        id="right-arrow"
-        src="../assets/images/icon/right-arrow.png"
-        alt="right-arrow"
-        onclick="nextImg(this)"
-      />
-    </section>
-    <!-- Detail Images Blog end -->
-
-    <!-- Detail Comment area start -->
-    <section>
-      <div class="container comment-blog px-4 pb-5">
-        <h3>Leave a Reply</h3>
-        <div class="row py-3">
-          <div class="col-lg-12 comment-form">
-            <form id="comment-form">
-              <textarea
-                name="comment"
-                id="comment"
-                placeholder="Write Comment"
-              ></textarea>
-              <span class="warning-message"></span>
-            </form>
-            <button
-              id="btn-comment"
-              type="button"
-              name="button"
-              onclick="submitCommentForJPSchool(this)"
-              class="about-boxed-btn"
-            >
-              送る
-            </button>
+              </fieldset>
           </div>
         </div>
       </div>
-    </section>
-    <!-- Detail Comment area end -->
+    </div>
+  </section>
+  <!-- Enrollment Form end -->
 
-    <!-- to top button -->
-    <button class="to-top-btn" id="toTop">
-      <i class="fa fa-arrow-up"></i>
-    </button>
-    <!-- end to top button -->
-
-    <!-- footer start -->
-    <!-- footer area start -->
-    <footer class="footer">
+  <!-- footer start -->
+  <footer class="footer">
       <div class="left">
         <a href=./index.html><span>JKT</span> Myanmar International </a>
         <div>
@@ -477,14 +361,15 @@
         </div>
       </div>
     </footer>
-    <div class="footer-copyright">Copyright © 2021 | JKT Myanmar International Co., Ltd.</div>
-    <!-- script -->
-    <script src="../assets/js/jquery-3.6.0.js"></script>
-    <script src="../assets/js/popper.min.js"></script>
-    <script src="../assets/js/bootstrap.min.js"></script>
-    <script src="../assets/js/float-panel.js"></script>
-    <script src="../assets/js/detail-gallery.js"></script>
-    <script src="../assets/js/style.js"></script>
-    <script src="../assets/js/comment.js"></script>
-  </body>
-</html>
+
+  <!-- script -->
+  <script src="../assets/js/jquery-3.6.0.js"></script>
+  <script src="../assets/js/validation.js"></script>
+  <script src="../assets/js/additional-methods"></script>
+  <script src="../assets/js/popper.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/float-panel.js"></script>
+  <script src="../assets/js/multistepForm.js"></script>
+  <script src="../assets/js/userImgPreview.js"></script>
+</body>
+<html>

@@ -69,7 +69,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
             </a>
           </li>
           <li class="nav-item dropdown">
-            <a href="./services.html" class="nav-link active" id="serviceNavbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <a href="./services.html" class="nav-link" id="serviceNavbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
               SERVICES <i class="fas fa-angle-down"></i>
             </a>
             <div class="dropdown-menu" aria-labelledby="serviceNavbarDropdown">
@@ -79,7 +79,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
             </div>
           </li>
           <li class="nav-item dropdown">
-            <a href="./trainings.html" class="nav-link" id="trainingNavbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <a href="./trainings.html" class="nav-link active" id="trainingNavbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
               TRAININGS <i class="fas fa-angle-down"></i>
             </a>
             <div class="dropdown-menu" aria-labelledby="trainingNavbarDropdown">
@@ -93,22 +93,22 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
           </li>
           <li class="lang">
             <div class="btn-group" role="group" aria-label="First group">
-              <a href="./classEnroll.php"><button type="button" class="btn btn1" style="background-color: rgba(91, 175, 231, 0.5)">
+              <a href="./consultant_form.php"><button type="button" class="btn btn1" style="background-color: rgba(91, 175, 231, 0.5)">
                   <img src="./assets/images/icon/ukFlag.png" height="20px" width="25px" /></button></a>
-              <a href="./mm/classEnroll.php"><button type="button" class="btn btn2">
+              <a href="./mm/consultant_form.php"><button type="button" class="btn btn2">
                   <img src="./assets/images/icon/mmFlag.svg" height="20px" width="25px" /></button></a>
-              <a href="./jp/classEnroll.php"><button type="button" class="btn btn3">
+              <a href="./jp/consultant_form.php"><button type="button" class="btn btn3">
                   <img src="./assets/images/icon/japanFlag.jpg" height="20px" width="25px" /></button></a>
             </div>
           </li>
         </ul>
       </div>
       <div class="btn-group lang-xl" role="group" aria-label="First group">
-        <a href="./classEnroll.php"><button type="button" class="btn btn1" style="background-color: rgba(91, 175, 231, 0.5)">
+        <a href="./consultant_form.php"><button type="button" class="btn btn1" style="background-color: rgba(91, 175, 231, 0.5)">
             <img src="./assets/images/icon/ukFlag.png" height="20px" width="25px" /></button></a>
-        <a href="./mm/classEnroll.php"><button type="button" class="btn btn2">
+        <a href="./mm/consultant_form.php"><button type="button" class="btn btn2">
             <img src="./assets/images/icon/mmFlag.svg" height="20px" width="25px" /></button></a>
-        <a href="./jp/classEnroll.php"><button type="button" class="btn btn3">
+        <a href="./jp/consultant_form.php"><button type="button" class="btn btn3">
             <img src="./assets/images/icon/japanFlag.jpg" height="20px" width="25px" /></button></a>
       </div>
     </div>
@@ -159,7 +159,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
 
             <div class="pb-4 mb-2 appointment-type">
               <fieldset class="appointment-fieldset">
-                <legend class="appointment-legend">Choose a type for your appointment? <span class="consultant-required-tag">required &nbsp; *</span></legend>
+                <legend class="appointment-legend">Choose a type for your consultant? <span class="consultant-required-tag">required &nbsp; *</span></legend>
 
                 <input type="radio" id="online" name="appointment_type" value="Online" />
                 <label for="online" id="radio-label" class="appointment-label">Online</label><br />
@@ -174,7 +174,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
 
             <div class="pb-4 mb-2 appointment-date">
               <label class="appointment-label">
-                  Appointment Time <span class="consultant-required-tag">required &nbsp; *</span>
+                  Consultant Time <span class="consultant-required-tag">required &nbsp; *</span>
               </label>
               <div class="date-picker">
                 <div class="input">
@@ -188,7 +188,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
 
             <div class="pb-4 mb-2 appointment-time">
               <fieldset class="appointment-fieldset">
-                <legend class="appointment-legend">Choose an estimated time for your appointment? <span class="consultant-required-tag">required &nbsp; *</span></legend>
+                <legend class="appointment-legend">Choose an estimated time for your consultant? <span class="consultant-required-tag">required &nbsp; *</span></legend>
 
                 <input type="radio" id="morning" name="appointment_time" value="Morning" />
                 <label for="morning" id="radio-label" class="appointment-label">Morning</label><br />
@@ -200,17 +200,17 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
 
             <div class="pb-4 mb-2">
               <label for="dropdown" id="dropdown-label" class="appointment-label">
-                Appointment Duration & Fees <span class="consultant-required-tag">required &nbsp; *</span>
+                Consultant Duration & Fees <span class="consultant-required-tag">required &nbsp; *</span>
                 <span class="consultant-note"> &nbsp;**Fees are based on your consultant description</span>
               </label>
               <select id="dropdown" name="appointment_duration" class="appointment-select">
                 <option value="" disabled selected>
-                  Select Estimated Appointment Duration & Fees
+                  Select Estimated Consultant Duration
                 </option>
                 <option value="Below 60 Minutes">About 60 Minutes - $100 Est.</option>
                 <option value="1 Hours ~ 2 Hours">1 Hours ~ 2 Hours - $200 Est.</option>
-                <option value="2 Hours ~ 3 Hours">2 Hours ~ 3 Hours- $300 Est.</option>
-                <option value="3 Hours ~ 4 Hours">3 Hours ~ 4 Hours- $400 Est.</option>
+                <option value="2 Hours ~ 3 Hours">2 Hours ~ 3 Hours - $300 Est.</option>
+                <option value="3 Hours ~ 4 Hours">3 Hours ~ 4 Hours - $400 Est.</option>
               </select>
             </div>
 
