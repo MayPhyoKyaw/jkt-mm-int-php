@@ -11,9 +11,14 @@ $phone = $_POST['phone'];
 $type = $_POST['appointment_type'];
 
 // $date = $_POST['appointment_date'];
-$exp = explode("/",substr($_POST["appointment_date"],15));
-$imp = implode("-",$exp);
-$strToTime = strtotime($imp);
+if (strlen($_POST["appointment_date"]) > 10) {
+
+    $exp = explode("/", substr($_POST["appointment_date"], 15));
+    $imp = implode("-", $exp);
+    $strToTime = strtotime($imp);
+} else {
+    $strToTime = strtotime($_POST["appointment_date"]);
+}
 $date = date('Y-m-d H:i:s', $strToTime);
 // echo $_POST['appointment_date'];
 // echo "<br>";
