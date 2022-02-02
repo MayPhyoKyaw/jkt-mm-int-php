@@ -27,8 +27,33 @@ $noti_result = mysqli_query($conn, $get_notifications);
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <!-- Custom styles for this page -->
     <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link href="css/style1.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
+    <link href="css/style1.css" rel="stylesheet">
+    <link href="css/fullcalendar.min.css" rel="stylesheet" />
+    <!-- <style>
+        body {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 12px;
+            font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+        }
+
+        #calendar {
+            width: 700px;
+            margin: 0 auto;
+        }
+
+        .response {
+            height: 60px;
+        }
+
+        .success {
+            background: #cdf3cd;
+            padding: 10px 60px;
+            border: #c3e6c3 1px solid;
+            display: inline-block;
+        }
+    </style> -->
 </head>
 
 <body id="page-top">
@@ -253,243 +278,245 @@ $noti_result = mysqli_query($conn, $get_notifications);
                 <!-- Begin Page Content -->
                 <div class="container">
                     <div class="row">
-                        <div class="card shadow mb-4 table-lg">
-                            <div class="card-header py-3">
-                                <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
+                        <div class="tabs">
+                            <input type="radio" name="tab-btn" id="tab-btn-1" value="" checked>
+                            <label for="tab-btn-1">Table View</label>
+                            <input type="radio" name="tab-btn" id="tab-btn-2" value="">
+                            <label for="tab-btn-2">Calendar View</label>
+                            <div id="content-1">
+                                <!-- table -->
+                                <div class="card shadow mb-4 table-lg">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                                <thead>
+                                                    <tr>
+                                                        <th>ID</th>
+                                                        <th>Name</th>
+                                                        <th>Email</th>
+                                                        <th>Phone</th>
+                                                        <th>Type</th>
+                                                        <th>Date</th>
+                                                        <th>Time</th>
+                                                        <th>Duration</th>
+                                                        <th>About</th>
+                                                        <th>Created At</th>
+                                                        <th>Updated At</th>
+                                                        <th>Edit</th>
+                                                        <th>Delete</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+                                                        <tr onclick="setCurrentConsultDetail(this)" data-toggle="modal" data-target="#detailModal" class="tb-row">
+                                                            <td><?= $row['consultant_id'] ?></td>
+                                                            <td><?= $row['name'] ?></td>
+                                                            <td><?= $row['email'] ?></td>
+                                                            <td><?= $row['phone'] ?></td>
+                                                            <td><?= $row['type'] ?></td>
+                                                            <td><?= $row['date'] ?></td>
+                                                            <td><?= $row['time'] ?></td>
+                                                            <td><?= $row['duration'] ?></td>
+                                                            <td><?= $row['about'] ?></td>
+                                                            <td><?= $row['created_at'] ?></td>
+                                                            <td><?= $row['updated_at'] ?></td>
+                                                            <td><button class="tb-btn tb-btn-edit" onclick="setCurrentConsultantEdit(event,this)" data-toggle="modal" data-target="#editingModal"><i class="fa fa-pencil"></i></button></td>
+                                                            <td><button class="tb-btn tb-btn-delete" onclick="setCurrentConsultantDel(event,<?php echo $row['consultant_id'] ?>)" data-toggle="modal" data-target="#deletingModal"><i class="fa fa-trash"></button></i></td>
+                                                        </tr>
+                                                    <?php endwhile; ?>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- editing Modal -->
+                                <div class="modal fade" id="editingModal" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Editing</h5>
+                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <form class="col-12" id="editingModal" action="backend/editConsultant.php" method="POST" enctype="multipart/form-data">
+                                                    <input type="hidden" name="appointment_IdEdit" id="appointment_IdEdit">
+                                                    <input type="hidden" name="appointment_CreatedAt" id="appointment_CreatedAt">
+                                                    <input type="hidden" name="appointment_UpdatedAt" id="appointment_UpdatedAt">
+                                                    <label for="name" id="name-label" class="appointment-label">Name </label><br />
+                                                    <input type="text" id="appointment_name" name="name" placeholder="Enter Your Name" required class="appointment-input" /><br />
+
+                                                    <label for="email" id="email-label" class="appointment-label">Email </label><br />
+                                                    <input type="email" id="appointment_email" name="email" placeholder="Enter Your Email" class="appointment-input" required /><br />
+
+                                                    <label for="phone" id="phone-label" class="appointment-label">Phone Number</label><br />
+                                                    <input type="text" id="appointment_phone" name="phone" placeholder="Enter Your Phone Number" class="appointment-input" required /><br />
+
+                                                    <fieldset class="appointment-fieldset">
+                                                        <legend class="appointment-legend">Choose a type for your appointment?</legend>
+
+                                                        <input type="radio" id="appointment_type" name="appointment_type" value="Online" />
+                                                        <label for="appointment_type" id="radio-label" class="appointment-label">Online</label><br />
+
+                                                        <input type="radio" id="appointment_type" name="appointment_type" value="Office" />
+                                                        <label for="appointment_type" id="radio-label" class="appointment-label">Office</label><br />
+
+                                                        <input type="radio" id="appointment_type" name="appointment_type" value="Other" />
+                                                        <label for="appointment_type" id="radio-label" class="appointment-label">Other</label><br />
+                                                    </fieldset>
+
+                                                    <!-- <div class="mb-4">
+                                    <input type="date" style="padding : 30px 20px;" class="form-control" name="appointment_date" id="appointment_date" />
+                                </div> -->
+
+                                                    <div class="date-picker">
+                                                        <div class="input">
+                                                            <input type="text" class="result" name="appointment_date" placeholder="Select Date:" id="appointment_date" value="" readonly />
+                                                            <!-- <div class="result">Select Date: <span></span></div>  -->
+                                                            <button onclick="event.preventDefault()"><i class="fa fa-calendar"></i></button>
+                                                        </div>
+                                                        <div class="calendar"></div>
+                                                    </div>
+
+                                                    <fieldset class="appointment-fieldset">
+                                                        <legend class="appointment-legend">Choose an estimated time for your appointment?</legend>
+
+                                                        <input type="radio" id="appointment_time" name="appointment_time" value="Morning" />
+                                                        <label for="appointment_time" id="radio-label" class="appointment-label">Morning</label><br />
+
+                                                        <input type="radio" id="appointment_time" name="appointment_time" value="Afternoon" />
+                                                        <label for="appointment_time" id="radio-label" class="appointment-label">Afternoon</label><br />
+                                                    </fieldset>
+
+                                                    <label for="dropdown" id="dropdown-label" class="appointment-label">
+                                                        Appointment Duration & Fees
+                                                        <span class="consultant-note"> &nbsp;**Based on your consultant description</span>
+                                                    </label><br />
+                                                    <select id="dropdown" name="appointment_duration" class="appointment-select">
+                                                        <option value="" disabled selected>
+                                                            Select Estimated Appointment Duration & Fees
+                                                        </option>
+                                                        <option value="Below 60 Minutes">About 60 Minutes - $100 Est.</option>
+                                                        <option value="1 Hours ~ 2 Hours">1 Hours ~ 2 Hours - $200 Est.</option>
+                                                        <option value="2 Hours ~ 3 Hours">2 Hours ~ 3 Hours- $300 Est.</option>
+                                                        <option value="3 Hours ~ 4 Hours">3 Hours ~ 4 Hours- $400 Est.</option>
+                                                    </select><br />
+
+                                                    <label for="description" id="description-label" class="appointment-label">About Your Consultant ? </label><br />
+                                                    <textarea placeholder="Enter About Your Consultant" id="description" name="about_consultant" class="appointment-textarea" rows="4" cols="50"></textarea>
+                                                    <hr />
+                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                    <input class="btn btn-primary" type="submit" value="Update">
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- delete modal -->
+                                <div class="modal fade" id="deletingModal" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Deleting</h5>
+                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Are you sure to delete?</p>
+                                                <form class="col-12" action="backend/deleteConsultant.php" method="POST">
+                                                    <input type="hidden" name="consulDelId" id="consulDelId">
+                                                    <hr />
+                                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                    <input class="btn btn-primary" type="submit" value="Delete">
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Detial modal -->
+
+                                <div class="modal fade" id="detailModal" tabindex="-1" role="dialog">
+                                    <div class="modal-dialog modal-lg" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header pl-5">
+                                                <h5 class="modal-title ml-3">Consultants Details</h5>
+                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">×</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="col-11 mx-auto mt-3">
+                                                    <table class="table table-striped">
+                                                        <thead>
+                                                            <tr>
+                                                                <th scope="col">Property</th>
+                                                                <th scope="col">Value</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Name</td>
+                                                                <td id="consultName"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Email</td>
+                                                                <td id="consultEmail"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Phone</td>
+                                                                <td id="consultPhone"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Type</td>
+                                                                <td id="consultType"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Date</td>
+                                                                <td id="consultDate"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Time</td>
+                                                                <td id="consultTime"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Duration</td>
+                                                                <td id="consultDuration">
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>About</td>
+                                                                <td id="consultAbout">
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
-                            <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                        <thead>
-                                            <tr>
-                                                <th>ID</th>
-                                                <th>Name</th>
-                                                <th>Email</th>
-                                                <th>Phone</th>
-                                                <th>Type</th>
-                                                <th>Date</th>
-                                                <th>Time</th>
-                                                <th>Duration</th>
-                                                <th>About</th>
-                                                <th>Created At</th>
-                                                <th>Updated At</th>
-                                                <th>Edit</th>
-                                                <th>Delete</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php while ($row = mysqli_fetch_assoc($result)) : ?>
-                                                <tr onclick="setCurrentConsultDetail(this)" data-toggle="modal" data-target="#detailModal" class="tb-row">
-                                                    <td><?= $row['consultant_id'] ?></td>
-                                                    <td><?= $row['name'] ?></td>
-                                                    <td><?= $row['email'] ?></td>
-                                                    <td><?= $row['phone'] ?></td>
-                                                    <td><?= $row['type'] ?></td>
-                                                    <td><?= $row['date'] ?></td>
-                                                    <td><?= $row['time'] ?></td>
-                                                    <td><?= $row['duration'] ?></td>
-                                                    <td><?= $row['about'] ?></td>
-                                                    <td><?= $row['created_at'] ?></td>
-                                                    <td><?= $row['updated_at'] ?></td>
-                                                    <td><button class="tb-btn tb-btn-edit" onclick="setCurrentConsultantEdit(event,this)" data-toggle="modal" data-target="#editingModal"><i class="fa fa-pencil"></i></button></td>
-                                                    <td><button class="tb-btn tb-btn-delete" onclick="setCurrentConsultantDel(event,<?php echo $row['consultant_id'] ?>)" data-toggle="modal" data-target="#deletingModal"><i class="fa fa-trash"></button></i></td>
-                                                </tr>
-                                            <?php endwhile; ?>
-                                        </tbody>
-                                    </table>
-                                </div>
+                            <div id="content-2">
+                                <div class="response"></div>
+                                <div id='calendar'></div>
                             </div>
                         </div>
-
                     </div>
                 </div>
                 <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
-
-            <!-- editing Modal -->
-            <div class="modal fade" id="editingModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Editing</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <form class="col-12" id="editingModal" action="backend/editConsultant.php" method="POST" enctype="multipart/form-data">
-                                <input type="hidden" name="appointment_IdEdit" id="appointment_IdEdit">
-                                <input type="hidden" name="appointment_CreatedAt" id="appointment_CreatedAt">
-                                <input type="hidden" name="appointment_UpdatedAt" id="appointment_UpdatedAt">
-                                <label for="name" id="name-label" class="appointment-label">Name </label><br />
-                                <input type="text" id="appointment_name" name="name" placeholder="Enter Your Name" required class="appointment-input" /><br />
-
-                                <label for="email" id="email-label" class="appointment-label">Email </label><br />
-                                <input type="email" id="appointment_email" name="email" placeholder="Enter Your Email" class="appointment-input" required /><br />
-
-                                <label for="phone" id="phone-label" class="appointment-label">Phone Number</label><br />
-                                <input type="text" id="appointment_phone" name="phone" placeholder="Enter Your Phone Number" class="appointment-input" required /><br />
-
-                                <fieldset class="appointment-fieldset">
-                                    <legend class="appointment-legend">Choose a type for your appointment?</legend>
-
-                                    <input type="radio" id="appointment_type" name="appointment_type" value="Online" />
-                                    <label for="appointment_type" id="radio-label" class="appointment-label">Online</label><br />
-
-                                    <input type="radio" id="appointment_type" name="appointment_type" value="Office" />
-                                    <label for="appointment_type" id="radio-label" class="appointment-label">Office</label><br />
-
-                                    <input type="radio" id="appointment_type" name="appointment_type" value="Other" />
-                                    <label for="appointment_type" id="radio-label" class="appointment-label">Other</label><br />
-                                </fieldset>
-
-                                <!-- <div class="mb-4">
-                                    <input type="date" style="padding : 30px 20px;" class="form-control" name="appointment_date" id="appointment_date" />
-                                </div> -->
-
-                                <div class="date-picker">
-                                    <div class="input">
-                                        <input type="text" class="result" name="appointment_date" placeholder="Select Date:" id="appointment_date" value="" readonly />
-                                        <!-- <div class="result">Select Date: <span></span></div>  -->
-                                        <button onclick="event.preventDefault()"><i class="fa fa-calendar"></i></button>
-                                    </div>
-                                    <div class="calendar"></div>
-                                </div>
-
-                                <fieldset class="appointment-fieldset">
-                                    <legend class="appointment-legend">Choose an estimated time for your appointment?</legend>
-
-                                    <input type="radio" id="appointment_time" name="appointment_time" value="Morning" />
-                                    <label for="appointment_time" id="radio-label" class="appointment-label">Morning</label><br />
-
-                                    <input type="radio" id="appointment_time" name="appointment_time" value="Afternoon" />
-                                    <label for="appointment_time" id="radio-label" class="appointment-label">Afternoon</label><br />
-                                </fieldset>
-
-                                <label for="dropdown" id="dropdown-label" class="appointment-label">
-                                    Appointment Duration & Fees
-                                    <span class="consultant-note"> &nbsp;**Based on your consultant description</span>
-                                </label><br />
-                                <select id="dropdown" name="appointment_duration" class="appointment-select">
-                                    <option value="" disabled selected>
-                                        Select Estimated Appointment Duration & Fees
-                                    </option>
-                                    <option value="Below 60 Minutes">About 60 Minutes - $100 Est.</option>
-                                    <option value="1 Hours ~ 2 Hours">1 Hours ~ 2 Hours - $200 Est.</option>
-                                    <option value="2 Hours ~ 3 Hours">2 Hours ~ 3 Hours- $300 Est.</option>
-                                    <option value="3 Hours ~ 4 Hours">3 Hours ~ 4 Hours- $400 Est.</option>
-                                </select><br />
-
-                                <label for="description" id="description-label" class="appointment-label">About Your Consultant ? </label><br />
-                                <textarea placeholder="Enter About Your Consultant" id="description" name="about_consultant" class="appointment-textarea" rows="4" cols="50"></textarea>
-                                <hr />
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                <input class="btn btn-primary" type="submit" value="Update">
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- delete modal -->
-            <div class="modal fade" id="deletingModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Deleting</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <p>Are you sure to delete?</p>
-                            <form class="col-12" action="backend/deleteConsultant.php" method="POST">
-                                <input type="hidden" name="consulDelId" id="consulDelId">
-                                <hr />
-                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                                <input class="btn btn-primary" type="submit" value="Delete">
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Detial modal -->
-
-            <div class="modal fade" id="detailModal" tabindex="-1" role="dialog">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header pl-5">
-                            <h5 class="modal-title ml-3">Consultants Details</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="col-11 mx-auto mt-3">
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Property</th>
-                                            <th scope="col">Value</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Name</td>
-                                            <td id="consultName"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Email</td>
-                                            <td id="consultEmail"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Phone</td>
-                                            <td id="consultPhone"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Type</td>
-                                            <td id="consultType"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Date</td>
-                                            <td id="consultDate"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Time</td>
-                                            <td id="consultTime"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Duration</td>
-                                            <td id="consultDuration">
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>About</td>
-                                            <td id="consultAbout">
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                        <!-- <div class="modal-footer row justify-content-between px-5 mx-2">
-                            <div>
-                                <button class="tb-btn d-inline tb-btn-edit"><i class="fa fa-pencil mr-1"></i>Edit</button>
-                                <button class="tb-btn d-inline tb-btn-delete"><i class="fa fa-trash mr-1"></i>Delete</button>
-                            </div>
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
-                        </div> -->
-                    </div>
-                </div>
-            </div>
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
@@ -531,19 +558,108 @@ $noti_result = mysqli_query($conn, $get_notifications);
         </div>
     </div>
 
-    <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
+    <!-- for calendar -->
+    <script src="js/fullcalendar/lib/jquery.min.js"></script>
+    <script src="js/fullcalendar/lib/moment.min.js"></script>
+    <script src="js/fullcalendar/fullcalendar.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var calendar = $('#calendar').fullCalendar({
+                editable: true,
+                events: "backend/calendar/fetch-event.php",
+                displayEventTime: false,
+                eventRender: function(event, element, view) {
+                    if (event.allDay === 'true') {
+                        event.allDay = true;
+                    } else {
+                        event.allDay = false;
+                    }
+                },
+                selectable: true,
+                // selectHelper: true,
+                // select: function(start, end, allDay) {
+                //     var title = prompt('Event Title:');
+
+                //     if (title) {
+                //         var date = $.fullCalendar.formatDate(start, "Y-MM-DD HH:mm:ss");
+
+                //         $.ajax({
+                //             url: 'backend/calendar/add-event.php',
+                //             data: 'title=' + title + '&date=' + date,
+                //             type: "POST",
+                //             success: function(data) {
+                //                 displayMessage("Added Successfully");
+                //             }
+                //         });
+                //         calendar.fullCalendar('renderEvent', {
+                //                 title: title,
+                //                 start: start,
+                //                 end: end,
+                //                 allDay: allDay
+                //             },
+                //             true
+                //         );
+                //     }
+                //     calendar.fullCalendar('unselect');
+                // },
+
+                editable: true,
+                eventDrop: function(event, delta) {
+                    var start = $.fullCalendar.formatDate(event.start, "Y-MM-DD HH:mm:ss");
+                    // var end = $.fullCalendar.formatDate(event.end, "Y-MM-DD HH:mm:ss");
+                    $.ajax({
+                        url: 'backend/calendar/edit-event.php',
+                        data: 'start=' + start + '&id=' + event.id,
+                        type: "POST",
+                        success: function(response) {
+                            displayMessage("Updated Successfully");
+                        }
+                    });
+                },
+                eventClick: function(event) {
+                    var deleteMsg = confirm("Do you really want to delete?");
+                    if (deleteMsg) {
+                        $.ajax({
+                            type: "POST",
+                            url: "backend/calendar/delete-event.php",
+                            data: "&id=" + event.id,
+                            success: function(response) {
+                                if (parseInt(response) > 0) {
+                                    $('#calendar').fullCalendar('removeEvents', event.id);
+                                    displayMessage("Deleted Successfully");
+                                }
+                            }
+                        });
+                    }
+                }
+
+            });
+        });
+
+        function displayMessage(message) {
+            $(".response").html("<div class='success'>" + message + "</div>");
+            setInterval(function() {
+                $(".success").fadeOut();
+            }, 1000);
+        }
+    </script>
+
+
+    <!-- <script src="vendor/jquery/jquery.min.js"></script> -->
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    
+
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
     <!-- Core plugin JavaScript-->
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    
+
     <!-- Custom scripts for all pages-->
     <script src="js/sb-admin-2.min.js"></script>
     <!-- Page level plugins -->
     <script src="vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-    
+
+
     <!-- Page level custom scripts -->
     <script src="js/style.js"></script>
     <script src="js/jui.js"></script>
@@ -557,6 +673,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
             });
         })
     </script>
+
 </body>
 
 </html>
