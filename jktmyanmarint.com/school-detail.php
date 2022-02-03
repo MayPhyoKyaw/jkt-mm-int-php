@@ -150,7 +150,7 @@ function encrypt_decrypt($action, $string) {
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
             <li class="breadcrumb-item"><a href="./trainings.html">Trainings</a></li>
-            <li class="breadcrumb-item"><a href="./jp-school.php">Japanese Language School</a></li>
+            <li class="breadcrumb-item"><a href="./school-detail.php" id="some-sch">Training Schools</a></li>
             <li class="breadcrumb-item active" aria-current="page">Schedule Detail</li>
         </ol>
     </nav>
@@ -159,10 +159,10 @@ function encrypt_decrypt($action, $string) {
     <section>
         <div class="container schedule-blog mt-5">
             <div class="row">
-                <div class="col-6 mt-2">
+                <div class="col-12 col-lg-6 mt-2 ">
                     <h1 class="pb-3">Class Schedule</h1>
                 </div>
-                <div class="col-6 text-right">
+                <div class="col-12 col-lg-6 text-lg-right text-left">
                     <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                         <?php
                         if (isset($_SESSION['courseId'])) {
@@ -246,7 +246,7 @@ function encrypt_decrypt($action, $string) {
                                                     // echo $row['start_date'] < date("Y-m-d") ? "<br><br><span class='in-progress-badges'>In Progess</span>" : "";
                                                     ?>
                                                 </td>
-                                                <td data-label="Days & Time">
+                                                <td data-label="Days & Time" class="text-right text-lg-left">
                                                     <?php
                                                     // var_dump($row["sections"]);
                                                     // var_dump($row["sections"][0]); 
@@ -345,7 +345,7 @@ function encrypt_decrypt($action, $string) {
                                                     // echo $row['start_date'] < date("Y-m-d") ? "<br><br><span class='in-progress-badges'>In Progess</span>" : "";
                                                     ?>
                                                 </td>
-                                                <td data-label="Days & Time">
+                                                <td data-label="Days & Time" class="text-right text-lg-left">
                                                     <?php
                                                     // var_dump($row["sections"]);
                                                     // var_dump($row["sections"][0]); 
@@ -443,7 +443,7 @@ function encrypt_decrypt($action, $string) {
                                                 // echo $row['start_date'] < date("Y-m-d") ? "<br><br><span class='in-progress-badges'>In Progess</span>" : "";
                                                 ?>
                                             </td>
-                                            <td data-label="Days & Time">
+                                            <td data-label="Days & Time" class="text-right text-lg-left">
                                                 <?php
                                                 // var_dump($row["sections"]);
                                                 // var_dump($row["sections"][0]); 
@@ -689,6 +689,7 @@ function encrypt_decrypt($action, $string) {
     <script src="./assets/js/comment.js"></script>
     <script src="./assets/js/style.js"></script>
     <script src="./assets/js/jp-class-schedule.js"></script>
+    <script src="./assets/js/school-detail.js"></script>
 </body>
 
 </html>

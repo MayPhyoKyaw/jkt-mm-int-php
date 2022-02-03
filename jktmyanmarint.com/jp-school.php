@@ -1,6 +1,7 @@
-<?php 
-session_start(); 
-function encrypt_decrypt($action, $string) {
+<?php
+session_start();
+function encrypt_decrypt($action, $string)
+{
   /* =================================================
   * ENCRYPTION-DECRYPTION
   * =================================================
@@ -16,11 +17,11 @@ function encrypt_decrypt($action, $string) {
   // iv - encrypt method AES-256-CBC expects 16 bytes - else you will get a warning
   $iv = substr(hash('sha256', $secret_iv), 0, 16);
   if ($action == 'encrypt') {
-      $output = base64_encode(openssl_encrypt($string, $encrypt_method, $key, 0, $iv));
+    $output = base64_encode(openssl_encrypt($string, $encrypt_method, $key, 0, $iv));
   } else {
-      if ($action == 'decrypt') {
-          $output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);
-      }
+    if ($action == 'decrypt') {
+      $output = openssl_decrypt(base64_decode($string), $encrypt_method, $key, 0, $iv);
+    }
   }
   return $output;
 }
@@ -245,7 +246,7 @@ function encrypt_decrypt($action, $string) {
                       // echo $row['start_date'] < date("Y-m-d") ? "<br><br><span class='in-progress-badges'>In Progess</span>" : "";
                       ?>
                     </td>
-                    <td data-label="Days & Time" style="text-align: left; padding-left: 30px;">
+                    <td data-label="Days & Time" class="text-right text-lg-left">
                       <?php
                       // var_dump($row["sections"]);
                       // var_dump($row["sections"][0]); 
@@ -266,10 +267,10 @@ function encrypt_decrypt($action, $string) {
                                                                                 break;
                                                                             }
                                                                             ?>"><?php
-                              echo $sections[$i]["days"][$j];
-                              echo "</span>";
-                            }
-                              ?>
+                                                                                                                    echo $sections[$i]["days"][$j];
+                                                                                                                    echo "</span>";
+                                                                                                                  }
+                                                                                                                    ?>
                           <span class="section-hour schedule-time-badges" id="section_hour">
                             <?php
                             echo $sections[$i]["sectionHour"];
@@ -300,7 +301,7 @@ function encrypt_decrypt($action, $string) {
                     <td data-label="Enroll">
                       <?php $encryptedCourseId = encrypt_decrypt("encrypt", $row["course_id"]) ?>
                       <span class="hidden row-data"><?php echo $encryptedCourseId; ?></span>
-                        <a href="./classEnroll.php?courseId=<?php echo $encryptedCourseId; ?>"><button class="enroll">
+                      <a href="./classEnroll.php?courseId=<?php echo $encryptedCourseId; ?>"><button class="enroll">
                           <img src="./assets/images/icon/contract.png" alt="" width="20" height="20" />
                         </button></a>
                     </td>

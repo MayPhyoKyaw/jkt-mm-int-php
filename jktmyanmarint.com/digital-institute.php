@@ -240,7 +240,7 @@ function encrypt_decrypt($action, $string) {
                       // echo $row['start_date'] < date("Y-m-d") ? "<br><br><span class='in-progress-badges'>In Progess</span>" : "";
                       ?>
                     </td>
-                    <td data-label="Days & Time" style="text-align: left; padding-left: 30px;">
+                    <td data-label="Days & Time" class="text-right text-lg-left">
                       <?php
                       // var_dump($row["sections"]);
                       // var_dump($row["sections"][0]); 

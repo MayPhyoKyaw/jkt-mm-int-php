@@ -112,7 +112,7 @@
   <!-- JP School header start -->
   <section>
     <div class="header">
-      <h3>Japanese Language School</h3>
+      <h3>Training Schools</h3>
       <div class="bg-cover"></div>
       <img src="./assets/images/cover/cover.jpg" alt="jpschool-cover" />
     </div>
@@ -123,7 +123,7 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
         <li class="breadcrumb-item"><a href="./trainings.html">Trainings</a></li>
-        <li class="breadcrumb-item"><a href="./jp-school.php">Japanese Language School</a></li>
+        <li class="breadcrumb-item"><a href="./school-detail.php">Training Schools</a></li>
         <li class="breadcrumb-item active" aria-current="page">Enroll Successfully </li>
       </ol>
     </nav>

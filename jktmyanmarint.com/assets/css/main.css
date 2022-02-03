@@ -3311,6 +3311,12 @@ iframe::-webkit-scrollbar-thumb:hover {
   #jp_sh {
     width: 80% !important;
   }
+  .filter-button {
+    padding: 5px 10px;
+  }
+  .class-filter {
+    padding: 7px 25px;
+  }
 }
 
 @media only screen and (max-width: 775px) {

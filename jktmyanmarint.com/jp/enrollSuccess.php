@@ -113,7 +113,7 @@
   <!-- JP School header start -->
   <section>
     <div class="header">
-      <h3>日本語学校</h3>
+      <h3>トレーニング学院 </h3>
       <div class="bg-cover"></div>
       <img src="../assets/images/cover/cover.jpg" alt="jpschool-cover" />
     </div>
@@ -124,7 +124,7 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="./index.html">ホーム</a></li>
       <li class="breadcrumb-item"><a href="./trainings.html">トレーニング</a></li>
-      <li class="breadcrumb-item"><a href="./jp-school.php">日本語学校</a></li>
+      <li class="breadcrumb-item"><a href="./school-detail.php">トレーニング学院 </a></li>
       <li class="breadcrumb-item active" aria-current="page">首尾よく登録</li>
     </ol>
   </nav>

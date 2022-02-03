@@ -233,7 +233,7 @@
   <!-- JP School header start -->
   <section>
     <div class="header">
-      <h3>ဂျပန်ဘာသာစကား သင်တန်း</h3>
+      <h3>လေ့ကျင့်သင်ကြားမှု သင်တန်းများ </h3>
       <div class="bg-cover"></div>
       <img src="../assets/images/cover/cover.jpg" alt="jpschool-cover" />
     </div>
@@ -244,7 +244,7 @@
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="./index.html">ပင်မစာမျက်နှာ</a></li>
       <li class="breadcrumb-item"><a href="./trainings.html">လေ့ကျင့်သင်ကြားမှုများ</a></li>
-      <li class="breadcrumb-item"><a href="./jp-school.php">ဂျပန်ဘာသာစကား သင်တန်း</a></li>
+      <li class="breadcrumb-item"><a href="./school-detail.php">လေ့ကျင့်သင်ကြားမှု သင်တန်းများ </a></li>
       <li class="breadcrumb-item active" aria-current="page">စာရင်းပေးသွင်းမှု အောင်မြင်ခြင်း</li>
     </ol>
   </nav>
