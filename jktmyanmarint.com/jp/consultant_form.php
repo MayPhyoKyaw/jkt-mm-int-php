@@ -37,195 +37,91 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
 </head>
 
 <body>
-<nav
-      class="navbar navbar-light navbar-expand-lg gray-dark float-panel"
-      data-top="0"
-      data-scroll="300"
-    >
-      <div class="container-fluid mynav">
-        <a href=./index.html class="navbar-brand">
-          <img
-            src="../assets/images/logo.jpg"
-            alt=""
-            height="50px"
-            width="50px"
-          />
-          <span style="font-weight: bolder; font-size: larger; color: #029eff"
-            >JKT</span
-          >
-          Myanmar International
-        </a>
-        <a href=./index.html class="small-brand">
-          <img
-            src="../assets/images/logo.jpg"
-            alt=""
-            height="50px"
-            width="50px"
-          />
-          <span style="font-weight: bolder; font-size: larger; color: #029eff"
-            >JKT</span
-          >
-          Myanmar International
-        </a>
-        <a href=./index.html class="icon-brand">
-          <img
-            src="../assets/images/logo.jpg"
-            alt=""
-            height="50px"
-            width="50px"
-          />
-        </a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarCollapse"
-        >
-          <span class="navbar-toggler-icon toggler-icon-color"></span>
-        </button>
-        <div id="navbarCollapse" class="collapse navbar-collapse">
-          <ul class="navbar-nav ms-auto text-sm-start">
-            <li class="nav-item">
-              <a href=./index.html class="nav-link active"> ホーム </a>
-            </li>
-            <li class="nav-item">
-              <a href="./about.html" class="nav-link active"> 会社情報 </a>
-            </li>
-            <li class="nav-item">
-              <a href="./activities.html" class="nav-link active">
-                活動
-              </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                href="./services.html"
-                class="nav-link"
-                id="serviceNavbarDropdown"
-                role="button"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                サービス <i class="fas fa-angle-down"></i>
-              </a>
-              <div
-                class="dropdown-menu"
-                aria-labelledby="serviceNavbarDropdown"
-              >
-                <a class="dropdown-item" href="./overseas.html"
-                  >海外での雇用</a
-                >
-                <a class="dropdown-item" href="./business.html"
-                  >ビジネスコンサルタント</a
-                >
-                <!-- <a class="dropdown-item" href="./announcement.html"
+  <nav class="navbar navbar-light navbar-expand-lg gray-dark float-panel" data-top="0" data-scroll="300">
+    <div class="container-fluid mynav">
+      <a href=./index.html class="navbar-brand">
+        <img src="../assets/images/logo.jpg" alt="" height="50px" width="50px" />
+        <span style="font-weight: bolder; font-size: larger; color: #029eff">JKT</span>
+        Myanmar International
+      </a>
+      <a href=./index.html class="small-brand">
+        <img src="../assets/images/logo.jpg" alt="" height="50px" width="50px" />
+        <span style="font-weight: bolder; font-size: larger; color: #029eff">JKT</span>
+        Myanmar International
+      </a>
+      <a href=./index.html class="icon-brand">
+        <img src="../assets/images/logo.jpg" alt="" height="50px" width="50px" />
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon toggler-icon-color"></span>
+      </button>
+      <div id="navbarCollapse" class="collapse navbar-collapse">
+        <ul class="navbar-nav ms-auto text-sm-start">
+          <li class="nav-item">
+            <a href=./index.html class="nav-link active"> ホーム </a>
+          </li>
+          <li class="nav-item">
+            <a href="./about.html" class="nav-link active"> 会社情報 </a>
+          </li>
+          <li class="nav-item">
+            <a href="./activities.html" class="nav-link active">
+              活動
+            </a>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="./services.html" class="nav-link" id="serviceNavbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              サービス <i class="fas fa-angle-down"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="serviceNavbarDropdown">
+              <a class="dropdown-item" href="./overseas.html">海外での雇用</a>
+              <a class="dropdown-item" href="./business.html">ビジネスコンサルタント</a>
+              <!-- <a class="dropdown-item" href="./announcement.html"
                   >ITサービス</a
                 > -->
-                <a class="dropdown-item" href="./announcement.html"
-                  >旅行サービス</a
-                >
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                href="./trainings.html"
-                class="nav-link active"
-                id="trainingNavbarDropdown"
-                role="button"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                トレーニング <i class="fas fa-angle-down"></i>
-              </a>
-              <div
-                class="dropdown-menu"
-                aria-labelledby="trainingNavbarDropdown"
-              >
-                <a class="dropdown-item" href="./jp-school.php"
-                  >日本語学校</a
-                >
-                <a class="dropdown-item" href="./digital-institute.php"
-                  >デジタル学院</a
-                >
-                <a class="dropdown-item" href="./announcement.html"
-                  >人材トレーニング</a
-                >
-              </div>
-            </li>
-            <li class="nav-item">
-              <a href="./contact.html" class="nav-link active"> お問い合わせ </a>
-            </li>
-            <li class="lang">
-              <div class="btn-group" role="group" aria-label="First group">
-                <a href="../consultant_form.php"><button
-                  type="button"
-                  class="btn btn1"
-                >
-                  <img
-                    src="../assets/images/icon/ukFlag.png"
-                    height="20px"
-                    width="25px"
-                  />
+              <a class="dropdown-item" href="./announcement.html">旅行サービス</a>
+            </div>
+          </li>
+          <li class="nav-item dropdown">
+            <a href="./trainings.html" class="nav-link active" id="trainingNavbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+              トレーニング <i class="fas fa-angle-down"></i>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="trainingNavbarDropdown">
+              <a class="dropdown-item" href="./jp-school.php">日本語学校</a>
+              <a class="dropdown-item" href="./digital-institute.php">デジタル学院</a>
+              <a class="dropdown-item" href="./announcement.html">人材トレーニング</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a href="./contact.html" class="nav-link active"> お問い合わせ </a>
+          </li>
+          <li class="lang">
+            <div class="btn-group" role="group" aria-label="First group">
+              <a href="../consultant_form.php"><button type="button" class="btn btn1">
+                  <img src="../assets/images/icon/ukFlag.png" height="20px" width="25px" />
                 </button></a>
-                <a href=../mm/consultant_form.php><button
-                  type="button"
-                  class="btn btn2"
-                >
-                  <img
-                    src="../assets/images/icon/mmFlag.svg"
-                    height="20px"
-                    width="25px"
-                  />
+              <a href=../mm/consultant_form.php><button type="button" class="btn btn2">
+                  <img src="../assets/images/icon/mmFlag.svg" height="20px" width="25px" />
                 </button></a>
-                <a href=./consultant_form.php><button
-                  type="button"
-                  class="btn btn3"
-                  style="background-color: rgba(91, 175, 231, 0.5)"
-                >
-                  <img
-                    src="../assets/images/icon/japanFlag.jpg"
-                    height="20px"
-                    width="25px"
-                  />
+              <a href=./consultant_form.php><button type="button" class="btn btn3" style="background-color: rgba(91, 175, 231, 0.5)">
+                  <img src="../assets/images/icon/japanFlag.jpg" height="20px" width="25px" />
                 </button></a>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class="btn-group lang-xl" role="group" aria-label="First group">
-          <a href="../consultant_form.php"><button
-            type="button"
-            class="btn btn1"
-          >
-            <img
-              src="../assets/images/icon/ukFlag.png"
-              height="20px"
-              width="25px"
-            />
-          </button></a>
-          <a href=../mm/consultant_form.php><button
-            type="button"
-            class="btn btn2"
-          >
-            <img
-              src="../assets/images/icon/mmFlag.svg"
-              height="20px"
-              width="25px"
-            />
-          </button></a>
-          <a href=./consultant_form.php><button
-            type="button"
-            class="btn btn3"
-            style="background-color: rgba(91, 175, 231, 0.5)"
-          >
-            <img
-              src="../assets/images/icon/japanFlag.jpg"
-              height="20px"
-              width="25px"
-            />
-          </button></a>
-        </div>
+            </div>
+          </li>
+        </ul>
       </div>
-    </nav>
+      <div class="btn-group lang-xl" role="group" aria-label="First group">
+        <a href="../consultant_form.php"><button type="button" class="btn btn1">
+            <img src="../assets/images/icon/ukFlag.png" height="20px" width="25px" />
+          </button></a>
+        <a href=../mm/consultant_form.php><button type="button" class="btn btn2">
+            <img src="../assets/images/icon/mmFlag.svg" height="20px" width="25px" />
+          </button></a>
+        <a href=./consultant_form.php><button type="button" class="btn btn3" style="background-color: rgba(91, 175, 231, 0.5)">
+            <img src="../assets/images/icon/japanFlag.jpg" height="20px" width="25px" />
+          </button></a>
+      </div>
+    </div>
+  </nav>
 
   <!-- JP School header start -->
   <section>
@@ -291,7 +187,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
               </label>
               <div class="date-picker">
                 <div class="input">
-                  <input type="text" class="result" name="appointment_date" placeholder="日付を選択:" id="appointment_date" value="" required/>
+                  <input type="text" class="result" name="appointment_date" placeholder="日付を選択:" id="appointment_date" value="" required />
                   <!-- <div class="result">Select Date: <span></span></div>  -->
                   <button onclick="event.preventDefault()"><i class="fa fa-calendar"></i></button>
                 </div>
@@ -318,7 +214,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
               </label>
               <select id="dropdown" name="appointment_duration" class="appointment-select">
                 <option value="" disabled selected>
-                料金を選んでください
+                  料金を選んでください
                 </option>
                 <option value="Below 60 Minutes">約60分 - $100 Est.</option>
                 <option value="1 Hours ~ 2 Hours">約1時間〜2時間 - $200 Est.</option>
@@ -329,15 +225,15 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
 
             <div class="pb-4 mb-2">
               <label for="description" id="description-label" class="appointment-label">相談したい内容について<span class="consultant-required-tag">必須 &nbsp; *</span></label><br />
-              <textarea placeholder="相談したい内容について入力してください" id="description" name="about_consultant" class="appointment-textarea" rows="4" cols="50" ></textarea>
+              <textarea placeholder="相談したい内容について入力してください" id="description" name="about_consultant" class="appointment-textarea" rows="4" cols="50"></textarea>
             </div>
 
             <div class="text-right">
               <button type="submit" id="submit" class="appointment-button">予定を送信する</button>
             </div>
           </form>
+        </div>
       </div>
-    </div>
   </section>
 
   <!-- The Confirmation Modal -->
@@ -347,7 +243,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
 
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Registration confirmation</h4>
+          <h4 class="modal-title">待ち合わせの確認</h4>
           <button class="btn-close" data-dismiss="modal">
             <i class='fas fa-times' style='font-size:24px; color: grey'></i>
           </button>
@@ -355,7 +251,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
 
         <!-- Modal body -->
         <div class="modal-body confirm-modal-body">
-          Are you sure, you want to <span style="color: #001c69">submit your enrollment for this course</span>?
+          待ち合わせ　を　しても　よろしいですか?
         </div>
 
         <!-- Modal footer -->
@@ -367,96 +263,79 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
       </div>
     </div>
   </div>
-
   <!-- footer start -->
   <footer class="footer">
-      <div class="left">
-        <a href=./index.html><span>JKT</span> Myanmar International </a>
-        <div>
-          <a href="https://www.facebook.com/JKT-Japanese-Language-School-100339937999010/">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <i class="fab fa-twitter"></i>
-          <i class="fab fa-instagram"></i>
-        </div>
+    <div class="left">
+      <a href=./index.html><span>JKT</span> Myanmar International </a>
+      <div>
+        <a href="https://www.facebook.com/JKT-Japanese-Language-School-100339937999010/">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-instagram"></i>
       </div>
-      <div class="right">
-        <div class="footer-flex">
-          <div>
-            <header>ご連絡ください。</header>
-            <p>私たちはあなたと一緒に働く準備ができています。</p>
-          </div>
-          <a href="./contact.html"
-            ><button id="btn-contact" class="primary-btn">お問い合わせ</button></a
-          >
+    </div>
+    <div class="right">
+      <div class="footer-flex">
+        <div>
+          <header>ご連絡ください。</header>
+          <p>私たちはあなたと一緒に働く準備ができています。</p>
         </div>
-        <div class="footer-flex-nav">
-          <div class="nav">
-            <header>サービス</header>
-            <ul class="footer-list" id="first">
-              <li>
-                <span
-                  ><a href="./overseas.html"
-                    >海外雇用サービス（日本のみ）</a
-                  ></span
-                >
-              </li>
-              <li>
-                <span
-                  ><a href="./business.html"
-                    >ビジネスコンサルタント</a
-                  ></span
-                >
-              </li>
-              <!-- <li>
+        <a href="./contact.html"><button id="btn-contact" class="primary-btn">お問い合わせ</button></a>
+      </div>
+      <div class="footer-flex-nav">
+        <div class="nav">
+          <header>サービス</header>
+          <ul class="footer-list" id="first">
+            <li>
+              <span><a href="./overseas.html">海外雇用サービス（日本のみ）</a></span>
+            </li>
+            <li>
+              <span><a href="./business.html">ビジネスコンサルタント</a></span>
+            </li>
+            <!-- <li>
                 <span><a href="./announcement.html">ITサービス</a></span>
               </li> -->
-              <li>
-                <span><a href="./announcement.html">旅行サービス</a></span>
-              </li>
-            </ul>
-          </div>
-          <div class="nav">
-            <header>トレーニング</header>
-            <ul class="footer-list" id="second">
-              <li>
-                <span
-                  ><a href="./jp-school.php">日本語学校</a></span
-                >
-              </li>
-              <li>
-                <span
-                  ><a href="./digital-institute.php">デジタル学院</a></span
-                >
-              </li>
-              <li>
-                <span><a href="./announcement.html">人材トレーニング</a></span>
-              </li>
-            </ul>
-          </div>
-          <div class="nav">
-            <header>お問い合わせ</header>
-            <ul class="footer-list" id="last">
-              <li>
-                <i class="fa fa-phone"></i
-                ><a href="tel:+959269564339">+959 269 564 339</a>
-              </li>
-              <li>
-                <i class="fa fa-phone"></i
-                ><a href="tel:+959770411708">+959 770 411 708</a>
-              </li>
-              <li>
-                <i class="fas fa-map-marker-alt"></i>No.86, 3A, Shinsawpu Road, Near Myaynigone Citymart, Sanchaung Township, Yangon, Myanmar.
-              </li>
-              <li>
-                <i class="fa fa-envelope"></i>
-                <a href="mailto:jkt.mm.int@gmail.com">jkt.mm.int@gmail.com</a>
-              </li>
-            </ul>
-          </div>
+            <li>
+              <span><a href="./announcement.html">旅行サービス</a></span>
+            </li>
+          </ul>
+        </div>
+        <div class="nav">
+          <header>トレーニング</header>
+          <ul class="footer-list" id="second">
+            <li>
+              <span><a href="./jp-school.php">日本語学校</a></span>
+            </li>
+            <li>
+              <span><a href="./digital-institute.php">デジタル学院</a></span>
+            </li>
+            <li>
+              <span><a href="./announcement.html">人材トレーニング</a></span>
+            </li>
+          </ul>
+        </div>
+        <div class="nav">
+          <header>お問い合わせ</header>
+          <ul class="footer-list" id="last">
+            <li>
+              <i class="fa fa-phone"></i><a href="tel:+959269564339">+959 269 564 339</a>
+            </li>
+            <li>
+              <i class="fa fa-phone"></i><a href="tel:+959770411708">+959 770 411 708</a>
+            </li>
+            <li>
+              <i class="fas fa-map-marker-alt"></i>No.86, 3A, Shinsawpu Road, Near Myaynigone Citymart, Sanchaung Township, Yangon, Myanmar.
+            </li>
+            <li>
+              <i class="fa fa-envelope"></i>
+              <a href="mailto:jkt.mm.int@gmail.com">jkt.mm.int@gmail.com</a>
+            </li>
+          </ul>
         </div>
       </div>
-    </footer>
+    </div>
+  </footer>
 
   <!-- script -->
   <script src="../assets/js/jquery-3.6.0.js"></script>

@@ -144,17 +144,17 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
           <form id="survey-form" action="./backend/newConsult.php" method="POST">
             <div class="pb-4 mb-2">
               <label for="name" id="name-label" class="appointment-label">Name <span class="consultant-required-tag">required &nbsp; *</span></label><br />
-              <input type="text" id="name" name="name" placeholder="Enter Your Name" required class="appointment-input" />
+              <input type="text" id="name" name="name" placeholder="Enter Your Name" required class="appointment-input form-field" />
             </div>
 
             <div class="pb-4 mb-2">
               <label for="email" id="email-label" class="appointment-label">Email <span class="consultant-required-tag">required &nbsp; *</span></label><br />
-              <input type="email" id="email" name="email" placeholder="Enter Your Email" class="appointment-input" required />
+              <input type="email" id="email" name="email" placeholder="Enter Your Email" class="appointment-input form-field" required />
             </div>
 
             <div class="pb-4 mb-2">
               <label for="phone" id="phone-label" class="appointment-label">Phone Number <span class="consultant-required-tag">required &nbsp; *</span></label><br />
-              <input type="text" id="phone" name="phone" placeholder="Enter Your Phone Number" class="appointment-input" required />
+              <input type="text" id="phone" name="phone" placeholder="Enter Your Phone Number" class="appointment-input form-field" required />
             </div>
 
             <div class="pb-4 mb-2 appointment-type">
@@ -220,7 +220,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
             </div>
 
             <div class="text-right">
-              <button type="submit" id="submit" class="appointment-button">Send Appointment</button>
+              <button id="submit" type="submit" class="appointment-button">Send Appointment</button>
             </div>
           </form>
       </div>
@@ -234,7 +234,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
 
         <!-- Modal Header -->
         <div class="modal-header">
-          <h4 class="modal-title">Registration confirmation</h4>
+          <h4 class="modal-title">Appointment confirmation</h4>
           <button class="btn-close" data-dismiss="modal">
             <i class='fas fa-times' style='font-size:24px; color: grey'></i>
           </button>
@@ -242,7 +242,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
 
         <!-- Modal body -->
         <div class="modal-body confirm-modal-body">
-          Are you sure, you want to <span style="color: #001c69">submit your enrollment for this course</span>?
+          Are you sure, you want to submit your appointment?
         </div>
 
         <!-- Modal footer -->

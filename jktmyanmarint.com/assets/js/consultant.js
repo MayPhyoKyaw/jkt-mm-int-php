@@ -1,3 +1,4 @@
+
 $(function () {
   $(".calendar").datepicker({
     dateFormat: "dd/mm/yy",
@@ -48,7 +49,7 @@ $(function () {
       phone: {
         required: true,
         minlength: 8,
-        maxlength: 12
+        maxlength: 12,
       },
       appointment_type: {
         required: true,
@@ -95,9 +96,9 @@ $(function () {
     errorPlacement: function (error, element) {
       if (element.is(":radio[name='appointment_type']")) {
         error.appendTo(element.parents(".appointment-type"));
-      } else if(element.is(":radio[name='appointment_time']")) {
+      } else if (element.is(":radio[name='appointment_time']")) {
         error.appendTo(element.parents(".appointment-time"));
-      } else if(element.is("input[name='appointment_date']")){
+      } else if (element.is("input[name='appointment_date']")) {
         error.appendTo(element.parents(".appointment-date"));
       } else {
         // This is the default behavior
@@ -109,11 +110,17 @@ $(function () {
         this.element(element);
       }
     },
-  })
-  $("#appointment_date").on("focusin", function() {
-    $(this).prop('readonly', true);  
+    submitHandler: function (form) {
+      $("#confirmationModal").modal('show');
+      $('#submitConfirm').click(function () {
+          form.submit();
+     });
+  }
   });
-  $("#appointment_date").on("focusout", function() {
-    $(this).prop('readonly', false);  
-  })
+  $("#appointment_date").on("focusin", function () {
+    $(this).prop("readonly", true);
+  });
+  $("#appointment_date").on("focusout", function () {
+    $(this).prop("readonly", false);
+  });
 });
