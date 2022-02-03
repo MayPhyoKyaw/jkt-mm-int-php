@@ -244,7 +244,7 @@ function encrypt_decrypt($action, $string)
                 <p class="class-detail">
                   <?php echo $row['services']; ?>
                 </p>
-                <p class="class-detail">
+                <p class="class-detail note">
                   <?php $note = $row['note'] === '' ? '-' : $row['note'];
                   echo $note; ?>
                 </p>
@@ -781,7 +781,7 @@ function encrypt_decrypt($action, $string)
                 <p class="class-detail">
                   <?php echo $row['services']; ?>
                 </p>
-                <p class="class-detail">
+                <p class="class-detail note">
                   <?php $note = $row['note'] === '' ? '-' : $row['note'];
                   echo $note; ?>
                 </p>

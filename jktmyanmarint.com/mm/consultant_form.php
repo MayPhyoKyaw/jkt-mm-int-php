@@ -262,7 +262,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
             ကျေးဇူးပြု၍ ဖောင်၏ အကွက်အားလုံးကို ဖြည့်ပါ။ <br>
             ကျွန်ုပ်တို့နှင့်ပူးပေါင်းသည့်အတွက် ကျေးဇူးတင်ပါသည်။
           </p>
-          <form id="survey-form" action="../backend/newConsult.php" method="POST">
+          <form id="survey-form" action="../backend/newConsult_mm.php" method="POST">
             <div class="pb-4 mb-2">
               <label for="name" id="name-label" class="appointment-label">အမည် <span class="consultant-required-tag">required &nbsp; *</span></label><br />
               <input type="text" id="name" name="name" placeholder="အမည်ထည့်ပါ" required class="appointment-input" />

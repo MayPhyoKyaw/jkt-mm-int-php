@@ -1898,6 +1898,11 @@ figure img {
   white-space: break-spaces;
 }
 
+.note {
+  white-space: pre-line;
+  margin-top: -15px;
+}
+
 .btn-submit {
   background-color: #5bafe7;
   border-radius: 5px;
@@ -2028,7 +2033,7 @@ figure img {
   border-bottom: 1px dotted rgb(128, 125, 125);
 }
 .sections-enroll {
-  padding-bottom: 15px;
+  padding-bottom: 7px;
   border-bottom: 1px dotted rgb(128, 125, 125);
 }
 .tab-content .class-detail:last-of-type {
@@ -2227,7 +2232,7 @@ figure img {
 .date-picker .input button {
   width: 50px;
   height: 50px;
-  background-color: #8392a7;
+  background-color: #5bafe7;
   color: white;
   line-height: 50px;
   border: 0;
@@ -2235,10 +2240,12 @@ figure img {
   padding: 0 0 0 2px;
 }
 .date-picker .input button:hover {
-  background-color: #68768a;
+  background-color: #5bafe780;
+  color: #001c69;
 }
 .date-picker .input button:focus {
   outline: 0;
+  background-color: #5bafe7;
 }
 .date-picker .calendar {
   position: relative;
@@ -2247,6 +2254,9 @@ figure img {
   border-radius: 0px;
   overflow: hidden;
 }
+.ui-datepicker-title {
+  background-color: #5bafe7;
+}
 .date-picker .ui-datepicker-inline {
   position: relative;
   width: 100%;
@@ -2254,7 +2264,7 @@ figure img {
 .date-picker .ui-datepicker-header {
   height: 100%;
   line-height: 50px;
-  background: #8392a7;
+  background: #5bafe7;
   color: #fff;
   margin-bottom: 10px;
 }
@@ -2299,7 +2309,7 @@ figure img {
 .date-picker .ui-datepicker-next:hover,
 .date-picker .ui-datepicker-prev:hover:after,
 .date-picker .ui-datepicker-next:hover:after {
-  border-color: #68768a;
+  border-color: #42a4e6;
 }
 .date-picker .ui-datepicker-title {
   text-align: center;
@@ -2311,7 +2321,7 @@ figure img {
 .date-picker .ui-datepicker-calendar thead tr th span {
   display: block;
   width: 100%;
-  color: #8392a7;
+  color: #5bafe7;
   margin-bottom: 5px;
   font-size: 13px;
 }
@@ -2326,11 +2336,11 @@ figure img {
   background: rgba(0, 0, 0, 0.02);
 }
 .date-picker .ui-state-highlight {
-  color: #68768a;
+  color: #42a4e6;
 }
 .date-picker .ui-state-active {
-  color: #68768a;
-  background-color: rgba(131, 146, 167, 0.12);
+  color: #42a4e6;
+  background-color: rgba(167, 196, 238, 0.12);
   font-weight: 600;
 }
 .date-picker .ui-datepicker-unselectable .ui-state-default {
@@ -2341,7 +2351,7 @@ figure img {
   max-height: 400px;
 }
 .date-picker.open .input button {
-  background: #68768a;
+  background: #42a4e6;
 }
 /* Consultant end */
 

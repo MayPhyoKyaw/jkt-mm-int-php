@@ -365,7 +365,7 @@ function encrypt_decrypt($action, $string)
                 <p class="class-detail">
                   <?php echo $row['services']; ?>
                 </p>
-                <p class="class-detail">
+                <p class="class-detail note">
                   <?php $note = $row['note'] === '' ? '-' : $row['note'];
                   echo $note; ?>
                 </p>
@@ -380,7 +380,7 @@ function encrypt_decrypt($action, $string)
             <?php
             if (!empty($response)) {
             ?>
-              <form id="enrollmentForm" action="../backend/classEnroll.php" method="POST" enctype="multipart/form-data">
+              <form id="enrollmentForm" action="../backend/classEnroll_mm.php" method="POST" enctype="multipart/form-data">
                 <!-- progressbar -->
                 <ul id="progressbar">
                   <li class="active" id="personal"></li>
@@ -623,7 +623,7 @@ function encrypt_decrypt($action, $string)
               </form>
             <?php } else { ?>
 
-              <form id="enrollmentForm" action="../backend/classEnroll.php" method="POST" enctype="multipart/form-data">
+              <form id="enrollmentForm" action="../backend/classEnroll_mm.php" method="POST" enctype="multipart/form-data">
                 <!-- progressbar -->
                 <ul id="progressbar">
                   <li class="active" id="personal"></li>
@@ -888,7 +888,7 @@ function encrypt_decrypt($action, $string)
                 <p class="class-detail">
                   <?php echo $row['services']; ?>
                 </p>
-                <p class="class-detail">
+                <p class="class-detail note">
                   <?php $note = $row['note'] === '' ? '-' : $row['note'];
                   echo $note; ?>
                 </p>

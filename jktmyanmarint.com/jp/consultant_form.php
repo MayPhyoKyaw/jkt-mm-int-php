@@ -254,7 +254,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
             フォームのすべてのフィールドに入力してください。 <br>
             ご参加いただきありがとうございます！！
           </p>
-          <form id="survey-form" action="../backend/newConsult.php" method="POST">
+          <form id="survey-form" action="../backend/newConsult_jp.php" method="POST">
             <div class="pb-4 mb-2">
               <label for="name" id="name-label" class="appointment-label">名前 <span class="consultant-required-tag">必須 &nbsp; *</span></label><br />
               <input type="text" id="name" name="name" placeholder="名前を入力してください" required class="appointment-input" />
@@ -272,7 +272,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
 
             <div class="pb-4 mb-2 appointment-type">
               <fieldset class="appointment-fieldset">
-                <legend class="appointment-legend">相談方法を選択してください? <span class="consultant-required-tag">必須 &nbsp; *</span></legend>
+                <legend class="appointment-legend">相談方法を選択でください<span class="consultant-required-tag">必須 &nbsp; *</span></legend>
 
                 <input type="radio" id="online" name="appointment_type" value="Online" />
                 <label for="online" id="radio-label" class="appointment-label">オンライン</label><br />
@@ -287,7 +287,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
 
             <div class="pb-4 mb-2 appointment-date">
               <label class="appointment-label">
-                コンサルタント時間 <span class="consultant-required-tag">必須 &nbsp; *</span>
+                時間 <span class="consultant-required-tag">必須 &nbsp; *</span>
               </label>
               <div class="date-picker">
                 <div class="input">
@@ -301,7 +301,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
 
             <div class="pb-4 mb-2 appointment-time">
               <fieldset class="appointment-fieldset">
-                <legend class="appointment-legend">コンサルタントの推定時間を選択してください? <span class="consultant-required-tag">必須 &nbsp; *</span></legend>
+                <legend class="appointment-legend">推定時間を選択でください <span class="consultant-required-tag">必須 &nbsp; *</span></legend>
 
                 <input type="radio" id="morning" name="appointment_time" value="Morning" />
                 <label for="morning" id="radio-label" class="appointment-label">午前</label><br />
@@ -313,23 +313,23 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
 
             <div class="pb-4 mb-2">
               <label for="dropdown" id="dropdown-label" class="appointment-label">
-                コンサルタントの期間と料金 <span class="consultant-required-tag">必須 &nbsp; *</span>
-                <span class="consultant-note"> &nbsp;**料金はコンサルタントの説明に基づいています。</span>
+                期間と料金 <span class="consultant-required-tag">必須 &nbsp; *</span>
+                <span class="consultant-note"> &nbsp;**料金は相談内容によって変わります。</span>
               </label>
               <select id="dropdown" name="appointment_duration" class="appointment-select">
                 <option value="" disabled selected>
-                  推定コンサルタント期間を選択してください。
+                料金を選んでください
                 </option>
                 <option value="Below 60 Minutes">約60分 - $100 Est.</option>
-                <option value="1 Hours ~ 2 Hours">1時間〜2時間 - $200 Est.</option>
-                <option value="2 Hours ~ 3 Hours">2時間〜3時間 - $300 Est.</option>
-                <option value="3 Hours ~ 4 Hours">3時間〜4時間 - $400 Est.</option>
+                <option value="1 Hours ~ 2 Hours">約1時間〜2時間 - $200 Est.</option>
+                <option value="2 Hours ~ 3 Hours">約2時間〜3時間 - $300 Est.</option>
+                <option value="3 Hours ~ 4 Hours">約3時間〜4時間 - $400 Est.</option>
               </select>
             </div>
 
             <div class="pb-4 mb-2">
-              <label for="description" id="description-label" class="appointment-label">お客様のコンサルタントについて？ <span class="consultant-required-tag">必須 &nbsp; *</span></label><br />
-              <textarea placeholder="コンサルタントについて入力してください" id="description" name="about_consultant" class="appointment-textarea" rows="4" cols="50" ></textarea>
+              <label for="description" id="description-label" class="appointment-label">相談したい内容について<span class="consultant-required-tag">必須 &nbsp; *</span></label><br />
+              <textarea placeholder="相談したい内容について入力してください" id="description" name="about_consultant" class="appointment-textarea" rows="4" cols="50" ></textarea>
             </div>
 
             <div class="text-right">
