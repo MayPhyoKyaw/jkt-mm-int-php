@@ -208,14 +208,14 @@ function encrypt_decrypt($action, $string)
                 <p class="class-detail">
                   <?php echo empty($row['start_date']) ? '-' : $row['start_date']; ?>
                 </p>
-                <p>
+                <p class='sections-enroll-sm'>
                   <?php
                   // var_dump($row["sections"]);
                   // var_dump($row["sections"][0]); 
                   $sections = json_decode($row["sections"], true);
                   for ($i = 0; $i < count($sections); $i++) {
                     // var_dump($sections[$i]["days"]);
-                    echo "<div class='sections-enroll'>";
+                    // echo "<div class='sections-enroll'>";
                     for ($j = 0; $j < count($sections[$i]["days"]); $j++) {
                   ?>
                       <span id="days" class="days schedule-days-badges <?php
@@ -239,7 +239,7 @@ function encrypt_decrypt($action, $string)
                         ?>
                       </span><br>
                     <?php }
-                  echo "</div>";
+                  // echo "</div>";
                     ?>
                 </p>
                 <p class="class-detail">
@@ -731,14 +731,14 @@ function encrypt_decrypt($action, $string)
                 <p class="class-detail">
                   <?php echo empty($row['start_date']) ? '-' : $row['start_date']; ?>
                 </p>
-                <p>
+                <p class="sections-enroll">
                   <?php
                   // var_dump($row["sections"]);
                   // var_dump($row["sections"][0]); 
                   $sections = json_decode($row["sections"], true);
                   for ($i = 0; $i < count($sections); $i++) {
                     // var_dump($sections[$i]["days"]);
-                    echo "<div class='sections-enroll'>";
+                    // echo "<div class=''>";
                     for ($j = 0; $j < count($sections[$i]["days"]); $j++) {
                   ?>
                       <span id="days" class="days schedule-days-badges accordion-badges <?php
@@ -762,7 +762,7 @@ function encrypt_decrypt($action, $string)
                         ?>
                       </span><br>
                     <?php }
-                  echo "</div>";
+                  // echo "</div>";
                     ?>
                 </p>
                 <p class="class-detail">

@@ -317,7 +317,7 @@ function encrypt_decrypt($action, $string) {
                                                 t.title AS type_title, level_or_sub, fee, instructor,
                                                 services, discount_percent, start_date, duration, sections, note
                                                 FROM courses c, categories cty, types t WHERE c.category_id = cty.category_id 
-                                                AND c.type_id = t.type_id ORDER BY c.created_at";
+                                                AND c.type_id = t.type_id AND c.category_id = $get_category ORDER BY c.created_at";
                                     $schedule_result = mysqli_query($conn, $schedule);
                                 ?>
                                     <tbody>

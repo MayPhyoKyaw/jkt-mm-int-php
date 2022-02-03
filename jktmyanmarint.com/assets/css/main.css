@@ -1716,8 +1716,9 @@ figure img {
   margin: 3px;
 }
 
-.accordion-badges:first-child {
-  margin-left: 25px !important;
+.accordion-badges {
+  margin-left: 10px !important;
+  margin-right: 5px;
 }
 
 .in-progress-badges {
@@ -2025,7 +2026,7 @@ figure img {
   margin-top: 7px;
 }
 .tab input:checked ~ .tab-content {
-  max-height: 100vh;
+  max-height: 200vh;
   padding: 1em;
 }
 .class-detail {
@@ -2033,7 +2034,11 @@ figure img {
   border-bottom: 1px dotted rgb(128, 125, 125);
 }
 .sections-enroll {
-  padding-bottom: 7px;
+  padding-bottom: 12px;
+  border-bottom: 1px dotted rgb(128, 125, 125);
+}
+.sections-enroll-sm {
+  padding-bottom: 15px;
   border-bottom: 1px dotted rgb(128, 125, 125);
 }
 .tab-content .class-detail:last-of-type {
