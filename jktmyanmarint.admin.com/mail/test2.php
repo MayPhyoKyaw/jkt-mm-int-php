@@ -15,6 +15,8 @@ require "./src/Exception.php";
 //Create an instance; passing `true` enables exceptions
 $mail = new PHPMailer(true);
 
+include("../confs/config.php");
+
 try {
     //Server settings
     $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
@@ -44,6 +46,18 @@ try {
     $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
+    global $conn;
+
+    // $category_id = $classInfo["category_id"];
+    $result = mysqli_query($conn, "SELECT * FROM policies WHERE category_id=1");
+
+
+    $mail->Body .= "<h3>Policies about the course</h3>";
+    $mail->Body .= "<div style='border : 1px solid #5bafe7; padding : 5px 10px; width: fit-content; border-radius : 10px;'>";
+    while ($row = mysqli_fetch_assoc($result)) {
+        $mail->Body .= "<p>✭&nbsp;" . $row['description'] . "</p>";
+    }
+    $mail->Body .= "</div>";
     $mail->send();
     echo 'Message has been sent';
 } catch (Exception $e) {

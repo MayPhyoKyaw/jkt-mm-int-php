@@ -58,19 +58,26 @@ if (!isset($_GET["id"])) {
             </a>
 
             <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+            <hr class="sidebar-divider">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="index.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider">
+            <hr class="sidebar-divider d-none d-md-block my-1">
 
             <!-- Nav Item - Pages Collapse Menu -->
+
+            <li class="nav-item">
+                <a class="nav-link" href="./students.php">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Students</span>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-user"></i>
@@ -120,30 +127,25 @@ if (!isset($_GET["id"])) {
                     </div>
                 </div>
             </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePayment" aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-dollar-sign"></i>
+                    <span>Payments</span>
+                </a>
+                <div id="collapsePayment" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="./payment.php">
+                            <i class="fas fa-fw fa-check"></i>
+                            <span>Approved Payments</span></a>
+                        <a class="collapse-item" href="./pendingPayments.php">
+                            <i class="fas fa-fw fa-dollar-sign"></i>
+                            <span>Pending Payments</span></a>
+                    </div>
+                </div>
+            </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider">
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link" href="./students.php">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Students</span>
-                </a>
-            </li>
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="./payment.php">
-                    <i class="fas fa-fw fa-dollar-sign"></i>
-                    <span>Payments</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="./pendingPayments.php">
-                    <i class="fas fa-fw fa-dollar-sign"></i>
-                    <span>Pending Payments</span></a>
-            </li>
-
-            <hr class="sidebar-divider d-none d-md-block">
+            <hr class="sidebar-divider d-none d-md-block my-1">
 
             <li class="nav-item">
                 <a class="nav-link" href="./consultants.php">
@@ -151,7 +153,13 @@ if (!isset($_GET["id"])) {
                     <span>Consultants</span></a>
             </li>
 
-            <hr class="sidebar-divider d-none d-md-block">
+            <hr class="sidebar-divider d-none d-md-block my-1">
+
+            <li class="nav-item">
+                <a class="nav-link" href="./policies.php">
+                    <i class="fas fa-fw fa-info-circle"></i>
+                    <span>Policy</span></a>
+            </li>
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">

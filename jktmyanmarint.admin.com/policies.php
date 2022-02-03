@@ -2,6 +2,18 @@
 session_start();
 include_once 'auth/authenticate.php';
 include("confs/config.php");
+$result = mysqli_query($conn, "SELECT
+p.policy_id,
+cty.category_id AS category_id,
+cty.title AS category_title,
+p.description,
+p.created_at,
+p.updated_at
+FROM
+policies p,
+categories cty
+WHERE
+p.category_id = cty.category_id");
 $get_notifications = "SELECT * FROM notifications WHERE seen=0 AND created_at >= DATE_SUB(NOW(),INTERVAL 6 HOUR)";
 $noti_result = mysqli_query($conn, $get_notifications);
 ?>
@@ -16,7 +28,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
     <meta name="author" content="">
 
     <link rel="shortcut icon" href="img/logo.jpg" />
-    <title>JKT Admin - All Payments</title>
+    <title>JKT Admin - Types</title>
 
     <!-- Custom fonts for this template-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -115,7 +127,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                     </div>
                 </div>
             </li>
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePayment" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-dollar-sign"></i>
                     <span>Payments</span>
@@ -143,7 +155,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
 
             <hr class="sidebar-divider d-none d-md-block my-1">
 
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="./policies.php">
                     <i class="fas fa-fw fa-info-circle"></i>
                     <span>Policy</span></a>
@@ -171,7 +183,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                     </button>
 
                     <div class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search nav-title">
-                        <h3>Payments</h3>
+                        <h3>Policies</h3>
                     </div>
 
 
@@ -258,88 +270,115 @@ $noti_result = mysqli_query($conn, $get_notifications);
 
                 <!-- Begin Page Content -->
                 <div class="container">
-                    <div class="row my-4 filter-select-block">
-                        <div class="col-12 col-lg-4">
-                            <select onchange="filterByTime(event)" class="form-control col-12 mb-2 mb-lg-0" id="filterByTime">
-                                <option value="">Filter By Time</option>
-                                <option value="1">Last 7 Days</option>
-                                <option value="2">Last 30 Days</option>
-                                <option value="3">Last 3 Months</option>
-                                <option value="4">Last 6 Months</option>
-                            </select>
-                        </div>
-                        <div class="col-12 col-lg-4">
-                            <select onchange="filterByPayment(event)" class="form-control col-12" id="filterByPayment">
-                                <option value="">Filter By Banking</option>
-                                <?php
-                                $bank_query = "SELECT DISTINCT bank_name from banking_info b, payments p WHERE b.bank_id = p.bank_id";
-                                $bank_result = mysqli_query($conn, $bank_query);
-                                while ($row1 = mysqli_fetch_array($bank_result)) :
-                                ?>
-                                    <option value="<?php echo $row1['bank_name'] ?>"><?= $row1['bank_name'] ?></option>
-                                <?php endwhile ?>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row payment-block">
-                        <?php
-                        $query = "SELECT
-                        payment_id,
-                        student_name,
-                        title,
-                        level_or_sub,
-                        bank_name,
-                        payment_amount,
-                        p.created_at AS created_at
-                    FROM
-                        payments p,
-                        enrollments e,
-                        students s,
-                        courses c,
-                        banking_info b
-                    WHERE
-                        p.enrollment_id = e.enrollment_id AND e.student_id = s.student_id AND p.course_id = c.course_id AND p.bank_id = b.bank_id AND p.is_pending = 0
-                    ORDER BY
-                        created_at
-                    DESC";
-                        $result = mysqli_query($conn, $query);
-                        while ($row = mysqli_fetch_assoc($result)) :
-                        ?>
-                            <div class="col-12 col-lg-6 p-2">
-                                <div class="card card-block shadow mb-3 px-3 pt-3">
-                                    <div class="row my-3">
-                                        <div class="transaction-label col-6">Transaction ID : </div>
-                                        <div class="transaction-data col-6"><?php echo $row['payment_id']; ?></div>
-                                    </div>
-                                    <div class="row my-3">
-                                        <div class="transaction-label col-6">Registered Student Name : </div>
-                                        <div class="transaction-data col-6"><?php echo $row['student_name']; ?></div>
-                                    </div>
-                                    <div class="row my-3">
-                                        <div class="transaction-label col-6">Registered Course: </div>
-                                        <div class="transaction-data col-6"><?php echo empty($row['level_or_sub']) ? $row['title'] : $row['title'] . " - " . $row['level_or_sub']; ?></div>
-                                    </div>
-                                    <div class="row my-3">
-                                        <div class="transaction-label col-6">Transferred Banking : </div>
-                                        <div class="transaction-data col-6"><?php echo $row['bank_name']; ?></div>
-                                    </div>
-                                    <div class="row my-3">
-                                        <div class="transaction-label col-6">Payment Amount : </div>
-                                        <div class="transaction-data col-6"><?php echo number_format($row['payment_amount']) . " MMK"; ?></div>
-                                    </div>
-                                    <div class="row my-3">
-                                        <div class="transaction-label col-6">Transferred At : </div>
-                                        <div class="transaction-data col-6"><?php echo $row['created_at']; ?></div>
-                                    </div>
+                    <div class="row">
+                        <div class="card shadow mb-4 table-lg">
+                            <div class="card-header py-3">
+                                <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
+                                <a href="newPolicy.php" class="new">
+                                    <i class="fas fa-fw fa-folder-plus"></i>
+                                    Insert New Policy
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Description</th>
+                                                <th>Category</th>
+                                                <th>Created At</th>
+                                                <th>Updated At</th>
+                                                <th>Edit</th>
+                                                <th>Delete</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php while ($row = mysqli_fetch_assoc($result)) : ?>
+                                                <tr>
+                                                    <td><?= $row['policy_id'] ?></td>
+                                                    <td><?= $row['description'] ?></td>
+                                                    <td><?= $row['category_title'] ?></td>
+                                                    <td><?= $row['created_at'] ?></td>
+                                                    <td><?= $row['updated_at'] ?></td>
+                                                    <td><button class="tb-btn tb-btn-edit" onclick="setCurrentPolicyEdit(this,<?php echo $row['category_id'] ?>)" data-toggle="modal" data-target="#editingModal"><i class="fa fa-pencil"></i></button></td>
+                                                    <td><button class="tb-btn tb-btn-delete" onclick="setCurrentPolicyDel(<?php echo $row['policy_id'] ?>)" data-toggle="modal" data-target="#deletingModal"><i class="fa fa-trash"></button></i></td>
+                                                </tr>
+                                            <?php endwhile; ?>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
-                        <?php endwhile; ?>
+                        </div>
+
                     </div>
                 </div>
                 <!-- /.container-fluid -->
 
             </div>
             <!-- End of Main Content -->
+
+            <!-- editing Modal -->
+            <div class="modal fade" id="editingModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Editing</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form class="col-12" id="editingModal" action="backend/editPolicy.php" method="POST" enctype="multipart/form-data">
+                                <input type="hidden" name="policyIdEdit" id="policyIdEdit">
+                                <label for="policyDescription">Type Title<span class="my-required-field">Required*</span></label>
+                                <input type="text" name="policyDescription" id="policyDescription" class="form-control" />
+                                <div class="form-group mt-3 mb-3">
+                                    <label for="policyCatId">Choose Category<span class="my-required-field">Required*</span></label>
+                                    <select name="policyCatId" id="policyCatId" class="form-control" required>
+                                        <option value="" selected disabled>Category</option>
+                                        <?php
+                                        $result = mysqli_query($conn, "SELECT * FROM categories");
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                        ?>
+                                            <option value='<?= $row["category_id"] ?>'><?= $row["title"] ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                <input class="btn btn-primary" type="submit" value="Update">
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- delete modal -->
+            <div class="modal fade" id="deletingModal" tabindex="-1" role="dialog">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Deleting</h5>
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Are you sure to delete?</p>
+                            <form class="col-12" action="backend/deletePolicy.php" method="POST">
+                                <input type="hidden" name="policyIdDel" id="policyIdDel">
+                                <hr />
+                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                <input class="btn btn-primary" type="submit" value="Delete">
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Footer -->
             <footer class="sticky-footer bg-white">
@@ -395,8 +434,16 @@ $noti_result = mysqli_query($conn, $get_notifications);
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
     <!-- Page level custom scripts -->
-    <script src="js/payment-filter.js"></script>
     <script src="js/style.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#dataTable").DataTable({
+                "order": [
+                    [3, 'desc']
+                ]
+            });
+        })
+    </script>
 </body>
 
 </html>

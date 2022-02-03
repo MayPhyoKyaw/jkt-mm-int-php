@@ -139,7 +139,7 @@ function encrypt_decrypt($action, $string) {
     <!-- JP School header start -->
     <section>
         <div class="header">
-            <h3>Japanese Language School</h3>
+            <h3>Training Schools</h3>
             <div class="bg-cover"></div>
             <img src="./assets/images/cover/cover.jpg" alt="jpschool-cover" />
         </div>

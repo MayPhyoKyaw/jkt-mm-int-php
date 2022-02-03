@@ -153,7 +153,7 @@
             </li>
             <li class="lang">
               <div class="btn-group" role="group" aria-label="First group">
-                <a href="../jp-school.php"
+                <a href="../enrollSuccess.php"
                   ><button
                     type="button"
                     class="btn btn1"
@@ -164,7 +164,7 @@
                       width="25px"
                     /></button
                 ></a>
-                <a href="./jp-school.php"
+                <a href="./enrollSuccess.php"
                   ><button
                     type="button"
                     class="btn btn2"
@@ -176,7 +176,7 @@
                       width="25px"
                     /></button
                 ></a>
-                <a href="./jp/jp-school.php"
+                <a href="./jp/enrollSuccess.php"
                   ><button
                     type="button"
                     class="btn btn3"
@@ -192,7 +192,7 @@
           </ul>
         </div>
         <div class="btn-group lang-xl" role="group" aria-label="First group">
-          <a href="../jp-school.php"
+          <a href="../enrollSuccess.php"
             ><button
               type="button"
               class="btn btn1"
@@ -203,7 +203,7 @@
                 width="25px"
               /></button
           ></a>
-          <a href="./jp-school.php"
+          <a href="./enrollSuccess.php"
             ><button
               type="button"
               class="btn btn2"
@@ -215,7 +215,7 @@
                 width="25px"
               /></button
           ></a>
-          <a href="../jp/jp-school.php"
+          <a href="../jp/enrollSuccess.php"
             ><button
               type="button"
               class="btn btn3"
@@ -233,7 +233,7 @@
   <!-- JP School header start -->
   <section>
     <div class="header">
-      <h3>Japanese Language School - Enrollment Form</h3>
+      <h3>ဂျပန်ဘာသာစကား သင်တန်း</h3>
       <div class="bg-cover"></div>
       <img src="../assets/images/cover/cover.jpg" alt="jpschool-cover" />
     </div>
