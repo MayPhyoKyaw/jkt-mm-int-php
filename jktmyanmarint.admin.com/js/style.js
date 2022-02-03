@@ -99,6 +99,13 @@ var typeIdEdit = document.getElementById("typeIdEdit");
 var typeTitle = document.getElementById("typeTitle");
 var typeIdDel = document.getElementById("typeIdDel");
 
+// policy edit and delete
+var policyCreatedAt = document.getElementById("policyCreatedAt");
+var policyUpdatedAt = document.getElementById("policyUpdatedAt");
+var policyIdEdit = document.getElementById("policyIdEdit");
+var policyDescription = document.getElementById("policyDescription");
+var policyCatId = document.getElementById("policyCatId");
+var policyIdDel = document.getElementById("policyIdDel");
 // courses edit
 var courseIdEdit = document.getElementById("courseIdEdit");
 var courseCreatedAt = document.getElementById("courseCreatedAt");
@@ -295,9 +302,12 @@ function setCurrentCatEdit(row) {
   catCreatedAt.value = rowArr[2];
   catUpdatedAt.value = rowArr[3];
 }
+
 function setCurrentCatDel(idx) {
   catIdDel.value = idx;
 }
+
+// type crud
 function setCurrentTypeEdit(row) {
   var tr = row.closest("tr");
   var tds = tr.children;
@@ -312,6 +322,26 @@ function setCurrentTypeEdit(row) {
 }
 function setCurrentTypeDel(idx) {
   typeIdDel.value = idx;
+}
+
+// policy crud
+function setCurrentPolicyEdit(row,categoryId) {
+  var tr = row.closest("tr");
+  var tds = tr.children;
+  var rowArr = [];
+  for (var i = 0; i < tds.length; i++) {
+    rowArr.push(tds[i].textContent);
+  }
+  console.log(rowArr);
+  policyIdEdit.value = rowArr[0];
+  policyDescription.value = rowArr[1];
+  policyCatId.value = categoryId;
+  policyCreatedAt.value = rowArr[2];
+  policyUpdatedAt.value = rowArr[3];
+}
+function setCurrentPolicyDel(idx) {
+  policyIdDel.value = idx;
+  // console.log(idx);
 }
 
 function setCurrentCourseEdit(event, row, catId, typeId) {

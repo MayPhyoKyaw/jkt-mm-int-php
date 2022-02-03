@@ -143,7 +143,7 @@ function encrypt_decrypt($action, $string) {
   <!-- JP School header start -->
   <section>
     <div class="header">
-      <h3>ဂျပန်ဘာသာစကား သင်တန်း</h3>
+      <h3>လေ့ကျင့်သင်ကြားမှု သင်တန်းများ</h3>
       <div class="bg-cover"></div>
       <img src="../assets/images/cover/cover.jpg" alt="jpschool-cover" />
     </div>
