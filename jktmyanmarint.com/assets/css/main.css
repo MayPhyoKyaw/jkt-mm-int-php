@@ -204,16 +204,17 @@ html {
   float: right;
   /* text-decoration: underline; */
   /* text-decoration-color: #5bafe7; */
-  color: #5bafe7;
-  border: 1px solid #5bafe7;
-  padding: 8px 20px;
-  margin-top: -10px;
+  color: #fff;
+  border: 1px solid rgb(28, 128, 194);
+  padding: 12px 20px;
+  margin-top: -12px;
+  background-color: #2796e0;
   /* cursor: pointer; */
 }
 
 .go-appointment:hover {
   background-color: #5bafe7;
-  color: #294aa5;
+  color: rgb(22, 35, 73);
   text-decoration: none;
 }
 
@@ -2526,9 +2527,10 @@ iframe::-webkit-scrollbar-thumb:hover {
   display: flex;
   justify-content: start;
   align-items: flex-start;
+  line-height: 1.8;
 }
 .address-row i {
-  margin-top: 5px;
+  /* margin-top: 5px; */
   margin-right: 20px;
 }
 .address-row .title,
@@ -2537,7 +2539,7 @@ iframe::-webkit-scrollbar-thumb:hover {
   font-family: "Roboto", sans-serif;
   font-weight: 600;
   font-size: 16px;
-  line-height: 19px;
+  line-height: 2;
   display: block;
 }
 .address-row .text {

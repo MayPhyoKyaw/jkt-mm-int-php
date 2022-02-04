@@ -252,80 +252,45 @@
     </nav>
 
     <!-- contact-content start -->
+    <section class="px-0 px-sm-5 pb-5">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3819.5071468647247!2d96.1352054141795!3d16.80117862387011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1eb6f8b7271f5%3A0xdf55b169963e757b!2sJKT%20Myanmar%20International%20Co.%2C%20Ltd.!5e0!3m2!1sen!2smm!4v1629632725354!5m2!1sen!2smm"
+        width="600"
+        height="450"
+        style="border: 0"
+        allowfullscreen=""
+        loading="lazy"
+        class="contct-map col-12 px-3 px-sm-5"
+      ></iframe>
+      <div class="row py-3 px-3 px-sm-5 mt-5">
+        <header class="contact-header col-12">お問い合わせフォーム</header>
+        <div class="contact-form col-lg-8">
+          <form id="contact-form-mm">
+            <input
+              type="text"
+              name="subject"
+              id="subject"
+              placeholder="件名"
+            />
+            <span class="warning-message"></span>
+            <textarea
+              name="message"
+              id="message"
+              placeholder="内容"
+            ></textarea>
+            <span class="warning-message"></span>
+          </form>
+          <button
+            id="btn-submit"
+            type="button"
+            name="button"
+            onclick="submitForm(this)"
+          >
+            送る
+          </button>
+        </div>
 
-    <section class="px-0 px-sm-5 pt-5">
-      <div class="row py-1">
-        <div
-          class="col-12 col-lg-3 text-center order-1 order-lg-1 pb-4 pb-lg-2 px-2 px-lg-1"
-        >
-          <iframe
-            id="jp_sh"
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FJKT-Japanese-Language-School-100339937999010%2F&tabs=timeline&width=260&height=790&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=300620088760320"
-            class="fb-iframe"
-            scrolling="no"
-            frameborder="0"
-            allowfullscreen="true"
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          ></iframe>
-        </div>
-        <div
-          class="contact-form col-12 col-lg-6 order-3 order-lg-2 pb-4 pb-lg-2 px-5 px-lg-1 map"
-        >
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3819.5071468647247!2d96.1352054141795!3d16.80117862387011!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30c1eb6f8b7271f5%3A0xdf55b169963e757b!2sJKT%20Myanmar%20International%20Co.%2C%20Ltd.!5e0!3m2!1sen!2smm!4v1629632725354!5m2!1sen!2smm"
-              width="100%"
-              height="450"
-              style="border: 0"
-              allowfullscreen="true"
-              loading="lazy"
-              class="pb-4 col-12"
-            ></iframe>
-            <div class="load-map text-center">
-              <div class="lds-ripple">
-                <div></div>
-                <div></div>
-              </div>
-            </div>
-            <header class="contact-header col-12 pl-5 pt-5 pt-lg-1">お問い合わせフォーム</header>
-              <form id="contact-form-jp col-12">
-                <input
-                  type="text"
-                  name="subject"
-                  id="subject"
-                  placeholder="件名"
-                />
-                <span class="warning-message"></span>
-                <textarea
-                  name="message"
-                  id="message"
-                  placeholder="内容"
-                ></textarea>
-                <span class="warning-message"></span>
-              </form>
-              <button
-                id="btn-submit"
-                type="button"
-                name="button"
-                onclick="submitForm(this)"
-              >
-                送る
-              </button>
-          </div>
-        <div
-          class="col-12 col-lg-3 text-center order-2 order-lg-3 pb-4 pb-lg-2 px-2 px-lg-1"
-        >
-          <iframe
-            id="digital"
-            src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FJKT-Digital-Institute-101947668883371%2F&tabs=timeline&width=260&height=790&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=true&appId=300620088760320"
-            class="fb-iframe"
-            scrolling="no"
-            frameborder="0"
-            allowfullscreen="true"
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          ></iframe>
-        </div>
-      </div>
-        <!-- <div class="col-lg-4 pt-3">
+        <div class="col-lg-4">
           <div class="address-row">
             <img src="../assets/images/icon/home.png" alt="address-icon" />
             <p>
@@ -359,7 +324,7 @@
               <span class="text"> サービスに関するお問い合わせ、当社へのご質問等はこちらから </span>
             </p>
           </div>
-        </div> -->
+        </div>
       </div>
     </section>
 
