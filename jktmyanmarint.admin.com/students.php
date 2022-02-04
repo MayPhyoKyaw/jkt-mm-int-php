@@ -216,9 +216,13 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                                 <div class="icon-circle bg-primary">
                                                     <i class="fas fa-user-plus text-white"></i>
                                                 </div>
-                                            <?php elseif ($row["type"] == "PAYMENT") : ?>
+                                            <?php elseif ($row["type"] == "PENDING_PAYMENT") : ?>
                                                 <div class="icon-circle bg-success">
                                                     <i class="fas fa-donate text-white"></i>
+                                                </div>
+                                            <?php elseif ($row["type"] == "NEW_APPOINTMENT") : ?>
+                                                <div class="icon-circle bg-secondary">
+                                                    <i class="fas fa-user-tie text-white"></i>
                                                 </div>
                                             <?php else :  ?>
                                                 <div class="icon-circle bg-warning">
@@ -317,7 +321,9 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                                     <td style="max-width : 100px;"><?= $row['nrc'] ?></td>
                                                     <td style="max-width : 100px;"><?= $row['email'] ?></td>
                                                     <td style="max-width : 100px;"><?= $row['education'] ?></td>
-                                                    <td style="max-width : 150px;"><p style="max-height: 120px;overflow-y:scroll;" class="hide-scroll"><?= $row['address'] ?></p></td>
+                                                    <td style="max-width : 150px;">
+                                                        <p style="max-height: 120px;overflow-y:scroll;" class="hide-scroll"><?= $row['address'] ?></p>
+                                                    </td>
                                                     <td><?= $row['phone'] ?></td>
                                                     <td><?= date('Y-m-d', strtotime($row['created_at'])) ?></td>
                                                     <td><?= date('Y-m-d', strtotime($row['updated_at'])) ?></td>
@@ -474,8 +480,8 @@ $noti_result = mysqli_query($conn, $get_notifications);
                             <span class="help-block" id="userImgErr"></span>
                         </div>
                         <div class="form-group mb-4">
-                                <label for="dob">Enter Student Name<span class="my-required-field">Required*</span></label>
-                                <input type="text" name="uname" id="uname" class="form-control" required />
+                            <label for="dob">Enter Student Name<span class="my-required-field">Required*</span></label>
+                            <input type="text" name="uname" id="uname" class="form-control" required />
                         </div>
                         <div class="mb-4 mx-auto row justify-content-between">
                             <div class="input-right">
@@ -565,8 +571,8 @@ $noti_result = mysqli_query($conn, $get_notifications);
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>You are going to delete <span id="stuName" class="font-weight-bold"></span>. 
-                    This can't be undone. <span style="color: red; font-weight: bold; font-style: italic;">Are you sure to delete?</span></p>
+                    <p>You are going to delete <span id="stuName" class="font-weight-bold"></span>.
+                        This can't be undone. <span style="color: red; font-weight: bold; font-style: italic;">Are you sure to delete?</span></p>
                     <form action="backend/deleteStudent.php" id="deleteForm" method="POST">
                         <input type="hidden" name="studentDeletingId" id="studentDeletingId" />
                         <hr />

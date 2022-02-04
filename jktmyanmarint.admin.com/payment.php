@@ -196,13 +196,17 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                 <?php while ($row = mysqli_fetch_assoc($noti_result)) : ?>
                                     <a class="dropdown-item d-flex align-items-center" href="notiView.php?id=<?php echo $row["noti_id"] ?>">
                                         <div class="mr-3">
-                                            <?php if ($row["type"] == "PENDING_REQUEST") : ?>
+                                        <?php if ($row["type"] == "PENDING_REQUEST") : ?>
                                                 <div class="icon-circle bg-primary">
                                                     <i class="fas fa-user-plus text-white"></i>
                                                 </div>
-                                            <?php elseif ($row["type"] == "PAYMENT") : ?>
+                                            <?php elseif ($row["type"] == "PENDING_PAYMENT") : ?>
                                                 <div class="icon-circle bg-success">
                                                     <i class="fas fa-donate text-white"></i>
+                                                </div>
+                                            <?php elseif ($row["type"] == "NEW_APPOINTMENT") : ?>
+                                                <div class="icon-circle bg-secondary">
+                                                    <i class="fas fa-user-tie text-white"></i>
                                                 </div>
                                             <?php else :  ?>
                                                 <div class="icon-circle bg-warning">

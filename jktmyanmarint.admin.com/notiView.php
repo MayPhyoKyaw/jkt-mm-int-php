@@ -211,11 +211,21 @@ if (!isset($_GET["id"])) {
                                         <div class="mr-3">
                                             <div class="icon-circle bg-primary">
                                                 <?php if ($row["type"] == "PENDING_REQUEST") : ?>
-                                                    <i class="fas fa-user-plus text-white"></i>
-                                                <?php elseif ($row["type"] == "PAYMENT") : ?>
-                                                    <i class="fas fa-donate text-white"></i>
+                                                    <div class="icon-circle bg-primary">
+                                                        <i class="fas fa-user-plus text-white"></i>
+                                                    </div>
+                                                <?php elseif ($row["type"] == "PENDING_PAYMENT") : ?>
+                                                    <div class="icon-circle bg-success">
+                                                        <i class="fas fa-donate text-white"></i>
+                                                    </div>
+                                                <?php elseif ($row["type"] == "NEW_APPOINTMENT") : ?>
+                                                    <div class="icon-circle bg-secondary">
+                                                        <i class="fas fa-user-tie text-white"></i>
+                                                    </div>
                                                 <?php else :  ?>
-                                                    <i class="fas fa-exclamation-triangle text-white"></i>
+                                                    <div class="icon-circle bg-warning">
+                                                        <i class="fas fa-exclamation-triangle text-white"></i>
+                                                    </div>
                                                 <?php endif; ?>
                                             </div>
                                         </div>
@@ -288,10 +298,15 @@ if (!isset($_GET["id"])) {
                                     <span class="font-weight-bold">Enrollment ID</span>
                                     <span><?php echo $noti["enrollment_id"] ?></span>
                                 </li>
-                            <?php else : ?>
+                            <?php elseif($noti["payment_id"]) : ?>
                                 <li class="row justify-content-between py-2">
                                     <span class="font-weight-bold">Payment ID</span>
                                     <span><?php echo $noti["payment_id"] ?></span>
+                                </li>
+                            <?php else : ?>
+                                <li class="row justify-content-between py-2">
+                                    <span class="font-weight-bold">Consultant ID</span>
+                                    <span><?php echo $noti["consultant_id"] ?></span>
                                 </li>
                             <?php endif; ?>
                         </ul>

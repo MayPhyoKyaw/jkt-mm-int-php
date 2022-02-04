@@ -199,9 +199,13 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                                 <div class="icon-circle bg-primary">
                                                     <i class="fas fa-user-plus text-white"></i>
                                                 </div>
-                                            <?php elseif ($row["type"] == "PAYMENT") : ?>
+                                            <?php elseif ($row["type"] == "PENDING_PAYMENT") : ?>
                                                 <div class="icon-circle bg-success">
                                                     <i class="fas fa-donate text-white"></i>
+                                                </div>
+                                            <?php elseif ($row["type"] == "NEW_APPOINTMENT") : ?>
+                                                <div class="icon-circle bg-secondary">
+                                                    <i class="fas fa-user-tie text-white"></i>
                                                 </div>
                                             <?php else :  ?>
                                                 <div class="icon-circle bg-warning">
@@ -275,7 +279,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                                     AND c.type_id = t.type_id");
                                     while ($row = mysqli_fetch_assoc($result)) {
                                     ?>
-                                        <option value='<?php echo $row["course_id"] ?>'><?php echo $row["category_title"]."-".$row["course_title"]."-".$row["course_level"]."-".$row["type_title"] ?></option>
+                                        <option value='<?php echo $row["course_id"] ?>'><?php echo $row["category_title"] . "-" . $row["course_title"] . "-" . $row["course_level"] . "-" . $row["type_title"] ?></option>
                                     <?php } ?>
                                 </select>
                             </div>
@@ -332,7 +336,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
 
                             <div class="form-group mb-4">
                                 <label for="email">Enter Email</label>
-                                <input type="email" name="email" id="email" class="form-control" placeholder="eg. student@gmail.com"/>
+                                <input type="email" name="email" id="email" class="form-control" placeholder="eg. student@gmail.com" />
                             </div>
 
                             <div class="form-group mb-4">
@@ -363,7 +367,7 @@ $noti_result = mysqli_query($conn, $get_notifications);
                             </div>
                             <div class="form-group mb-4">
                                 <label for="paymentAmount">Payment Amount (MMKs)</label>
-                                <input type="number" name="paymentAmount" id="paymentAmount" class="form-control" placeholder="eg. 100,000"/>
+                                <input type="number" name="paymentAmount" id="paymentAmount" class="form-control" placeholder="eg. 100,000" />
                             </div>
 
                             <div class="form-group mb-4">

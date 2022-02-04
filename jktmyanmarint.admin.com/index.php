@@ -216,9 +216,13 @@ $annual_income_row = mysqli_fetch_assoc($annual_income_result);
                                                 <div class="icon-circle bg-primary">
                                                     <i class="fas fa-user-plus text-white"></i>
                                                 </div>
-                                            <?php elseif ($row["type"] == "PAYMENT") : ?>
+                                            <?php elseif ($row["type"] == "PENDING_PAYMENT") : ?>
                                                 <div class="icon-circle bg-success">
                                                     <i class="fas fa-donate text-white"></i>
+                                                </div>
+                                            <?php elseif ($row["type"] == "NEW_APPOINTMENT") : ?>
+                                                <div class="icon-circle bg-secondary">
+                                                    <i class="fas fa-user-tie text-white"></i>
                                                 </div>
                                             <?php else :  ?>
                                                 <div class="icon-circle bg-warning">
