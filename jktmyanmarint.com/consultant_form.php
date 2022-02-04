@@ -141,7 +141,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
             Please fill in all the fields of the form. <br>
             Thanks for Joining With Us!!
           </p>
-          <form id="survey-form" action="./backend/newConsult.php" method="POST">
+          <form id="appointment-form" action="./backend/newConsult.php" method="POST">
             <div class="pb-4 mb-2">
               <label for="name" id="name-label" class="appointment-label">Name <span class="consultant-required-tag">required &nbsp; *</span></label><br />
               <input type="text" id="name" name="name" placeholder="Enter Your Name" required class="appointment-input form-field" />
@@ -248,7 +248,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
         <!-- Modal footer -->
         <div class="modal-footer">
           <button type="button" class="btn-cancel" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn-submit" id="submitConfirm" data-dismiss="modal">Submit</button>
+          <button type="button" class="btn-submit" id="consultSubmit" data-dismiss="modal">Submit</button>
         </div>
 
       </div>

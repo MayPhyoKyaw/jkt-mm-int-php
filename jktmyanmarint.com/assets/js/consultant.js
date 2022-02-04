@@ -112,7 +112,8 @@ $(function () {
     },
     submitHandler: function (form) {
       $("#confirmationModal").modal('show');
-      $('#submitConfirm').click(function () {
+      $('#consultSubmit').click(function () {
+        console.log(form)
           form.submit();
      });
   }

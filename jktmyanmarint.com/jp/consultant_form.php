@@ -150,7 +150,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
             フォームのすべてのフィールドに入力してください。 <br>
             ご参加いただきありがとうございます！！
           </p>
-          <form id="survey-form" action="../backend/newConsult_jp.php" method="POST">
+          <form id="appointment-form" action="../backend/newConsult_jp.php" method="POST">
             <div class="pb-4 mb-2">
               <label for="name" id="name-label" class="appointment-label">名前 <span class="consultant-required-tag">必須 &nbsp; *</span></label><br />
               <input type="text" id="name" name="name" placeholder="名前を入力してください" required class="appointment-input" />
