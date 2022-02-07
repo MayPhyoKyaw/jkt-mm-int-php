@@ -53,8 +53,10 @@ function sendMail($email, $uname, $classInfo, $insertedId, $payment_type, $accou
 		$mail->isSMTP();                                            //Send using SMTP
 		$mail->Host       = 'jktmyanmarint.com';                     //Set the SMTP server to send through
 		$mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-		$mail->Username   = 'noreply.payment@jktmyanmarint.com';                     //SMTP username
-		$mail->Password   = 'noreplyjkt%';                               //SMTP password
+		// $mail->Username   = 'noreply.payment@jktmyanmarint.com';                     //SMTP username
+		// $mail->Password   = 'noreplyjkt%';             
+		$mail->Username   = 'support@jktmyanmarint.com';                            //SMTP password
+		$mail->Password   = 'zdMXY~pS;%S2';                        //SMTP password
 		// $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
 		// $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
 		// $mail->Username   = 'payment.jktmmint@gmail.com';                     //SMTP username
@@ -63,7 +65,8 @@ function sendMail($email, $uname, $classInfo, $insertedId, $payment_type, $accou
 		$mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
 		//Recipients
-		$mail->setFrom('noreply.payment@jktmyanmarint.com', 'Payment Support (JKT)');
+		// $mail->setFrom('noreply.payment@jktmyanmarint.com', 'Payment Support (JKT)');
+		$mail->setFrom('support@jktmyanmarint.com', 'Payment Support (JKT)');
 		// $mail->setFrom('payment.jktmmint@gmail.com', 'Payment Support (JKT)');
 		$mail->addAddress($email);     //Add a recipient
 		// $mail->addAddress('ellen@example.com');               //Name is optional
@@ -129,12 +132,14 @@ function sendMail($email, $uname, $classInfo, $insertedId, $payment_type, $accou
 		$category_id = intval($classInfo["category_id"]);
 		$result = mysqli_query($conn, "SELECT * FROM policies WHERE category_id=$category_id");
 
-		$mail->Body .= "<h3>Policies about the course</h3>";
-		$mail->Body .= "<div style='border : 1px solid #5bafe7; padding : 5px 15px; width: fit-content; border-radius : 10px;'>";
-		while ($row = mysqli_fetch_assoc($result)) {
-			$mail->Body .= "<p>✭&nbsp;" . $row['description'] . "</p>";
+		if (mysqli_num_rows($result) > 0) {
+			$mail->Body .= "<h3>Policies about the course</h3>";
+			$mail->Body .= "<div style='border : 1px solid #5bafe7; padding : 5px 15px; width: fit-content; border-radius : 10px;'>";
+			while ($row = mysqli_fetch_assoc($result)) {
+				$mail->Body .= "<p>✭&nbsp;" . $row['description'] . "</p>";
+			}
+			$mail->Body .= "</div>";
 		}
-		$mail->Body .= "</div>";
 
 		$mail->Body .= "<p style='margin-top: 30px;'>For more detailed payment and courses information, you can contact us directly during business hours (9:00 ~ 17:00) </p>";
 		$mail->Body .= "<h4>Regards, <br> JKT Myanmar Internation </h4>";
@@ -145,10 +150,12 @@ function sendMail($email, $uname, $classInfo, $insertedId, $payment_type, $accou
 		// $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 		if ($mail->send()) {
+			$mail->smtpClose();
 			return array(TRUE, "Email sent!");
 		}
 		// echo 'Message has been sent';
 	} catch (Exception $e) {
+		$mail->smtpClose();
 		// echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 		return array(FALSE, "Email couldn't be sent. Error : " . $mail->ErrorInfo);
 	}
