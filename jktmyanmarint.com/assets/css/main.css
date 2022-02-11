@@ -3363,6 +3363,9 @@ iframe::-webkit-scrollbar-thumb:hover {
     top: 10%;
   }
   .breadcrumb {
+    height: 110px;
+  }
+  .enroll-breadcrumb {
     height: 150px;
   }
 }

@@ -129,7 +129,7 @@ $response = isset($_SESSION["response"]) ? $_SESSION["response"] : null;
   </section>
   <!-- JP School header end -->
 
-  <nav aria-label="breadcrumb" class="breadcrumb-nav">
+  <nav aria-label="breadcrumb" class="breadcrumb-nav d-none d-lg-block">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="./index.html">ပင်မစာမျက်နှာ</a></li>
       <li class="breadcrumb-item"><a href="./trainings.html">၀န်ဆောင်မှုများ</a></li>

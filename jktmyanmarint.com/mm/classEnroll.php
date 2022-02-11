@@ -270,7 +270,7 @@ function encrypt_decrypt($action, $string)
   </section>
   <!-- JP School header end -->
 
-  <nav aria-label="breadcrumb" class="breadcrumb-nav">
+  <nav aria-label="breadcrumb" class="breadcrumb-nav d-none d-lg-block">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="./index.html">ပင်မစာမျက်နှာ</a></li>
       <li class="breadcrumb-item"><a href="./trainings.html">လေ့ကျင့်သင်ကြားမှုများ</a></li>

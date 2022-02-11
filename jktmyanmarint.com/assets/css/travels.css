@@ -178,6 +178,190 @@
   object-fit: fill;
 }
 
+.weather-block {
+  border: 1px solid #5bafe7;
+  padding: 20px 0 30px;
+}
+
+.weather-description {
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  color: #5bafe7 !important;
+}
+
+.temperature {
+  color: #5bafe7;
+  font-weight: 800;
+}
+
+.info {
+  color: #5bafe7;
+  font-size: 14px;
+  font-weight: 500;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.info-description {
+  letter-spacing: 3px;
+  font-weight: 900;
+}
+
+.info-text {
+  font-size: 40px;
+  font-weight: 800;
+}
+
+.info-icon {
+  font-size: 40px;
+}
+
+.transportation-text h3 {
+  color: #5bafe7;
+  font-weight: bolder;
+  padding-top: 10px;
+}
+.transportation-text p {
+  line-height: 1.8;
+}
+
+/* attractions and festival  */
+.tabs {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+
+/* tab list item */
+.tabs .tabs-list {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+.tabs .tabs-list li {
+  width: 55%;
+  float: left;
+  margin: 0px;
+  padding: 10px 5px;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 10px 10px 0 0;
+  border-bottom: 1px dotted #5bafe7;
+}
+.tabs .tabs-list li:hover {
+  cursor: pointer;
+}
+.tabs .tabs-list li a {
+  text-decoration: none;
+  color: #5bafe7;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+/* Tab content section */
+.tabs .tab {
+  display: none;
+  width: 100%;
+  min-height: 250px;
+  height: auto;
+  border-radius: 3px;
+  padding: 20px 15px;
+  background-color: white;
+  color: darkslategray;
+  clear: both;
+}
+/* .tabs .tab p {
+  line-height: 20px;
+  letter-spacing: 1px;
+} */
+
+/* When active state */
+.active {
+  display: block !important;
+}
+.tabs .tabs-list li.active {
+  /* background-color: #5bafe7 !important; */
+  border-bottom: 5px solid #5bafe7;
+  color: #5bafe7 !important;
+}
+.active a {
+  color: #5bafe7 !important;
+}
+
+.attractions img{
+  width: 100%;
+  height: 350px;
+  object-fit: fill;
+}
+.attractions-text p {
+  border-bottom: 3px solid #5bafe7;
+  letter-spacing: 1px;
+  font-weight: normal;
+  padding: 5px;
+}
+.attractions-text h3 {
+  font-size: 22px;
+  letter-spacing: 1px;
+  font-weight: bolder;
+  padding: 5px;
+  color: #5bafe7;
+}
+.snow-festival {
+  width: 100%;
+}
+.snow-festival img {
+  display: block;
+  width: 100%;
+  height: 350px;
+  object-fit: fill;
+}
+.snow-festival-text h3 {
+  color: #5bafe7;
+  font-weight: bolder;
+}
+.snow-festival-text p {
+  padding-left: 15px;
+  line-height: 2.3;
+  letter-spacing: 1.5px;
+}
+.sub-festival img{
+  height: 400px;
+  width: 100%;
+  object-fit: fill;
+}
+.festival-1 {
+  border-left: 1px dotted #5bafe7;
+  border-right: 1px dotted #5bafe7;
+  border-bottom: 3px solid #5bafe7;
+}
+
+.festival-2 {
+  border-left: 1px dotted #5bafe7;
+  border-right: 1px dotted #5bafe7;
+  border-top: 3px solid #5bafe7;
+}
+
+.sub-festival-text h4 {
+  color: #5bafe7;
+  font-weight: bolder;
+}
+
+/* media query */
+@media screen and (max-width: 360px) {
+  .tabs {
+    margin: 0;
+    width: 100%;
+  }
+  .tabs .tabs-list li {
+    width: 80px;
+  }
+}
+/* attractions and festival  */
+
 @media only screen and (max-width: 991px) {
   .carousel-fade .carousel-inner {
     height: 30vh;

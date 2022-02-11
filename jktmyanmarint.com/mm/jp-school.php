@@ -151,7 +151,7 @@ function encrypt_decrypt($action, $string) {
   </section>
   <!-- JP School header end -->
 
-  <nav aria-label="breadcrumb" class="breadcrumb-nav">
+  <nav aria-label="breadcrumb" class="breadcrumb-nav d-none d-lg-block">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="./index.html">ပင်မစာမျက်နှာ</a></li>
       <li class="breadcrumb-item"><a href="./trainings.html">လေ့ကျင့်သင်ကြားမှုများ</a></li>
@@ -242,7 +242,7 @@ function encrypt_decrypt($action, $string) {
                       <span id="price" class="row-data"><?php echo $row["fee"]; ?></span>
                       <span id="note" class="row-data"><?php echo $row["note"]; ?></span>
                     </td>
-                    <td data-label="အတန်း" scope="row" style="text-align: left;">
+                    <td data-label="အတန်း" scope="row" class="text-right text-lg-left">
                       <?php echo $row["category_title"] . " "; ?>
                       <span id="course_title" class="row-data"><?php echo $row["course_title"]; ?></span>
                       <span><?php echo empty($row["level_or_sub"]) ? '' : '- ' . $row["level_or_sub"]; ?></span>

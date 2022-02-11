@@ -160,7 +160,7 @@ function encrypt_decrypt($action, $string)
   </section>
   <!-- JP School header end -->
 
-  <nav aria-label="breadcrumb" class="breadcrumb-nav">
+  <nav aria-label="breadcrumb" class="breadcrumb-nav d-none d-md-block">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="./index.html">Home</a></li>
       <li class="breadcrumb-item"><a href="./trainings.html">Trainings</a></li>
